@@ -13,6 +13,5 @@ public class Drop : MonoBehaviour, IDropHandler
         // 이미 object 가 있으면 불가
         Drag drag = eventData.pointerDrag.gameObject.GetComponent<Drag>();
         drag.returnToFrom();
-        
     }
 }

@@ -396,6 +396,13 @@ public class DelaunayTriangulation : MonoBehaviour
         return lineRenderer;
     }
 
+    /// <summary>
+    /// 나중에 local icon으로 바꿔야함
+    /// </summary>
+    /// <param name="name"> local icon이 들고갈 이름</param>
+    /// <param name="color">local icon의 색 <- 지워야할듯</param>
+    /// <param name="position">local icon의 위치 </param>
+    /// <returns></returns>
     private SpriteRenderer CreatePoint(string name, Color color, Vector3 position)
     {
         float size = 0.3f;
@@ -418,20 +425,27 @@ public class DelaunayTriangulation : MonoBehaviour
         return spriteRenderer;
     }
 
+    /// <summary>
+    /// GameManager에서 game start가 실행되면 그때 시작 해야함
+    /// </summary>
     private void Start()
     {
         Debug.Log("실행중");
         Init(70, 70);
         GameManager.instance.nodePosition.CreateRandomSpot();
         Play();
+        transform.rotation = Quaternion.Euler(90, 0, 0);
     }
 
+    /// <summary>
+    /// 함수명 바꿔야함
+    /// </summary>
     private void Play()
     {
         // 출처: [Unity] Physics.Raycast 완벽 가이드 - https://kukuta.tistory.com/391
         for (int i = 0; i < 10; i++)
         {
-            Vector3 p = new Vector3(GameManager.instance.nodePosition.points[i].x, 0, GameManager.instance.nodePosition.points[i].y);
+            Vector3 p = new Vector3(GameManager.instance.nodePosition.points[i].x, GameManager.instance.nodePosition.points[i].y, 0);
             AddPoint(p);
             CreatePoint($"Point", Color.red, p);
         }

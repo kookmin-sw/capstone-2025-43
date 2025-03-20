@@ -6,22 +6,23 @@ public class NodePosition : MonoBehaviour
     {
         public int x, y;
     };
-    public const int size = 30;
-    public Point[] points = new Point[size];
-    private bool[,] flag = new bool[size, size];
+    public const int size = 15;
+    public Point[] points = new Point[size * 2];
+    private bool[,] flag = new bool[size * 2 + 1, size * 2 + 1];
     public void CreateRandomSpot()
     {
         Debug.Log("·»´ýÁß");
-        for (int i = 0; i < size;)
+        for (int i = 0; i < size*2;)
         {
-            points[i].x = Random.Range(0, size);
-            points[i].y = Random.Range(0, size);
-            if (!flag[points[i].x, points[i].y])
+            points[i].x = Random.Range(-size, size);
+            points[i].y = Random.Range(-size, size);
+            if (!flag[points[i].x + size, points[i].y +size])
             {
-                flag[points[i].x, points[i].y] = true;
+                flag[points[i].x + size, points[i].y + size] = true;
                 i++;
             }
         }
+        Debug.Log("·»´ý¿Ï·á");
         return;
     }
 }

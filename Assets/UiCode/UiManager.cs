@@ -6,13 +6,6 @@ public class UiManager : MonoBehaviour
 
     public GameObject mapUi;
     public GameObject NodeUi;
-
-    private void Awake()
-    {
-        if(instance == null)
-            instance = this;
-    }
-
     public void SetUiCondition(string name , bool condition)
     {
         switch (name)
@@ -26,4 +19,5 @@ public class UiManager : MonoBehaviour
         }
 
     }
+    
 }
