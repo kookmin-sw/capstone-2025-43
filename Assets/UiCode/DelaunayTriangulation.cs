@@ -5,10 +5,10 @@ public class DelaunayTriangulation : MonoBehaviour
 {
     public class Edge
     {
-        public Vector3 v0;
-        public Vector3 v1;
+        public Vector2 v0;
+        public Vector2 v1;
 
-        public Edge(Vector3 v0, Vector3 v1)
+        public Edge(Vector2 v0, Vector2 v1)
         {
             this.v0 = v0;
             this.v1 = v1;
@@ -37,40 +37,34 @@ public class DelaunayTriangulation : MonoBehaviour
 
     public class Circle
     {
-        public Vector3 center;
+        public Vector2 center;
         public float radius;
-        public LineRenderer lineRenderer;   // 원을 그리기 위한 렌더러
+        public LineRenderer lineRenderer = null;   // 원을 그리기 위한 렌더러
 
-        public Circle(Vector3 center, float radius)
+        public Circle(Vector2 center, float radius) 
         {
             this.center = center;
             this.radius = radius;
             this.lineRenderer = null;
         }
 
-        public bool Contains(Vector3 point)
+        public bool Contains(Vector2 point)
         {
-            float d = Vector3.Distance(center, point);
-            if (radius < d)
-            {
-                return false;
-            }
-
-            return true;
+            return radius >= Vector2.Distance(center, point);
         }
     }
 
     public class Triangle
     {
-        public Vector3 a;
-        public Vector3 b;
-        public Vector3 c;
+        public Vector2 a;
+        public Vector2 b;
+        public Vector2 c;
         public Circle circumCircle;
         public List<Edge> edges;
 
-        public LineRenderer lineRenderer;   // 삼각형을 그리기 위한 렌더러
+        public LineRenderer lineRenderer = null;   // 삼각형을 그리기 위한 렌더러
 
-        public Triangle(Vector3 a, Vector3 b, Vector3 c)
+        public Triangle(Vector2 a, Vector2 b, Vector2 c)
         {
             this.a = a;
             this.b = b;
@@ -81,18 +75,11 @@ public class DelaunayTriangulation : MonoBehaviour
             this.edges.Add(new Edge(this.a, this.b));
             this.edges.Add(new Edge(this.b, this.c));
             this.edges.Add(new Edge(this.c, this.a));
-
-            this.lineRenderer = null;
         }
 
         public override bool Equals(object other)
         {
-            if (false == (other is Triangle))
-            {
-                return false;
-            }
-
-            return Equals((Triangle)other);
+            return (other is Triangle) ? Equals((Triangle)other) : false;
         }
 
         public override int GetHashCode()
@@ -105,7 +92,7 @@ public class DelaunayTriangulation : MonoBehaviour
             return this.a == triangle.a && this.b == triangle.b && this.c == triangle.c;
         }
 
-        private Circle calcCircumCircle(Vector3 a, Vector3 b, Vector3 c)
+        private Circle calcCircumCircle(Vector2 a, Vector2 b, Vector2 c)
         {
             // 출처: 삼각형 외접원 구하기 - https://kukuta.tistory.com/444
 
@@ -169,8 +156,8 @@ public class DelaunayTriangulation : MonoBehaviour
                 }
             }
 
-            Vector3 center = new Vector3(x, y, 0.0f);
-            float radius = Vector3.Distance(center, a);
+            Vector2 center = new Vector2(x, y);
+            float radius = Vector2.Distance(center, a);
 
             return new Circle(center, radius);
         }
@@ -192,29 +179,26 @@ public class DelaunayTriangulation : MonoBehaviour
         triangles.Clear();
         triangleNo = 0;
 
-        List<Vector3> points = new List<Vector3>();
+        List<Vector2> points = new List<Vector2>();
 
-        points.Add(new Vector3(0.0f, 0.0f));
-        points.Add(new Vector3(0.0f, height));
-        points.Add(new Vector3(width, height));
-        points.Add(new Vector3(width, 0.0f));
+        points.Add(new Vector2(0.0f, 0.0f));
+        points.Add(new Vector2(0.0f, height));
+        points.Add(new Vector2(width, height));
+        points.Add(new Vector2(width, 0.0f));
 
         superTriangle = CreateSuperTriangle(points);
-        if (null == superTriangle)
-        {
-            return;
-        }
+        if (superTriangle != null)
+            triangles.Add(superTriangle);
 
-        triangles.Add(superTriangle);
-
+        return;
     }
-    public void AddPoint(Vector3 point)
+    public void AddPoint(Vector2 point)
     {
         // 추가 되는 외접원에 점이 포함되어 삭제될 삼각형 목록
         List<Triangle> badTriangles = new List<Triangle>();
         foreach (var triangle in triangles)
         {
-            if (true == triangle.circumCircle.Contains(point)) // 삼각형의 외접원에 점이 포함 되는가
+            if (triangle.circumCircle.Contains(point)) // 삼각형의 외접원에 점이 포함 되는가
             {
                 badTriangles.Add(triangle);
             }
@@ -318,14 +302,14 @@ public class DelaunayTriangulation : MonoBehaviour
         }
     }
 
-    private Triangle CreateSuperTriangle(List<Vector3> points)
+    private Triangle CreateSuperTriangle(List<Vector2> points)
     {
         float minX = float.MaxValue;
         float maxX = float.MinValue;
         float minY = float.MaxValue;
         float maxY = float.MinValue;
 
-        foreach (Vector3 point in points)
+        foreach (Vector2 point in points)
         {
             minX = Mathf.Min(minX, point.x);
             maxX = Mathf.Max(maxX, point.x);
@@ -338,9 +322,9 @@ public class DelaunayTriangulation : MonoBehaviour
 
         // super triangle을 포인트 리스트 보다 크게 잡는 이유는
         // super triangle의 변과 포인트가 겹치게 되면 삼각형이 아닌 직선이 되므로 델로네 삼각분할을 적용할 수 없기 때문이다.
-        Vector3 a = new Vector3(minX - dx, minY - dy);
-        Vector3 b = new Vector3(minX - dx, maxY + dy * 3);
-        Vector3 c = new Vector3(maxX + dx * 3, minY - dy);
+        Vector2 a = new Vector2(minX - dx, minY - dy);
+        Vector2 b = new Vector2(minX - dx, maxY + dy * 3);
+        Vector2 c = new Vector2(maxX + dx * 3, minY - dy);
 
         // super triangle이 직선인 경우 리턴
         if (a == b || b == c || c == a)
@@ -354,7 +338,7 @@ public class DelaunayTriangulation : MonoBehaviour
 
         return CreateTriangle(a, b, c);
     }
-    private Triangle CreateTriangle(Vector3 a, Vector3 b, Vector3 c)
+    private Triangle CreateTriangle(Vector2 a, Vector2 b, Vector2 c)
     {
         if (a == b || b == c || c == a)
         {
@@ -403,7 +387,7 @@ public class DelaunayTriangulation : MonoBehaviour
     /// <param name="color">local icon의 색 <- 지워야할듯</param>
     /// <param name="position">local icon의 위치 </param>
     /// <returns></returns>
-    private SpriteRenderer CreatePoint(string name, Color color, Vector3 position)
+    private SpriteRenderer CreatePoint(string name, Color color, Vector2 position)
     {
         float size = 0.3f;
         float imageSize = 100.0f * size;    // 유니티 픽셀 유닛을 100으로 설정했다고 가정함
@@ -412,7 +396,7 @@ public class DelaunayTriangulation : MonoBehaviour
         this.children.Add(go);
         go.name = name;
         go.transform.parent = transform;
-        go.transform.position = new Vector3(position.x - size / 2, position.y - size / 2);
+        go.transform.position = new Vector3(position.x - size / 2, 0, position.y - size / 2);
 
         var texture = new Texture2D((int)imageSize, (int)imageSize);
         var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero, 100, 0, SpriteMeshType.FullRect, Vector4.zero, false);
@@ -434,7 +418,6 @@ public class DelaunayTriangulation : MonoBehaviour
         Init(70, 70);
         GameManager.instance.nodePosition.CreateRandomSpot();
         Play();
-        transform.rotation = Quaternion.Euler(90, 0, 0);
     }
 
     /// <summary>
@@ -445,7 +428,7 @@ public class DelaunayTriangulation : MonoBehaviour
         // 출처: [Unity] Physics.Raycast 완벽 가이드 - https://kukuta.tistory.com/391
         for (int i = 0; i < 10; i++)
         {
-            Vector3 p = new Vector3(GameManager.instance.nodePosition.points[i].x, GameManager.instance.nodePosition.points[i].y, 0);
+            Vector2 p = new Vector2(GameManager.instance.nodePosition.points[i].x, GameManager.instance.nodePosition.points[i].y);
             AddPoint(p);
             CreatePoint($"Point", Color.red, p);
         }
