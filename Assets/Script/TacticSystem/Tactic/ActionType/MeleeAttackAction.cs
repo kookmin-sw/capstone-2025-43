@@ -4,11 +4,12 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "TacticSystem/Action/MeleeAttack")]
 public class MeleeAttackAction : ActionType
 {
+    TacticSystem tacticSystem;
     public override void Execute(Character user, Character target)
     {
         if (user == null || target == null) return;
 
-        TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
+        tacticSystem = user.GetComponent<TacticSystem>();
         if (tacticSystem != null)
         {
             tacticSystem.StopcoolDown = true;
@@ -21,7 +22,6 @@ public class MeleeAttackAction : ActionType
 
         agent.speed = user.stat.moveSpeed;
         agent.isStopped = false;
-
         user.StartCoroutine(MoveAndAttack(user, target, agent));
     }
 

@@ -1,11 +1,13 @@
+using System;
+
 namespace MyProject.Utils
 {
     [System.Serializable]
-    public struct Boundary1D
+    public struct Boundary1D<T> where T : IComparable<T>
     {
-        public float min;
-        public float max;
-        public Boundary1D(float low = 0, float high = 0)
+        public T min;
+        public T max;
+        public Boundary1D(T low, T high)
         {
             min = low;
             max = high;

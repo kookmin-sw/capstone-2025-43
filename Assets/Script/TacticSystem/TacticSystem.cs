@@ -1,23 +1,38 @@
 using System.Collections.Generic;
 using UnityEngine;
+using MyProject.Utils;
+using static UnityEditor.Experimental.GraphView.Port;
+using System.ComponentModel;
 
+[RequireComponent(typeof(Character))]
 public class TacticSystem : MonoBehaviour
-{
-    [SerializeField] private List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
+{ 
+    private int tacticCapacity;
+    private Boundary1D<int> capacityBoundary = new Boundary1D<int>(2, 6);
+    [SerializeField]
+    public int TacticCapacity //you can get or set TacticCapacity in Boundary
+    {
+        get => tacticCapacity;
+        set => tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
+    }
     private Character character;
-    private float cooldownTimer = 0f;
+    [SerializeField] private List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
+    private float cooldownTimer = 0f; //Global Cooldown Timer
     public bool StopcoolDown = false;
+  
     private void Start()
     {
-        character = GetComponent<Character>(); // 같은 객체의 Character 가져오기
-        if (character == null)
-        {
-            Debug.LogError("TacticSystem에 Character 컴포넌트가 없음!");
-            enabled = false;
-        }
+        character = GetComponent<Character>();
+        InitializeTactic(character.tacticCapacity);
+        //TODO :: LoadTactic 
     }
 
     private void Update()
+    {
+        GlobalCooldown();
+    }
+
+    private void GlobalCooldown()
     {
         if (character == null || tactics.Count == 0) return;
 
@@ -26,33 +41,39 @@ public class TacticSystem : MonoBehaviour
 
         if (cooldownTimer <= 0f)
         {
+            cooldownTimer = 0f;
+            //StopcoolDown = true;
             ExecuteTactic();
             cooldownTimer = character.GlobalCooldown;
         }
     }
-
     private void ExecuteTactic()
     {
         if (tactics.Count == 0) return;
 
         foreach (Tactic tactic in tactics)
         {
-            tactic.Execute(character);
+            //TODO :: Check tactic Character Enable
+            if (tactic.Enable && tactic.Execute(character))
+            {
+                return;
+            }
         }
+        Debug.Log("No valid Tactic executed.");
     }
-
-
-    public void AddTactic(Tactic tactic)
+    private void InitializeTactic(int Count)
     {
-        if (!tactics.Contains(tactic))
+        //tactics.Clear();
+        for (int i = 0; i < Count; i++)
         {
-            Debug.Log("AddTactic!");
+            Tactic tactic = ScriptableObject.CreateInstance<Tactic>();
+            tactic.Priority = i;
+            tactic.Enable = true;
             tactics.Add(tactic);
         }
     }
-    public void RemoveTactic(Tactic tactic)
+    public void SortTactics()
     {
-        Debug.Log("RemoveTactic!");
-        tactics.Remove(tactic);
+        tactics.Sort((a, b) => a.Priority.CompareTo(b.Priority));
     }
 }

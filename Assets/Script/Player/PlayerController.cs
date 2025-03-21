@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
     public float zoomSensitivity;
-    public Boundary1D zoomBoundary = new Boundary1D(2, 10);
+    public Boundary1D<float> zoomBoundary = new Boundary1D<float>(2, 10);
     public float rotationSpeed;
     public float rotationResetSpeed;
     public float rotationResetAngle;
