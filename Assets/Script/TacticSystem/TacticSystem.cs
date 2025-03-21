@@ -21,15 +21,13 @@ public class TacticSystem : MonoBehaviour
     {
         if (character == null || tactics.Count == 0) return;
 
-        // 타이머 감소
         if (!StopcoolDown)
             cooldownTimer -= Time.deltaTime;
 
-        // Global Cooldown이 끝났다면 Tactic 실행
         if (cooldownTimer <= 0f)
         {
             ExecuteTactic();
-            cooldownTimer = character.GlobalCooldown; // 쿨다운 초기화
+            cooldownTimer = character.GlobalCooldown;
         }
     }
 
@@ -37,7 +35,6 @@ public class TacticSystem : MonoBehaviour
     {
         if (tactics.Count == 0) return;
 
-        // 1. 우선순위가 높은 Tactic부터 실행
         foreach (Tactic tactic in tactics)
         {
             tactic.Execute(character);

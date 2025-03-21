@@ -1,15 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine.TextCore.Text;
 
-public class CharacterManager : MonoBehaviour
+   public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Instance { get; private set; }
 
     private List<Character> allCharacters = new List<Character>();
     private List<Character> allies = new List<Character>();
-    private List<Character> enemies = new List<Character>();
+    private List<Character> monsters = new List<Character>();
 
     private void Awake()
     {
@@ -22,19 +20,16 @@ public class CharacterManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            PrintAllCharacterNames();
-        }
-    }
+    //Shallow Copy
+    public List<Character> GetAllies() => new List<Character>(allies);
+    public List<Character> GetEnemies() => new List<Character>(monsters);
 
-    public void RegisterCharacter(Character character, bool isEnemy)
+    //RegisterCharacter is called by Character.cs Start Function
+    public void RegisterCharacter(Character character, bool isMonster)
     {
         allCharacters.Add(character);
-        if (isEnemy)
-            enemies.Add(character);
+        if (isMonster)
+            monsters.Add(character);
         else
             allies.Add(character);
     }
@@ -42,39 +37,57 @@ public class CharacterManager : MonoBehaviour
     public void UnregisterCharacter(Character character)
     {
         allCharacters.Remove(character);
+        //TeamCode and Enemy boolean value can Change like mindControl Action.
+        monsters.Remove(character);
         allies.Remove(character);
-        enemies.Remove(character);
     }
 
-
-    public List<Character> GetAllies() => new List<Character>(allies);
-    public List<Character> GetEnemies() => new List<Character>(enemies);
-
-    /// <summary>
-    /// 특정 TargetType과 ConditionType을 적용하여 적절한 캐릭터 리스트를 반환
-    public List<Character> GetCharacters(Character self, TargetType targetType, ConditionType conditionType)
+    public List<Character> GetCharacters(Character self, TargetType targetType, ConditionType conditionType, ActionType actionType)
     {
         if (self == null || targetType == null) return new List<Character>();
 
-        // 1. TargetType을 이용해 대상 캐릭터 목록 필터링
+        //TargetType Filtering
         List<Character> targets = targetType.Filter(allCharacters, self);
 
-        // 2. ConditionType이 있으면 추가 필터링
+        //ConditionTypeFiltering
         if (conditionType != null)
         {
             targets = conditionType.Filter(targets, self);
         }
 
+        if(actionType != null)
+        {
+            if(actionType.IsSingleTarget == true && targets.Count > 1)
+            {
+                targets = GetNearestTarget(self, targets);
+            }
+        }
+
         return targets;
     }
 
-    public void PrintAllCharacterNames()
+    //O(n) FInd Nearlest Target
+    private List<Character> GetNearestTarget(Character self, List<Character> targets)
     {
-        Debug.Log("All Characters:");
-        foreach (var character in allCharacters)
-        {
-            Debug.Log(character.gameObject.name);
-        }
-    }
+        if (targets == null || targets.Count == 0) return new List<Character>();
 
+        if (targets.Count == 1)
+            return targets;
+
+        Character nearest = null;
+        float minDistance = float.MaxValue;
+
+        foreach (Character target in targets)
+        {
+            float distance = Vector3.Distance(self.transform.position, target.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearest = target;
+            }
+        }
+        return nearest != null ? new List<Character> { nearest } : new List<Character>();
+    }
 }
+
+

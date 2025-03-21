@@ -17,11 +17,11 @@ public class HPCondition: ConditionType
     {
         if (conditionType == HPConditionType.Below)
         {
-            return targets.FindAll(c => c.hp < c.hp_max* (hpPercent / 100f));
+            return targets.FindAll(c => c.stat.hp < c.stat.hp_max* (hpPercent / 100f));
         }
         else // Above
         {
-            return targets.FindAll(c => c.hp > c.hp_max* (hpPercent / 100f));
+            return targets.FindAll(c => c.stat.hp > c.stat.hp_max* (hpPercent / 100f));
         }
     }
 }
