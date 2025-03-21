@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class TacticSystem : MonoBehaviour
 {
-    [SerializeField] private List<Tactic> tactics = new List<Tactic>(); // 캐릭터가 보유한 Tactic 리스트
-    private Character character; // 이 TacticSystem을 실행하는 캐릭터
-    private float cooldownTimer = 0f; // Global Cooldown 타이머
+    [SerializeField] private List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
+    private Character character;
+    private float cooldownTimer = 0f;
     public bool StopcoolDown = false;
     private void Start()
     {

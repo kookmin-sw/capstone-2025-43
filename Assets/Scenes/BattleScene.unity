@@ -250,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: DisplayName
   isMonster: 0
+  tacticCapacity: 3
   team_id: 1
   GlobalCooldown: 5
   hp_max: 100
@@ -587,7 +588,7 @@ MonoBehaviour:
   moveSpeed: 20
   zoomSensitivity: 100
   zoomBoundary:
-    min: 1
+    min: 2
     max: 10
   rotationSpeed: 100
   rotationResetSpeed: 20
@@ -717,6 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: DisplayName
   isMonster: 0
+  tacticCapacity: 3
   team_id: 1
   GlobalCooldown: 5
   hp_max: 100

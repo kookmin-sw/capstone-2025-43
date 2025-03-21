@@ -1,21 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using MyProject.Utils;
 
 public class PlayerController : MonoBehaviour
 {
-    [System.Serializable]
-    public struct Boundary1D
-    {
-        public float min;
-        public float max;
-
-        public Boundary1D(int low = 0, int high = 0)
-        {
-            min = low; max = high;
-        }
-    }
-
     //virtual Camera Options
     [SerializeField] CinemachineVirtualCamera virtualCamera;
     CinemachineComponentBase componentBase;
@@ -45,11 +34,6 @@ public class PlayerController : MonoBehaviour
         ZoomByInputAction();
         RotateByInputAction();
     }
-    private void FixedUpdate()
-    {
-
-    }
-
     private void MoveByInputAction()
     {
         if (IA_Move == null)
