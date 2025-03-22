@@ -16,9 +16,8 @@ public class TacticSystem : MonoBehaviour
         get => character.tacticCapacity;
         set => character.tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
     }
-    //public List<TacticType> tactics = new List<TacticType>();
     public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
-    private float cooldownTimer = 0f; //Global Cooldown Timer
+    [HideInInspector] public float cooldownTimer = 0f; //Global Cooldown Timer
     [HideInInspector] public bool StopcoolDown = false;
   
     private void Start()
@@ -31,6 +30,7 @@ public class TacticSystem : MonoBehaviour
     private void Update()
     {
         GlobalCooldown();
+        TacticCoolDown();
     }
 
     private void GlobalCooldown()
@@ -48,19 +48,49 @@ public class TacticSystem : MonoBehaviour
             cooldownTimer = character.GlobalCooldown;
         }
     }
+
+    private void TacticCoolDown()
+    {
+        if (character == null || tactics.Count == 0) return;
+
+        foreach (Tactic tactic in tactics)
+        {
+            if (!tactic.stopcoolDown)
+                tactic.cooldownTimer -= Time.deltaTime;
+
+            if (tactic.cooldownTimer <= 0f)
+            {
+                tactic.cooldownTimer = 0f;
+                tactic.stopcoolDown = true;
+            }
+        }
+    }
+    private void ApplyTacticCooldown(Tactic executeTactic)
+    {
+        foreach (Tactic tactic in tactics)
+        {
+            if (tactic.actionType == executeTactic.actionType)
+            {
+                tactic.ApplyCoolDown();
+            }
+        }
+    }
     private void ExecuteTactic()
     {
         if (tactics.Count == 0) return;
 
         foreach (Tactic tactic in tactics)
         {
-            if (tactic.enable && tactic.Execute(character))
+            if (tactic.enable && tactic.stopcoolDown == true)
             {
-                //TODO :: Apply Action Cooldown
-                return;
+                if (tactic.Execute(character))
+                {
+                    ApplyTacticCooldown(tactic);
+                    return;
+                }
             }
         }
-        //Debug.Log("No valid Tactic executed.");
+        Debug.Log("No valid Tactic executed.");
     }
     private void InitializeTactic(int Capacity)
     {
@@ -93,8 +123,6 @@ public class TacticSystem : MonoBehaviour
             }
             tactics.Add(tactic);
         }
-
-
     }
     public void SortTactics()
     {
