@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95abb072bea7c684e81ace04cf62491f, type: 3}
   m_Name: MeleeAttackAction
   m_EditorClassIdentifier: 
+  displayName: MeleeAttack
+  isSingleTarget: 1

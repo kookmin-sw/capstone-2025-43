@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53adac051021ef439ca3013b11068fb, type: 3}
   m_Name: Nearest_Condition
   m_EditorClassIdentifier: 
+  displayName: Nearlest

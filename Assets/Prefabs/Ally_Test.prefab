@@ -445,10 +445,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.19220424
   m_Height: 1.800052
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9091546, z: 0}
+  m_Center: {x: 0, y: 0.9091546, z: 0.0005282561}
 --- !u!195 &538661375521548658
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -458,7 +458,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4260325907809843580}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -467,7 +467,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -494,13 +494,16 @@ MonoBehaviour:
   mp: 50
   damage_max: 10
   damage: 10
-  attackRange_Max: 3
-  attackRange: 3
+  attackRange_Max: 5
+  attackRange: 5
   moveSpeed: 10
   rotationSpeed: 10
-  Targets: []
-  Conditions: []
-  Actions: []
+  Targets:
+  - {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
+  Conditions:
+  - {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
+  Actions:
+  - {fileID: 11400000, guid: 358b9ad1b9a58e8448ff2b834d919ab5, type: 2}
 --- !u!114 &9102167623458279373
 MonoBehaviour:
   m_ObjectHideFlags: 0

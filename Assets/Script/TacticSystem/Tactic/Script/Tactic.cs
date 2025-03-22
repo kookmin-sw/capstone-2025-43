@@ -7,9 +7,9 @@ public class Tactic : ScriptableObject
 {
     public bool Enable = true;
     public int Priority = 0;
-    [SerializeField] private TargetType targetType;
-    [SerializeField] private ConditionType conditionType; 
-    [SerializeField] private ActionType actionType; 
+    public TargetType targetType;
+    public ConditionType conditionType; 
+    public ActionType actionType; 
 
     public bool Execute(Character self)
     {
@@ -22,5 +22,10 @@ public class Tactic : ScriptableObject
             actionType.Execute(self, target);
         }
         return true;
+    }
+
+    public Tactic Clone()
+    {
+        return Instantiate(this);//Clone By Instantiate
     }
 }

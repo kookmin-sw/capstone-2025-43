@@ -7,16 +7,15 @@ using System.ComponentModel;
 [RequireComponent(typeof(Character))]
 public class TacticSystem : MonoBehaviour
 { 
-    private int tacticCapacity;
     private Boundary1D<int> capacityBoundary = new Boundary1D<int>(2, 6);
     [SerializeField]
     public int TacticCapacity //you can get or set TacticCapacity in Boundary
     {
-        get => tacticCapacity;
-        set => tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
+        get => character.tacticCapacity;
+        set => character.tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
     }
     private Character character;
-    [SerializeField] private List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
+    public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
     private float cooldownTimer = 0f; //Global Cooldown Timer
     public bool StopcoolDown = false;
   
@@ -59,7 +58,7 @@ public class TacticSystem : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("No valid Tactic executed.");
+        //Debug.Log("No valid Tactic executed.");
     }
     private void InitializeTactic(int Count)
     {

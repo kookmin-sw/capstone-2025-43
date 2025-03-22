@@ -1,7 +1,9 @@
 using UnityEngine;
 public abstract class ActionType : ScriptableObject
 {
-    public string DisplayName = "DisplayName";
+    public string displayName = "DisplayName";
+    public override string ToString() => displayName;
+
     //Can Edit isSingleTarget in Editor but Not in Other class
     [SerializeField]
     private bool isSingleTarget = true;

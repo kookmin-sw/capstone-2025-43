@@ -3,7 +3,9 @@ using UnityEngine;
 
 public abstract class TargetType : ScriptableObject
 {
-    public string DisplayName = "DisplayName";
+    public string displayName = "DisplayName";
+    public override string ToString() => displayName;
+
 
     public abstract List<Character> Filter(List<Character> allCharacters, Character self);
 }
