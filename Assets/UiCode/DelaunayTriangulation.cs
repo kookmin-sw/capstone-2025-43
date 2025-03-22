@@ -387,7 +387,7 @@ public class DelaunayTriangulation : MonoBehaviour
     /// <param name="color">local icon의 색 <- 지워야할듯</param>
     /// <param name="position">local icon의 위치 </param>
     /// <returns></returns>
-    private SpriteRenderer CreatePoint(string name, Color color, Vector2 position)
+    public SpriteRenderer CreatePoint(string name, Color color, Vector2 position)
     {
         float size = 0.3f;
         float imageSize = 100.0f * size;    // 유니티 픽셀 유닛을 100으로 설정했다고 가정함
@@ -407,32 +407,6 @@ public class DelaunayTriangulation : MonoBehaviour
         spriteRenderer.sortingOrder = 2;
 
         return spriteRenderer;
-    }
-
-    /// <summary>
-    /// GameManager에서 game start가 실행되면 그때 시작 해야함
-    /// </summary>
-    private void Start()
-    {
-        Debug.Log("실행중");
-        Init(70, 70);
-        GameManager.instance.nodePosition.CreateRandomSpot();
-        Play();
-    }
-
-    /// <summary>
-    /// 함수명 바꿔야함
-    /// </summary>
-    private void Play()
-    {
-        // 출처: [Unity] Physics.Raycast 완벽 가이드 - https://kukuta.tistory.com/391
-        for (int i = 0; i < 10; i++)
-        {
-            Vector2 p = new Vector2(GameManager.instance.nodePosition.points[i].x, GameManager.instance.nodePosition.points[i].y);
-            AddPoint(p);
-            CreatePoint($"Point", Color.red, p);
-        }
-        RemoveSuperTriangle();
     }
 
 }

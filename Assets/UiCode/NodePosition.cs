@@ -1,28 +1,26 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class NodePosition : MonoBehaviour
 {
-    public struct Point
-    {
-        public int x, y;
-    };
     public const int size = 15;
-    public Point[] points = new Point[size * 2];
-    private bool[,] flag = new bool[size * 2 + 1, size * 2 + 1];
-    public void CreateRandomSpot()
+    public bool[,] flag = new bool[size * 2 + 1, size * 2 + 1];
+    public Vector2 CreateRandomSpot()
     {
         Debug.Log("·»´ýÁß");
-        for (int i = 0; i < size*2;)
+        int x, z;
+        do
         {
-            points[i].x = Random.Range(-size, size);
-            points[i].y = Random.Range(-size, size);
-            if (!flag[points[i].x + size, points[i].y +size])
+            x = Random.Range(-size, size);
+            z = Random.Range(-size, size);
+
+            if (!flag[x + size, z + size])
             {
-                flag[points[i].x + size, points[i].y + size] = true;
-                i++;
+                Debug.Log("·»´ý¿Ï·á");
+                flag[x + size, z + size] = true;
+                return new Vector2(x, z);
             }
-        }
-        Debug.Log("·»´ý¿Ï·á");
-        return;
+        } while (true);
     }
 }
