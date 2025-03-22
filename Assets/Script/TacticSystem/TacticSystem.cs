@@ -8,16 +8,16 @@ using System.ComponentModel;
 public class TacticSystem : MonoBehaviour
 { 
     private Boundary1D<int> capacityBoundary = new Boundary1D<int>(2, 6);
+    private Character character;
     [SerializeField]
     public int TacticCapacity //you can get or set TacticCapacity in Boundary
     {
         get => character.tacticCapacity;
         set => character.tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
     }
-    private Character character;
     public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
     private float cooldownTimer = 0f; //Global Cooldown Timer
-    public bool StopcoolDown = false;
+    [HideInInspector] public bool StopcoolDown = false;
   
     private void Start()
     {
@@ -52,8 +52,8 @@ public class TacticSystem : MonoBehaviour
 
         foreach (Tactic tactic in tactics)
         {
-            //TODO :: Check tactic Character Enable
-            if (tactic.Enable && tactic.Execute(character))
+            //TODO :: Apply Action Cooldown
+            if (tactic.enable && tactic.Execute(character))
             {
                 return;
             }
@@ -66,13 +66,21 @@ public class TacticSystem : MonoBehaviour
         for (int i = 0; i < Count; i++)
         {
             Tactic tactic = ScriptableObject.CreateInstance<Tactic>();
-            tactic.Priority = i;
-            tactic.Enable = true;
+            tactic.priority = i;
+            tactic.enable = true;
+            //Last Priority is Always Nearlest Enemy Attack
+            if(i == Count - 1)
+            {
+                tactic.editable = false;
+                tactic.targetType = character.Targets.Find(target => target is TargetEnemy);
+                tactic.conditionType = character.Conditions.Find(condition => condition is NearestCondition);
+                tactic.actionType = character.Actions.Find(action => action is MeleeAttackAction);
+            }
             tactics.Add(tactic);
         }
     }
     public void SortTactics()
     {
-        tactics.Sort((a, b) => a.Priority.CompareTo(b.Priority));
+        tactics.Sort((a, b) => a.priority.CompareTo(b.priority));
     }
 }

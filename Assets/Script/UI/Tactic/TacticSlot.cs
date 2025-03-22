@@ -13,13 +13,13 @@ public class TacticSlot : MonoBehaviour, IDropHandler
 
         Transform previousParent = draggableItem.parentAfterDrag; 
 
-        if (transform.childCount == 0)
+        if (transform.childCount == 0) //Slot Empty Drop 
         {
             draggableItem.transform.SetParent(transform);
             draggableItem.transform.localPosition = Vector3.zero;
             draggableItem.parentAfterDrag = transform;
         }
-        else
+        else //Slot Full Drop -> Change
         {
             GameObject currentItem = transform.GetChild(0).gameObject;
             draggableTactic currentDraggable = currentItem.GetComponent<draggableTactic>();
@@ -32,13 +32,18 @@ public class TacticSlot : MonoBehaviour, IDropHandler
             draggableItem.transform.localPosition = Vector3.zero;
             draggableItem.parentAfterDrag = transform;
 
-            if (draggableItem.tactic != null && currentDraggable.tactic != null)
-            {
-                int tempPriority = draggableItem.tactic.Priority;
-                draggableItem.tactic.Priority = currentDraggable.tactic.Priority;
-                currentDraggable.tactic.Priority = tempPriority;
-            }
+            ChangePriority(draggableItem, currentDraggable);
         }
     }
 
+    private void ChangePriority(draggableTactic draggableItem, draggableTactic currentDraggable)
+    {
+        //Change Priority of Tactic
+        if (draggableItem.tactic != null && currentDraggable.tactic != null)
+        {
+            int tempPriority = draggableItem.tactic.priority;
+            draggableItem.tactic.priority = currentDraggable.tactic.priority;
+            currentDraggable.tactic.priority = tempPriority;
+        }
+    }
 }

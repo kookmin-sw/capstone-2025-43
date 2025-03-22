@@ -1789,6 +1789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7782283061668781513}
   - component: {fileID: 5389573979153474602}
+  - component: {fileID: 8239611187645446346}
   m_Layer: 0
   m_Name: RowUI
   m_TagString: Untagged
@@ -1828,9 +1829,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bb680576324fd409dce56f0c76907e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 0}
   parentAfterDrag: {fileID: 0}
   tactic: {fileID: 0}
+--- !u!225 &8239611187645446346
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391969717432032836}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4541664664070170039
 GameObject:
   m_ObjectHideFlags: 0

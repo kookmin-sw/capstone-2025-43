@@ -5,11 +5,12 @@ using System;
 [CreateAssetMenu(menuName = "TacticSystem/Tactic")]
 public class Tactic : ScriptableObject
 {
-    public bool Enable = true;
-    public int Priority = 0;
+    public bool enable = true;
+    public int priority = 0;
     public TargetType targetType;
     public ConditionType conditionType; 
-    public ActionType actionType; 
+    public ActionType actionType;
+    public bool editable = true;
 
     public bool Execute(Character self)
     {
@@ -26,6 +27,8 @@ public class Tactic : ScriptableObject
 
     public Tactic Clone()
     {
-        return Instantiate(this);//Clone By Instantiate
+        Tactic tactic = Instantiate(this); //Clone By Instantiate
+        tactic.name = tactic.name.Replace("(Clone)", "").Trim();
+        return tactic;
     }
 }

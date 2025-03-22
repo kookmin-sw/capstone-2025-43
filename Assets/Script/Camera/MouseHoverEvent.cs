@@ -23,7 +23,7 @@ public class MouseHoverEvent : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("PopUP!");
+                //Debug.Log("PopUP!");
                 PopUpTacticSystemUI();
             }
         }
