@@ -1327,7 +1327,7 @@ PrefabInstance:
     - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: 'Actions.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 358b9ad1b9a58e8448ff2b834d919ab5, type: 2}
+      objectReference: {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
     - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: 'Actions.Array.data[1]'
       value: 
@@ -3314,6 +3314,14 @@ PrefabInstance:
       propertyPath: tacticCapacity
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7000789677245832086, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: Targets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000789677245832086, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: 'Targets.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
     - target: {fileID: 8248272762900142648, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3388,7 +3396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb100ee5048091945ab47f3273a52ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tactics: []
+  tactics:
+  - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
   StopcoolDown: 0
 --- !u!222 &6650545960168395251
 CanvasRenderer:

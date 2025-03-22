@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d772c2aebd8fb14bb0ec98d29f05f82, type: 3}
   m_Name: HealAction
   m_EditorClassIdentifier: 
-  displayName: Heal
+  displayName: HealAction
+  actionCooldown: 10
   isSingleTarget: 1

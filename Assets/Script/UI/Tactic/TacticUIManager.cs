@@ -19,6 +19,7 @@ public class TacticUIManager : MonoBehaviour
 
     private List<Tactic> tempTactics;//TempTacticList
 
+
     private void Awake()
     {
         Instance = this;

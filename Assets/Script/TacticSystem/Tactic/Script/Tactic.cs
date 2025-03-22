@@ -11,6 +11,7 @@ public class Tactic : ScriptableObject
     public ConditionType conditionType; 
     public ActionType actionType;
     public bool editable = true;
+    public bool draggable = true;
 
     public bool Execute(Character self)
     {

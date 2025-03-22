@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MyProject.Utils;
+using MyProject.TacticUtils;
 using static UnityEditor.Experimental.GraphView.Port;
 using System.ComponentModel;
 
@@ -15,6 +16,7 @@ public class TacticSystem : MonoBehaviour
         get => character.tacticCapacity;
         set => character.tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
     }
+    //public List<TacticType> tactics = new List<TacticType>();
     public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
     private float cooldownTimer = 0f; //Global Cooldown Timer
     [HideInInspector] public bool StopcoolDown = false;
@@ -52,32 +54,47 @@ public class TacticSystem : MonoBehaviour
 
         foreach (Tactic tactic in tactics)
         {
-            //TODO :: Apply Action Cooldown
             if (tactic.enable && tactic.Execute(character))
             {
+                //TODO :: Apply Action Cooldown
                 return;
             }
         }
         //Debug.Log("No valid Tactic executed.");
     }
-    private void InitializeTactic(int Count)
+    private void InitializeTactic(int Capacity)
     {
         //tactics.Clear();
-        for (int i = 0; i < Count; i++)
+        int tacticCount = tactics.Count;
+        for(int i = 0; i < tacticCount; ++i)
+        {
+            Tactic tactic = tactics[i];
+            tactic.priority = i;
+            tactic.enable = true;
+            character.AddTacticComponent(tactic);
+        }
+
+        for (int i = tacticCount; i < Capacity; i++)
         {
             Tactic tactic = ScriptableObject.CreateInstance<Tactic>();
             tactic.priority = i;
             tactic.enable = true;
             //Last Priority is Always Nearlest Enemy Attack
-            if(i == Count - 1)
+            if (i == Capacity - 1)
             {
-                tactic.editable = false;
                 tactic.targetType = character.Targets.Find(target => target is TargetEnemy);
                 tactic.conditionType = character.Conditions.Find(condition => condition is NearestCondition);
                 tactic.actionType = character.Actions.Find(action => action is MeleeAttackAction);
+                if (tactic.targetType && tactic.conditionType && tactic.actionType)
+                {
+                    tactic.draggable = false;
+                    tactic.editable = false;
+                }
             }
             tactics.Add(tactic);
         }
+
+
     }
     public void SortTactics()
     {
