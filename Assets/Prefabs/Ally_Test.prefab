@@ -503,7 +503,8 @@ MonoBehaviour:
   Conditions:
   - {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
   Actions:
-  - {fileID: 11400000, guid: 358b9ad1b9a58e8448ff2b834d919ab5, type: 2}
+  - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+  - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
 --- !u!114 &9102167623458279373
 MonoBehaviour:
   m_ObjectHideFlags: 0

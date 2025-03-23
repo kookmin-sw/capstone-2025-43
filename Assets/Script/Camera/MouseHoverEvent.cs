@@ -18,12 +18,10 @@ public class MouseHoverEvent : MonoBehaviour
 
     void Update()
     {
-
         if (lastOutline)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                //Debug.Log("PopUP!");
                 PopUpTacticSystemUI();
             }
         }
@@ -68,6 +66,10 @@ public class MouseHoverEvent : MonoBehaviour
     void PopUpTacticSystemUI()
     {
         if (lastOutline)
-            TacticUIManager.Instance.OpenTacticUI(lastOutline.GetComponent<Character>());
+        {
+            TacticUIManager.Instance.OpenTacticSystemUI(lastOutline.GetComponent<Character>());
+            TacticUIManager.Instance.InitializeTacticInformationUI();
+
+        }
     }
 }
