@@ -18,7 +18,6 @@ public class Archer : MonoBehaviour
     {
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
-        rb.AddForce(firePoint.forward * arrowSpeed, ForceMode.Impulse);
 
     }
 }

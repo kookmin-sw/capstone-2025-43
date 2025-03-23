@@ -41,7 +41,7 @@ public class MeleeAttackAction : ActionType
             }
 
             if (user.TryGetComponent(out Animator animator)){
-                animator.SetBool("Walk", true);
+                animator.SetBool("IsWalk", true);
             }
             agent.SetDestination(target.transform.position);
             
