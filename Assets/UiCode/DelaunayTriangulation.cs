@@ -353,7 +353,7 @@ public class DelaunayTriangulation : MonoBehaviour
             lineRenderer.SetPosition(1, b);
             lineRenderer.SetPosition(2, c);
             lineRenderer.SetPosition(3, a);
-
+            lineRenderer.useWorldSpace = false;
             triangle.lineRenderer = lineRenderer;
         }
         triangleNo++;
@@ -396,10 +396,11 @@ public class DelaunayTriangulation : MonoBehaviour
         this.children.Add(go);
         go.name = name;
         go.transform.parent = transform;
-        go.transform.position = new Vector3(position.x - size / 2, 0, position.y - size / 2);
+        go.transform.position = new Vector2(position.x - size / 2, position.y - size / 2);
 
         var texture = new Texture2D((int)imageSize, (int)imageSize);
-        var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero, 100, 0, SpriteMeshType.FullRect, Vector4.zero, false);
+        var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width,
+            texture.height), Vector2.zero, 100, 0, SpriteMeshType.FullRect, Vector4.zero, false);
 
         var spriteRenderer = go.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprite;

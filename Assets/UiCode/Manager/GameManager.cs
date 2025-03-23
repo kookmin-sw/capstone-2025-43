@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,9 @@ public class GameManager : MonoBehaviour
     public UiManager uiManager;
     public NodePosition nodePosition;
     public DelaunayTriangulation DTri;
+    public Day day;
+
+    public float GameTime;
     private void Awake()
     {
         if (instance == null)
@@ -30,10 +34,9 @@ public class GameManager : MonoBehaviour
         DTri.RemoveSuperTriangle();
     }
 
-    public void CreateObject(string path)
+    private void Dominate()
     {
-
+       
+        //link - move가능 -> ally배열중 random 
     }
-
-
 }
