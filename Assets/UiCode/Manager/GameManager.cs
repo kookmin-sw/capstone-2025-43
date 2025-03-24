@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Day day;
 
     public float GameTime;
+    public bool isPause = false;
     private void Awake()
     {
         if (instance == null)
@@ -34,9 +35,14 @@ public class GameManager : MonoBehaviour
         DTri.RemoveSuperTriangle();
     }
 
-    private void Dominate()
+    public void GamePause()
     {
-       
-        //link - move가능 -> ally배열중 random 
+        isPause = true;
+        Time.timeScale = 0.0f;
+    }
+    public void GameResume()
+    {
+        isPause = false;
+        Time.timeScale = 1.0f;
     }
 }

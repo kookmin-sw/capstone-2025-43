@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Ãæµ¹ÇÔ");
         GameObject collisonObject = collision.collider.gameObject;
-        Debug.Log(collisonObject.name);
+        Debug.Log(this.name + " and " + collisonObject.name);
     }
 }
