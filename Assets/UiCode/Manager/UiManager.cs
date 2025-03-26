@@ -5,8 +5,8 @@ public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
 
-    public GameObject mapUi;
-    public GameObject nodeUi;
+    public GameObject defaultUi;
+    public GameObject localUi;
     public GameObject settingUi;
     public GameObject shopUi;
 
@@ -14,59 +14,43 @@ public class UiManager : MonoBehaviour
 
     public void SetUiCondition(string name , bool condition)
     {
-        GameObject gameObject = GetUi(name);
-        if (gameObject != null) {
-            gameObject.SetActive(condition);
-            if (condition)
-                openUi.Push(name);
-            else
-            {
-                try
-                {
-                    openUi.Pop();
-                }
-                catch
-                {
-                    SetUiCondition("Setting", true);
-                }
-            }
-        }
-
-    }
-    public GameObject GetUi( string name)
-    {
         switch (name)
         {
-            case "Map":
-                return mapUi;
-            case "Node":
-                return nodeUi;
+            case "Default":
+                defaultUi.SetActive(condition);
+                break;
+            case "Local":
+                localUi.SetActive(condition);
+                break;
             case "Setting":
-                return settingUi;
+                settingUi.SetActive(condition);
+                break;
             case "Shop":
-                return shopUi;
+                shopUi.SetActive(condition);
+                break;
             case "Option":
-                return null;
+                break;
             case "Save":
-                return null;
+                break;
             case "Load":
-                return null;
+                break;
             case "Exit":
-                return null;
+                break;
             case "Quit":
-                return null;
+                break;
         }
-        return null;
-    }
-    
-    public void OpenShop()
-    {
-        SetUiCondition("Shop", true);
-    }
-
-    public void CloseShop()
-    {
-        Debug.Log("CloseShop() 호출됨!");
-        SetUiCondition("Shop", false);
+        if (condition)
+            openUi.Push(name);
+        else
+        {
+            try
+            {
+                openUi.Pop();
+            }
+            catch
+            {
+                SetUiCondition("Setting", true);
+            }
+        }
     }
 }
