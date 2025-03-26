@@ -17,7 +17,16 @@ public class Archer : MonoBehaviour
     void Shoot()
     {
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = arrow.GetComponent<Rigidbody>();
-
+        
+        Arrow homing = arrow.GetComponent<Arrow>();
+        if (homing != null)
+        {
+            GameObject targetEnemy = GameObject.FindWithTag("TestEnemy");  //"TestEnemy" 태그가 붙은 적
+            if (targetEnemy != null)
+            {
+                homing.target = targetEnemy.transform;
+                homing.speed = arrowSpeed;
+            }
+        }
     }
 }
