@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1240593b68b3e34c8e95e13b7d45440, type: 3}
-  m_Name: TmpUnitData
+  m_Script: {fileID: 11500000, guid: c207f195027e14348a11a064c8c8779d, type: 3}
+  m_Name: HeroInventory
   m_EditorClassIdentifier: 
-  curHp: 100
-  curMp: 100
-  heroName: Magician
-  price: 500
-  heroImage: {fileID: 0}
-  maxHp: 100
-  maxMp: 100
-  damage: 10
+  ownedHeroes: []

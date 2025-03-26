@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
@@ -9,7 +10,7 @@ public class UiManager : MonoBehaviour
     public GameObject settingUi;
     public GameObject shopUi;
 
-    private Stack openUi;
+    private Stack<string> openUi = new Stack<string>(); // add initialization
 
     public void SetUiCondition(string name , bool condition)
     {
@@ -26,7 +27,7 @@ public class UiManager : MonoBehaviour
                 }
                 catch
                 {
-                    SetUiCondition("Settting", true);
+                    SetUiCondition("Setting", true);
                 }
             }
         }
@@ -58,4 +59,14 @@ public class UiManager : MonoBehaviour
         return null;
     }
     
+    public void OpenShop()
+    {
+        SetUiCondition("Shop", true);
+    }
+
+    public void CloseShop()
+    {
+        Debug.Log("CloseShop() 호출됨!");
+        SetUiCondition("Shop", false);
+    }
 }

@@ -8,6 +8,9 @@ public class UnitData : ScriptableObject
     public int curMp;
 
     [Header("# static Info")]
+    public string heroName;
+    public int price;
+    public Sprite heroImage;
     public int maxHp;
     public int maxMp;
     public int damage;
