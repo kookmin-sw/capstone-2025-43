@@ -331,11 +331,11 @@ public class DelaunayTriangulation : MonoBehaviour
         {
             return null;
         }
-
+        /*
         CreatePoint("Point", Color.red, a);
         CreatePoint("Point", Color.red, b);
         CreatePoint("Point", Color.red, c);
-
+        */
         return CreateTriangle(a, b, c);
     }
     private Triangle CreateTriangle(Vector2 a, Vector2 b, Vector2 c)
