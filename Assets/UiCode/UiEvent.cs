@@ -20,6 +20,6 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
     public void onClick() // 버튼 ui 눌렀을때
     {
         Debug.Log("눌렀습니다");
-        GameManager.instance.uiManager.SetUiCondition(targetName, active);
+        Managers.instance.uiManager.SetUiCondition(targetName, active);
     }
 }
