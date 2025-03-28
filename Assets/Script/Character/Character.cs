@@ -8,9 +8,11 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public CharacterStat stat;
+    [HideInInspector] public TacticSystem tacticSystem;
     private void Start()
     {
         stat = GetComponent<CharacterStat>();
+        tacticSystem = GetComponent<TacticSystem>();
         CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
     }
 
@@ -80,10 +82,14 @@ public class Character : MonoBehaviour
 
     public void Die()
     {
+        Hp = 0;
         if (TryGetComponent(out Animator animator))
         {
-            animator.SetTrigger("Die");
-            
+            //animator.SetTrigger("Die");
+        }
+        if(TryGetComponent(out TacticSystem tacticSystem))
+        {
+            tacticSystem.enabled = false;
         }
 
         //Destroy(gameObject, 5f);
@@ -185,5 +191,7 @@ public class Character : MonoBehaviour
     public List<TargetType> Targets => stat.Targets;
     public List<ConditionType> Conditions => stat.Conditions;
     public List<ActionType> Actions => stat.Actions;
+
+
     #endregion
 }

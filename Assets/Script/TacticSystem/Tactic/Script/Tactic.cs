@@ -22,6 +22,8 @@ public class Tactic : ScriptableObject
             return false;
 
         List<Character> targets = CharacterManager.Instance.GetCharacters(self, targetType, conditionType, actionType);
+        if (targets.Count == 0)
+            return false;
  
         actionType.Execute(self, targets);
        

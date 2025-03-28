@@ -9,7 +9,10 @@ public class HealAction : ActionType
     {
         foreach ( Character target in targets )
         {
+            //Heal Effect!!
+
             Debug.Log($"{user.stat.name} heals {target.stat.name} as {user.stat.damage}");
+            target.AddHP(user.stat.damage);
         }
     }
 }

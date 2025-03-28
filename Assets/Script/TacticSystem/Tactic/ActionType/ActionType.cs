@@ -18,9 +18,9 @@ public abstract class ActionType : ScriptableObject
     protected IEnumerator MoveAndAction(Character user, Character target, NavMeshAgent agent, Action<Character, Character> attackAction)
     {
         TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
-        agent.isStopped = false;
         while (true)
         {
+            agent.isStopped = false;
             agent.SetDestination(target.transform.position);
 
             float distance = Vector3.Distance(user.transform.position, target.transform.position);
@@ -33,7 +33,7 @@ public abstract class ActionType : ScriptableObject
                 LookAtTarget(user, target);
                 if (angle < 10f)
                 {
-                    attackAction(user, target);  // 전달받은 함수 실행
+                    attackAction(user, target); //Use Function
                     break;
                 }
             }
@@ -42,6 +42,9 @@ public abstract class ActionType : ScriptableObject
 
         if (tacticSystem)
         {
+            agent.isStopped = false;
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
             tacticSystem.StopcoolDown = false;
         }
     }

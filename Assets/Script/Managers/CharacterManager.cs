@@ -48,6 +48,9 @@ using System.Collections.Generic;
 
         //TargetType Filtering
         List<Character> targets = targetType.Filter(allCharacters, self);
+       
+        //Dead target Filtering
+        DeadTargetFilter(targets);
 
         //ConditionTypeFiltering
         if (conditionType != null)
@@ -62,10 +65,13 @@ using System.Collections.Generic;
                 targets = GetNearestTarget(self, targets);
             }
         }
-
         return targets;
     }
 
+    private void DeadTargetFilter(List<Character> targets)
+    {
+        targets.RemoveAll(target => target.Hp <= 0);
+    }
     //O(n) FInd Nearlest Target
     private List<Character> GetNearestTarget(Character self, List<Character> targets)
     {

@@ -85,13 +85,13 @@ public class TacticSystem : MonoBehaviour
             if (tactic.enable && tactic.stopcoolDown == true)
             {
                 if (tactic.Execute(character))
-                {
+                { 
                     ApplyTacticCooldown(tactic);
                     return;
                 }
             }
         }
-        Debug.Log("No valid Tactic executed.");
+        //Debug.Log("No valid Tactic executed.");
     }
     private void InitializeTactic(int Capacity)
     {
