@@ -19,15 +19,12 @@ public class TacticSystem : MonoBehaviour
     public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
     [HideInInspector] public float cooldownTimer; //Global Cooldown Timer
     [HideInInspector] public bool StopcoolDown = false;
-    private void Awake()
-    {
-        
-    }
     private void Start()
     {
         character = GetComponent<Character>();
-        InitializeTactic(character.tacticCapacity);
         cooldownTimer = 3f;
+        StopcoolDown = false;
+        InitializeTactic(character.tacticCapacity);
         //TODO :: LoadTactic 
     }
 

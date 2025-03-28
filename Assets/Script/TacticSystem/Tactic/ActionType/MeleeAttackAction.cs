@@ -4,14 +4,11 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "TacticSystem/Action/MeleeAttack")]
 public class MeleeAttackAction : ActionType
 {
-    TacticSystem tacticSystem;
-    Animator animator;
-
     public override void Execute(Character user, Character target)
     {
         if (user == null || target == null) return;
 
-        tacticSystem = user.GetComponent<TacticSystem>();
+        TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
         if (tacticSystem != null)
         {
             tacticSystem.StopcoolDown = true;
@@ -21,8 +18,6 @@ public class MeleeAttackAction : ActionType
         {
             return;
         }
-        animator = user.GetComponent<Animator>();
-
         agent.speed = user.stat.moveSpeed;
         agent.isStopped = false;
         user.StartCoroutine(MoveAndAttack(user, target, agent));
@@ -30,6 +25,7 @@ public class MeleeAttackAction : ActionType
 
     private System.Collections.IEnumerator MoveAndAttack(Character user, Character target, NavMeshAgent agent)
     {
+        TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
         agent.stoppingDistance = user.AttackRange;
         agent.isStopped = false;
         agent.SetDestination(target.transform.position);
@@ -43,6 +39,7 @@ public class MeleeAttackAction : ActionType
                 agent.velocity = Vector3.zero;
                 agent.updateRotation = false;
                 Attack(user, target);
+                tacticSystem.StopcoolDown = false;
                 break;
             }
             yield return null;
@@ -50,8 +47,7 @@ public class MeleeAttackAction : ActionType
 
         if (tacticSystem)
         {
-            animator.SetBool("IsWalk", false);
-            tacticSystem.StopcoolDown = false;
+            //animator.SetBool("IsWalk", false);
             agent.updateRotation = true;
         }
     }
