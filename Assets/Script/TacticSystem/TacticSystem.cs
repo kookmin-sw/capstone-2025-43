@@ -17,13 +17,17 @@ public class TacticSystem : MonoBehaviour
         set => character.tacticCapacity = Mathf.Clamp(value, capacityBoundary.min, capacityBoundary.max);
     }
     public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
-    [HideInInspector] public float cooldownTimer = 0f; //Global Cooldown Timer
+    [HideInInspector] public float cooldownTimer; //Global Cooldown Timer
     [HideInInspector] public bool StopcoolDown = false;
-  
+    private void Awake()
+    {
+        
+    }
     private void Start()
     {
         character = GetComponent<Character>();
         InitializeTactic(character.tacticCapacity);
+        cooldownTimer = 3f;
         //TODO :: LoadTactic 
     }
 
