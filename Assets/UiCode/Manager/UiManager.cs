@@ -10,6 +10,8 @@ public class UiManager : MonoBehaviour
     public GameObject settingUi;
     public GameObject shopUi;
 
+    public GameObject localList;
+
     private Stack<string> openUi = new Stack<string>(); // add initialization
 
     public void SetUiCondition(string name , bool condition)
@@ -52,5 +54,11 @@ public class UiManager : MonoBehaviour
                 SetUiCondition("Setting", true);
             }
         }
+    }
+
+    public void SetLocalHeroListUi()
+    {
+        GameObject go = Instantiate(Managers.instance.resourceManager.Instantiate("ListIdx", localList.transform));
+        go.GetComponent<ListIdx>().data = (UnitData)Managers.instance.dataManager.GetSOData("Unit/Hero", "adf");
     }
 }

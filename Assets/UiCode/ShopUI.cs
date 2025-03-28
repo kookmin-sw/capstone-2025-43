@@ -31,7 +31,7 @@ public class ShopUI : MonoBehaviour
         if (!heroInventory.HasHero(hero))
         {
             heroInventory.AddHero(hero);
-            Debug.Log(hero.heroName + "을(를) 구매했습니다!");
+            Debug.Log(hero.unitName + "을(를) 구매했습니다!");
             RefreshShop(); // 구매 후 상점 UI 업데이트
         }
     }

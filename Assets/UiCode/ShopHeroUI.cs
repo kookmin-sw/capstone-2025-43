@@ -15,8 +15,8 @@ public class ShopHeroUI : MonoBehaviour
     {
         heroData = hero;
         shopUI = manager;
-        heroNameText.text = hero.heroName;
-        heroImage.sprite = hero.heroImage;
+        heroNameText.text = hero.unitName;
+        heroImage.sprite = hero.unitImage;
 
         buyButton.onClick.AddListener(() => shopUI.BuyHero(heroData));
     }
