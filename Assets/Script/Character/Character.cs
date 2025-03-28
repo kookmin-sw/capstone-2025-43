@@ -82,8 +82,10 @@ public class Character : MonoBehaviour
     {
         if (TryGetComponent(out Animator animator))
         {
-            //animator.SetTrigger("Die");
+            animator.SetTrigger("Die");
+            
         }
+
         //Destroy(gameObject, 5f);
     }
 

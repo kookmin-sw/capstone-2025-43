@@ -388,7 +388,7 @@ Animator:
   m_GameObject: {fileID: 4286135317876057477}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eceb04017af7c0348843553aa675ede7, type: 3}
-  m_Controller: {fileID: 22100000, guid: 6cc40b2ca9f6af742af51d1d1ab1137f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
   attackRange_Max: 3
   attackRange: 3
   moveSpeed: 10
-  rotationSpeed: 10
+  rotationSpeed: 100
   Targets:
   - {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
   Conditions:
@@ -509,7 +509,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &8383251232515532983
 CapsuleCollider:

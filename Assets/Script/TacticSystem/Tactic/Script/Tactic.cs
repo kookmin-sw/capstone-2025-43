@@ -22,10 +22,9 @@ public class Tactic : ScriptableObject
             return false;
 
         List<Character> targets = CharacterManager.Instance.GetCharacters(self, targetType, conditionType, actionType);
-        foreach (Character target in targets)
-        {
-            actionType.Execute(self, target);
-        }
+ 
+        actionType.Execute(self, targets);
+       
         return true;
     }
 
