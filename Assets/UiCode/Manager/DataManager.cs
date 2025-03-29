@@ -2,10 +2,10 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-public class DataManager
+public class DataManager : MonoBehaviour
 {
-    public ScriptableObject GetSOData(string path , string name)
+    public UnitData[] GetUnitDataset(string path)
     {
-        return (ScriptableObject)AssetDatabase.LoadAssetAtPath($"Data/{path}", typeof(ScriptableObject));
+        return Resources.LoadAll<UnitData>($"Data/Unit/{path}");
     }
 }

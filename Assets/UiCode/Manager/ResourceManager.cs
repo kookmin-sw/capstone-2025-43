@@ -1,12 +1,12 @@
 using UnityEditor;
 using UnityEngine;
 
-public class ResourceManager
+public class ResourceManager : MonoBehaviour
 {
     public GameObject Instantiate(string path, Transform parent = null)
     {
-        GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath($"Prefabs/{path}", typeof(GameObject));
-
+        GameObject prefab = Resources.Load<GameObject>($"Prefab/{path}");
+        
         if (prefab == null)
         {
             Debug.Log($"Failed to load prefab : {path}");

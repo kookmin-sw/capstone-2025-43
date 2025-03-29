@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1240593b68b3e34c8e95e13b7d45440, type: 3}
-  m_Name: HammerGoblin
+  m_Name: Archer
   m_EditorClassIdentifier: 
   curHp: 0
   curMp: 0
-  heroName: 
-  price: 0
-  heroImage: {fileID: 0}
-  maxHp: 0
-  maxMp: 0
-  damage: 0
+  own: 1
+  unitName: 
+  price: 30
+  unitImage: {fileID: 0}
+  maxHp: 300
+  maxMp: 20
+  damage: 30

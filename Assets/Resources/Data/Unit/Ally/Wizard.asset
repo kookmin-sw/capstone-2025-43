@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHp: 0
   curMp: 0
-  heroName: Wizard
+  own: 1
+  unitName: 
   price: 100
-  heroImage: {fileID: 0}
+  unitImage: {fileID: 0}
   maxHp: 200
   maxMp: 150
   damage: 100
