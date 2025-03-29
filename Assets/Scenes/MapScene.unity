@@ -2132,6 +2132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720990276}
   - component: {fileID: 720990277}
+  - component: {fileID: 720990278}
   m_Layer: 0
   m_Name: ResourcesManager
   m_TagString: Untagged
@@ -2155,6 +2156,18 @@ Transform:
   m_Father: {fileID: 816404662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &720990277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720990275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164eb64456672cd4d901f972312b6450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &720990278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2569,7 +2582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1795517584}
   gameManager: {fileID: 1241433884}
-  resourceManager: {fileID: 0}
+  resourceManager: {fileID: 720990277}
+  dataManager: {fileID: 1320833286}
 --- !u!4 &816404662
 Transform:
   m_ObjectHideFlags: 0
@@ -4161,6 +4175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1320833285}
+  - component: {fileID: 1320833286}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -4183,6 +4198,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 816404662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1320833286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320833284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b51bd660d0746046aa5fad3318a7df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441040508
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,18 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class ListIdx : MonoBehaviour
 {
     public UnitData data;
-    Slider hpSlider;
-    Slider mpSlider;
+    public Slider hpSlider;
+    public Slider mpSlider;
     public Sprite unitImg;
     private void Start()
     {
         unitImg = transform.GetChild(0).gameObject.GetComponent<Sprite>();
-        hpSlider = transform.GetChild(1).gameObject.GetComponent<Slider>();
-        mpSlider = transform.GetChild(2).gameObject.GetComponent<Slider>();
-
+        Slider[] sliders = transform.GetComponentsInChildren<Slider>();
+        hpSlider = sliders[0];
+        mpSlider = sliders[1];
         unitImg = data.unitImage;
         SetHpBar();
         SetMpBar();
