@@ -9,6 +9,6 @@ public class Base : MonoBehaviour
     }
     public bool inmyBound(GameObject node)
     {
-        return baseCollider.bounds.Contains(node.transform.position);        
+        return baseCollider.OverlapPoint(node.transform.position);
     }
 }

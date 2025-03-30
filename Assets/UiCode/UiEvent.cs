@@ -14,6 +14,8 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
     
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData == null)
+            return;
         onClick();
     }
 

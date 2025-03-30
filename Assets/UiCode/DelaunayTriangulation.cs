@@ -349,6 +349,7 @@ public class DelaunayTriangulation : MonoBehaviour
         {
             LineRenderer lineRenderer = CreateLineRenderer($"Triangle_{triangleNo}", Color.blue);
             lineRenderer.positionCount = 4;
+            lineRenderer.sortingOrder = 4;
             lineRenderer.SetPosition(0, a);
             lineRenderer.SetPosition(1, b);
             lineRenderer.SetPosition(2, c);

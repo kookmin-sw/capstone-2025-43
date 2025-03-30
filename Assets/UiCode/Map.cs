@@ -15,25 +15,30 @@ public class Map : MonoBehaviour
         Debug.Log("Random position");
         for (int i = 0; i < nodeNum; i++)
         {
-            GameObject tmpObject = Instantiate(nodePrefab, nodePosition.CreateRandomSpot(), nodePrefab.transform.rotation);
-            tmpObject.transform.parent = nodePosition.transform;
+            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("TmpNode", nodePosition.transform);
+            tmpObject.transform.position = nodePosition.GetComponent<NodePosition>().CreateRandomSpot();
             Debug.Log(tmpObject);
             if (!baseObject.inmyBound(tmpObject))
             {
                 Debug.Log("삭제");
                 Destroy(tmpObject);
             }
+            else
+            {
+                positions.Add(tmpObject.transform.position);
+            }
         }
-       
     }
     
     public void CreateMap()
     {
+        CreateNodes();
+
         DTri.Init(70, 70);
-        for (int i = 0; i < nodePosition.transform.childCount; i++)
+        foreach(Vector2 position in positions)
         {
             Debug.Log("생성중");
-            DTri.AddPoint(nodePosition.positions[i]);
+            DTri.AddPoint(position);
         }
         DTri.RemoveSuperTriangle();
     }
