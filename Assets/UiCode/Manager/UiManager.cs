@@ -16,6 +16,7 @@ public class UiManager : MonoBehaviour
 
     public void SetUiCondition(string name , bool condition)
     {
+        Debug.Log($"{name}UI {condition}");
         switch (name)
         {
             case "Default":
@@ -51,7 +52,7 @@ public class UiManager : MonoBehaviour
             }
             catch
             {
-                SetUiCondition("Setting", true);
+                Debug.Log("Stack Empty");
             }
         }
     }

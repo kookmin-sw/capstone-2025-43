@@ -7,7 +7,6 @@ public class Map : MonoBehaviour
     public DelaunayTriangulation DTri;
     public NodePosition nodePosition;
     public List<Vector2> positions = new List<Vector2>();
-    public GameObject nodePrefab;
     public Base baseObject;
 
     public void CreateNodes()
@@ -15,8 +14,8 @@ public class Map : MonoBehaviour
         Debug.Log("Random position");
         for (int i = 0; i < nodeNum; i++)
         {
-            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("TmpNode", nodePosition.transform);
-            tmpObject.transform.position = nodePosition.GetComponent<NodePosition>().CreateRandomSpot();
+            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
+            tmpObject.GetComponent<Node>().SetPosition(nodePosition.GetComponent<NodePosition>().CreateRandomSpot());
             Debug.Log(tmpObject);
             if (!baseObject.inmyBound(tmpObject))
             {

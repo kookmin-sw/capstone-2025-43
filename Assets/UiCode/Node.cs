@@ -1,13 +1,10 @@
 using UnityEngine;
-using System.Collections;
-using Unity.VisualScripting;
 
 public class Node : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
+    public void SetPosition(Vector3 position)
     {
-        Debug.Log(this.name + " and " + collision.transform.name);
-        if (!collision.bounds.Contains(this.transform.position))
-            Destroy(this.transform);
+        transform.position = position + offset;
     }
 }

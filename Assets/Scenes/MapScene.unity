@@ -1997,6 +1997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f70eeec198fcd4980af56a95262a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0.5, z: -0.5}
 --- !u!1 &667885535
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,7 +2891,7 @@ GameObject:
   - component: {fileID: 871202617}
   - component: {fileID: 871202618}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Base
   m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3848,7 +3849,6 @@ MonoBehaviour:
   DTri: {fileID: 1931876733}
   nodePosition: {fileID: 1441040509}
   positions: []
-  nodePrefab: {fileID: 4138379752875698855, guid: c895e7212c1e3eb45b28825a1b6ebea2, type: 3}
   baseObject: {fileID: 871202618}
 --- !u!4 &989944320
 Transform:
@@ -4910,7 +4910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetName: Shop
-  active: 0
+  active: 1
 --- !u!1 &1713424694
 GameObject:
   m_ObjectHideFlags: 0
