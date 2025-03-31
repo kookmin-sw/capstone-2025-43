@@ -15,8 +15,7 @@ public class Map : MonoBehaviour
         for (int i = 0; i < nodeNum; i++)
         {
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
-            tmpObject.GetComponent<Node>().SetPosition(nodePosition.GetComponent<NodePosition>().CreateRandomSpot());
-            Debug.Log(tmpObject);
+            tmpObject.GetComponent<Node>().Init(nodePosition.GetComponent<NodePosition>().CreateRandomSpot());
             if (!baseObject.inmyBound(tmpObject))
             {
                 Debug.Log("ªË¡¶");

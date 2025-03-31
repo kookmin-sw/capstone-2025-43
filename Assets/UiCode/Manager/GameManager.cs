@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
     public Map map;
     public Day day;
 
+    public int xBorderAlly = 0;
+    public int yBorderAlly = 5;
+
     public GameObject ownHeroList;
 
 
@@ -26,5 +29,10 @@ public class GameManager : MonoBehaviour
     {
         isPause = false;
         Time.timeScale = 1.0f;
+    }
+
+    public bool inBorderAlly(Vector2 position)
+    {
+        return position.x < xBorderAlly && position.y < yBorderAlly;
     }
 }
