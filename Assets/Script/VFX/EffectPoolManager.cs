@@ -47,24 +47,30 @@ public class EffectPoolManager : MonoBehaviour
 
     public void RegisterEffect(string effectName, GameObject prefab, int initialPoolSize)
     {
+        GameObject parent_go;
         if (!effectPools.ContainsKey(effectName))
         {
             effectPools[effectName] = new Queue<GameObject>();
             effectPrefabsDict[effectName] = prefab;
+
+            parent_go = new GameObject();
+            parent_go.name = effectName + "_Parent";
+            parent_go.transform.parent = rootObj.transform;
         }
 
-        GameObject go = new GameObject();
-        go.name = effectName;
-        go.transform.parent = rootObj.transform;
+        else
+        {
+            parent_go = rootObj.transform.Find(effectName + "_Parent").gameObject;
+        }
 
         for (int i = 0; i < initialPoolSize; i++)
         {
             GameObject effect = Instantiate(prefab);
             effect.name = effectName;
             effect.SetActive(false);
-            effect.transform.SetParent(go.transform);
+            effect.transform.SetParent(parent_go.transform);
             PoolEffect pool = effect.GetOrAddComponent<PoolEffect>();
-            pool.Initialize(effectName, go.transform);
+            pool.Initialize(effectName, parent_go.transform);
             effectPools[effectName].Enqueue(effect);
         }
     }
@@ -85,7 +91,7 @@ public class EffectPoolManager : MonoBehaviour
         else
         {
             RegisterEffect(effectName, effectPrefabsDict[effectName], 5);
-            effect = Instantiate(effectPrefabsDict[effectName]);
+            effect = effectPools[effectName].Dequeue();
         }
 
         effect.transform.position = position;
