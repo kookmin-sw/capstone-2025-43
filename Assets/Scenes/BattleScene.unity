@@ -2036,7 +2036,13 @@ MonoBehaviour:
   effectPrefabs:
   - effectName: HealEffect
     prefab: {fileID: 8699251445247129709, guid: c1d6cc3cf97c16247b842c8d3de053a3, type: 3}
-    initialPoolSize: 2
+    initialPoolSize: 5
+  - effectName: LightningRay
+    prefab: {fileID: 3958596659431381315, guid: c50f9e2c685970e4c8ebcd5fc8c7b3e4, type: 3}
+    initialPoolSize: 5
+  - effectName: LightningPlane
+    prefab: {fileID: 2705533495200665743, guid: e84c40719cee66744925cce01bef28fc, type: 3}
+    initialPoolSize: 5
 --- !u!1 &799107820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4323,12 +4329,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+      propertyPath: tacticCapacity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: attackRange_Max
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: Actions.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: Targets.Array.size
@@ -4342,6 +4352,10 @@ PrefabInstance:
       propertyPath: 'Actions.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
+    - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+      propertyPath: 'Actions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b8af528a2e2d82479ea3704161971fe, type: 2}
     - target: {fileID: 5061190713819197141, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: 'Targets.Array.data[1]'
       value: 
@@ -4357,7 +4371,7 @@ PrefabInstance:
     - target: {fileID: 5469236133755366054, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: 'tactics.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4bbbeef641d7dda48b62408a64907dbe, type: 2}
+      objectReference: {fileID: 11400000, guid: 1326fd3264992e242a2818d9a80690f9, type: 2}
     - target: {fileID: 7400623304105245116, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
       propertyPath: m_Controller
       value: 
@@ -5749,7 +5763,7 @@ Transform:
   m_GameObject: {fileID: 1789472830}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
