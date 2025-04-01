@@ -13,4 +13,5 @@ namespace MyProject.Utils
             max = high;
         }
     }
+
 }
