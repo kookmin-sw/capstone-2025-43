@@ -12,19 +12,19 @@ public class Map : MonoBehaviour
     public void CreateNodes()
     {
         Debug.Log("Random position");
-        for (int i = 0; i < nodeNum; i++)
+        while(positions.Count < nodeNum)
         {
+            Vector2 position = nodePosition.CreateRandomSpot();
+            if (!baseObject.inmyBound(position))
+            {
+                continue;
+            }
+            positions.Add(position);
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
-            tmpObject.GetComponent<Node>().Init(nodePosition.GetComponent<NodePosition>().CreateRandomSpot());
-            if (!baseObject.inmyBound(tmpObject))
-            {
-                Debug.Log("ªË¡¶");
-                Destroy(tmpObject);
-            }
+            if (Managers.instance.gameManager.inBorderAlly(position))
+                tmpObject.GetComponent<Node>().Init("Ally", position);
             else
-            {
-                positions.Add(tmpObject.transform.position);
-            }
+                tmpObject.GetComponent<Node>().Init("Enemy", position);
         }
     }
     

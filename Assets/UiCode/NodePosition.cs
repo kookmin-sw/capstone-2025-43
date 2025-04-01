@@ -7,7 +7,6 @@ public class NodePosition : MonoBehaviour
 {
     public const int size = 10;
     public bool[,] flag = new bool[size * 2 + 1, size * 2 + 1];
-    public List<Vector2> positions = new List<Vector2>();
     public Vector2 CreateRandomSpot()
     {
         Debug.Log("·»´ýÁß");

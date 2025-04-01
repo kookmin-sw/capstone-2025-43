@@ -1,18 +1,40 @@
 using UnityEngine;
-
+using System.Collections.Generic;
+using JetBrains.Annotations;
 public class Node : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
+    public int roundNum;
+    public List<List<KeyValuePair<UnitData, int>>> rounds;
 
-    public void Init(Vector3 position)
+
+
+    public void Init(string tag , Vector3 position)
     {
         //Set Position
         transform.position = position + offset;
-     
         //Set Tag
-        if (Managers.instance.gameManager.inBorderAlly(transform.position))
-            transform.tag = "Ally";
-        else
-            transform.tag = "Enemy";
+        SetTag(tag);
+    }
+
+    public void SetTag(string tag)
+    {
+        transform.tag = tag;
+        switch (tag)
+        {
+            case "Ally":
+                break;
+            case "Enemy":
+                SetStages();
+                break;
+        }
+    }
+
+    public void SetStages()
+    {
+        for(int i = 0; i < roundNum; i++)
+        {
+            rounds.Add(Managers.instance.poolManager.GetCreepPool());
+        }
     }
 }

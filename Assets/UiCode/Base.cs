@@ -7,8 +7,8 @@ public class Base : MonoBehaviour
     {
         baseCollider = GetComponent<PolygonCollider2D>();
     }
-    public bool inmyBound(GameObject node)
+    public bool inmyBound(Vector2 position)
     {
-        return baseCollider.OverlapPoint(node.transform.position);
+        return baseCollider.OverlapPoint(position);
     }
 }

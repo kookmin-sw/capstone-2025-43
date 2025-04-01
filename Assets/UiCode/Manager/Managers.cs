@@ -8,7 +8,7 @@ public class Managers : MonoBehaviour
     public GameManager gameManager;
     public ResourceManager resourceManager;
     public DataManager dataManager;
-
+    public PoolManager poolManager;
     private void Awake()
     {
         if (instance == null)
@@ -18,5 +18,6 @@ public class Managers : MonoBehaviour
     {
         //todo login
         gameManager.GameStart();
+        poolManager.SetHeroList();
     }
 }
