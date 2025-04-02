@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int yBorderAlly = 5;
 
     public GameObject ownHeroList;
+    public GameObject NotOwnHeroList;
 
 
     public float GameTime;
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         map.CreateMap();
-        ownHeroList.GetComponent<List>().SetList();
+        ownHeroList.GetComponent<List>().SetList(true);
+        NotOwnHeroList.GetComponent<List>().SetList(false);
     }
 
     public void GamePause()

@@ -15,7 +15,7 @@ MonoBehaviour:
   curHp: 0
   curMp: 0
   own: 1
-  unitName: 
+  unitName: Paladin
   price: 500
   unitImage: {fileID: 0}
   maxHp: 500
