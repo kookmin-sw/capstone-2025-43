@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
@@ -14,8 +15,15 @@ public class UiManager : MonoBehaviour
 
     private Stack<string> openUi = new Stack<string>(); // add initialization
 
+    public void Init()
+    {
+        openUi.Push("Default");
+    }
+
     public void SetUiCondition(string name , bool condition)
     {
+        if (openUi.Peek() == name)
+            return;
         Debug.Log($"{name}UI {condition}");
         switch (name)
         {
