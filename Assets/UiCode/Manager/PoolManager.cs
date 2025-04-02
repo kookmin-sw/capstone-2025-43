@@ -6,19 +6,19 @@ using static UnityEngine.Analytics.IAnalytic;
 public class PoolManager : MonoBehaviour
 {
     [Header("#Enemy Pool")]
-    public List<List<Dictionary<UnitData, int>>> creepComb;
     public List<UnitData> bossData;
+    public List<Dictionary<string, int>>[] creepComb;
 
     [Header("#Hero Pool")]
     public List<UnitData> ownHeroData;
     public List<UnitData> onSaleHeroData;
 
 
-    public List<Dictionary<UnitData,int>> GetCreepPool()
+    public List<Dictionary<string,int>> GetCreepPool()
     {
-        if (creepComb.Count == 0)
+        if (creepComb.Length == 0)
             return null;
-        return creepComb[Random.Range(0, creepComb.Count - 1)];
+        return creepComb[Random.Range(0, creepComb.Length - 1)];
     }
 
     public void SetHeroList()
@@ -31,6 +31,11 @@ public class PoolManager : MonoBehaviour
             else
                 onSaleHeroData.Add(data);
         }
+    }
+
+    private void SetCreepComb()
+    {
+
     }
 
 
