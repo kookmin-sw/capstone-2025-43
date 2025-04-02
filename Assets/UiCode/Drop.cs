@@ -3,14 +3,27 @@ using UnityEngine.EventSystems;
 
 public class Drop : MonoBehaviour, IDropHandler
 {
+    private SlotHandler slotHandler;
+    private void Start()
+    {
+        slotHandler = GetComponent<SlotHandler>(); // SlotHandler ì°¾ê¸°
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if(this.transform.childCount == 0)
         {
-            eventData.pointerDrag.transform.SetParent(this.transform);
+            //eventData.pointerDrag.transform.SetParent(this.transform);
+            GameObject droppedObject = eventData.pointerDrag;
+            droppedObject.transform.SetParent(this.transform);
+
+            ListIdx item = droppedObject.GetComponent<ListIdx>();
+            if (item != null)
+            {
+                slotHandler.StoreItem(item); // SlotHandlerì— ì €ì¥
+            }
             return;
         }
-        // ÀÌ¹Ì object °¡ ÀÖÀ¸¸é ºÒ°¡
+        // ï¿½Ì¹ï¿½ object ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½
         Drag drag = eventData.pointerDrag.gameObject.GetComponent<Drag>();
         drag.returnToFrom();
     }

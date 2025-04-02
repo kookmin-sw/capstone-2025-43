@@ -9,6 +9,11 @@ public class List : MonoBehaviour
 
     public void SetList(bool isOwned)
     {
+        // 기존 리스트 정리 (중복 추가 방지)
+        foreach (Transform child in listContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
         dataList = Managers.instance.dataManager.GetUnitDataset("Ally");
         foreach(UnitData data in dataList)
         {

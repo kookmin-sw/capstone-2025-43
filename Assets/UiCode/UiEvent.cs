@@ -6,8 +6,9 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
 {
     public string targetName;
     public bool active = false;
+    public GameObject targetSlot;
 
-    private void OnMouseDown() // object ´­·¶À»¶§
+    private void OnMouseDown() // object ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         onClick();
     }
@@ -19,9 +20,17 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
         onClick();
     }
 
-    public void onClick() // ¹öÆ° ui ´­·¶À»¶§
+    public void onClick() // ï¿½ï¿½Æ° ui ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
-        Debug.Log("´­·¶½À´Ï´Ù");
+        if (targetName == "PurchaseButton") // ğŸ¯ êµ¬ë§¤ ë²„íŠ¼ì´ë©´ ì‹¤í–‰
+        {
+            if (targetSlot != null && targetSlot.GetComponent<SlotHandler>() != null)
+            {
+                targetSlot.GetComponent<SlotHandler>().PurchaseItem();
+            }
+            return;
+        }
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
         Managers.instance.uiManager.SetUiCondition(targetName, active);
     }
 }

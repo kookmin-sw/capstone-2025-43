@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int yBorderAlly = 5;
 
     public GameObject ownHeroList;
-    public GameObject NotOwnHeroList;
+    public GameObject notOwnHeroList;
 
 
     public float GameTime;
@@ -19,8 +19,15 @@ public class GameManager : MonoBehaviour
     {
         map.CreateMap();
         ownHeroList.GetComponent<List>().SetList(true);
-        NotOwnHeroList.GetComponent<List>().SetList(false);
+        notOwnHeroList.GetComponent<List>().SetList(false);
     }
+
+    public void UpdateHeroLists()
+    {
+        ownHeroList.GetComponent<List>().SetList(true);  // 소유한 리스트 갱신
+        notOwnHeroList.GetComponent<List>().SetList(false); // 미소유 리스트 갱신
+    }
+
 
     public void GamePause()
     {
