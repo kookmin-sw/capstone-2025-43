@@ -6,7 +6,7 @@ using static UnityEngine.Analytics.IAnalytic;
 public class PoolManager : MonoBehaviour
 {
     [Header("#Enemy Pool")]
-    public List<List<KeyValuePair<UnitData, int>>> creepComb;
+    public List<List<Dictionary<UnitData, int>>> creepComb;
     public List<UnitData> bossData;
 
     [Header("#Hero Pool")]
@@ -14,7 +14,7 @@ public class PoolManager : MonoBehaviour
     public List<UnitData> onSaleHeroData;
 
 
-    public List<KeyValuePair<UnitData,int>> GetCreepPool()
+    public List<Dictionary<UnitData,int>> GetCreepPool()
     {
         if (creepComb.Count == 0)
             return null;

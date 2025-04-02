@@ -5,9 +5,8 @@ public class Node : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
     public int roundNum;
-    public List<List<KeyValuePair<UnitData, int>>> rounds;
-
-
+    public List<List<Dictionary<UnitData, int>>> rounds;
+    public LocalInfo localInfo;
 
     public void Init(string tag , Vector3 position)
     {
