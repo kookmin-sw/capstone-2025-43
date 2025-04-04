@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1240593b68b3e34c8e95e13b7d45440, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
-  curHp: 0
-  curMp: 0
+  curHp: 300
+  curMp: 20
   own: 1
   unitName: Archer
   price: 30

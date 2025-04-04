@@ -22,11 +22,13 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
 
     public void onClick() // ��ư ui ��������
     {
-        if (targetName == "PurchaseButton") // 🎯 구매 버튼이면 실행
+        if (targetName == "PurchaseButton") // 구매 버튼이면 실행
         {
-            if (targetSlot != null && targetSlot.GetComponent<SlotHandler>() != null)
+            SlotHandler[] slots = FindObjectsByType<SlotHandler>(FindObjectsInactive.Include, FindObjectsSortMode.None); // 모든 슬롯 찾기
+
+            foreach (SlotHandler slot in slots)
             {
-                targetSlot.GetComponent<SlotHandler>().PurchaseItem();
+                slot.PurchaseItem(); // 슬롯 내 모든 아이템 구매 처리
             }
             return;
         }

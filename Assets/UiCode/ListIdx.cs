@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,16 @@ public class ListIdx : MonoBehaviour
     public Slider hpSlider;
     public Slider mpSlider;
     public Sprite unitImg;
+    public TMP_Text unitName;
     private void Start()
     {
         unitImg = transform.GetChild(0).gameObject.GetComponent<Sprite>();
         Slider[] sliders = transform.GetComponentsInChildren<Slider>();
+        unitName = transform.GetComponentInChildren<TMP_Text>();
         hpSlider = sliders[0];
         mpSlider = sliders[1];
         unitImg = data.unitImage;
+        unitName.text = data.unitName;
         SetHpBar();
         SetMpBar();
     }
