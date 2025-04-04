@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MyProject.Utils;
-using MyProject.TacticUtils;
 using static UnityEditor.Experimental.GraphView.Port;
 using System.ComponentModel;
 
@@ -10,7 +9,20 @@ public class TacticSystem : MonoBehaviour
 { 
     private Boundary1D<int> capacityBoundary = new Boundary1D<int>(2, 6);
     private Character character;
-    [SerializeField]
+    public bool isActive
+    {
+        get => _isActive;
+        set
+        {
+            if (_isActive && !value) // isActive Setting to true -> false, ResetCooldown Activate
+            {
+                ResetCooldown();
+            }
+            _isActive = value;
+        }
+    }
+    private bool _isActive = true; [SerializeField]
+
     public int TacticCapacity //you can get or set TacticCapacity in Boundary
     {
         get => character.tacticCapacity;
@@ -18,30 +30,41 @@ public class TacticSystem : MonoBehaviour
     }
     public List<Tactic> tactics = new List<Tactic>(); //Characters TacticList
     [HideInInspector] public float cooldownTimer; //Global Cooldown Timer
-    [HideInInspector] public bool StopcoolDown = false;
-    private void Awake()
-    {
-        
-    }
+    [HideInInspector] public bool stopCooldown = false;
     private void Start()
     {
         character = GetComponent<Character>();
-        InitializeTactic(character.tacticCapacity);
         cooldownTimer = 3f;
+        stopCooldown = false;
+        InitializeTactic(character.tacticCapacity);
         //TODO :: LoadTactic 
     }
 
     private void Update()
     {
-        GlobalCooldown();
-        TacticCoolDown();
+        if (isActive)
+        {
+            GlobalCooldown();
+            TacticCoolDown();
+        }
+    }
+
+    public void ResetCooldown()
+    {
+        stopCooldown = false;
+        if(character)
+            cooldownTimer = character.GlobalCooldown;
+        foreach(Tactic tactic in tactics)
+        {
+            tactic.ApplyCoolDown();
+        }
     }
 
     private void GlobalCooldown()
     {
         if (character == null || tactics.Count == 0) return;
 
-        if (!StopcoolDown)
+        if (!stopCooldown)
             cooldownTimer -= Time.deltaTime;
 
         if (cooldownTimer <= 0f)
@@ -88,13 +111,13 @@ public class TacticSystem : MonoBehaviour
             if (tactic.enable && tactic.stopcoolDown == true)
             {
                 if (tactic.Execute(character))
-                {
+                { 
                     ApplyTacticCooldown(tactic);
                     return;
                 }
             }
         }
-        Debug.Log("No valid Tactic executed.");
+        //Debug.Log("No valid Tactic executed.");
     }
     private void InitializeTactic(int Capacity)
     {

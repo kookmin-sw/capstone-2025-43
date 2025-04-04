@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: 2.87
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.935
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.39702776
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.9178066
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 226.785
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -388,7 +388,7 @@ Animator:
   m_GameObject: {fileID: 4286135317876057477}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eceb04017af7c0348843553aa675ede7, type: 3}
-  m_Controller: {fileID: 22100000, guid: 6cc40b2ca9f6af742af51d1d1ab1137f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
   attackRange_Max: 3
   attackRange: 3
   moveSpeed: 10
-  rotationSpeed: 10
+  rotationSpeed: 100
   Targets:
   - {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
   Conditions:
@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 699249660105396594}
+  tacticSystem: {fileID: 0}
 --- !u!195 &8983562577535952631
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -509,7 +510,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &8383251232515532983
 CapsuleCollider:
