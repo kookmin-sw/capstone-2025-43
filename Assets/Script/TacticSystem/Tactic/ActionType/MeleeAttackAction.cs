@@ -32,7 +32,7 @@ public class MeleeAttackAction : ActionType
 
     private void Attack(Character user, Character target)
     {
-        Debug.Log($"{user.name} attack {target.name} as {user.stat.damage} damage!");
+        //Debug.Log($"{user.name} attack {target.name} as {user.stat.damage} damage!");
 
         if (user.TryGetComponent(out Animator animator))
         {

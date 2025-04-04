@@ -86,8 +86,9 @@ public class Character : MonoBehaviour
         if (TryGetComponent(out Animator animator))
         {
             //animator.SetTrigger("Die");
+            animator.SetBool("Dying", true);
         }
-        if(TryGetComponent(out TacticSystem tacticSystem))
+        if (TryGetComponent(out TacticSystem tacticSystem))
         {
             tacticSystem.enabled = false;
         }
