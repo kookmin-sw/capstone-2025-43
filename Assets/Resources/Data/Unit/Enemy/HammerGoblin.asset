@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1240593b68b3e34c8e95e13b7d45440, type: 3}
+  m_Name: HammerGoblin
+  m_EditorClassIdentifier: 
+  curHp: 0
+  curMp: 0
+  own: 0
+  unitName: 
+  price: 0
+  unitImage: {fileID: 0}
+  maxHp: 0
+  maxMp: 0
+  damage: 0
