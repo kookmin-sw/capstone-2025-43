@@ -27,7 +27,9 @@ public abstract class ActionType : ScriptableObject
             if (distance <= user.stat.attackRange)
             {
                 agent.isStopped = true;
+                agent.ResetPath();
                 agent.velocity = Vector3.zero;
+
                 Vector3 directionToTarget = (target.transform.position - user.transform.position).normalized;
                 float angle = Vector3.Angle(user.transform.forward, directionToTarget);
                 LookAtTarget(user, target);
@@ -45,7 +47,8 @@ public abstract class ActionType : ScriptableObject
             agent.isStopped = false;
             agent.ResetPath();
             agent.velocity = Vector3.zero;
-            tacticSystem.StopcoolDown = false;
+
+            tacticSystem.stopCooldown = false;
         }
     }
     protected void LookAtTarget(Character user, Character target)

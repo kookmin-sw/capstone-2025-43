@@ -2,12 +2,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using MyProject.Utils;
+using System.Collections;
+using UnityEngine.AI;
 
 
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
     public CharacterStat stat;
+    public E_GridPosition gridposition = E_GridPosition.Empty;
+
     [HideInInspector] public TacticSystem tacticSystem;
     private void Start()
     {
@@ -19,6 +24,35 @@ public class Character : MonoBehaviour
     private void OnDestroy()
     {
         CharacterManager.Instance.UnregisterCharacter(this);
+    }
+
+    public void MoveTo(Vector3 destination, NavMeshAgent agent)
+    {
+        if (agent == null)
+            return;
+
+        agent.ResetPath();
+        agent.isStopped = false;
+        agent.SetDestination(destination);
+
+        StartCoroutine(CheckArrival(agent, destination));
+    }
+
+    private IEnumerator CheckArrival(NavMeshAgent agent, Vector3 destination)
+    {
+        while (true)
+        {
+            agent.stoppingDistance = 0.1f;  // 0보다 조금 더 큰 값으로 설정
+            // 도착 여부 검사 (remainingDistance가 0 또는 매우 작으면 도착한 것)
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+            {
+                agent.isStopped = true;
+                agent.ResetPath();
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 
     public void AddTacticComponent(Tactic tactic)
@@ -90,9 +124,9 @@ public class Character : MonoBehaviour
         }
         if (TryGetComponent(out TacticSystem tacticSystem))
         {
-            tacticSystem.enabled = false;
+            tacticSystem.isActive = false;
         }
-
+        BattleManager.Instance.OnCharacterDied(this);
         //Destroy(gameObject, 5f);
     }
 

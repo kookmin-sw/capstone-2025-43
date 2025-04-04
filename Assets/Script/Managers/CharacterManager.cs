@@ -5,9 +5,9 @@ using System.Collections.Generic;
 {
     public static CharacterManager Instance { get; private set; }
 
-    private List<Character> allCharacters = new List<Character>();
-    private List<Character> allies = new List<Character>();
-    private List<Character> monsters = new List<Character>();
+    //private List<Character> allCharacters = new List<Character>();
+    //private List<Character> allies = new List<Character>();
+    //private List<Character> monsters = new List<Character>();
 
     private void Awake()
     {
@@ -21,25 +21,25 @@ using System.Collections.Generic;
         }
     }
     //Shallow Copy
-    public List<Character> GetAllies() => new List<Character>(allies);
-    public List<Character> GetEnemies() => new List<Character>(monsters);
+    //public List<Character> GetAllies() => new List<Character>(allies);
+    //public List<Character> GetEnemies() => new List<Character>(monsters);
 
     //RegisterCharacter is called by Character.cs Start Function
     public void RegisterCharacter(Character character, bool isMonster)
     {
-        allCharacters.Add(character);
-        if (isMonster)
-            monsters.Add(character);
-        else
-            allies.Add(character);
+        //allCharacters.Add(character);
+        //if (isMonster)
+        //    monsters.Add(character);
+        //else
+        //    allies.Add(character);
     }
 
     public void UnregisterCharacter(Character character)
     {
-        allCharacters.Remove(character);
-        //TeamCode and Enemy boolean value can Change like mindControl Action.
-        monsters.Remove(character);
-        allies.Remove(character);
+        //allCharacters.Remove(character);
+        ////TeamCode and Enemy boolean value can Change like mindControl Action.
+        //monsters.Remove(character);
+        //allies.Remove(character);
     }
 
     public List<Character> GetCharacters(Character self, TargetType targetType, ConditionType conditionType, ActionType actionType)
@@ -47,7 +47,7 @@ using System.Collections.Generic;
         if (self == null || targetType == null) return new List<Character>();
 
         //TargetType Filtering
-        List<Character> targets = targetType.Filter(allCharacters, self);
+        List<Character> targets = targetType.Filter(BattleManager.Instance.battleCharacter, self);
        
         //Dead target Filtering
         DeadTargetFilter(targets);

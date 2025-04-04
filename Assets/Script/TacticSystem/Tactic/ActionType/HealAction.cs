@@ -21,7 +21,7 @@ public class HealAction : ActionType
                 effect.GetComponent<PoolEffect>().SetStickGameObject(target.gameObject);
             }
 
-            Debug.Log($"{user.stat.name} heals {target.stat.name} as {user.stat.damage}");
+            //Debug.Log($"{user.stat.name} heals {target.stat.name} as {user.stat.damage}");
             target.AddHP(user.stat.damage);
         }
     }

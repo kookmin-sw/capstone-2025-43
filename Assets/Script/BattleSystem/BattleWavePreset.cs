@@ -28,4 +28,19 @@ public class BattleWavePreset : ScriptableObject
     {
         wave.Add(new MonsterInform(prefab, transform));
     }
+
+    public void CreateMonster(GameObject flag, int waveNumber)
+    {
+        foreach (MonsterInform monsterInform in wave)
+        { 
+            GameObject monster = Instantiate(monsterInform.prefab, flag.transform);
+            Transform monsterTransform = monster.transform;
+            monsterTransform.position = flag.transform.position+ monsterInform.RelativeLocation;
+            monsterTransform.rotation = monsterInform.Rotation;
+            monsterTransform.localScale = monsterInform.Scale;
+            monster.SetActive(false);
+            Character monsterCharacter = monster.GetComponent<Character>();
+            BattleManager.Instance.AddMonsterinWave(monsterCharacter, waveNumber);
+        }
+    }
 }

@@ -14,7 +14,7 @@ public class MeleeAttackAction : ActionType
         TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
         if (tacticSystem != null)
         {
-            tacticSystem.StopcoolDown = true;
+            tacticSystem.stopCooldown = true;
         }
 
         if (!user.TryGetComponent(out NavMeshAgent agent))

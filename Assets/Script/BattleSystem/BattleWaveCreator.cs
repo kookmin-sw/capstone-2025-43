@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class BattleWaveCreator : MonoBehaviour
 {
-
     [ContextMenu("CREATE BATTLE WAVE PRESET")]
     public void CreateBattleWavePreset()
     {
