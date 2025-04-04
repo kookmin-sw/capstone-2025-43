@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HealAction
   m_EditorClassIdentifier: 
   displayName: HealAction
-  actionCooldown: 10
-  isSingleTarget: 1
+  actionCooldown: 3
+  isSingleTarget: 0

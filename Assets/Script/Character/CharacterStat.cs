@@ -21,5 +21,4 @@ public class CharacterStat : MonoBehaviour
     public List<TargetType> Targets; // TargetList that Character Has
     public List<ConditionType> Conditions; // ConditionList that Character Has
     public List<ActionType> Actions; // ActionList that Character Has
-
 }

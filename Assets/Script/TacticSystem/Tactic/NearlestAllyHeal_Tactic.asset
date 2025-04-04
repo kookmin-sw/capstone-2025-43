@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb998de9cbb796c449c651e36e55f47c, type: 3}
+  m_Name: NearlestAllyHeal_Tactic
+  m_EditorClassIdentifier: 
+  enable: 1
+  priority: 0
+  targetType: {fileID: 11400000, guid: 186c45f0ccd34254488fab9a74184039, type: 2}
+  conditionType: {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
+  actionType: {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
+  editable: 1
+  draggable: 1
+  stopcoolDown: 0
+  cooldownTimer: 0

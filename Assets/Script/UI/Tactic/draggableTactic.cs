@@ -30,13 +30,19 @@ public class draggableTactic : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        if (tactic.draggable)
+        {
+            transform.position = Input.mousePosition;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(parentAfterDrag);
-        transform.position = parentAfterDrag.position;
-        canvasGroup.blocksRaycasts = true;
+        if (tactic.draggable)
+        {
+            transform.SetParent(parentAfterDrag);
+            transform.position = parentAfterDrag.position;
+            canvasGroup.blocksRaycasts = true;
+        }
     }
 }

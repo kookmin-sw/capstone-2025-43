@@ -20,7 +20,7 @@ using System.Collections.Generic;
             Destroy(gameObject);
         }
     }
-    //Shallow Copy
+   //Shallow Copy
     public List<Character> GetAllies() => new List<Character>(allies);
     public List<Character> GetEnemies() => new List<Character>(monsters);
 
@@ -47,7 +47,15 @@ using System.Collections.Generic;
         if (self == null || targetType == null) return new List<Character>();
 
         //TargetType Filtering
-        List<Character> targets = targetType.Filter(allCharacters, self);
+        List<Character> targets;
+        if(BattleManager.Instance.battleCharacter.Count != 0) 
+            targets= targetType.Filter(BattleManager.Instance.battleCharacter, self);
+        else
+            targets = targetType.Filter(allCharacters, self);
+
+
+        //Dead target Filtering
+        DeadTargetFilter(targets);
 
         //ConditionTypeFiltering
         if (conditionType != null)
@@ -62,10 +70,13 @@ using System.Collections.Generic;
                 targets = GetNearestTarget(self, targets);
             }
         }
-
         return targets;
     }
 
+    private void DeadTargetFilter(List<Character> targets)
+    {
+        targets.RemoveAll(target => target.Hp <= 0);
+    }
     //O(n) FInd Nearlest Target
     private List<Character> GetNearestTarget(Character self, List<Character> targets)
     {
