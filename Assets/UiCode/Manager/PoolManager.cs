@@ -6,7 +6,7 @@ using static UnityEngine.Analytics.IAnalytic;
 public class PoolManager : MonoBehaviour
 {
     [Header("#Enemy Pool")]
-    public List<UnitData> bossData;
+    public List<UnitData> bossData; 
     public List<Dictionary<string, int>>[] creepComb;
 
     [Header("#Hero Pool")]

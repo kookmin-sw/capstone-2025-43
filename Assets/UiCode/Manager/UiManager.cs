@@ -61,13 +61,4 @@ public class UiManager : MonoBehaviour
             }
         }
     }
-
-    /*
-    public void SetLocalHeroListUi()
-    {
-        
-        GameObject go = Instantiate(Managers.instance.resourceManager.Instantiate("ListIdx", localList.transform));
-        go.GetComponent<ListIdx>().data = (UnitData)Managers.instance.dataManager.GetSOData("Unit/Hero", "Archer");
-    }
-    */
 }

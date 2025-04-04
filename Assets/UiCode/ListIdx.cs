@@ -13,7 +13,8 @@ public class ListIdx : MonoBehaviour
     {
         unitImg = transform.GetChild(0).gameObject.GetComponent<Sprite>();
         Slider[] sliders = transform.GetComponentsInChildren<Slider>();
-        unitName = unitName = transform.Find("Text (TMP)_unit_name").GetComponent<TMP_Text>();
+        unitName = transform.GetChild(4).GetComponent<TMP_Text>();
+
         hpSlider = sliders[0];
         mpSlider = sliders[1];
         unitImg = data.unitImage;

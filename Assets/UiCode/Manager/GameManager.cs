@@ -18,8 +18,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         map.CreateMap();
-        ownHeroList.GetComponent<List>().SetList(true);
-        notOwnHeroList.GetComponent<List>().SetList(false);
+        UpdateHeroLists();
     }
 
     public void UpdateHeroLists()

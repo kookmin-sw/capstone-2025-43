@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 6532815828616802471}
   - component: {fileID: 8224605545304034719}
   m_Layer: 5
-  m_Name: Text (TMP)_unit_name
+  m_Name: Unit_name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   hpSlider: {fileID: 0}
   mpSlider: {fileID: 0}
   unitImg: {fileID: 0}
-  unitName: {fileID: 8224605545304034719}
+  unitName: {fileID: 0}
 --- !u!114 &4048016572256565944
 MonoBehaviour:
   m_ObjectHideFlags: 0

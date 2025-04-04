@@ -8,7 +8,7 @@ public class Drop : MonoBehaviour, IDropHandler
         if (this.transform.childCount == 0)
         {
             eventData.pointerDrag.transform.SetParent(this.transform);
-            eventData.pointerDrag.transform.position = this.transform.position;
+            eventData.pointerDrag.transform.position = this.transform.position; // 위치 잡기
             /*
             GameObject droppedObject = eventData.pointerDrag;
             droppedObject.transform.SetParent(this.transform);

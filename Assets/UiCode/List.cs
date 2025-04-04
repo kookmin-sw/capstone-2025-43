@@ -14,6 +14,7 @@ public class List : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        
         dataList = Managers.instance.dataManager.GetUnitDataset("Ally");
         foreach(UnitData data in dataList)
         {
