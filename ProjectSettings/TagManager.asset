@@ -4,17 +4,16 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Map
-  - Ally
   - Enemy
+  - TestEnemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Character
   - 
   - 
   - 
