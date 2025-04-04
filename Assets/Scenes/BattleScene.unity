@@ -208,6 +208,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10515168}
   m_CullTransparentMesh: 1
+--- !u!1 &80243181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4260325907809843580, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+  m_PrefabInstance: {fileID: 368309505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &103411555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -748,6 +753,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244888551}
   m_CullTransparentMesh: 1
+--- !u!1 &271178346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4260325907809843580, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+  m_PrefabInstance: {fileID: 1482301910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &301194766
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +906,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
+    - target: {fileID: 9102167623458279373, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+      propertyPath: gridposition
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1092,6 +1106,7 @@ Transform:
   - {fileID: 547772231}
   - {fileID: 1203022571}
   - {fileID: 775144603}
+  - {fileID: 1140368763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525910269
@@ -1872,7 +1887,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
   cooldownTimer: 0
-  StopcoolDown: 0
+  stopCooldown: 0
 --- !u!95 &725076274
 Animator:
   serializedVersion: 7
@@ -1908,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 725076276}
+  gridposition: 0
   tacticSystem: {fileID: 0}
 --- !u!114 &725076276
 MonoBehaviour:
@@ -2201,7 +2217,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
   cooldownTimer: 0
-  StopcoolDown: 0
+  stopCooldown: 0
 --- !u!95 &800503057
 Animator:
   serializedVersion: 7
@@ -2237,6 +2253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 800503059}
+  gridposition: 0
   tacticSystem: {fileID: 0}
 --- !u!114 &800503059
 MonoBehaviour:
@@ -2621,7 +2638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &944198502
 Transform:
   m_ObjectHideFlags: 0
@@ -2896,6 +2913,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 0434aede7362ace4b93305a50d7c72e2, type: 2}
+    - target: {fileID: 9102167623458279373, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+      propertyPath: gridposition
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3036,6 +3057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 1092288428}
+  gridposition: 0
   tacticSystem: {fileID: 0}
 --- !u!114 &1092288428
 MonoBehaviour:
@@ -3085,7 +3107,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
   cooldownTimer: 0
-  StopcoolDown: 0
+  stopCooldown: 0
 --- !u!1 &1102681296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3444,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7782283061668781513, guid: 76bd2d41b26957c4e892dffab199fc31, type: 3}
   m_PrefabInstance: {fileID: 1132606725}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1140368762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140368763}
+  - component: {fileID: 1140368764}
+  m_Layer: 0
+  m_Name: BattleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140368763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140368762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 494751282}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1140368764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140368762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84a3c9c1cc48f1459f07bda88c58c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 684294967}
+  flags: []
+  battleCharacter: []
+  TestWaveList:
+  - {fileID: 11400000, guid: 87a48a55c6abdb140937c971dcac3c23, type: 2}
+  - {fileID: 11400000, guid: 87a48a55c6abdb140937c971dcac3c23, type: 2}
+  - {fileID: 11400000, guid: 87a48a55c6abdb140937c971dcac3c23, type: 2}
+  TestPlayerList:
+  - {fileID: 1830757204}
+  - {fileID: 80243181}
+  - {fileID: 271178346}
 --- !u!1 &1203022570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4483,6 +4560,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
+    - target: {fileID: 9102167623458279373, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+      propertyPath: gridposition
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5881,6 +5962,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3472479754285907775, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
   m_PrefabInstance: {fileID: 4868936086820188530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1830757204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4260325907809843580, guid: e35ed357ef4089a49b4d2fb81bb91a08, type: 3}
+  m_PrefabInstance: {fileID: 1014607156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1830757815
 GameObject:
   m_ObjectHideFlags: 0
@@ -6189,6 +6275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 1897211434}
+  gridposition: 0
   tacticSystem: {fileID: 0}
 --- !u!114 &1897211434
 MonoBehaviour:
@@ -6238,7 +6325,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
   cooldownTimer: 0
-  StopcoolDown: 0
+  stopCooldown: 0
 --- !u!1 &1976802606
 GameObject:
   m_ObjectHideFlags: 0
