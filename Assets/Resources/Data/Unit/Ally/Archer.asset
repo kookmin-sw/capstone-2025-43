@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   curHp: 300
-  curMp: 20
+  curMp: 42
   own: 1
   unitName: Archer
   price: 30

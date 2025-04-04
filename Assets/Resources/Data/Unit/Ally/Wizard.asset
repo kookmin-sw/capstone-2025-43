@@ -20,4 +20,4 @@ MonoBehaviour:
   unitImage: {fileID: 0}
   maxHp: 200
   maxMp: 150
-  damage: 100
+  damage: 112

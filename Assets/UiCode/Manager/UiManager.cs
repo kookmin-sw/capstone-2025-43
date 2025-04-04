@@ -19,11 +19,8 @@ public class UiManager : MonoBehaviour
     {
         openUi.Push("Default");
     }
-
     public void SetUiCondition(string name , bool condition)
     {
-        if (openUi.Peek() == name)
-            return;
         Debug.Log($"{name}UI {condition}");
         switch (name)
         {

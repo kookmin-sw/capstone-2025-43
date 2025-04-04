@@ -3,16 +3,13 @@ using UnityEngine.EventSystems;
 
 public class Drop : MonoBehaviour, IDropHandler
 {
-    private SlotHandler slotHandler;
-    private void Start()
-    {
-        slotHandler = GetComponent<SlotHandler>(); // SlotHandler 찾기
-    }
     public void OnDrop(PointerEventData eventData)
     {
-        if(this.transform.childCount == 0)
+        if (this.transform.childCount == 0)
         {
-            //eventData.pointerDrag.transform.SetParent(this.transform);
+            eventData.pointerDrag.transform.SetParent(this.transform);
+            eventData.pointerDrag.transform.position = this.transform.position;
+            /*
             GameObject droppedObject = eventData.pointerDrag;
             droppedObject.transform.SetParent(this.transform);
 
@@ -22,9 +19,7 @@ public class Drop : MonoBehaviour, IDropHandler
                 slotHandler.StoreItem(item); // SlotHandler에 저장
             }
             return;
+            */
         }
-        // �̹� object �� ������ �Ұ�
-        Drag drag = eventData.pointerDrag.gameObject.GetComponent<Drag>();
-        drag.returnToFrom();
     }
 }
