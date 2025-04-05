@@ -415,7 +415,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
   cooldownTimer: 0
-  StopcoolDown: 0
+  stopCooldown: 0
 --- !u!114 &699249660105396594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +441,9 @@ MonoBehaviour:
   damage: 10
   attackRange_Max: 3
   attackRange: 3
+  moveSpeed_origin: 10
   moveSpeed: 10
+  rotationSpeed_origin: 10
   rotationSpeed: 100
   Targets:
   - {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
@@ -462,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 699249660105396594}
+  gridposition: 0
   tacticSystem: {fileID: 0}
 --- !u!195 &8983562577535952631
 NavMeshAgent:

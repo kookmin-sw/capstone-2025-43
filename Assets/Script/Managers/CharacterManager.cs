@@ -53,7 +53,6 @@ using System.Collections.Generic;
         else
             targets = targetType.Filter(allCharacters, self);
 
-
         //Dead target Filtering
         DeadTargetFilter(targets);
 

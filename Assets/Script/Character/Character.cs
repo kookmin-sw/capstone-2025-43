@@ -14,47 +14,19 @@ public class Character : MonoBehaviour
     public E_GridPosition gridposition = E_GridPosition.Empty;
 
     [HideInInspector] public TacticSystem tacticSystem;
-    private void Start()
+    private void Awake()
     {
         stat = GetComponent<CharacterStat>();
         tacticSystem = GetComponent<TacticSystem>();
+    }
+    private void Start()
+    {
         CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
     }
-
     private void OnDestroy()
     {
         CharacterManager.Instance.UnregisterCharacter(this);
     }
-
-    public void MoveTo(Vector3 destination, NavMeshAgent agent)
-    {
-        if (agent == null)
-            return;
-
-        agent.ResetPath();
-        agent.isStopped = false;
-        agent.SetDestination(destination);
-
-        StartCoroutine(CheckArrival(agent, destination));
-    }
-
-    private IEnumerator CheckArrival(NavMeshAgent agent, Vector3 destination)
-    {
-        while (true)
-        {
-            agent.stoppingDistance = 0.1f;  // 0보다 조금 더 큰 값으로 설정
-            // 도착 여부 검사 (remainingDistance가 0 또는 매우 작으면 도착한 것)
-            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-            {
-                agent.isStopped = true;
-                agent.ResetPath();
-                yield break;
-            }
-
-            yield return null;
-        }
-    }
-
     public void AddTacticComponent(Tactic tactic)
     {
         if (!stat.Targets.Contains(tactic.targetType))
@@ -119,7 +91,6 @@ public class Character : MonoBehaviour
         Hp = 0;
         if (TryGetComponent(out Animator animator))
         {
-            //animator.SetTrigger("Die");
             animator.SetBool("Dying", true);
         }
         if (TryGetComponent(out TacticSystem tacticSystem))
@@ -127,9 +98,7 @@ public class Character : MonoBehaviour
             tacticSystem.isActive = false;
         }
         BattleManager.Instance.OnCharacterDied(this);
-        //Destroy(gameObject, 5f);
     }
-
 
     #region ValueWrappers
     public string DisplayName
@@ -210,6 +179,11 @@ public class Character : MonoBehaviour
         get => stat.attackRange;
         set => stat.attackRange = value;
     }
+    public float MoveSpeed_origin
+    {
+        get => stat.moveSpeed_origin;
+        set => stat.moveSpeed_origin = value;
+    }
 
     public float MoveSpeed
     {
@@ -217,6 +191,11 @@ public class Character : MonoBehaviour
         set => stat.moveSpeed = value;
     }
 
+    public float RotationSpeed_origin
+    {
+        get => stat.rotationSpeed_origin;
+        set => stat.rotationSpeed_origin = value;
+    }
     public float RotationSpeed
     {
         get => stat.rotationSpeed;
@@ -226,7 +205,5 @@ public class Character : MonoBehaviour
     public List<TargetType> Targets => stat.Targets;
     public List<ConditionType> Conditions => stat.Conditions;
     public List<ActionType> Actions => stat.Actions;
-
-
     #endregion
 }

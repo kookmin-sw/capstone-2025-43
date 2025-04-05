@@ -45,7 +45,7 @@ namespace MyProject.Utils
     {
         private static readonly Vector3Int[] GridOffsets = new Vector3Int[(int)E_GridPosition.Max]
         {
-        new Vector3Int( 0, 0, 0), // Empty
+        new Vector3Int( 0, 0, -2), // Empty
         new Vector3Int(-1, 0, 1), // LeftUp
         new Vector3Int( 0, 0, 1), // Up
         new Vector3Int( 1, 0, 1), // RightUp

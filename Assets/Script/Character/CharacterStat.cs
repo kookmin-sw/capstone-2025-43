@@ -16,8 +16,10 @@ public class CharacterStat : MonoBehaviour
     public float damage = 10;
     public float attackRange_Max = 3;
     public float attackRange = 3;
+    public float moveSpeed_origin = 10;
     public float moveSpeed = 10;
-    public float rotationSpeed = 10;
+    public float rotationSpeed_origin = 10;
+    public float rotationSpeed= 10;
     public List<TargetType> Targets; // TargetList that Character Has
     public List<ConditionType> Conditions; // ConditionList that Character Has
     public List<ActionType> Actions; // ActionList that Character Has
