@@ -149,23 +149,35 @@ public class BattleManager : MonoBehaviour
 
     private async void MoveToNextWave()
     {
-        // First Move
+        // First Move (이전 웨이브로 이동)
         Task heroesMove1 = MoveHeroes(battleCharacter, flags[currentWaveCount - 1].transform.position, 3f);
         Task playerMove1 = MovePlayer(flags[currentWaveCount - 1].transform.position, 3f);
         await Task.WhenAll(heroesMove1, playerMove1);
+        if (waveMonster[currentWaveCount].Count == 0)
+        {
+            Debug.LogWarning($"Wave {currentWaveCount} is empty. Waiting one frame to retry.");
+            await Task.Yield();
 
+            if (waveMonster[currentWaveCount].Count == 0)
+            {
+                Debug.LogError($"Wave {currentWaveCount} remains empty. Aborting wave activation.");
+                return;
+            }
+        }
         monsterCount = ActivateCharacters(waveMonster[currentWaveCount], false, false);
 
-        // Second Move
+        // Second Move (현재 웨이브로 이동)
         Task heroesMove2 = MoveHeroes(battleCharacter, flags[currentWaveCount].transform.position, 3f);
         Task playerMove2 = MovePlayer(flags[currentWaveCount].transform.position, 3f);
         await Task.WhenAll(heroesMove2, playerMove2);
 
+        // 이후 이전 웨이브 관련 정리 후 다음 웨이브 시작
         DeactivateCharacters(waveMonster[currentWaveCount - 1]);
         DeactivateCharacters(playerHeroes);
         waveMonster[currentWaveCount - 1].Clear();
 
         WaveStart(currentWaveCount);
+
     }
     private async Task MovePlayer(Vector3 targetPosition, float delay, float moveSpeed = 8f)
     {
