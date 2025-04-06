@@ -9,24 +9,12 @@ public class GameManager : MonoBehaviour
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
 
-    public GameObject ownHeroList;
-    public GameObject notOwnHeroList;
-
-
     public float GameTime;
     public bool isPause = false;
     public void GameStart()
     {
         map.CreateMap();
-        UpdateHeroLists();
     }
-
-    public void UpdateHeroLists()
-    {
-        ownHeroList.GetComponent<List>().SetList(true);  // 소유한 리스트 갱신
-        notOwnHeroList.GetComponent<List>().SetList(false); // 미소유 리스트 갱신
-    }
-
 
     public void GamePause()
     {

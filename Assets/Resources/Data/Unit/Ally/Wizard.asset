@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHp: 0
   curMp: 0
-  own: 1
+  own: 0
   unitName: Wizard
   price: 100
   unitImage: {fileID: 0}

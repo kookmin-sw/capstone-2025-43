@@ -18,7 +18,7 @@ public class Managers : MonoBehaviour
     {
         //todo login
         gameManager.GameStart();
-        poolManager.SetHeroList();
         uiManager.Init();
+        poolManager.SetHeroList();
     }
 }

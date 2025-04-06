@@ -19,6 +19,7 @@ public class UiManager : MonoBehaviour
     {
         openUi.Push("Default");
     }
+
     public void SetUiCondition(string name , bool condition)
     {
         Debug.Log($"{name}UI {condition}");
@@ -29,12 +30,14 @@ public class UiManager : MonoBehaviour
                 break;
             case "Local":
                 localUi.SetActive(condition);
+                localUi.GetComponent<UnitList>().SetList();
                 break;
             case "Setting":
                 settingUi.SetActive(condition);
                 break;
             case "Shop":
                 shopUi.SetActive(condition);
+                shopUi.GetComponent<UnitList>().SetList();
                 break;
             case "Option":
                 break;

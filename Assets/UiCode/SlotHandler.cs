@@ -19,12 +19,12 @@ public class SlotHandler : MonoBehaviour
         {
             foreach (ListIdx item in storedItems)
             {
-                item.data.own = true; // 데이터 변경
+                item.unitData.own = true; // 데이터 변경
                 Destroy(item.gameObject); // 구매한 아이템 삭제
             }
 
             storedItems.Clear(); // 슬롯 비우기
-            Managers.instance.gameManager.UpdateHeroLists(); // 리스트 갱신
+            Managers.instance.poolManager.SetHeroList(); // 리스트 갱신
         }
     }
 }
