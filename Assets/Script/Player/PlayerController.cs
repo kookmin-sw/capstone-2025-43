@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
             componentBase = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
         }
     }
-
     void Update()
     {
         MoveByInputAction();

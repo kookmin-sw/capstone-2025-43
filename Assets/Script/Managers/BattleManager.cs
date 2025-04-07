@@ -18,7 +18,7 @@ public class BattleManager : MonoBehaviour
     public List<GameObject> flags = new();
 
     [HideInInspector] public List<Character> battleCharacter = new();
-    private List<Character> playerHeroes = new();
+    [HideInInspector]public  List<Character> playerHeroes = new();
     private List<List<Character>> waveMonster = new();
 
     private int monsterCount = 0;
@@ -118,7 +118,8 @@ public class BattleManager : MonoBehaviour
         if (heroCount <= 0)
         {
             Debug.Log("Wave End: All Heroes Defeated");
-            // TODO: Show Defeat UI
+            //Show Defeat UI
+            TacticUIManager.Instance.OpenResultUI(false);
         }
     }
 
@@ -135,7 +136,9 @@ public class BattleManager : MonoBehaviour
         currentWaveCount++;
         if (currentWaveCount >= waveMonster.Count)
         {
-            // TODO: Show Victory UI
+            //Show Victory UI
+            Debug.Log("Victory!!!");
+            TacticUIManager.Instance.OpenResultUI(true);
         }
         else
         {
@@ -149,7 +152,7 @@ public class BattleManager : MonoBehaviour
 
     private async void MoveToNextWave()
     {
-        // First Move (이전 웨이브로 이동)
+        // First Move
         Task heroesMove1 = MoveHeroes(battleCharacter, flags[currentWaveCount - 1].transform.position, 3f);
         Task playerMove1 = MovePlayer(flags[currentWaveCount - 1].transform.position, 3f);
         await Task.WhenAll(heroesMove1, playerMove1);
@@ -166,12 +169,11 @@ public class BattleManager : MonoBehaviour
         }
         monsterCount = ActivateCharacters(waveMonster[currentWaveCount], false, false);
 
-        // Second Move (현재 웨이브로 이동)
+        // Second Move
         Task heroesMove2 = MoveHeroes(battleCharacter, flags[currentWaveCount].transform.position, 3f);
         Task playerMove2 = MovePlayer(flags[currentWaveCount].transform.position, 3f);
         await Task.WhenAll(heroesMove2, playerMove2);
 
-        // 이후 이전 웨이브 관련 정리 후 다음 웨이브 시작
         DeactivateCharacters(waveMonster[currentWaveCount - 1]);
         DeactivateCharacters(playerHeroes);
         waveMonster[currentWaveCount - 1].Clear();
