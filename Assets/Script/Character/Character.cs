@@ -5,6 +5,7 @@ using UnityEngine;
 using MyProject.Utils;
 using System.Collections;
 using UnityEngine.AI;
+using System.Threading.Tasks;
 
 
 [RequireComponent(typeof(CharacterStat))]
@@ -27,6 +28,21 @@ public class Character : MonoBehaviour
     {
         CharacterManager.Instance.UnregisterCharacter(this);
     }
+    public async Task RotateToDirection(Vector3 direction, float rotateSpeed = 5f)
+    {
+        direction.y = 0;
+        if (direction.normalized == Vector3.zero) return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime * 100f);
+            await Task.Yield();
+        }
+
+        transform.rotation = targetRotation;
+    }
+
     public void AddTacticComponent(Tactic tactic)
     {
         if (!stat.Targets.Contains(tactic.targetType))

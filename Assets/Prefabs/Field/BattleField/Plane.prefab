@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7820031233915783869}
   - component: {fileID: 4742522166868306336}
   - component: {fileID: 8783778725972110037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RestrictBoundary_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 253249318770462015}
   - component: {fileID: 8841003144953258529}
   - component: {fileID: 6293304499454174585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2302742748803220610}
   - component: {fileID: 248434586563911670}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}

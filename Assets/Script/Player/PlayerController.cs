@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using MyProject.Utils;
 using UnityEngine.Animations;
+using Unity.VisualScripting;
+using System.Threading.Tasks;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     public float rotationResetSpeed;
     public float rotationResetAngle;
+    private Vector3 controlDirection = Vector3.forward;
+    public bool isPassive = false;
 
     void Start()
     {
@@ -31,9 +35,30 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        MoveByInputAction();
+        if (isPassive) //Cant Control
+        {
+        }
+        else
+        {
+            MoveByInputAction_ControlDirection();
+            RotateByInputAction("x");
+        }
         ZoomByInputAction();
-        RotateByInputAction("x");
+    }
+
+    private void MoveByInputAction_ControlDirection()
+    {
+        if (IA_Move == null)
+            return;
+
+        Vector2 moveInputVal = IA_Move.action.ReadValue<Vector2>();
+
+        Vector3 forward = controlDirection;
+        Vector3 right = Vector3.Cross(Vector3.up, forward);
+
+        Vector3 moveDirection = (right * moveInputVal.x + forward * moveInputVal.y).normalized;
+
+        transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
     private void MoveByInputAction()
     {
@@ -122,4 +147,40 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public Vector3 GetControlDirection()
+    {
+        return controlDirection;
+    }
+    public void SetControlDirection(Transform start, Transform end)
+    {
+        controlDirection = (end.position - start.position).normalized;
+    }
+    public void SetControlDirection(Vector3 direction)
+    {
+        controlDirection = (direction).normalized;
+    }
+    public async Task RotateToDirection(Vector3 direction, float rotateSpeed = 5f)
+    {
+        direction.y = 0;
+        if (direction.normalized == Vector3.zero) return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime * 100f);
+            await Task.Yield();
+        }
+
+        transform.rotation = targetRotation;
+    }
+
+    public void RotateTowardsDirection(Vector3 Direction)
+    {
+        if (controlDirection.sqrMagnitude > 0.0001f)
+        {
+            transform.rotation = Quaternion.LookRotation(Direction);
+        }
+    }
+
 }

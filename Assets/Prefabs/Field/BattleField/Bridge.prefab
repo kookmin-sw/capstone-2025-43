@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9033673889412775937}
   - component: {fileID: 8511423258249486930}
   - component: {fileID: 3265675532898837691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9198161724512020329}
   - component: {fileID: 444562958064884610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BridgeNavModifier_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7733323603922142011}
   - component: {fileID: 2646399886137875287}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BridgeNavModifier_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

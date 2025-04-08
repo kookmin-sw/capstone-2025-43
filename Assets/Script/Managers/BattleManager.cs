@@ -39,11 +39,11 @@ public class BattleManager : MonoBehaviour
 
     private void Start()
     {
-        InitializePlayer();
-
         // TESTING PURPOSE
         {
             InitializeFlag(TestWaveList);
+            InitializePlayer();
+            player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
             InitializePlayerHeroes(TestPlayerList);
             WaveStart(currentWaveCount);
@@ -88,6 +88,8 @@ public class BattleManager : MonoBehaviour
             battleCharacter.Clear();
             heroCount = ActivateCharacters(playerHeroes);
             monsterCount = ActivateCharacters(waveMonster[waveCount]);
+            player.GetComponent<PlayerController>().SetControlDirection(flags[currentWaveCount].transform.forward);
+            player.GetComponent<PlayerController>().RotateTowardsDirection(flags[currentWaveCount].transform.forward);
         }
         else
         {
@@ -100,6 +102,7 @@ public class BattleManager : MonoBehaviour
                 character.tacticSystem.isActive = true;
             }
         }
+
     }
     public void OnCharacterDied(Character character)
     {
@@ -107,7 +110,7 @@ public class BattleManager : MonoBehaviour
             monsterCount--;
         else
             heroCount--;
-
+        Debug.Log(heroCount);
         if (monsterCount <= 0)
         {
             Debug.Log("Wave End: All Monsters Defeated");
@@ -153,51 +156,52 @@ public class BattleManager : MonoBehaviour
     private async void MoveToNextWave()
     {
         // First Move
-        Task heroesMove1 = MoveHeroes(battleCharacter, flags[currentWaveCount - 1].transform.position, 3f);
-        Task playerMove1 = MovePlayer(flags[currentWaveCount - 1].transform.position, 3f);
+        Task heroesMove1 = MoveHeroes(battleCharacter, flags[currentWaveCount - 1].transform, 3f);
+        Task playerMove1 = MovePlayer(flags[currentWaveCount - 1].transform, 3f);
         await Task.WhenAll(heroesMove1, playerMove1);
-        if (waveMonster[currentWaveCount].Count == 0)
-        {
-            Debug.LogWarning($"Wave {currentWaveCount} is empty. Waiting one frame to retry.");
-            await Task.Yield();
-
-            if (waveMonster[currentWaveCount].Count == 0)
-            {
-                Debug.LogError($"Wave {currentWaveCount} remains empty. Aborting wave activation.");
-                return;
-            }
-        }
+        //FirstMovend
         monsterCount = ActivateCharacters(waveMonster[currentWaveCount], false, false);
+        await Task.Yield();
 
         // Second Move
-        Task heroesMove2 = MoveHeroes(battleCharacter, flags[currentWaveCount].transform.position, 3f);
-        Task playerMove2 = MovePlayer(flags[currentWaveCount].transform.position, 3f);
+        Task heroesMove2 = MoveHeroes(battleCharacter, flags[currentWaveCount].transform, 3f);
+        Task playerMove2 = MovePlayer(flags[currentWaveCount].transform, 3f);
         await Task.WhenAll(heroesMove2, playerMove2);
-
+        //SecondMoveEnd
         DeactivateCharacters(waveMonster[currentWaveCount - 1]);
         DeactivateCharacters(playerHeroes);
         waveMonster[currentWaveCount - 1].Clear();
+        await Task.Yield();
 
+        //PlayerRotation , Character Rotation
+        Vector3 lookDir = flags[currentWaveCount].transform.forward;
+        player.GetComponent<PlayerController>().SetControlDirection(lookDir);
+        Task playerRotation = player.GetComponent<PlayerController>().RotateToDirection(lookDir, 3f);
+        List<Task> heroRotations = new List<Task>();
+        foreach (var hero in playerHeroes)
+        {
+            heroRotations.Add(hero.RotateToDirection(lookDir, 3f));
+        }
+        await Task.WhenAll(heroRotations.Append(playerRotation));
         WaveStart(currentWaveCount);
-
     }
-    private async Task MovePlayer(Vector3 targetPosition, float delay, float moveSpeed = 8f)
+    private async Task MovePlayer(Transform target, float delay, float moveSpeed = 8f)
     {
         if (player == null) return;
 
-        player.GetComponent<PlayerController>().enabled = false;
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.isPassive = true;
 
         await Task.Delay((int)(delay * 1000));
 
         Vector3 start = player.transform.position;
-        Vector3 end = GridPositionUtil.GetGridPosition(E_GridPosition.Central, 3f, targetPosition);
+        Vector3 end = GridPositionUtil.GetGridPosition(E_GridPosition.Central, 3f, target);
 
         float distance = Vector3.Distance(start, end);
         float duration = distance / moveSpeed;
         float timeElapsed = 0f;
 
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward);
-
+        Quaternion targetRotation = Quaternion.LookRotation(playerController.GetControlDirection());
         while (timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
@@ -211,15 +215,15 @@ public class BattleManager : MonoBehaviour
         player.transform.position = end;
         player.transform.rotation = targetRotation;
 
-        player.GetComponent<PlayerController>().enabled = true;
+        playerController.isPassive = false;
     }
-    private async Task MoveHeroes(List<Character> characters, Vector3 targetPosition, float delay, float moveSpeed = 10f)
+    private async Task MoveHeroes(List<Character> characters, Transform target, float delay, float moveSpeed = 10f)
     {
         Task[] moveTasks = characters.Select(character =>
         {
             NavMeshAgent agent = character.GetComponent<NavMeshAgent>();
             agent.stoppingDistance = 0.1f;
-            Vector3 destination = GridPositionUtil.GetGridPosition(character.gridposition, 3f, targetPosition);
+            Vector3 destination = GridPositionUtil.GetGridPosition(character.gridposition, 3f, target);
             return MoveToPosition(agent, destination, delay, moveSpeed, character.MoveSpeed_origin);
         }).ToArray();
 
@@ -253,7 +257,7 @@ public class BattleManager : MonoBehaviour
             yield return null;
 
         agent.isStopped = true;
-        agent.speed = restoreSpeed; // º¹¿ø
+        agent.speed = restoreSpeed;
         tcs.SetResult(true);
     }
     #endregion
@@ -281,7 +285,6 @@ public class BattleManager : MonoBehaviour
                 return;
             }
         }
-
         Debug.LogError("No object with 'Player' layer found in scene.");
     }
 
@@ -324,10 +327,9 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        Vector3 startFlagPos = flags[0].transform.position;
         foreach (Character hero in playerHeroes)
         {
-            hero.transform.position = GridPositionUtil.GetGridPosition(hero.gridposition, 3f, startFlagPos);
+            hero.transform.position = GridPositionUtil.GetGridPosition(hero.gridposition, 3f, flags[0].transform);
             hero.gameObject.SetActive(false);
         }
     }
