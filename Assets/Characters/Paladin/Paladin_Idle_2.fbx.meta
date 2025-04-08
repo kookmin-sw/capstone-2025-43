@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 340223c3a611aac41b828cc80b8f6ea7
+guid: 93b9674eb8cb54c47a0e064758a08002
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,18 +31,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Paladin_Idle
+      name: Paladin_Idle_2
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 430
+      lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
