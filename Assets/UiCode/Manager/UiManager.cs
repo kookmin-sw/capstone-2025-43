@@ -29,15 +29,26 @@ public class UiManager : MonoBehaviour
                 defaultUi.SetActive(condition);
                 break;
             case "Local":
-                localUi.SetActive(condition);
-                localUi.GetComponent<UnitList>().SetList();
+                if (condition && openUi.Peek() == "Default")
+                {
+                    localUi.SetActive(condition);
+                    localUi.GetComponent<UnitList>().SetList();
+                }
+                if(!condition && openUi.Peek() == "Local")
+                    localUi.SetActive(condition);
                 break;
             case "Setting":
-                settingUi.SetActive(condition);
+                if (condition && openUi.Peek() == "Default")
+                    settingUi.SetActive(condition);
                 break;
             case "Shop":
-                shopUi.SetActive(condition);
-                shopUi.GetComponent<UnitList>().SetList();
+                if (condition && openUi.Peek() == "Default")
+                {
+                    shopUi.SetActive(condition);
+                    shopUi.GetComponent<UnitList>().SetList();
+                }
+                if (!condition && openUi.Peek() == "Shop")
+                    localUi.SetActive(condition);
                 break;
             case "Option":
                 break;
