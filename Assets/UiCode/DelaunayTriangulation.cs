@@ -61,9 +61,6 @@ public class DelaunayTriangulation : MonoBehaviour
         public Vector2 c;
         public Circle circumCircle;
         public List<Edge> edges;
-
-        public LineRenderer lineRenderer = null;   // 삼각형을 그리기 위한 렌더러
-
         public Triangle(Vector2 a, Vector2 b, Vector2 c)
         {
             this.a = a;
@@ -247,8 +244,6 @@ public class DelaunayTriangulation : MonoBehaviour
         foreach (var badTriangle in badTriangles)
         {
             triangles.Remove(badTriangle);
-            children.Remove(badTriangle.lineRenderer.gameObject);
-            GameObject.Destroy(badTriangle.lineRenderer.gameObject);
         }
 
         // 공백 경계와 새로 추가된 점들을 연결해 새로운 삼각형 생성
@@ -260,18 +255,6 @@ public class DelaunayTriangulation : MonoBehaviour
                 continue;
             }
             triangles.Add(triangle);
-        }
-    }
-    public void ActivateCircle(bool flag)
-    {
-        foreach (var triangle in triangles)
-        {
-            if (null == triangle.circumCircle)
-            {
-                continue;
-            }
-
-            triangle.circumCircle.lineRenderer.gameObject.SetActive(flag);
         }
     }
     public void RemoveSuperTriangle()
@@ -297,8 +280,6 @@ public class DelaunayTriangulation : MonoBehaviour
         foreach (var triangle in remove)
         {
             triangles.Remove(triangle);
-            children.Remove(triangle.lineRenderer.gameObject);
-            GameObject.Destroy(triangle.lineRenderer.gameObject);
         }
     }
 
@@ -346,69 +327,35 @@ public class DelaunayTriangulation : MonoBehaviour
         }
 
         Triangle triangle = new Triangle(a, b, c);
-        {
-            LineRenderer lineRenderer = CreateLineRenderer($"Triangle_{triangleNo}", Color.blue);
-            lineRenderer.positionCount = 4;
-            lineRenderer.sortingOrder = 4;
-            lineRenderer.SetPosition(0, a);
-            lineRenderer.SetPosition(1, b);
-            lineRenderer.SetPosition(2, c);
-            lineRenderer.SetPosition(3, a);
-            lineRenderer.useWorldSpace = false;
-            triangle.lineRenderer = lineRenderer;
-        }
         triangleNo++;
 
         return triangle;
     }
 
-    private LineRenderer CreateLineRenderer(string name, Color color)
+    public void CreateRoad()
+    {
+        foreach(Triangle triangle in triangles)
+        {
+            foreach(Edge edge in triangle.edges)
+            {
+                CreateLineRenderer(edge);
+            }
+        }
+    }
+
+    private void CreateLineRenderer(Edge edge)
     {
         const float lineWidth = 0.04f;
-        var go = new GameObject();
-        this.children.Add(go);
-        go.name = name;
-        go.transform.parent = transform;
-
+        var go = Managers.instance.resourceManager.Instantiate("Road", this.transform);
+        
         var lineRenderer = go.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
-        lineRenderer.startColor = color;
-        lineRenderer.endColor = color;
         lineRenderer.sortingOrder = 1;
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, edge.v0);
+        lineRenderer.SetPosition(1, edge.v1);
 
-        return lineRenderer;
     }
-
-    /// <summary>
-    /// 나중에 local icon으로 바꿔야함
-    /// </summary>
-    /// <param name="name"> local icon이 들고갈 이름</param>
-    /// <param name="color">local icon의 색 <- 지워야할듯</param>
-    /// <param name="position">local icon의 위치 </param>
-    /// <returns></returns>
-    public SpriteRenderer CreatePoint(string name, Color color, Vector2 position)
-    {
-        float size = 0.3f;
-        float imageSize = 100.0f * size;    // 유니티 픽셀 유닛을 100으로 설정했다고 가정함
-
-        var go = new GameObject();
-        this.children.Add(go);
-        go.name = name;
-        go.transform.parent = transform;
-        go.transform.position = new Vector2(position.x - size / 2, position.y - size / 2);
-
-        var texture = new Texture2D((int)imageSize, (int)imageSize);
-        var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width,
-            texture.height), Vector2.zero, 100, 0, SpriteMeshType.FullRect, Vector4.zero, false);
-
-        var spriteRenderer = go.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprite;
-        spriteRenderer.color = color;
-        spriteRenderer.sortingOrder = 2;
-
-        return spriteRenderer;
-    }
-
 }

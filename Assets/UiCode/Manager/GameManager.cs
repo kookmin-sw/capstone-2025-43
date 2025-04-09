@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public Map map;
     public Day day;
+    public GameObject Roads;
 
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
@@ -30,5 +31,13 @@ public class GameManager : MonoBehaviour
     public bool inBorderAlly(Vector2 position)
     {
         return position.x < xBorderAlly && position.y < yBorderAlly;
+    }
+
+
+
+    public void SetColor(LineRenderer lineRenderer , Color color)
+    {
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
     }
 }

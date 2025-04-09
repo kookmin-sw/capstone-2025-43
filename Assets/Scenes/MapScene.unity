@@ -6030,6 +6030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 989944319}
   day: {fileID: 0}
+  Roads: {fileID: 0}
   xBorderAlly: 0
   yBorderAlly: 5
   GameTime: 0

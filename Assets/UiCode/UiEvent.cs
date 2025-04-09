@@ -32,7 +32,7 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
             }
             return;
         }
-        Debug.Log($"{targetName} , {active}");
+
         Managers.instance.uiManager.SetUiCondition(targetName, active);
     }
 }
