@@ -6,21 +6,21 @@ public class Map : MonoBehaviour
     const int nodeNum = 40;
     public DelaunayTriangulation DTri;
     public NodePosition nodePosition;
-    public List<Vector2> positions = new List<Vector2>();
+    public List<GameObject> nodes = new List<GameObject>();
     public Base baseObject;
 
     public void CreateNodes()
     {
         Debug.Log("Random position");
-        while(positions.Count < nodeNum)
+        while(nodes.Count < nodeNum)
         {
             Vector2 position = nodePosition.CreateRandomSpot();
             if (!baseObject.inmyBound(position))
             {
                 continue;
             }
-            positions.Add(position);
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
+            nodes.Add(tmpObject);
             if (Managers.instance.gameManager.inBorderAlly(position))
                 tmpObject.GetComponent<Node>().Init("Ally", position);
             else
@@ -33,10 +33,10 @@ public class Map : MonoBehaviour
         CreateNodes();
 
         DTri.Init(70, 70);
-        foreach(Vector2 position in positions)
+        foreach(GameObject node in nodes)
         {
             Debug.Log("»ý¼ºÁß");
-            DTri.AddPoint(position);
+            DTri.AddPoint(node);
         }
         DTri.RemoveSuperTriangle();
     }

@@ -1,37 +1,23 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DelaunayTriangulation : MonoBehaviour
 {
     public class Edge
     {
-        public Vector2 v0;
-        public Vector2 v1;
+        public GameObject obj0;
+        public GameObject obj1;
 
-        public Edge(Vector2 v0, Vector2 v1)
+        public Edge(GameObject obj0, GameObject obj1)
         {
-            this.v0 = v0;
-            this.v1 = v1;
-        }
-
-        public override bool Equals(object other)
-        {
-            if (false == (other is Edge))
-            {
-                return false;
-            }
-
-            return Equals((Edge)other);
+            this.obj0 = obj0;
+            this.obj1 = obj1;
         }
 
         public bool Equals(Edge edge)
         {
-            return ((this.v0.Equals(edge.v0) && this.v1.Equals(edge.v1)) || (this.v0.Equals(edge.v1) && this.v1.Equals(edge.v0)));
-        }
-
-        public override int GetHashCode()
-        {
-            return v0.GetHashCode() ^ (v1.GetHashCode() << 2);
+            return ((this.obj0 == edge.obj0 && this.obj1 == edge.obj1) || (this.obj1 == edge.obj0 && this.obj0 == edge.obj1));
         }
     }
 
@@ -56,12 +42,12 @@ public class DelaunayTriangulation : MonoBehaviour
 
     public class Triangle
     {
-        public Vector2 a;
-        public Vector2 b;
-        public Vector2 c;
+        public GameObject a;
+        public GameObject b;
+        public GameObject c;
         public Circle circumCircle;
         public List<Edge> edges;
-        public Triangle(Vector2 a, Vector2 b, Vector2 c)
+        public Triangle(GameObject a, GameObject b, GameObject c)
         {
             this.a = a;
             this.b = b;
@@ -74,23 +60,16 @@ public class DelaunayTriangulation : MonoBehaviour
             this.edges.Add(new Edge(this.c, this.a));
         }
 
-        public override bool Equals(object other)
-        {
-            return (other is Triangle) ? Equals((Triangle)other) : false;
-        }
-
-        public override int GetHashCode()
-        {
-            return a.GetHashCode() ^ (b.GetHashCode() << 2) ^ (c.GetHashCode() >> 2);
-        }
-
         public bool Equals(Triangle triangle)
         {
             return this.a == triangle.a && this.b == triangle.b && this.c == triangle.c;
         }
 
-        private Circle calcCircumCircle(Vector2 a, Vector2 b, Vector2 c)
+        private Circle calcCircumCircle(GameObject objA, GameObject objB, GameObject objC)
         {
+            Vector2 a = objA.GetComponent<Node>().pin;
+            Vector2 b = objB.GetComponent<Node>().pin;
+            Vector2 c = objC.GetComponent<Node>().pin; 
             // 출처: 삼각형 외접원 구하기 - https://kukuta.tistory.com/444
 
             if (a == b || b == c || c == a) // 같은 점이 있음. 삼각형 아님. 외접원 구할 수 없음.
@@ -189,8 +168,9 @@ public class DelaunayTriangulation : MonoBehaviour
 
         return;
     }
-    public void AddPoint(Vector2 point)
+    public void AddPoint(GameObject obj)
     {
+        Vector2 point = obj.transform.GetComponent<Node>().pin;
         // 추가 되는 외접원에 점이 포함되어 삭제될 삼각형 목록
         List<Triangle> badTriangles = new List<Triangle>();
         foreach (var triangle in triangles)
@@ -249,7 +229,7 @@ public class DelaunayTriangulation : MonoBehaviour
         // 공백 경계와 새로 추가된 점들을 연결해 새로운 삼각형 생성
         foreach (Edge edge in polygon)
         {
-            Triangle triangle = CreateTriangle(edge.v0, edge.v1, point);
+            Triangle triangle = CreateTriangle(edge.obj0, edge.obj1, obj);
             if (null == triangle)
             {
                 continue;
@@ -303,9 +283,12 @@ public class DelaunayTriangulation : MonoBehaviour
 
         // super triangle을 포인트 리스트 보다 크게 잡는 이유는
         // super triangle의 변과 포인트가 겹치게 되면 삼각형이 아닌 직선이 되므로 델로네 삼각분할을 적용할 수 없기 때문이다.
-        Vector2 a = new Vector2(minX - dx, minY - dy);
-        Vector2 b = new Vector2(minX - dx, maxY + dy * 3);
-        Vector2 c = new Vector2(maxX + dx * 3, minY - dy);
+        GameObject a = new GameObject();
+        GameObject b = new GameObject();
+        GameObject c = new GameObject();
+        a.transform.position = new Vector2(minX - dx, minY - dy);
+        b.transform.position = new Vector2(minX - dx, maxY + dy * 3);
+        c.transform.position = new Vector2(maxX + dx * 3, minY - dy);
 
         // super triangle이 직선인 경우 리턴
         if (a == b || b == c || c == a)
@@ -319,7 +302,7 @@ public class DelaunayTriangulation : MonoBehaviour
         */
         return CreateTriangle(a, b, c);
     }
-    private Triangle CreateTriangle(Vector2 a, Vector2 b, Vector2 c)
+    private Triangle CreateTriangle(GameObject a, GameObject b, GameObject c)
     {
         if (a == b || b == c || c == a)
         {
@@ -330,32 +313,5 @@ public class DelaunayTriangulation : MonoBehaviour
         triangleNo++;
 
         return triangle;
-    }
-
-    public void CreateRoad()
-    {
-        foreach(Triangle triangle in triangles)
-        {
-            foreach(Edge edge in triangle.edges)
-            {
-                CreateLineRenderer(edge);
-            }
-        }
-    }
-
-    private void CreateLineRenderer(Edge edge)
-    {
-        const float lineWidth = 0.04f;
-        var go = Managers.instance.resourceManager.Instantiate("Road", this.transform);
-        
-        var lineRenderer = go.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startWidth = lineWidth;
-        lineRenderer.endWidth = lineWidth;
-        lineRenderer.sortingOrder = 1;
-        lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, edge.v0);
-        lineRenderer.SetPosition(1, edge.v1);
-
     }
 }
