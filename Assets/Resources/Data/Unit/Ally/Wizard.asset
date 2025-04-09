@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1240593b68b3e34c8e95e13b7d45440, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  curHp: 0
-  curMp: 0
-  own: 0
+  curHp: 100
+  curMp: 100
+  own: 1
   unitName: Wizard
   price: 100
   unitImage: {fileID: 0}
