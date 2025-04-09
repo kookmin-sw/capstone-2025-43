@@ -3,28 +3,27 @@ using UnityEngine;
 
 public class SlotHandler : MonoBehaviour
 {
-    private List<ListIdx> storedItems = new List<ListIdx>(); // 여러 개의 ListIdx 저장
-
-    public void StoreItem(ListIdx item)
-    {
-        if (!storedItems.Contains(item))
-        {
-            storedItems.Add(item); // 리스트에 추가
-        }
-    }
+    public Transform dropContent; // 드롭된 유닛들이 들어있는 ScrollView의 Content
 
     public void PurchaseItem()
     {
-        if (storedItems.Count > 0)
-        {
-            foreach (ListIdx item in storedItems)
-            {
-                item.unitData.own = true; // 데이터 변경
-                Destroy(item.gameObject); // 구매한 아이템 삭제
-            }
+        List<ListIdx> itemsToBuy = new List<ListIdx>();
 
-            storedItems.Clear(); // 슬롯 비우기
-            Managers.instance.poolManager.SetHeroList(); // 리스트 갱신
+        foreach (Transform child in dropContent)
+        {
+            ListIdx unit = child.GetComponent<ListIdx>();
+            if (unit != null && !unit.unitData.own)
+            {
+                itemsToBuy.Add(unit);
+            }
         }
+
+        foreach (ListIdx item in itemsToBuy)
+        {
+            item.unitData.own = true;
+            Destroy(item.gameObject);
+        }
+
+        Managers.instance.poolManager.SetHeroList(); // 리스트 갱신
     }
 }

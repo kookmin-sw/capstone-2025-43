@@ -40,6 +40,8 @@ public class UiManager : MonoBehaviour
             case "Setting":
                 if (condition && openUi.Peek() == "Default")
                     settingUi.SetActive(condition);
+                if (!condition && openUi.Peek() == "Setting")
+                    settingUi.SetActive(condition);
                 break;
             case "Shop":
                 if (condition && openUi.Peek() == "Default")
@@ -48,7 +50,7 @@ public class UiManager : MonoBehaviour
                     shopUi.GetComponent<UnitList>().SetList();
                 }
                 if (!condition && openUi.Peek() == "Shop")
-                    localUi.SetActive(condition);
+                    shopUi.SetActive(condition);
                 break;
             case "Option":
                 break;
