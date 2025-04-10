@@ -26,4 +26,20 @@ public class SlotHandler : MonoBehaviour
 
         Managers.instance.poolManager.SetHeroList(); // 리스트 갱신
     }
+
+    public void StartBattleButton()
+    {
+        for(int idx = 0; idx < dropContent.childCount; idx++)
+        {
+            Transform child = dropContent.GetChild(idx);
+            if(child.childCount > 0)
+            {
+                UnitData unitdata = child.GetChild(0).GetComponent<ListIdx>().unitData;
+                if (unitdata != null)
+                    Managers.instance.dataManager.data.unitPositions[idx] = unitdata.unitName;
+            }
+        }
+        Managers.instance.gameManager.StartBattle();
+    }
+
 }

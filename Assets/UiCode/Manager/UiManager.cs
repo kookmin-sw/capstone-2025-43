@@ -63,18 +63,5 @@ public class UiManager : MonoBehaviour
             case "Quit":
                 break;
         }
-        if (condition)
-            openUi.Push(name);
-        else
-        {
-            try
-            {
-                openUi.Pop();
-            }
-            catch
-            {
-                Debug.Log("Stack Empty");
-            }
-        }
     }
 }

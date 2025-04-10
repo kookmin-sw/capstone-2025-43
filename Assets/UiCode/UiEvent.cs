@@ -7,7 +7,7 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
     public string targetName;
     public bool active = false;
 
-    private void OnMouseDown() // object ��������
+    private void OnMouseDown()
     {
         onClick();
     }
@@ -19,7 +19,7 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
         onClick();
     }
 
-    public void onClick() // ��ư ui ��������
+    public void onClick()
     {
         Managers.instance.uiManager.SetUiCondition(targetName, active);
     }

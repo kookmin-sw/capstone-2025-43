@@ -140,7 +140,6 @@ public class DelaunayTriangulation : MonoBehaviour
     }
 
     private int triangleNo = 0;
-
     public Triangle superTriangle = null;
     public List<Triangle> triangles = new List<Triangle>();
     private List<GameObject> children = new List<GameObject>();

@@ -32,12 +32,14 @@ public class GameManager : MonoBehaviour
     {
         return position.x < xBorderAlly && position.y < yBorderAlly;
     }
-
-
-
     public void SetColor(LineRenderer lineRenderer , Color color)
     {
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;
+    }
+
+    public void StartBattle()
+    {
+        //todo start battle scene
     }
 }
