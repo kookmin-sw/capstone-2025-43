@@ -20,25 +20,23 @@ public class Map : MonoBehaviour
                 continue;
             }
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
-            nodes.Add(tmpObject);
             if (Managers.instance.gameManager.inBorderAlly(position))
                 tmpObject.GetComponent<Node>().Init("Ally", position);
             else
                 tmpObject.GetComponent<Node>().Init("Enemy", position);
+            nodes.Add(tmpObject);
         }
     }
     
     public void CreateMap()
     {
         CreateNodes();
-        /*
-        DTri.Init(70, 70);
+        DTri.Init(70, 70);6
         foreach(GameObject node in nodes)
         {
             Debug.Log("»ý¼ºÁß");
             DTri.AddPoint(node);
         }
         DTri.RemoveSuperTriangle();
-        */
     }
 }

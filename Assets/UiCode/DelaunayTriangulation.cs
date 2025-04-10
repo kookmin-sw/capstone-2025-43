@@ -259,6 +259,9 @@ public class DelaunayTriangulation : MonoBehaviour
         foreach (var triangle in remove)
         {
             triangles.Remove(triangle);
+            Destroy(triangle.a);
+            Destroy(triangle.b);
+            Destroy(triangle.c);
         }
     }
 
@@ -282,9 +285,9 @@ public class DelaunayTriangulation : MonoBehaviour
 
         // super triangle을 포인트 리스트 보다 크게 잡는 이유는
         // super triangle의 변과 포인트가 겹치게 되면 삼각형이 아닌 직선이 되므로 델로네 삼각분할을 적용할 수 없기 때문이다.
-        GameObject a = new GameObject();
-        GameObject b = new GameObject();
-        GameObject c = new GameObject();
+        GameObject a = Managers.instance.resourceManager.Instantiate("Node", this.transform);
+        GameObject b = Managers.instance.resourceManager.Instantiate("Node", this.transform); ;
+        GameObject c = Managers.instance.resourceManager.Instantiate("Node", this.transform); ;
         a.transform.position = new Vector2(minX - dx, minY - dy);
         b.transform.position = new Vector2(minX - dx, maxY + dy * 3);
         c.transform.position = new Vector2(maxX + dx * 3, minY - dy);
