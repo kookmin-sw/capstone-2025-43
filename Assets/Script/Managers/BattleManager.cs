@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using MyProject.Utils;
 using System.Threading;
+using UnityEngine.TextCore.Text;
+
 
 #if UNITY_EDITOR
 using Unity.VisualScripting;
@@ -248,6 +250,10 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
+        Character character = agent.GetComponent<Character>();
+        if (character != null)
+            character.anim.SetMoveState(true, moveSpeed);
+
         float originalSpeed = agent.speed;
         agent.speed = moveSpeed;
         agent.isStopped = false;
@@ -260,6 +266,10 @@ public class BattleManager : MonoBehaviour
 
         agent.isStopped = true;
         agent.speed = restoreSpeed;
+
+        if (character != null)
+            character.anim.SetMoveState(false, 0f);
+
         tcs.SetResult(true);
     }
     #endregion

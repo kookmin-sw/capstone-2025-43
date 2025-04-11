@@ -7,22 +7,28 @@ using System.Collections;
 using UnityEngine.AI;
 using System.Threading.Tasks;
 
-
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
     public CharacterStat stat;
     public E_GridPosition gridposition = E_GridPosition.Empty;
+    public CharacterAnimation anim;
+    public NavMeshAgent agent;
 
     [HideInInspector] public TacticSystem tacticSystem;
     private void Awake()
     {
         stat = GetComponent<CharacterStat>();
         tacticSystem = GetComponent<TacticSystem>();
+        anim = GetComponent<CharacterAnimation>();
+        agent = GetComponent<NavMeshAgent>();
     }
     private void Start()
     {
         CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
+        //agent.acceleration = float.MaxValue; 
+        //agent.autoBraking = false;             
+
     }
     private void OnDestroy()
     {
