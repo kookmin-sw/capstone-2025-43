@@ -10,6 +10,9 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
     
     private void OnMouseDown()
     {
+        // 다른 UI가 열려 있으면 클릭 무시
+        if (!UiManager.instance.IsOnlyDefaultOpen())
+            return;
         onClick();
     }
     

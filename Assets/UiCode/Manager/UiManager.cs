@@ -15,6 +15,13 @@ public class UiManager : MonoBehaviour
 
     private Stack<string> openUi = new Stack<string>();
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject); // 중복 방지
+    }
     public void Init()
     {
         openUi.Clear();
@@ -25,70 +32,48 @@ public class UiManager : MonoBehaviour
         shopUi.SetActive(false);
     }
 
+    public bool IsOnlyDefaultOpen()
+    {   
+        return openUi.Count == 1 && openUi.Peek() == "Default";
+    }
     public void SetUiCondition(string name , bool condition)
     {
         Debug.Log($"{name}UI {condition}");
         if (condition) // UI 열기
         {
             if (openUi.Count > 0)
-                SetUiActive(openUi.Peek(), false); // 현재 열려 있는 UI 비활성화
+        {
+            string top = openUi.Peek();
+            if (top != "Default")
+            {
+                SetUiActive(top, false); // Default 제외하고만 비활성화
+            }
+            else
+            {
+                SetDefaultUiRaycast(false); // Default는 비활성화 대신 Raycast만 막음
+            }
+        }
 
-            openUi.Push(name);
-            SetUiActive(name, true);
+        openUi.Push(name);
+        SetUiActive(name, true);
         }
         else // UI 닫기
         {
             if (openUi.Count > 0 && openUi.Peek() == name)
-            {
-                SetUiActive(name, false);
-                openUi.Pop();
+        {
+            SetUiActive(name, false);
+            openUi.Pop();
 
-                if (openUi.Count > 0)
-                    SetUiActive(openUi.Peek(), true); // 이전 UI 다시 활성화
+            if (openUi.Count > 0)
+            {
+                string previous = openUi.Peek();
+                SetUiActive(previous, true);
+
+                if (previous == "Default")
+                    SetDefaultUiRaycast(true); // Default가 다시 최상단이면 Raycast 활성화
             }
         }
-        /*
-        switch (name)
-        {
-            case "Default":
-                defaultUi.SetActive(condition);
-                break;
-            case "Local":
-                if (condition && openUi.Peek() == "Default")
-                {
-                    localUi.SetActive(condition);
-                    localUi.GetComponent<UnitList>().SetList();
-                }
-                if(!condition && openUi.Peek() == "Local")
-                    localUi.SetActive(condition);
-                break;
-            case "Setting":
-                if (condition && openUi.Peek() == "Default")
-                    settingUi.SetActive(condition);
-                if (!condition && openUi.Peek() == "Setting")
-                    settingUi.SetActive(condition);
-                break;
-            case "Shop":
-                if (condition && openUi.Peek() == "Default")
-                {
-                    shopUi.SetActive(condition);
-                    shopUi.GetComponent<UnitList>().SetList();
-                }
-                if (!condition && openUi.Peek() == "Shop")
-                    shopUi.SetActive(condition);
-                break;
-            case "Option":
-                break;
-            case "Save":
-                break;
-            case "Load":
-                break;
-            case "Exit":
-                break;
-            case "Quit":
-                break;
         }
-        */
     }
     private void SetUiActive(string name, bool active)
     {
@@ -110,6 +95,16 @@ public class UiManager : MonoBehaviour
                 break;
         }
     }
+    private void SetDefaultUiRaycast(bool value)
+    {
+        var cg = defaultUi.GetComponent<CanvasGroup>();
+        if (cg != null)
+        {
+            cg.blocksRaycasts = value;
+            Debug.Log($"Default UI Raycast → {value}");
+        }
+    }
+
     public void CloseAllUi()
     {
         while (openUi.Count > 0)
