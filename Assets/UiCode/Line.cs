@@ -2,13 +2,26 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
+    public GameObject node0;
     public GameObject node1;
-    public GameObject node2;
     LineRenderer lineRenderer;
+
+    public void Init(GameObject node0, GameObject node1)
+    {
+        this.node0 = node0;
+        this.node1 = node1;
+        lineRenderer = GetComponent<LineRenderer>();
+
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, node0.transform.position - node0.GetComponent<Node>().offset);
+        lineRenderer.SetPosition(1, node1.transform.position - node1.GetComponent<Node>().offset);
+        SetColor();
+    }
+
     public void SetColor()
     {
         Color color = Color.white;
-        if (node1.tag != node2.tag)
+        if (node1.tag != node0.tag)
         {
             color = Color.red;
         }
