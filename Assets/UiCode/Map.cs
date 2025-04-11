@@ -31,7 +31,7 @@ public class Map : MonoBehaviour
     public void CreateMap()
     {
         CreateNodes();
-        DTri.Init(70, 70);6
+        DTri.Init(70, 70);
         foreach(GameObject node in nodes)
         {
             Debug.Log("»ý¼ºÁß");
