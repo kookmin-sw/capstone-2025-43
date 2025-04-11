@@ -6,18 +6,18 @@ public class DelaunayTriangulation : MonoBehaviour
 {
     public class Edge
     {
-        public GameObject obj0;
-        public GameObject obj1;
+        public Vector2 v0;
+        public Vector2 v1;
 
-        public Edge(GameObject obj0, GameObject obj1)
+        public Edge(Vector2 v0, Vector2 v1)
         {
-            this.obj0 = obj0;
-            this.obj1 = obj1;
+            this.v0 = v0;
+            this.v0 = v1;
         }
 
         public bool Equals(Edge edge)
         {
-            return ((this.obj0 == edge.obj0 && this.obj1 == edge.obj1) || (this.obj1 == edge.obj0 && this.obj0 == edge.obj1));
+            return ((this.v0 == edge.v0 && this.v1 == edge.v1) || (this.v1 == edge.v0 && this.v0 == edge.v1));
         }
     }
 
@@ -42,12 +42,12 @@ public class DelaunayTriangulation : MonoBehaviour
 
     public class Triangle
     {
-        public GameObject a;
-        public GameObject b;
-        public GameObject c;
+        public Vector2 a;
+        public Vector2 b;
+        public Vector2 c;
         public Circle circumCircle;
         public List<Edge> edges;
-        public Triangle(GameObject a, GameObject b, GameObject c)
+        public Triangle(Vector2 a, Vector2 b, Vector2 c)
         {
             this.a = a;
             this.b = b;
@@ -65,11 +65,8 @@ public class DelaunayTriangulation : MonoBehaviour
             return this.a == triangle.a && this.b == triangle.b && this.c == triangle.c;
         }
 
-        private Circle calcCircumCircle(GameObject objA, GameObject objB, GameObject objC)
+        private Circle calcCircumCircle(Vector2 a, Vector2 b, Vector2 c)
         {
-            Vector2 a = objA.GetComponent<Node>().pin;
-            Vector2 b = objB.GetComponent<Node>().pin;
-            Vector2 c = objC.GetComponent<Node>().pin; 
             // 출처: 삼각형 외접원 구하기 - https://kukuta.tistory.com/444
 
             if (a == b || b == c || c == a) // 같은 점이 있음. 삼각형 아님. 외접원 구할 수 없음.
@@ -142,15 +139,9 @@ public class DelaunayTriangulation : MonoBehaviour
     private int triangleNo = 0;
     public Triangle superTriangle = null;
     public List<Triangle> triangles = new List<Triangle>();
-    private List<GameObject> children = new List<GameObject>();
-
+    
     public void Init(int width, int height)
     {
-        foreach (GameObject child in children)
-        {
-            GameObject.Destroy(child);
-        }
-
         triangles.Clear();
         triangleNo = 0;
 
@@ -167,9 +158,8 @@ public class DelaunayTriangulation : MonoBehaviour
 
         return;
     }
-    public void AddPoint(GameObject obj)
+    public void AddPoint(Vector2 point)
     {
-        Vector2 point = obj.transform.GetComponent<Node>().pin;
         // 추가 되는 외접원에 점이 포함되어 삭제될 삼각형 목록
         List<Triangle> badTriangles = new List<Triangle>();
         foreach (var triangle in triangles)
@@ -228,7 +218,7 @@ public class DelaunayTriangulation : MonoBehaviour
         // 공백 경계와 새로 추가된 점들을 연결해 새로운 삼각형 생성
         foreach (Edge edge in polygon)
         {
-            Triangle triangle = CreateTriangle(edge.obj0, edge.obj1, obj);
+            Triangle triangle = CreateTriangle(edge.v0, edge.v1, point);
             if (null == triangle)
             {
                 continue;
@@ -259,9 +249,6 @@ public class DelaunayTriangulation : MonoBehaviour
         foreach (var triangle in remove)
         {
             triangles.Remove(triangle);
-            Destroy(triangle.a);
-            Destroy(triangle.b);
-            Destroy(triangle.c);
         }
     }
 
@@ -285,12 +272,9 @@ public class DelaunayTriangulation : MonoBehaviour
 
         // super triangle을 포인트 리스트 보다 크게 잡는 이유는
         // super triangle의 변과 포인트가 겹치게 되면 삼각형이 아닌 직선이 되므로 델로네 삼각분할을 적용할 수 없기 때문이다.
-        GameObject a = Managers.instance.resourceManager.Instantiate("Node", this.transform);
-        GameObject b = Managers.instance.resourceManager.Instantiate("Node", this.transform); ;
-        GameObject c = Managers.instance.resourceManager.Instantiate("Node", this.transform); ;
-        a.transform.position = new Vector2(minX - dx, minY - dy);
-        b.transform.position = new Vector2(minX - dx, maxY + dy * 3);
-        c.transform.position = new Vector2(maxX + dx * 3, minY - dy);
+        Vector2 a = new Vector2(minX - dx, minY - dy);
+        Vector2 b = new Vector2(minX - dx, maxY + dy * 3);
+        Vector2 c = new Vector2(maxX + dx * 3, minY - dy);
 
         // super triangle이 직선인 경우 리턴
         if (a == b || b == c || c == a)
@@ -304,7 +288,7 @@ public class DelaunayTriangulation : MonoBehaviour
         */
         return CreateTriangle(a, b, c);
     }
-    private Triangle CreateTriangle(GameObject a, GameObject b, GameObject c)
+    private Triangle CreateTriangle(Vector2 a, Vector2 b, Vector2 c)
     {
         if (a == b || b == c || c == a)
         {
