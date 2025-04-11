@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using NUnit.Framework.Constraints;
 
 public class Map : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Map : MonoBehaviour
     public DelaunayTriangulation DTri;
     public NodePosition nodePosition;
     public Dictionary<Vector2, GameObject> nodes = new Dictionary<Vector2, GameObject>();
-    public Dictionary<Edge, int> edges;
+    public Dictionary<Edge, int> edges = new Dictionary<Edge, int>();
     public Base baseObject;
 
     public void CreateNodes()
@@ -38,11 +39,6 @@ public class Map : MonoBehaviour
             
             foreach (Edge edge in triangle.edges)
             {
-                if (edge == null)
-                {
-                    Debug.Log($"edge : {edge.v0}, {edge.v1}");
-                    continue;
-                }
                 if (!edges.ContainsKey(edge))
                 {
                     Debug.Log($"Edge{idx}");
@@ -70,5 +66,6 @@ public class Map : MonoBehaviour
         }
 
         DTri.RemoveSuperTriangle();
+        SetEdge();
     }
 }

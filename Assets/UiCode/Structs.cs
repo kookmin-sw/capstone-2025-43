@@ -53,10 +53,21 @@ public class Triangle
         this.edges.Add(new Edge(this.c, this.a));
     }
 
+    public override bool Equals(object other)
+    {
+        return (other is Triangle) ? Equals((Triangle)other) : false;
+    }
+
+    public override int GetHashCode()
+    {
+        return a.GetHashCode() ^ (b.GetHashCode() << 2) ^ (c.GetHashCode() >> 2);
+    }
     public bool Equals(Triangle triangle)
     {
         return this.a == triangle.a && this.b == triangle.b && this.c == triangle.c;
     }
+
+
 
     private Circle calcCircumCircle(Vector2 a, Vector2 b, Vector2 c)
     {

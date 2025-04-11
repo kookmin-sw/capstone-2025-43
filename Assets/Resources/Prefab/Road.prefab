@@ -77,9 +77,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
@@ -152,3 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fe368a92384fc4f940b2301badfa22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  node0: {fileID: 0}
+  node1: {fileID: 0}
+  lineWidth: 0.4
