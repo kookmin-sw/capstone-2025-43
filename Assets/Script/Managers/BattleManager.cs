@@ -41,11 +41,13 @@ public class BattleManager : MonoBehaviour
     {
         // TESTING PURPOSE
         {
+            FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
             InitializeFlag(TestWaveList);
             InitializePlayer();
             player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
             InitializePlayerHeroes(TestPlayerList);
+           //
             WaveStart(currentWaveCount);
         }
     }
@@ -297,6 +299,25 @@ public class BattleManager : MonoBehaviour
             flags.Add(flag);
         }
     }
+
+    public void InitializeFlag(GameObject battleFieldPrefab)
+    {
+        flags.Clear();
+
+        var planes = battleFieldPrefab.GetComponentsInChildren<Transform>()
+                                      .Where(t => t.name == "Plane");
+        foreach (var plane in planes)
+        {
+            var flag = plane.GetComponentsInChildren<Transform>()
+                            .FirstOrDefault(t => t.name == "Flag");
+            if (flag != null)
+            {
+                flags.Add(flag.gameObject);
+            }
+        }
+        Debug.Log($"[FlagManager] {flags.Count} Flag Initialized");
+    }
+
 
     public void InitializeMonsterWave(List<BattleWavePreset> waves)
     {

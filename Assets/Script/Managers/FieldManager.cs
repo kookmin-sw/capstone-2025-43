@@ -1,46 +1,87 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using MyProject.Utils;
+using Unity.AI.Navigation;
 
 public class FieldManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> BattleFieldPrefabs;
+    public static FieldManager Instance { get; private set; }
 
-    [System.Serializable]
-    public class FieldPrefabGroup
-    {
-        public List<GameObject> prefabs = new List<GameObject>();
-    }
+    [Header("Field Data")]
+    [SerializeField] private List<FieldSetData> fieldSetDataList;
 
-    [SerializeField] private List<FieldPrefabGroup> EnvironmentFieldPrefabs = new List<FieldPrefabGroup>();
+    private GameObject currentEnvironment;
+    private GameObject currentBattle;
+
+    [Header("NavMesh Surface")]
+    [SerializeField] private NavMeshSurface navMeshSurface;
+
+    [SerializeField] private Material TransParentMaterial;
 
     private void Awake()
     {
-        int enumCount = (int)E_FieldType.Max;
-        while (EnvironmentFieldPrefabs.Count < enumCount)
+        if (Instance != null && Instance != this)
         {
-            EnvironmentFieldPrefabs.Add(new FieldPrefabGroup());
+            Destroy(gameObject); 
+            return;
+        }
+
+        Instance = this;
+    }
+
+    public void InitializeRandomField(E_FieldType type)
+    {
+        ClearField();
+
+        List<FieldSetData> matchingFields = fieldSetDataList.Where(f => f.fieldType == type).ToList();
+
+        if (matchingFields.Count == 0)
+        {
+            Debug.LogWarning($"[FieldManager] ({type}) : Has No FieldSetData(Scriptable Object).");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, matchingFields.Count);
+        FieldSetData selectedField = matchingFields[randomIndex];
+
+        currentEnvironment = Instantiate(selectedField.environmentPrefab);
+        ApplyTransform(currentEnvironment.transform, selectedField.environmentPosition, selectedField.environmentRotation, selectedField.environmentScale);
+
+        currentBattle = Instantiate(selectedField.battleFieldPrefab);
+        ApplyTransform(currentBattle.transform, selectedField.battlePosition, selectedField.battleRotation, selectedField.battleScale);
+
+        BattleManager.Instance.InitializeFlag(currentBattle);
+
+        ApplyNavigation();
+    }
+
+
+    private void ApplyNavigation()
+    {
+        if (navMeshSurface != null)
+        {
+            navMeshSurface.transform.position = currentBattle.transform.position;
+            navMeshSurface.BuildNavMesh();
+            Debug.Log("[FieldManager] NavMeshSurface Bake");
+        }
+        else
+        {
+            Debug.LogError("[FieldManager] there is no NavMeshSurface!");
         }
     }
-
-    // 사용 예시
-    public List<GameObject> GetPrefabs(E_FieldType type)
+    private void ApplyTransform(Transform target, Vector3 pos, Quaternion rot, Vector3 scale)
     {
-        return EnvironmentFieldPrefabs[(int)type].prefabs;
+        target.localPosition = pos;
+        target.localRotation = rot;
+        target.localScale = scale;
     }
 
-    void Start()
+    public void ClearField()
     {
-        // TODO :: Get MapNode's FieldType and Apply it
-        var testPrefab = GetPrefabs(E_FieldType.Desert);
-        if (testPrefab.Count > 0)
-        {
-            Instantiate(testPrefab[0]);
-        }
-    }
-
-    void Update()
-    {
-
+        if (currentEnvironment != null) Destroy(currentEnvironment);
+        if (currentBattle != null) Destroy(currentBattle);
+        currentEnvironment = null;
+        currentBattle = null;
     }
 }
