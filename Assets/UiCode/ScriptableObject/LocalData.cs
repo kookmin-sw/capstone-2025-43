@@ -4,6 +4,7 @@ using UnityEngine;
 public class LocalData : ScriptableObject
 {
     [Header("# localData")]
+    public GameObject node;
     public string localname;
     public string env;
     public string desc;

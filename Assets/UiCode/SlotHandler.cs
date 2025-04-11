@@ -39,7 +39,7 @@ public class SlotHandler : MonoBehaviour
                     Managers.instance.dataManager.data.unitPositions[idx] = unitdata.unitName;
             }
         }
-        Managers.instance.gameManager.StartBattle();
+        Managers.instance.gameManager.StartBattle(null);
     }
 
 }

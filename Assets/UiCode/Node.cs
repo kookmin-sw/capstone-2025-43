@@ -7,7 +7,7 @@ public class Node : MonoBehaviour
     public Vector2 pin;
     public int roundNum;
     public List<List<Dictionary<string, int>>> rounds;
-    public LocalInfo localInfo;
+    public LocalData localData;
 
     public void Init(string tag , Vector3 position)
     {

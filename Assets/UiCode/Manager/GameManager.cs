@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Map map;
     public Day day;
-    public GameObject Roads;
+    public List<Line> Roads = new List<Line>();
 
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         map.CreateMap();
+        Roads = map.GetLines();
     }
 
     public void GamePause()
@@ -33,14 +34,34 @@ public class GameManager : MonoBehaviour
     {
         return position.x < xBorderAlly && position.y < yBorderAlly;
     }
-    public void SetColor(LineRenderer lineRenderer , Color color)
+
+    public void AllyToEnemy()
     {
-        lineRenderer.startColor = color;
-        lineRenderer.endColor = color;
+        int a = Random.Range(0, Roads.Count);
+        if (Roads[a].node0.tag == "Ally")
+            Roads[a].node0.tag = "Enemy";
+        else
+            Roads[a].node1.tag = "Enmey";
     }
 
-    public void StartBattle()
+    
+    public void StartBattle(GameObject obj)
     {
         //todo start battle scene
+    }
+
+    // From BattleScene
+    public void EndBattle(GameObject obj , bool success)
+    {
+        if (success)
+        {
+            //day -> night
+            obj.tag = "Ally";
+        }
+        else
+        {
+            //day -> afternoon
+        }
+        AllyToEnemy();
     }
 }

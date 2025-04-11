@@ -9,4 +9,8 @@ public class DataManager : MonoBehaviour
     {
         return Resources.LoadAll<UnitData>($"Data/Unit/{path}");
     }
+    public LocalData GetLocalData(string path)
+    {
+        return Resources.Load<LocalData>($"Data/Local/{path}");
+    }
 }

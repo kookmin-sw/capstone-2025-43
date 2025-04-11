@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using NUnit.Framework.Constraints;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class Map : MonoBehaviour
 {
@@ -10,7 +12,6 @@ public class Map : MonoBehaviour
     public DelaunayTriangulation DTri;
     public NodePosition nodePosition;
     public Dictionary<Vector2, GameObject> nodes = new Dictionary<Vector2, GameObject>();
-    public Dictionary<Edge, int> edges = new Dictionary<Edge, int>();
     public Base baseObject;
 
     public void CreateNodes()
@@ -24,6 +25,9 @@ public class Map : MonoBehaviour
                 continue;
             }
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
+            tmpObject.GetComponent<Node>().localData = Managers.instance.dataManager.GetLocalData("TmpLocalData");
+            tmpObject.GetComponent<Node>().localData.node = tmpObject;
+
             if (Managers.instance.gameManager.inBorderAlly(position))
                 tmpObject.GetComponent<Node>().Init("Ally", position);
             else
@@ -33,15 +37,14 @@ public class Map : MonoBehaviour
     }
     private void SetEdge()
     {
+        Dictionary<Edge, int> edges = new Dictionary<Edge, int>();
         int idx = 0;
         foreach (Triangle triangle in DTri.triangles)
         {
-            
             foreach (Edge edge in triangle.edges)
             {
                 if (!edges.ContainsKey(edge))
                 {
-                    Debug.Log($"Edge{idx}");
                     idx++;
                     edges.Add(edge, 0);
                     GameObject road = Managers.instance.resourceManager.Instantiate("Road", DTri.transform);
@@ -68,4 +71,26 @@ public class Map : MonoBehaviour
         DTri.RemoveSuperTriangle();
         SetEdge();
     }
+
+    public List<Line> GetLines()
+    {
+        List<Line> attack = new List<Line>();
+
+        for (int i = 0; i < DTri.transform.childCount; i++)
+        {
+            Line a = DTri.transform.GetChild(i).GetComponent<Line>();
+            if (a.node0.tag != a.node1.tag)
+                attack.Add(a);
+        }
+        return attack;
+    }
+    public void ReSetRoads()
+    {
+        GameObject[] objects = DTri.GetComponentsInChildren<GameObject>();
+        foreach (GameObject obj in objects)
+        {
+            obj.GetComponent<Line>().SetColor();
+        }
+    }
+
 }
