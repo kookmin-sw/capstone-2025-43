@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHp: 300
   curMp: 42
-  own: 1
+  own: 0
   unitName: Archer
   price: 30
   unitImage: {fileID: 0}

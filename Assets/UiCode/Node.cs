@@ -4,12 +4,14 @@ using JetBrains.Annotations;
 public class Node : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
+    public Vector2 pin;
     public int roundNum;
     public List<List<Dictionary<string, int>>> rounds;
     public LocalInfo localInfo;
 
     public void Init(string tag , Vector3 position)
     {
+        pin = position;
         //Set Position
         transform.position = position + offset;
         //Set Tag

@@ -23,6 +23,8 @@ public class PoolManager : MonoBehaviour
 
     public void SetHeroList()
     {
+        ownHeroData.Clear();
+        onSaleHeroData.Clear();
         UnitData[] dataList = Managers.instance.dataManager.GetUnitDataset("Ally");
         foreach (UnitData data in dataList)
         {
@@ -32,11 +34,4 @@ public class PoolManager : MonoBehaviour
                 onSaleHeroData.Add(data);
         }
     }
-
-    private void SetCreepComb()
-    {
-
-    }
-
-
 }

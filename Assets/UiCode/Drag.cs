@@ -11,7 +11,7 @@ public class Drag : MonoBehaviour , IDragHandler , IBeginDragHandler, IEndDragHa
     private Canvas rootCanvas;
 
 
-    private void Awake()
+    private void Start()
     {
         tmpRectTrans = GetComponent<RectTransform>();
         parentRectTrans = this.tmpRectTrans.parent as RectTransform;
