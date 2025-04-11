@@ -43,6 +43,16 @@ namespace MyProject.Utils
         Max // EnumSize
     }
 
+    public enum SFXType
+    {
+        Attack,
+        Hit,
+        Skill,
+        Die,
+        FootStep,
+        Max
+    }
+
     public static class GridPositionUtil
     {
         private static readonly Vector3Int[] GridOffsets = new Vector3Int[(int)E_GridPosition.Max]
