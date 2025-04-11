@@ -16,6 +16,7 @@ public class ResultUI : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.StopBGM(); // Test Stop BGM
     }
     public void OpenUI(bool isWinning)
     {

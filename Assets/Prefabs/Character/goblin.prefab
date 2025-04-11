@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_Name
-      value: Goblin
+      value: goblin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       propertyPath: m_Layer
@@ -406,6 +406,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eceb04017af7c0348843553aa675ede7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 879109417396514453}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eceb04017af7c0348843553aa675ede7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4342953289968886760}
   m_SourcePrefab: {fileID: 100100000, guid: eceb04017af7c0348843553aa675ede7, type: 3}
 --- !u!4 &3472479754285907775 stripped
 Transform:
@@ -595,3 +598,15 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-4342953289968886760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286135317876057477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7e9edbbc78d0d3aa6831424c5fb1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

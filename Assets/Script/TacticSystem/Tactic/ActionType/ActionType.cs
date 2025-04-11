@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using MyProject.Utils; // SFX
 public abstract class ActionType : ScriptableObject
 {
     public string displayName = "DisplayName";
@@ -18,15 +19,20 @@ public abstract class ActionType : ScriptableObject
     protected IEnumerator MoveAndAction(Character user, Character target, NavMeshAgent agent, Action<Character, Character> attackAction)
     {
         TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
+        CharacterAnimation anim = user.GetComponent<CharacterAnimation>(); // animation
+
         while (true)
         {
             agent.isStopped = false;
             agent.SetDestination(target.transform.position);
+            anim.SetMoveState(true, user.MoveSpeed);    // animation
+            AudioManager.Instance.PlayEffect(SFXType.FootStep); //SFX
 
             float distance = Vector3.Distance(user.transform.position, target.transform.position);
             if (distance <= user.stat.attackRange)
             {
                 agent.isStopped = true;
+                anim.SetMoveState(false, user.MoveSpeed);    // animation
                 agent.ResetPath();
                 agent.velocity = Vector3.zero;
 
@@ -56,7 +62,7 @@ public abstract class ActionType : ScriptableObject
         if (user == null || target == null) return;
 
         Vector3 direction = target.transform.position - user.transform.position;
-        direction.y = 0f; // YÃà È¸Àü Á¦¿Ü
+        direction.y = 0f; // Yï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         if (direction.sqrMagnitude > 0.1f)
         {
