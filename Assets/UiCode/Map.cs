@@ -38,7 +38,11 @@ public class Map : MonoBehaviour
             
             foreach (Edge edge in triangle.edges)
             {
-                Debug.Log($"edge : {edge.v0}, {edge.v1}");
+                if (edge == null)
+                {
+                    Debug.Log($"edge : {edge.v0}, {edge.v1}");
+                    continue;
+                }
                 if (!edges.ContainsKey(edge))
                 {
                     Debug.Log($"Edge{idx}");
@@ -66,6 +70,5 @@ public class Map : MonoBehaviour
         }
 
         DTri.RemoveSuperTriangle();
-        SetEdge();
     }
 }

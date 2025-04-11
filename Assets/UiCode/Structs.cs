@@ -11,21 +11,25 @@ public class Edge
         this.v0 = v0;
         this.v1 = v1;
     }
-    public override bool Equals(object obj)
+
+    public override bool Equals(object other)
     {
-        if (obj is Edge edge)
+        if (false == (other is Edge))
         {
-            return (v0 == edge.v0 && v1 == edge.v1) || (v0 == edge.v1 && v1 == edge.v0);
+            return false;
         }
-        return false;
+
+        return Equals((Edge)other);
+    }
+
+    public bool Equals(Edge edge)
+    {
+        return ((this.v0.Equals(edge.v0) && this.v1.Equals(edge.v1)) || (this.v0.Equals(edge.v1) && this.v1.Equals(edge.v0)));
     }
 
     public override int GetHashCode()
     {
-        // 순서에 상관없이 같은 해시를 반환하도록 정렬해서 처리
-        int hash1 = v0.GetHashCode() ^ v1.GetHashCode();
-        int hash2 = v1.GetHashCode() ^ v0.GetHashCode();
-        return hash1 ^ hash2;
+        return v0.GetHashCode() ^ (v1.GetHashCode() << 2);
     }
 }
 
