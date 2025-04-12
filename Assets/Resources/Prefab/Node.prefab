@@ -126,8 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetName: Local
   active: 1
-  targetSlot: {fileID: 0}
-  a: {fileID: 11400000, guid: 861cf46f81f7b3249a2af233ee71ffeb, type: 2}
 --- !u!114 &8657832114563667934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,5 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.5, z: -0.5}
+  pin: {x: 0, y: 0}
   roundNum: 0
-  localInfo: {fileID: 0}
+  localData: {fileID: 11400000, guid: 37a87c5f0e4ef8b4388a49ae52676d2f, type: 2}
