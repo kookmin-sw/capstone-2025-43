@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public class ResultUI : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ResultUI : MonoBehaviour
 
     [SerializeField] private GameObject[] characterSlots; // TacticSlot Count is Always 4
     [SerializeField] private GameObject[] rewardSlot; // TacticSlot Count is Always 7
-
+    private bool result = false;
     private void Start()
     {
         AudioManager.Instance.StopBGM(); // Test Stop BGM
@@ -31,12 +32,18 @@ public class ResultUI : MonoBehaviour
         sceneChangeButton.onClick.RemoveAllListeners();
         sceneChangeButton.onClick.AddListener(() =>
         {
+            if (Managers.instance != null && Managers.instance.gameManager != null)
+            {
+                Managers.instance.gameManager.EndBattle(result);
+            }
+
             StopAllCoroutines();
             SceneManager.LoadScene("MapScene");
         });
     }
     private void InitializeResultText(bool isWinning)
     {
+        result = isWinning;
         ResultText.text = isWinning ? "Victory!!" : "Defeat!!";
         ResultText.color = isWinning ? Color.yellow : Color.red;
 
