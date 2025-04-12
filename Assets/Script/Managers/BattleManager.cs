@@ -7,6 +7,10 @@ using UnityEngine.AI;
 using MyProject.Utils;
 using System.Threading;
 using UnityEngine.TextCore.Text;
+using UnityEngine.AddressableAssets;
+
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 
 
 #if UNITY_EDITOR
@@ -16,8 +20,8 @@ public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance { get; private set; }
 
-    public GameObject player;
-    public List<GameObject> flags = new();
+    [HideInInspector] public GameObject player;
+    [HideInInspector] public List<GameObject> flags = new();
 
     [HideInInspector] public List<Character> battleCharacter = new();
     [HideInInspector]public  List<Character> playerHeroes = new();
@@ -30,6 +34,7 @@ public class BattleManager : MonoBehaviour
 #if UNITY_EDITOR
     public List<BattleWavePreset> TestWaveList;
     public List<GameObject> TestPlayerList;
+    public List<HeroSpawnData> testPlayerSpawnData;
 #endif
     private void Awake()
     {
@@ -48,8 +53,7 @@ public class BattleManager : MonoBehaviour
             InitializePlayer();
             player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
-            InitializePlayerHeroes(TestPlayerList);
-           //
+            InitializePlayerHeroes(testPlayerSpawnData);
             WaveStart(currentWaveCount);
         }
     }
@@ -94,6 +98,10 @@ public class BattleManager : MonoBehaviour
             monsterCount = ActivateCharacters(waveMonster[waveCount]);
             player.GetComponent<PlayerController>().SetControlDirection(flags[currentWaveCount].transform.forward);
             player.GetComponent<PlayerController>().RotateTowardsDirection(flags[currentWaveCount].transform.forward);
+            foreach (Character character in battleCharacter)
+            {
+                character.GetComponent<NavMeshAgent>().enabled = true;
+            }
         }
         else
         {
@@ -339,18 +347,9 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void InitializePlayerHeroes(List<GameObject> heroes)
+    public void InitializePlayerHeroes(List<HeroSpawnData> spawnDataList)
     {
         playerHeroes.Clear();
-
-        foreach (GameObject obj in heroes)
-        {
-            var character = obj.GetComponent<Character>();
-            if (character != null)
-                playerHeroes.Add(character);
-            else
-                Debug.LogError($"GameObject {obj.name} does not have a Character component.");
-        }
 
         if (flags.Count == 0)
         {
@@ -358,13 +357,36 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        foreach (Character hero in playerHeroes)
+        foreach (HeroSpawnData data in spawnDataList)
         {
-            hero.transform.position = GridPositionUtil.GetGridPosition(hero.gridposition, 3f, flags[0].transform);
-            hero.gameObject.SetActive(false);
+            string address = data.heroID;
+
+            AsyncOperationHandle handle = Addressables.LoadAssetAsync<GameObject>(address);
+            handle.WaitForCompletion();
+
+            if (handle.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError($"[Hero Init] Failed to load hero prefab: {address}");
+                continue;
+            }
+
+            GameObject prefab = (GameObject)handle.Result;
+            GameObject obj = Instantiate(prefab);
+
+            if (!obj.TryGetComponent(out Character character))
+            {
+                Debug.LogError($"[Hero Init] Prefab {address} has no Character component.");
+                Destroy(obj);
+                continue;
+            }
+
+            character.gridposition = data.gridPosition;
+            character.transform.position = GridPositionUtil.GetGridPosition(data.gridPosition, 3f, flags[0].transform);
+            character.gameObject.SetActive(false);
+
+            playerHeroes.Add(character);
         }
     }
-
     public void AddMonsterinWave(Character character, int waveNumber)
     {
         if (waveNumber < 0 || waveNumber >= waveMonster.Count)

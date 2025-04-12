@@ -97,5 +97,13 @@ namespace MyProject.Utils
         }
     }
 
+    [System.Serializable]
+    public class HeroSpawnData
+    {
+        public string heroID;       // ex: "Knight", "Archer"
+        public E_GridPosition gridPosition; //
+    }
+
+
 
 }

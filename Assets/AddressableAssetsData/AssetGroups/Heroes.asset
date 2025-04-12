@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Heroes
+  m_EditorClassIdentifier: 
+  m_GroupName: Heroes
+  m_GUID: da1f84d0aa468f54c96d4d7d637bf076
+  m_SerializeEntries:
+  - m_GUID: c5ebbd248d8cf7140929a0bac1972da7
+    m_Address: Wizard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e35ed357ef4089a49b4d2fb81bb91a08
+    m_Address: AllyTest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 95cfff819524ba24f822bab086608419, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: bc9288599e54cac46b5aea85db030eed, type: 2}
+    - {fileID: 11400000, guid: 9ef6e4361303627429644a48969f54c3, type: 2}

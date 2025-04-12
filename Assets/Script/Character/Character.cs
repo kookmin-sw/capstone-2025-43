@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
-    public CharacterStat stat;
-    public E_GridPosition gridposition = E_GridPosition.Empty;
-    public CharacterAnimation anim;
-    public NavMeshAgent agent;
-
+    [HideInInspector]public CharacterStat stat;
+    [HideInInspector] public E_GridPosition gridposition = E_GridPosition.Empty;
+    [HideInInspector] public CharacterAnimation anim;
+    [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public TacticSystem tacticSystem;
     private void Awake()
     {

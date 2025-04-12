@@ -54,6 +54,7 @@ public class FieldManager : MonoBehaviour
         BattleManager.Instance.InitializeFlag(currentBattle);
 
         ApplyNavigation();
+        ApplyFieldTransParency();
     }
 
 
@@ -83,5 +84,25 @@ public class FieldManager : MonoBehaviour
         if (currentBattle != null) Destroy(currentBattle);
         currentEnvironment = null;
         currentBattle = null;
+    }
+    public void ApplyFieldTransParency()
+    {
+        if (currentBattle == null || TransParentMaterial == null)
+        {
+            Debug.LogWarning("[FieldManager] Cannot apply transparency. currentBattle or TransParentMaterial is null.");
+            return;
+        }
+
+        // 모든 자식 오브젝트의 MeshRenderer 찾기
+        MeshRenderer[] meshRenderers = currentBattle.GetComponentsInChildren<MeshRenderer>(true);
+
+        foreach (MeshRenderer renderer in meshRenderers)
+        {
+            // 기존 머테리얼 수만큼 투명 머테리얼 적용 (멀티 머테리얼 대응)
+            Material[] transparentMats = Enumerable.Repeat(TransParentMaterial, renderer.sharedMaterials.Length).ToArray();
+            renderer.materials = transparentMats;
+        }
+
+        Debug.Log("[FieldManager] Applied transparency to battlefield objects.");
     }
 }
