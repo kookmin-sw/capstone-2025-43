@@ -27,16 +27,19 @@ public class Map : MonoBehaviour
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
             tmpObject.GetComponent<Node>().localData = Managers.instance.dataManager.GetLocalData("TmpLocalData");
             tmpObject.GetComponent<Node>().localData.node = tmpObject;
+            tmpObject.name = $"node {nodes.Count}";
 
             if (Managers.instance.gameManager.inBorderAlly(position))
                 tmpObject.GetComponent<Node>().Init("Ally", position);
             else
                 tmpObject.GetComponent<Node>().Init("Enemy", position);
             nodes.Add(position, tmpObject);
+            Managers.instance.gameManager.nodes.Add(tmpObject);
         }
     }
     private void SetEdge()
     {
+
         Dictionary<Edge, int> edges = new Dictionary<Edge, int>();
         int idx = 0;
         foreach (Triangle triangle in DTri.triangles)

@@ -38,4 +38,13 @@ public class Node : MonoBehaviour
             rounds.Add(Managers.instance.poolManager.GetCreepPool());
         }
     }
+    private void OnMouseDown()
+    {
+        Managers.instance.gameManager.opneLocal = this.gameObject;
+        // 다른 UI가 열려 있으면 클릭 무시
+        if (!UiManager.instance.IsOnlyDefaultOpen())
+            return;
+        this.GetComponent<UiEvent>().onClick();
+    }
+
 }
