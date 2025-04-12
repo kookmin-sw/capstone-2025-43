@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,18 +51,17 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public void StartBattle(GameObject obj)
+    public void StartBattle()
     {
         //todo start battle scene
     }
 
     // From BattleScene
-    public void EndBattle(GameObject obj , bool success)
+    public void EndBattle(bool success)
     {
         if (success)
         {
             //day -> night
-            obj.tag = "Ally";
         }
         else
         {

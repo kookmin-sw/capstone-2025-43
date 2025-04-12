@@ -59,6 +59,7 @@ public class Map : MonoBehaviour
 
     public void CreateMap()
     {
+        DontDestroyOnLoad(this);
         CreateNodes();
         DTri.Init(70, 70);
 
