@@ -15,11 +15,6 @@ public class TacticInformationUI : MonoBehaviour
     private void Awake()
     {
         closeButton.onClick.AddListener(CloseTacticUI);
-
-    }
-    void Start()
-    {
-        
     }
     void Update()
     {

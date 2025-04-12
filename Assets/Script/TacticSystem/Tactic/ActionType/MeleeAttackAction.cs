@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using MyProject.Utils;  // SFX
 
 [CreateAssetMenu(menuName = "TacticSystem/Action/MeleeAttack")]
 public class MeleeAttackAction : ActionType
@@ -38,6 +39,7 @@ public class MeleeAttackAction : ActionType
         {
             animator.SetTrigger("Attack");
         }
+        AudioManager.Instance.PlayEffect(SFXType.Attack); // SFX
 
         target.ApplyDamage(user.stat.damage);
     }

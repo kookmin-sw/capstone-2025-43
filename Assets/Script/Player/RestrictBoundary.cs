@@ -11,6 +11,7 @@ public class RestrictBoundary : MonoBehaviour
     {
         boundsCollider = GetComponent<BoxCollider>();
         bounds = boundsCollider.bounds;
+        player = FindByLayer("Player");
     }
 
     private void LateUpdate()
@@ -27,7 +28,6 @@ public class RestrictBoundary : MonoBehaviour
 
     private void OnValidate()
     {
-        // bounds values synchronize with Editor
         if (boundsCollider == null)
             boundsCollider = GetComponent<BoxCollider>();
 
@@ -41,5 +41,23 @@ public class RestrictBoundary : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(boundsCollider.bounds.center, boundsCollider.bounds.size);
+    }
+
+    private Transform FindByLayer(string layerName)
+    {
+        int layer = LayerMask.NameToLayer(layerName);
+        if (layer == -1)
+        {
+            Debug.LogWarning($"Layer \"{layerName}\" not found.");
+            return null;
+        }
+
+        foreach (Transform t in FindObjectsByType<Transform>(FindObjectsSortMode.None))
+        {
+            if (t.gameObject.layer == layer)
+                return t;
+        }
+
+        return null;
     }
 }

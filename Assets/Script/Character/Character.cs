@@ -5,54 +5,47 @@ using UnityEngine;
 using MyProject.Utils;
 using System.Collections;
 using UnityEngine.AI;
-
+using System.Threading.Tasks;
 
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
-    public CharacterStat stat;
-    public E_GridPosition gridposition = E_GridPosition.Empty;
-
+    [HideInInspector]public CharacterStat stat;
+    [HideInInspector] public E_GridPosition gridposition = E_GridPosition.Empty;
+    [HideInInspector] public CharacterAnimation anim;
+    [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public TacticSystem tacticSystem;
-    private void Start()
+    private void Awake()
     {
         stat = GetComponent<CharacterStat>();
         tacticSystem = GetComponent<TacticSystem>();
-        CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
+        anim = GetComponent<CharacterAnimation>();
+        agent = GetComponent<NavMeshAgent>();
     }
+    private void Start()
+    {
+        CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
+        //agent.acceleration = float.MaxValue; 
+        //agent.autoBraking = false;             
 
+    }
     private void OnDestroy()
     {
         CharacterManager.Instance.UnregisterCharacter(this);
     }
-
-    public void MoveTo(Vector3 destination, NavMeshAgent agent)
+    public async Task RotateToDirection(Vector3 direction, float rotateSpeed = 5f)
     {
-        if (agent == null)
-            return;
+        direction.y = 0;
+        if (direction.normalized == Vector3.zero) return;
 
-        agent.ResetPath();
-        agent.isStopped = false;
-        agent.SetDestination(destination);
-
-        StartCoroutine(CheckArrival(agent, destination));
-    }
-
-    private IEnumerator CheckArrival(NavMeshAgent agent, Vector3 destination)
-    {
-        while (true)
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
         {
-            agent.stoppingDistance = 0.1f;  // 0보다 조금 더 큰 값으로 설정
-            // 도착 여부 검사 (remainingDistance가 0 또는 매우 작으면 도착한 것)
-            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-            {
-                agent.isStopped = true;
-                agent.ResetPath();
-                yield break;
-            }
-
-            yield return null;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime * 100f);
+            await Task.Yield();
         }
+
+        transform.rotation = targetRotation;
     }
 
     public void AddTacticComponent(Tactic tactic)
@@ -119,17 +112,14 @@ public class Character : MonoBehaviour
         Hp = 0;
         if (TryGetComponent(out Animator animator))
         {
-            //animator.SetTrigger("Die");
-            animator.SetBool("Dying", true);
+            animator.SetTrigger("Dying");
         }
         if (TryGetComponent(out TacticSystem tacticSystem))
         {
             tacticSystem.isActive = false;
         }
         BattleManager.Instance.OnCharacterDied(this);
-        //Destroy(gameObject, 5f);
     }
-
 
     #region ValueWrappers
     public string DisplayName
@@ -210,6 +200,11 @@ public class Character : MonoBehaviour
         get => stat.attackRange;
         set => stat.attackRange = value;
     }
+    public float MoveSpeed_origin
+    {
+        get => stat.moveSpeed_origin;
+        set => stat.moveSpeed_origin = value;
+    }
 
     public float MoveSpeed
     {
@@ -217,6 +212,11 @@ public class Character : MonoBehaviour
         set => stat.moveSpeed = value;
     }
 
+    public float RotationSpeed_origin
+    {
+        get => stat.rotationSpeed_origin;
+        set => stat.rotationSpeed_origin = value;
+    }
     public float RotationSpeed
     {
         get => stat.rotationSpeed;
@@ -226,7 +226,5 @@ public class Character : MonoBehaviour
     public List<TargetType> Targets => stat.Targets;
     public List<ConditionType> Conditions => stat.Conditions;
     public List<ActionType> Actions => stat.Actions;
-
-
     #endregion
 }

@@ -5,6 +5,7 @@ using TMPro;
 using static UnityEngine.Rendering.DebugUI.Table;
 using Unity.VisualScripting;
 using UnityEditor;
+using System.Collections;
 
 public class TacticUIManager : MonoBehaviour
 {
@@ -12,8 +13,7 @@ public class TacticUIManager : MonoBehaviour
 
     public GameObject tacticUI; // tacticSystem UI Panel
     public GameObject tacticinformationUI; // tacticSystem UI Panel
-    [SerializeField] private GameObject[] TacticSlots; // TacticSlot Count is Always 6
-
+    public GameObject resultUI; //Result UI Panel
     private Character currentCharacter;
     private void Awake()
     {
@@ -29,5 +29,16 @@ public class TacticUIManager : MonoBehaviour
         tacticinformationUI.GetComponent<TacticInformationUI>().InitializeUI(currentCharacter);
     }
 
+    public void OpenResultUI(bool isWin)
+    {
+        StartCoroutine(DelayedResultUIOpen(isWin));
+    }
+
+    //TODO (Optional) :: Refactoring TacticUI's Structure to Function Extensibility 
+    private IEnumerator DelayedResultUIOpen(bool isWin)
+    {
+        yield return new WaitForSeconds(3f);
+        resultUI.GetComponent<ResultUI>().OpenUI(isWin);
+    }
 
 }
