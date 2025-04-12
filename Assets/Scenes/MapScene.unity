@@ -5655,7 +5655,7 @@ GameObject:
   - component: {fileID: 1191423056}
   - component: {fileID: 1191423055}
   m_Layer: 0
-  m_Name: PositionData
+  m_Name: HandOverData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5683,6 +5683,9 @@ MonoBehaviour:
   - 
   - 
   - 
+  nodes: []
+  Roads: []
+  openLocal: {fileID: 0}
 --- !u!4 &1191423056
 Transform:
   m_ObjectHideFlags: 0
@@ -5691,12 +5694,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191423054}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1032.8223, y: 610.9718, z: -100.06419}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1320833285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231960674
 GameObject:
@@ -5843,11 +5846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 989944319}
   day: {fileID: 0}
-  Roads:
-  - {fileID: 0}
   data: {fileID: 0}
-  nodes: []
-  opneLocal: {fileID: 0}
   xBorderAlly: 0
   yBorderAlly: 5
   GameTime: 0
@@ -6043,7 +6042,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1191423056}
   m_Father: {fileID: 816404662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1320833286
@@ -6058,7 +6058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b51bd660d0746046aa5fad3318a7df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 1191423055}
+  handOverData: {fileID: 1191423055}
 --- !u!1 &1325199838
 GameObject:
   m_ObjectHideFlags: 0
@@ -9035,4 +9035,3 @@ SceneRoots:
   - {fileID: 989944320}
   - {fileID: 842478714}
   - {fileID: 816404662}
-  - {fileID: 1191423056}

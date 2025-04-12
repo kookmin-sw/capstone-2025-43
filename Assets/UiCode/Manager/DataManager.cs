@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public PositionData data;
+    public HandOverData handOverData;
     public UnitData[] GetUnitDataset(string path)
     {
         return Resources.LoadAll<UnitData>($"Data/Unit/{path}");
