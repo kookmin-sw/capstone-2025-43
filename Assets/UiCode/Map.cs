@@ -5,53 +5,88 @@ using System.Drawing;
 using NUnit.Framework.Constraints;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class Map : MonoBehaviour
 {
     const int nodeNum = 40;
     public DelaunayTriangulation DTri;
     public NodePosition nodePosition;
+    public GameObject roads;
+    public GameObject locals;
     public Dictionary<Vector2, GameObject> nodes = new Dictionary<Vector2, GameObject>();
     public Base baseObject;
 
-    public void CreateNodes()
+    private void Awake()
+    {
+        DTri = GetComponent<DelaunayTriangulation>();
+        nodePosition = GetComponent<NodePosition>();
+        roads = new GameObject();
+        locals = new GameObject();
+    }
+
+    private void CreateNode()
+    {
+        nodes.Clear();
+        int idx = 0;
+        foreach (Vector2 position in Managers.instance.dataManager.handOverData.allyNodes)
+        {
+            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", roads.transform);
+            tmpObject.GetComponent<Node>().Init("Ally",position);
+            tmpObject.name = $"node {idx}";
+            nodes.Add(position, tmpObject);
+            idx++;
+        }
+        foreach (Vector2 position in Managers.instance.dataManager.handOverData.enemyNodes)
+        {
+            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", roads.transform);
+            tmpObject.GetComponent<Node>().Init("Enemy", position);
+            tmpObject.name = $"node {idx}";
+            nodes.Add(position, tmpObject);
+            idx++;
+        }
+    }
+    private void CreateRoad()
+    {
+        int idx = 0;
+        foreach (Edge edge in Managers.instance.dataManager.handOverData.roads)
+        {
+            GameObject road = Managers.instance.resourceManager.Instantiate("Road", locals.transform);
+            road.GetComponent<Line>().Init(nodes[edge.v0], nodes[edge.v1]);
+            road.name = $"Road{idx}";
+            idx++;
+        }
+    }
+    private void SetPosition()
     {
         Debug.Log("Random position");
-        while(nodes.Count < nodeNum)
+        int nodeCnt = 0;
+        while( nodeCnt < nodeNum) 
         {
             Vector2 position = nodePosition.CreateRandomSpot();
             if (!baseObject.inmyBound(position) || position == null)
             {
                 continue;
             }
-            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
-            tmpObject.name = $"node {nodes.Count}";
-
+            nodeCnt++;
             if (Managers.instance.gameManager.inBorderAlly(position))
-                tmpObject.GetComponent<Node>().Init("Ally", position);
+                Managers.instance.dataManager.handOverData.allyNodes.Add(position);
             else
-                tmpObject.GetComponent<Node>().Init("Enemy", position);
-            nodes.Add(position, tmpObject);
-            Managers.instance.dataManager.handOverData.nodes.Add(tmpObject.GetComponent<Node>());
+                Managers.instance.dataManager.handOverData.enemyNodes.Add(position);
         }
     }
+
     private void SetEdge()
     {
-
         Dictionary<Edge, int> edges = new Dictionary<Edge, int>();
-        int idx = 0;
         foreach (Triangle triangle in DTri.triangles)
         {
             foreach (Edge edge in triangle.edges)
             {
                 if (!edges.ContainsKey(edge) && !edges.ContainsKey(new Edge(edge.v1, edge.v0)))
                 {
-                    idx++;
                     edges.Add(edge, 0);
-                    GameObject road = Managers.instance.resourceManager.Instantiate("Road", DTri.transform);
-                    road.GetComponent<Line>().Init(nodes[edge.v0], nodes[edge.v1]);
-                    Managers.instance.dataManager.handOverData.Roads.Add(road.GetComponent<Line>());
-                    road.name = $"Road{idx}";
+                    Managers.instance.dataManager.handOverData.roads.Add(edge);
                 }
             }
         }
@@ -59,24 +94,29 @@ public class Map : MonoBehaviour
 
     public void CreateMap()
     {
-        DontDestroyOnLoad(this);
-        CreateNodes();
-        DTri.Init(70, 70);
-
-        int idx = 0;
-        foreach (Vector2 point in nodes.Keys)
-        {
-            Debug.Log($"map :{idx} 번째 시작");
-            DTri.AddPoint(point);
-            idx++;
-        }
-
-        DTri.RemoveSuperTriangle();
-        SetEdge();
+        CreateNode();
+        CreateRoad();
         baseObject.EnvCreate("Desert");
         baseObject.EnvCreate("NorthLand");
         baseObject.EnvCreate("DarkForest");
         baseObject.EnvCreate("Mount");
+    }
+
+    public void Init()
+    {
+        SetPosition();
+        DTri.Init(70, 70);
+
+        foreach (Vector2 point in Managers.instance.dataManager.handOverData.allyNodes)
+        {
+            DTri.AddPoint(point);
+        }
+        foreach (Vector2 point in Managers.instance.dataManager.handOverData.enemyNodes)
+        {
+            DTri.AddPoint(point);
+        }
+        DTri.RemoveSuperTriangle();
+        SetEdge();
     }
 
     public List<Line> GetLines()
@@ -91,6 +131,7 @@ public class Map : MonoBehaviour
         }
         return attack;
     }
+
     public void ReSetRoads()
     {
         GameObject[] objects = DTri.GetComponentsInChildren<GameObject>();

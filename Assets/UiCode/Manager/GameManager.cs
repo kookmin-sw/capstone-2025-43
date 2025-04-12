@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Day day;
     public LocalData data;
     
+
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        map.Init();
         map.CreateMap();
     }
 
@@ -40,17 +42,23 @@ public class GameManager : MonoBehaviour
 
     public void AllyToEnemy()
     {
-        List<Line> roads = new List<Line>();
-        foreach (Line line in Managers.instance.dataManager.handOverData.Roads)
+        List<Line> roads = map.GetLines();
+        foreach (Line line in roads)
         {
             if(line.node0 != line.node1)
                 roads.Add(line);
         }
         int a = Random.Range(0, roads.Count);
         if (roads[a].node0.tag == "Ally")
-            roads[a].node0.tag = "Enemy";
+        {
+            Managers.instance.dataManager.handOverData.allyNodes.Remove(roads[a].node0.GetComponent<Node>().pin);
+            Managers.instance.dataManager.handOverData.enemyNodes.Add(roads[a].node0.GetComponent<Node>().pin);
+        }
         else
-            roads[a].node1.tag = "Enmey";
+        {
+            Managers.instance.dataManager.handOverData.enemyNodes.Remove(roads[a].node0.GetComponent<Node>().pin);
+            Managers.instance.dataManager.handOverData.allyNodes.Add(roads[a].node0.GetComponent<Node>().pin);
+        }
     }
 
     
@@ -64,10 +72,12 @@ public class GameManager : MonoBehaviour
     // From BattleScene
     public void EndBattle(bool success)
     {
+        map.CreateMap();
         map.gameObject.SetActive(true);
         if (success)
         {
             //day -> night
+            Managers.instance.dataManager.handOverData.allyNodes.Add(Managers.instance.dataManager.handOverData.openLocal);
         }
         else
         {
