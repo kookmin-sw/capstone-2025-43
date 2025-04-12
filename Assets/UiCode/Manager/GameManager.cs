@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -53,12 +54,14 @@ public class GameManager : MonoBehaviour
     
     public void StartBattle()
     {
+        map.gameObject.SetActive(false);
         //todo start battle scene
     }
 
     // From BattleScene
     public void EndBattle(bool success)
     {
+        map.gameObject.SetActive(true);
         if (success)
         {
             //day -> night
