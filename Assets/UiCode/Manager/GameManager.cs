@@ -6,11 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public Map map;
     public Day day;
-    public List<Line> Roads = new List<Line>();
     public LocalData data;
-    public List<GameObject> nodes = new List<GameObject>();
-    public GameObject openLocal;
-
+    
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
 
@@ -19,7 +16,6 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         map.CreateMap();
-        Roads = map.GetLines();
     }
 
     public void GamePause()
@@ -40,11 +36,12 @@ public class GameManager : MonoBehaviour
 
     public void AllyToEnemy()
     {
-        int a = Random.Range(0, Roads.Count);
-        if (Roads[a].node0.tag == "Ally")
-            Roads[a].node0.tag = "Enemy";
+        List<Line> roads = Managers.instance.dataManager.handOverData.Roads;
+        int a = Random.Range(0, roads.Count);
+        if (roads[a].node0.tag == "Ally")
+            roads[a].node0.tag = "Enemy";
         else
-            Roads[a].node1.tag = "Enmey";
+            roads[a].node1.tag = "Enmey";
     }
 
     

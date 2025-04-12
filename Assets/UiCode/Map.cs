@@ -34,7 +34,7 @@ public class Map : MonoBehaviour
             else
                 tmpObject.GetComponent<Node>().Init("Enemy", position);
             nodes.Add(position, tmpObject);
-            Managers.instance.gameManager.nodes.Add(tmpObject);
+            Managers.instance.dataManager.handOverData.nodes.Add(tmpObject);
         }
     }
     private void SetEdge()
@@ -52,6 +52,7 @@ public class Map : MonoBehaviour
                     edges.Add(edge, 0);
                     GameObject road = Managers.instance.resourceManager.Instantiate("Road", DTri.transform);
                     road.GetComponent<Line>().Init(nodes[edge.v0], nodes[edge.v1]);
+                    Managers.instance.dataManager.handOverData.Roads.Add(road.GetComponent<Line>());
                     road.name = $"Road{idx}";
                 }
             }

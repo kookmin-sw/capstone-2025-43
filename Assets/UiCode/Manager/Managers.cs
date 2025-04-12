@@ -11,6 +11,7 @@ public class Managers : MonoBehaviour
     public PoolManager poolManager;
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         if (instance == null)
             instance = this;
     }

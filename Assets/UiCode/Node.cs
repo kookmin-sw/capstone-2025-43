@@ -40,7 +40,7 @@ public class Node : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Managers.instance.gameManager.openLocal = this.gameObject;
+        Managers.instance.dataManager.handOverData.openLocal = this.gameObject;
         // 다른 UI가 열려 있으면 클릭 무시
         if (!UiManager.instance.IsOnlyDefaultOpen())
             return;
