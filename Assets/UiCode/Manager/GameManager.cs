@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         {
             //day -> afternoon
         }
-        AllyToEnemy();
+        //AllyToEnemy();
     }
 
 }

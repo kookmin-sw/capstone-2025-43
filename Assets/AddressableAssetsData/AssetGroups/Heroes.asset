@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Heroes
   m_GUID: da1f84d0aa468f54c96d4d7d637bf076
   m_SerializeEntries:
+  - m_GUID: c58e49f49ce1dbd4caab290af072fc3c
+    m_Address: Paladin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5ebbd248d8cf7140929a0bac1972da7
     m_Address: Wizard
     m_ReadOnly: 0

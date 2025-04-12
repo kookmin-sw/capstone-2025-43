@@ -54,7 +54,7 @@ public class BattleManager : MonoBehaviour
             InitializePlayer();
             player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
-            InitializePlayerHeroes(testPlayerSpawnData);
+            InitializePlayerHeroes(Managers.instance.dataManager.handOverData.unitPositions);
             WaveStart(currentWaveCount);
         }
     }
