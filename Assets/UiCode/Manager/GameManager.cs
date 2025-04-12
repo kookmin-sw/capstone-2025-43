@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
         map.CreateMap();
     }
 
+    public void ReloadGame()
+    {
+        map = GameObject.Find("Map").GetComponent<Map>();
+        map.CreateMap();
+    }
+
     public void GamePause()
     {
         isPause = true;
@@ -59,31 +65,6 @@ public class GameManager : MonoBehaviour
             Managers.instance.dataManager.handOverData.enemyNodes.Remove(roads[a].node0.GetComponent<Node>().pin);
             Managers.instance.dataManager.handOverData.allyNodes.Add(roads[a].node0.GetComponent<Node>().pin);
         }
-    }
-
-    
-    public void StartBattle()
-    {
-        map.gameObject.SetActive(false);
-        //todo start battle scene
-        SceneManager.LoadScene("BattleScene");
-    }
-
-    // From BattleScene
-    public void EndBattle(bool success)
-    {
-        map.CreateMap();
-        map.gameObject.SetActive(true);
-        if (success)
-        {
-            //day -> night
-            Managers.instance.dataManager.handOverData.allyNodes.Add(Managers.instance.dataManager.handOverData.openLocal);
-        }
-        else
-        {
-            //day -> afternoon
-        }
-        //AllyToEnemy();
     }
 
 }

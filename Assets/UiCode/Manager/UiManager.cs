@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 public class UiManager : MonoBehaviour
 {
-    public static UiManager instance;
-
     public GameObject defaultUi;
     public GameObject localUi;
     public GameObject settingUi;
@@ -15,16 +13,16 @@ public class UiManager : MonoBehaviour
 
     private Stack<string> openUi = new Stack<string>();
 
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject); // 중복 방지
-    }
     public void Init()
     {
         openUi.Clear();
+        GameObject canvas = GameObject.Find("Canvas");
+        Debug.Log($"{canvas} is open");
+        defaultUi = canvas.transform.GetChild(0).gameObject;
+        localUi = canvas.transform.GetChild(1).gameObject;
+        settingUi= canvas.transform.GetChild(2).gameObject;
+        shopUi = canvas.transform.GetChild(3).gameObject;
+
         openUi.Push("Default");
         defaultUi.SetActive(true);
         localUi.SetActive(false);

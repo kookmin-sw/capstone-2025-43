@@ -32,13 +32,11 @@ public class ResultUI : MonoBehaviour
         sceneChangeButton.onClick.RemoveAllListeners();
         sceneChangeButton.onClick.AddListener(() =>
         {
+            StopAllCoroutines();
             if (Managers.instance != null && Managers.instance.gameManager != null)
             {
-                Managers.instance.gameManager.EndBattle(result);
+                Managers.instance.EndBattle(result);
             }
-
-            StopAllCoroutines();
-            SceneManager.LoadScene("MapScene");
         });
     }
     private void InitializeResultText(bool isWinning)

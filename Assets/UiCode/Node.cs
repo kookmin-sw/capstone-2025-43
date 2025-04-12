@@ -44,7 +44,7 @@ public class Node : MonoBehaviour
     {
         Managers.instance.dataManager.handOverData.openLocal = pin;
         // 다른 UI가 열려 있으면 클릭 무시
-        if (!UiManager.instance.IsOnlyDefaultOpen())
+        if (!Managers.instance.uiManager.IsOnlyDefaultOpen())
             return;
         this.GetComponent<UiEvent>().onClick();
     }

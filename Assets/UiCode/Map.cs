@@ -21,8 +21,6 @@ public class Map : MonoBehaviour
     {
         DTri = GetComponent<DelaunayTriangulation>();
         nodePosition = GetComponent<NodePosition>();
-        roads = new GameObject();
-        locals = new GameObject();
     }
 
     private void CreateNode()
@@ -94,6 +92,10 @@ public class Map : MonoBehaviour
 
     public void CreateMap()
     {
+        roads = new GameObject();
+        roads.name = "Roads";
+        locals = new GameObject();
+        locals.name = "Locals";
         CreateNode();
         CreateRoad();
         baseObject.EnvCreate("Desert");
@@ -117,6 +119,8 @@ public class Map : MonoBehaviour
         }
         DTri.RemoveSuperTriangle();
         SetEdge();
+
+        
     }
 
     public List<Line> GetLines()
