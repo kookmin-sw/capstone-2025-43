@@ -9,10 +9,12 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!UiManager.instance.IsOnlyDefaultOpen())
-            return;
         if (eventData == null)
             return;
+
+        if (active && !UiManager.instance.IsOnlyDefaultOpen())
+            return;
+            
         eventData.Use();
         onClick();
     }
