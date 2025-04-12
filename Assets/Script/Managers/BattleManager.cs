@@ -135,6 +135,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Wave End: All Heroes Defeated");
             //Show Defeat UI
             TacticUIManager.Instance.OpenResultUI(false);
+            Managers.instance.gameManager.EndBattle(false);
         }
     }
 
@@ -154,6 +155,7 @@ public class BattleManager : MonoBehaviour
             //Show Victory UI
             Debug.Log("Victory!!!");
             TacticUIManager.Instance.OpenResultUI(true);
+            Managers.instance.gameManager.EndBattle(true);
         }
         else
         {
@@ -387,6 +389,7 @@ public class BattleManager : MonoBehaviour
             playerHeroes.Add(character);
         }
     }
+
     public void AddMonsterinWave(Character character, int waveNumber)
     {
         if (waveNumber < 0 || waveNumber >= waveMonster.Count)

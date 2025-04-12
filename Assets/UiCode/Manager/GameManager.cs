@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public float GameTime;
     public bool isPause = false;
+
+
     public void GameStart()
     {
         map.CreateMap();
@@ -51,15 +54,15 @@ public class GameManager : MonoBehaviour
     public void StartBattle(GameObject obj)
     {
         //todo start battle scene
+        SceneManager.LoadScene("BattleScene");
     }
 
-    // From BattleScene
-    public void EndBattle(GameObject obj , bool success)
+    // Called in BattleScene
+    public void EndBattle(bool success)
     {
         if (success)
         {
             //day -> night
-            obj.tag = "Ally";
         }
         else
         {
@@ -67,4 +70,5 @@ public class GameManager : MonoBehaviour
         }
         AllyToEnemy();
     }
+
 }

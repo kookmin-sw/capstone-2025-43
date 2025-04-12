@@ -38,7 +38,7 @@ public class TacticInformationUI : MonoBehaviour
 
         tacticSystem = currentCharacter.GetComponent<TacticSystem>();
         int tacticCapacity = tacticSystem.TacticCapacity;
-
+        
         for (int i = 0; i < tacticInformTexts.Length; i++)
         {
             tacticInformTexts[i].gameObject.SetActive(i < tacticCapacity);
