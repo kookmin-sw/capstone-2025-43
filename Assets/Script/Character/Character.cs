@@ -112,7 +112,7 @@ public class Character : MonoBehaviour
         Hp = 0;
         if (TryGetComponent(out Animator animator))
         {
-            animator.SetBool("Dying", true);
+            animator.SetTrigger("Dying");
         }
         if (TryGetComponent(out TacticSystem tacticSystem))
         {
