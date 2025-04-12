@@ -11,9 +11,11 @@ public class Managers : MonoBehaviour
     public PoolManager poolManager;
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         if (instance == null)
+        {
+            DontDestroyOnLoad(this);
             instance = this;
+        }
     }
     private void Start()
     {
