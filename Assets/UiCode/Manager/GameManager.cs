@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public List<Line> Roads = new List<Line>();
     public LocalData data;
     public List<GameObject> nodes = new List<GameObject>();
-    public GameObject opneLocal;
+    public GameObject openLocal;
 
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;

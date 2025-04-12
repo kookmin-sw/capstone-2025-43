@@ -13,9 +13,9 @@ public class Base : MonoBehaviour
         return baseCollider.OverlapPoint(position);
     }
 
-    public void MapCreate()
+    public void EnvCreate()
     {
-        Managers.instance.resourceManager.Instantiate("ground", this.transform);
+        GameObject a = Managers.instance.resourceManager.Instantiate("ground", this.transform);
         Managers.instance.resourceManager.Instantiate("snow", this.transform);
         Managers.instance.resourceManager.Instantiate("forest", this.transform);
         Managers.instance.resourceManager.Instantiate("mount", this.transform);
