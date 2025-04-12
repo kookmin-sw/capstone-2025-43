@@ -31,6 +31,7 @@ public class ResultUI : MonoBehaviour
         sceneChangeButton.onClick.RemoveAllListeners();
         sceneChangeButton.onClick.AddListener(() =>
         {
+            StopAllCoroutines();
             SceneManager.LoadScene("MapScene");
         });
     }
@@ -70,5 +71,6 @@ public class ResultUI : MonoBehaviour
     private void InitializeRewardSlot()
     {
         //TODO :: After Reward Information Added, Display UI Icon
+
     }
 }

@@ -529,13 +529,13 @@ MonoBehaviour:
   isMonster: 0
   tacticCapacity: 3
   team_id: 1
-  GlobalCooldown: 5
+  GlobalCooldown: 4
   hp_max: 100
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 10
-  damage: 10
+  damage_max: 40
+  damage: 40
   attackRange_Max: 3
   attackRange: 3
   moveSpeed_origin: 10

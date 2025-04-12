@@ -32,9 +32,9 @@ public class BattleManager : MonoBehaviour
     private int currentWaveCount = 0;
 
 #if UNITY_EDITOR
+    //TODO:: Change To Map Handover Data
     public List<BattleWavePreset> TestWaveList;
-    public List<GameObject> TestPlayerList;
-    public List<HeroSpawnData> testPlayerSpawnData;
+    public string[] testPlayerSpawnData = new string[9];
 #endif
     private void Awake()
     {
@@ -48,6 +48,7 @@ public class BattleManager : MonoBehaviour
     {
         // TESTING PURPOSE
         {
+            //TODO:: Change To Map Handover Data
             FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
             InitializeFlag(TestWaveList);
             InitializePlayer();
@@ -134,8 +135,14 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Wave End: All Heroes Defeated");
             //Show Defeat UI
-            TacticUIManager.Instance.OpenResultUI(false);
-            Managers.instance.gameManager.EndBattle(false);
+            if (TacticUIManager.Instance != null)
+            {
+                TacticUIManager.Instance.OpenResultUI(false);
+            }
+            if (Managers.instance != null && Managers.instance.gameManager != null)
+            {
+                Managers.instance.gameManager.EndBattle(false);
+            }
         }
     }
 
@@ -338,7 +345,6 @@ public class BattleManager : MonoBehaviour
         Debug.Log($"[FlagManager] {flags.Count} Flag Initialized");
     }
 
-
     public void InitializeMonsterWave(List<BattleWavePreset> waves)
     {
         waveMonster.Clear();
@@ -346,6 +352,51 @@ public class BattleManager : MonoBehaviour
         {
             waveMonster.Add(new List<Character>());
             waves[i].CreateMonster(flags[i], i);
+        }
+    }
+
+    public void InitializePlayerHeroes(string[] unitPositions)
+    {
+        playerHeroes.Clear();
+
+        if (flags.Count == 0)
+        {
+            Debug.LogError("No flags initialized.");
+            return;
+        }
+
+        for (int i = 0; i < unitPositions.Length; i++)
+        {
+            string heroID = unitPositions[i];
+            if (string.IsNullOrEmpty(heroID))
+                continue;
+
+            AsyncOperationHandle handle = Addressables.LoadAssetAsync<GameObject>(heroID);
+            handle.WaitForCompletion();
+
+            if (handle.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError($"[Hero Init] Failed to load hero prefab: {heroID}");
+                continue;
+            }
+
+            GameObject prefab = (GameObject)handle.Result;
+            GameObject obj = Instantiate(prefab);
+
+            if (!obj.TryGetComponent(out Character character))
+            {
+                Debug.LogError($"[Hero Init] Prefab {heroID} has no Character component.");
+                Destroy(obj);
+                continue;
+            }
+
+            E_GridPosition gridPosition = (E_GridPosition)i+1;
+
+            character.gridposition = gridPosition;
+            character.transform.position = GridPositionUtil.GetGridPosition(gridPosition, 3f, flags[0].transform);
+            character.gameObject.SetActive(false);
+
+            playerHeroes.Add(character);
         }
     }
 

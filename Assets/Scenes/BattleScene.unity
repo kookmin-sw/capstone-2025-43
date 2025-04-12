@@ -2078,16 +2078,16 @@ MonoBehaviour:
   playerHeroes: []
   TestWaveList:
   - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
-  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
-  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
-  TestPlayerList: []
   testPlayerSpawnData:
-  - heroID: AllyTest
-    gridPosition: 5
-  - heroID: Wizard
-    gridPosition: 1
-  - heroID: AllyTest
-    gridPosition: 3
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - AllyTest
+  - Wizard
+  - AllyTest
 --- !u!1 &1145237769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7845863736866817294, guid: 961798caedd7c5f43b0f193983751320, type: 3}

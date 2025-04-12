@@ -16,6 +16,14 @@ public class TacticInformationUI : MonoBehaviour
     {
         closeButton.onClick.AddListener(CloseTacticUI);
     }
+    private void Start()
+    {
+        GCDtext.color = Color.black; 
+        for (int i = 0; i < tacticInformTexts.Length; i++)
+        {
+            tacticInformTexts[i].color = Color.black;
+        }
+    }
     void Update()
     {
         if(currentCharacter && tacticSystem)
@@ -35,7 +43,6 @@ public class TacticInformationUI : MonoBehaviour
     public void InitializeUI(Character character)
     {
         currentCharacter = character;
-
         tacticSystem = currentCharacter.GetComponent<TacticSystem>();
         int tacticCapacity = tacticSystem.TacticCapacity;
         

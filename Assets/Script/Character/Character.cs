@@ -6,6 +6,7 @@ using MyProject.Utils;
 using System.Collections;
 using UnityEngine.AI;
 using System.Threading.Tasks;
+using System;
 
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
@@ -50,22 +51,22 @@ public class Character : MonoBehaviour
 
     public void AddTacticComponent(Tactic tactic)
     {
+        if (tactic == null || stat == null)
+            return;
+
         if (!stat.Targets.Contains(tactic.targetType))
         {
             stat.Targets.Add(tactic.targetType);
-            Debug.Log("Added targetType: " + tactic.targetType);
         }
 
         if (!stat.Conditions.Contains(tactic.conditionType))
         {
             stat.Conditions.Add(tactic.conditionType);
-            Debug.Log("Added conditionType: " + tactic.conditionType);
         }
 
         if (!stat.Actions.Contains(tactic.actionType))
         {
             stat.Actions.Add(tactic.actionType);
-            Debug.Log("Added actionType: " + tactic.actionType);
         }
     }
     public bool IsEnemy(Character other)
