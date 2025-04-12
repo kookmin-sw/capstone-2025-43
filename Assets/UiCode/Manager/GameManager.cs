@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -39,7 +40,12 @@ public class GameManager : MonoBehaviour
 
     public void AllyToEnemy()
     {
-        List<Line> roads = Managers.instance.dataManager.handOverData.Roads;
+        List<Line> roads = new List<Line>();
+        foreach (Line line in Managers.instance.dataManager.handOverData.Roads)
+        {
+            if(line.node0 != line.node1)
+                roads.Add(line);
+        }
         int a = Random.Range(0, roads.Count);
         if (roads[a].node0.tag == "Ally")
             roads[a].node0.tag = "Enemy";
@@ -48,15 +54,17 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public void StartBattle(GameObject obj)
+    public void StartBattle()
     {
+        map.gameObject.SetActive(false);
         //todo start battle scene
         SceneManager.LoadScene("BattleScene");
     }
 
-    // Called in BattleScene
+    // From BattleScene
     public void EndBattle(bool success)
     {
+        map.gameObject.SetActive(true);
         if (success)
         {
             //day -> night

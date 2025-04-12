@@ -25,8 +25,6 @@ public class Map : MonoBehaviour
                 continue;
             }
             GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", nodePosition.transform);
-            tmpObject.GetComponent<Node>().localData = Managers.instance.dataManager.GetLocalData("TmpLocalData");
-            tmpObject.GetComponent<Node>().localData.node = tmpObject;
             tmpObject.name = $"node {nodes.Count}";
 
             if (Managers.instance.gameManager.inBorderAlly(position))
@@ -34,7 +32,7 @@ public class Map : MonoBehaviour
             else
                 tmpObject.GetComponent<Node>().Init("Enemy", position);
             nodes.Add(position, tmpObject);
-            Managers.instance.dataManager.handOverData.nodes.Add(tmpObject);
+            Managers.instance.dataManager.handOverData.nodes.Add(tmpObject.GetComponent<Node>());
         }
     }
     private void SetEdge()
@@ -46,7 +44,7 @@ public class Map : MonoBehaviour
         {
             foreach (Edge edge in triangle.edges)
             {
-                if (!edges.ContainsKey(edge))
+                if (!edges.ContainsKey(edge) && !edges.ContainsKey(new Edge(edge.v1, edge.v0)))
                 {
                     idx++;
                     edges.Add(edge, 0);
@@ -61,6 +59,7 @@ public class Map : MonoBehaviour
 
     public void CreateMap()
     {
+        DontDestroyOnLoad(this);
         CreateNodes();
         DTri.Init(70, 70);
 
@@ -74,6 +73,10 @@ public class Map : MonoBehaviour
 
         DTri.RemoveSuperTriangle();
         SetEdge();
+        baseObject.EnvCreate("Desert");
+        baseObject.EnvCreate("NorthLand");
+        baseObject.EnvCreate("DarkForest");
+        baseObject.EnvCreate("Mount");
     }
 
     public List<Line> GetLines()
