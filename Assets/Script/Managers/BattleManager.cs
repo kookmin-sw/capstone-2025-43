@@ -34,7 +34,6 @@ public class BattleManager : MonoBehaviour
 #if UNITY_EDITOR
     //TODO:: Change To Map Handover Data
     public List<BattleWavePreset> TestWaveList;
-    public string[] testPlayerSpawnData = new string[9];
 #endif
     private void Awake()
     {
@@ -139,10 +138,7 @@ public class BattleManager : MonoBehaviour
             {
                 TacticUIManager.Instance.OpenResultUI(false);
             }
-            if (Managers.instance != null && Managers.instance.gameManager != null)
-            {
-                Managers.instance.gameManager.EndBattle(false);
-            }
+
         }
     }
 
@@ -162,7 +158,6 @@ public class BattleManager : MonoBehaviour
             //Show Victory UI
             Debug.Log("Victory!!!");
             TacticUIManager.Instance.OpenResultUI(true);
-            Managers.instance.gameManager.EndBattle(true);
         }
         else
         {
