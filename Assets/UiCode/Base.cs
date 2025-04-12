@@ -13,15 +13,10 @@ public class Base : MonoBehaviour
         return baseCollider.OverlapPoint(position);
     }
 
-    public void EnvCreate()
+    public void EnvCreate(string env)
     {
-        GameObject a = Managers.instance.resourceManager.Instantiate("ground", this.transform);
-        Managers.instance.resourceManager.Instantiate("snow", this.transform);
-        Managers.instance.resourceManager.Instantiate("forest", this.transform);
-        Managers.instance.resourceManager.Instantiate("mount", this.transform);
-
-
-
+        GameObject a = Managers.instance.resourceManager.Instantiate(env, this.transform);
+        a.AddComponent<PolygonCollider2D>();
     }
 
 }

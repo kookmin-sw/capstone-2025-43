@@ -36,7 +36,12 @@ public class GameManager : MonoBehaviour
 
     public void AllyToEnemy()
     {
-        List<Line> roads = Managers.instance.dataManager.handOverData.Roads;
+        List<Line> roads = new List<Line>();
+        foreach (Line line in Managers.instance.dataManager.handOverData.Roads)
+        {
+            if(line.node0 != line.node1)
+                roads.Add(line);
+        }
         int a = Random.Range(0, roads.Count);
         if (roads[a].node0.tag == "Ally")
             roads[a].node0.tag = "Enemy";

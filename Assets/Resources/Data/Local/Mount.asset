@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bf74606e94cabf49a63afb99082aaa8, type: 3}
-  m_Name: BlackForest
+  m_Name: Mount
   m_EditorClassIdentifier: 
-  node: {fileID: 0}
-  localname: BlackForest
-  env: Forest
-  desc: "\uC6B8\uCC3D\uD55C \uB098\uBB34\uB4E4\uC758 \uACE0\uD5A5"
-  unitPool: []
+  localname: Mount
+  env: Mount
+  desc: "\uB192\uC740 \uC0B0"

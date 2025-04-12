@@ -2,23 +2,24 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using static UnityEngine.Analytics.IAnalytic;
+using NUnit.Framework.Constraints;
+using System.Linq;
 
 public class PoolManager : MonoBehaviour
 {
     [Header("#Enemy Pool")]
-    public List<UnitData> bossData; 
-    public List<Dictionary<string, int>>[] creepComb;
+    public const int wavesCount = 10;
+    public List<UnitData> bossData;
+    public List<BattleWavePreset>[] waves = new List<BattleWavePreset>[wavesCount];
 
     [Header("#Hero Pool")]
     public List<UnitData> ownHeroData;
     public List<UnitData> onSaleHeroData;
 
 
-    public List<Dictionary<string,int>> GetCreepPool()
+    public List<BattleWavePreset> GetCreepPool()
     {
-        if (creepComb.Length == 0)
-            return null;
-        return creepComb[Random.Range(0, creepComb.Length - 1)];
+        return waves[Random.Range(0, 10)];
     }
 
     public void SetHeroList()

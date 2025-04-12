@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 public class Node : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
     public Vector2 pin;
-    public int roundNum;
-    public List<List<Dictionary<string, int>>> rounds;
+    public List<List<BattleWavePreset>> battlewave = new List<List<BattleWavePreset>>();
     public LocalData localData;
 
     public void Init(string tag , Vector3 position)
@@ -16,6 +16,7 @@ public class Node : MonoBehaviour
         transform.position = position + offset;
         //Set Tag
         SetTag(tag);
+        SetStages();
     }
 
     public void SetTag(string tag)
@@ -33,9 +34,10 @@ public class Node : MonoBehaviour
 
     public void SetStages()
     {
-        for(int i = 0; i < roundNum; i++)
+        int waveCount = Random.Range(1, 3);
+        for (int i = 0; i < waveCount; i++)
         {
-            rounds.Add(Managers.instance.poolManager.GetCreepPool());
+            battlewave.Add(Managers.instance.poolManager.GetCreepPool());
         }
     }
     private void OnMouseDown()
@@ -47,4 +49,11 @@ public class Node : MonoBehaviour
         this.GetComponent<UiEvent>().onClick();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision == null)
+            return;
+        Debug.Log($"{collision.transform.name} data");
+        localData = Managers.instance.dataManager.GetLocalData(collision.transform.name);
+    }
 }
