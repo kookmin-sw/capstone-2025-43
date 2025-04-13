@@ -37,9 +37,9 @@ public class SlotHandler : MonoBehaviour
                 UnitData unitdata = child.GetChild(0).GetComponent<ListIdx>().unitData;
                 if (unitdata != null)
                     Managers.instance.dataManager.handOverData.unitPositions[idx] = unitdata.unitName;
-                else
-                    Managers.instance.dataManager.handOverData.unitPositions[idx] = null;
             }
+            else
+                Managers.instance.dataManager.handOverData.unitPositions[idx] = null;
         }
         Managers.instance.StartBattle();
     }
