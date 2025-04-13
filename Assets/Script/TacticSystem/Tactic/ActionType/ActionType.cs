@@ -62,7 +62,7 @@ public abstract class ActionType : ScriptableObject
         if (user == null || target == null) return;
 
         Vector3 direction = target.transform.position - user.transform.position;
-        direction.y = 0f; // Y�� ȸ�� ����
+        direction.y = 0f;
 
         if (direction.sqrMagnitude > 0.1f)
         {

@@ -2076,7 +2076,19 @@ MonoBehaviour:
   - {fileID: 0}
   battleCharacter: []
   playerHeroes: []
+  testunitPositions:
+  - Paladin
+  - Paladin
+  - 
+  - Wizard
+  - 
+  - 
+  - 
+  - 
+  - 
   TestWaveList:
+  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
+  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
   - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
 --- !u!1 &1145237769 stripped
 GameObject:

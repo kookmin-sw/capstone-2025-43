@@ -33,6 +33,7 @@ public class BattleManager : MonoBehaviour
 
 #if UNITY_EDITOR
     //TODO:: Change To Map Handover Data
+    public string[] testunitPositions;
     public List<BattleWavePreset> TestWaveList;
 #endif
     private void Awake()
@@ -53,7 +54,10 @@ public class BattleManager : MonoBehaviour
             InitializePlayer();
             player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
-            InitializePlayerHeroes(Managers.instance.dataManager.handOverData.unitPositions);
+            if (Managers.instance)
+                InitializePlayerHeroes(Managers.instance.dataManager.handOverData.unitPositions);
+            else
+                InitializePlayerHeroes(testunitPositions);
             WaveStart(currentWaveCount);
         }
     }

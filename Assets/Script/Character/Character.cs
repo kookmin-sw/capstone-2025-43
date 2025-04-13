@@ -115,9 +115,16 @@ public class Character : MonoBehaviour
         {
             animator.SetTrigger("Dying");
         }
+        StopAllCoroutines();
         if (TryGetComponent(out TacticSystem tacticSystem))
         {
             tacticSystem.isActive = false;
+        }
+        if (TryGetComponent(out NavMeshAgent agent))
+        {
+            agent.isStopped = true;       
+            agent.ResetPath();            
+            agent.velocity = Vector3.zero;
         }
         BattleManager.Instance.OnCharacterDied(this);
     }
