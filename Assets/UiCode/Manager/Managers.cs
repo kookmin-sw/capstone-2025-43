@@ -43,7 +43,6 @@ public class Managers : MonoBehaviour
     public void EndBattle(bool success)
     {
         SceneManager.LoadScene("MapScene");
-        StartCoroutine("WaitForSceneLoad");
         if (success)
         {
             //day -> night
@@ -54,6 +53,7 @@ public class Managers : MonoBehaviour
         {
             //day -> afternoon
         }
+        StartCoroutine("WaitForSceneLoad");
         //AllyToEnemy();
     }
     IEnumerator WaitForSceneLoad()
