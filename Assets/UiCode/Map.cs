@@ -92,16 +92,17 @@ public class Map : MonoBehaviour
 
     public void CreateMap()
     {
+        Destroy(baseObject.gameObject);
         roads = new GameObject();
         roads.name = "Roads";
         locals = new GameObject();
         locals.name = "Locals";
         CreateNode();
         CreateRoad();
-        baseObject.EnvCreate("Desert");
-        baseObject.EnvCreate("NorthLand");
-        baseObject.EnvCreate("DarkForest");
-        baseObject.EnvCreate("Mount");
+        EnvCreate("Desert");
+        EnvCreate("NorthLand");
+        EnvCreate("DarkForest");
+        EnvCreate("Mount");
     }
 
     public void Init()
@@ -143,6 +144,12 @@ public class Map : MonoBehaviour
         {
             obj.GetComponent<Line>().SetColor();
         }
+    }
+
+    public void EnvCreate(string env)
+    {
+        GameObject a = Managers.instance.resourceManager.Instantiate(env, this.transform);
+        a.AddComponent<PolygonCollider2D>();
     }
 
 }

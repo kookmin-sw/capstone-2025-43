@@ -13,10 +13,4 @@ public class Base : MonoBehaviour
         return baseCollider.OverlapPoint(position);
     }
 
-    public void EnvCreate(string env)
-    {
-        GameObject a = Managers.instance.resourceManager.Instantiate(env, this.transform);
-        a.AddComponent<PolygonCollider2D>();
-    }
-
 }
