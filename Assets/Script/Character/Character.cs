@@ -109,10 +109,14 @@ public class Character : MonoBehaviour
 
     public void Die()
     {
+        StopAllCoroutines();
+        agent.isStopped = true;
+        agent.ResetPath();
+        agent.velocity = Vector3.zero;
         Hp = 0;
-        if (TryGetComponent(out Animator animator))
+        if (anim)
         {
-            animator.SetTrigger("Dying");
+            anim.PlayDying();
         }
         if (TryGetComponent(out TacticSystem tacticSystem))
         {
