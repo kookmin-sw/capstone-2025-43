@@ -111,9 +111,7 @@ public class Character : MonoBehaviour
     public void Die()
     {
         StopAllCoroutines();
-        agent.isStopped = true;
-        agent.ResetPath();
-        agent.velocity = Vector3.zero;
+
         Hp = 0;
         if (anim)
         {
@@ -126,6 +124,9 @@ public class Character : MonoBehaviour
         }
         if (TryGetComponent(out NavMeshAgent agent))
         {
+            agent.isStopped = true;
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
             agent.isStopped = true;       
             agent.ResetPath();            
             agent.velocity = Vector3.zero;

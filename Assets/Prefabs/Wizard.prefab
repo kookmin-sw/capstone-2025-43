@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ebf7e86f1f9535c4199934941d36ed93, type: 3}
       propertyPath: m_Name
-      value: Wizard_Test
+      value: Wizard
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ebf7e86f1f9535c4199934941d36ed93, type: 3}
       propertyPath: m_Layer
@@ -516,8 +516,8 @@ MonoBehaviour:
   mp: 50
   damage_max: 70
   damage: 70
-  attackRange_Max: 7
-  attackRange: 7
+  attackRange_Max: 10
+  attackRange: 10
   moveSpeed_origin: 10
   moveSpeed: 10
   rotationSpeed_origin: 10
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineColor: {r: 0, g: 0, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []

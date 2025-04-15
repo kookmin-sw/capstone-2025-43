@@ -18,6 +18,6 @@ MonoBehaviour:
   environmentRotation: {x: 0, y: 0, z: 0, w: 1}
   environmentScale: {x: 1, y: 1, z: 1}
   battleFieldPrefab: {fileID: 802175129831843423, guid: b9a5f0c7e85c7c04fa8748a7abb9ce13, type: 3}
-  battlePosition: {x: 17.2, y: 14.8, z: 33.8}
+  battlePosition: {x: 17.2, y: -5, z: 33.8}
   battleRotation: {x: -0, y: -0.7516566, z: -0, w: 0.6595546}
   battleScale: {x: 1, y: 1, z: 1}
