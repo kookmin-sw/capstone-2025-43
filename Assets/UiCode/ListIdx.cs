@@ -23,4 +23,9 @@ public class ListIdx : MonoBehaviour
         hpSlider.value = (float)data.curHp / data.maxHp;
         mpSlider.value = (float)data.curMp / data.maxMp;
     }
+
+    public void SetParent(Transform parent)
+    {
+        this.gameObject.transform.parent = parent;
+    }
 }

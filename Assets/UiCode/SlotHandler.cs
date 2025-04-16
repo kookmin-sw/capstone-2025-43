@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SlotHandler : MonoBehaviour
 {
+
     public Transform dropContent; // 드롭된 유닛들이 들어있는 ScrollView의 Content
 
     public void PurchaseItem()
@@ -44,4 +45,15 @@ public class SlotHandler : MonoBehaviour
         Managers.instance.StartBattle();
     }
 
+    public void CloseLocalButton()
+    {
+        for (int idx = 0; idx < dropContent.childCount; idx++)
+        {
+            Transform child = dropContent.GetChild(idx);
+            if (child.childCount > 0)
+            {
+                child.GetChild(0).GetComponent<Drag>().returnToFrom();
+            }
+        }
+    }
 }
