@@ -111,9 +111,9 @@ public class Character : MonoBehaviour
     public void Die()
     {
         StopAllCoroutines();
-        agent.isStopped = true;
-        agent.ResetPath();
-        agent.velocity = Vector3.zero;
+        this.agent.isStopped = true;
+        this.agent.ResetPath();
+        this.agent.velocity = Vector3.zero;
         Hp = 0;
         if (anim)
         {
