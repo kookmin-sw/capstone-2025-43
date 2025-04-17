@@ -8,10 +8,9 @@ public class HandOverData : MonoBehaviour
 
 
     [Header("# Node & Edge")]
-    public List<Vector2> allyNodes = new List<Vector2>();
-    public List<Vector2> enemyNodes = new List<Vector2>();
+    public Dictionary<int, LocalInfo> localInfos = new Dictionary<int, LocalInfo>();
     public List<Edge> roads = new List<Edge>();
 
     [Header("# OpenLocal")]
-    public Vector2 openLocal;
+    public int openLocal;
 }

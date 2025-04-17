@@ -2,21 +2,20 @@ using UnityEngine;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
 public class Node : MonoBehaviour
 {
+    public int nodeId;
+    public LocalInfo localInfo;
     public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
-    public Vector2 pin;
-    public List<List<BattleWavePreset>> battlewave = new List<List<BattleWavePreset>>();
-    public LocalData localData;
-
-    public void Init(string tag , Vector3 position)
+    public void Init(LocalInfo inputInfo , int id)
     {
-        pin = position;
+        nodeId = id;
+        localInfo = inputInfo;
         //Set Position
-        transform.position = position + offset;
+        transform.position = localInfo.poisiton + offset;
         //Set Tag
-        SetTag(tag);
-        SetStages();
+        SetTag(localInfo.side);
     }
 
     public void SetTag(string tag)
@@ -37,12 +36,12 @@ public class Node : MonoBehaviour
         int waveCount = Random.Range(1, 3);
         for (int i = 0; i < waveCount; i++)
         {
-            battlewave.Add(Managers.instance.poolManager.GetCreepPool());
+            localInfo.battleWaves.Add(Managers.instance.poolManager.GetCreepPool());
         }
     }
     private void OnMouseDown()
     {
-        Managers.instance.dataManager.handOverData.openLocal = pin;
+        Managers.instance.dataManager.handOverData.openLocal = nodeId;
         // 다른 UI가 열려 있으면 클릭 무시
         if (!Managers.instance.uiManager.IsOnlyDefaultOpen())
             return;
@@ -54,6 +53,6 @@ public class Node : MonoBehaviour
         if (collision == null)
             return;
         Debug.Log($"{collision.transform.name} data");
-        localData = Managers.instance.dataManager.GetLocalData(collision.transform.name);
+        localInfo.localData = Managers.instance.dataManager.GetLocalData(collision.transform.name);
     }
 }

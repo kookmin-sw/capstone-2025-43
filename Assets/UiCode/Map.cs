@@ -6,6 +6,7 @@ using NUnit.Framework.Constraints;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using static Unity.Burst.Intrinsics.X86.Sse4_2;
 
 public class Map : MonoBehaviour
 {
@@ -27,21 +28,13 @@ public class Map : MonoBehaviour
     {
         nodes.Clear();
         int idx = 0;
-        foreach (Vector2 position in Managers.instance.dataManager.handOverData.allyNodes)
+        foreach (var info  in Managers.instance.dataManager.handOverData.localInfos)
         {
-            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", roads.transform);
-            tmpObject.GetComponent<Node>().Init("Ally",position);
-            tmpObject.name = $"node {idx}";
-            nodes.Add(position, tmpObject);
             idx++;
-        }
-        foreach (Vector2 position in Managers.instance.dataManager.handOverData.enemyNodes)
-        {
-            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", roads.transform);
-            tmpObject.GetComponent<Node>().Init("Enemy", position);
+            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", locals.transform);
+            tmpObject.GetComponent<Node>().Init(info.Value, info.Key);
             tmpObject.name = $"node {idx}";
-            nodes.Add(position, tmpObject);
-            idx++;
+            nodes.Add(info.Value.poisiton, tmpObject);
         }
     }
     private void CreateRoad()
@@ -49,7 +42,7 @@ public class Map : MonoBehaviour
         int idx = 0;
         foreach (Edge edge in Managers.instance.dataManager.handOverData.roads)
         {
-            GameObject road = Managers.instance.resourceManager.Instantiate("Road", locals.transform);
+            GameObject road = Managers.instance.resourceManager.Instantiate("Road", roads.transform);
             road.GetComponent<Line>().Init(nodes[edge.v0], nodes[edge.v1]);
             road.name = $"Road{idx}";
             idx++;
@@ -67,10 +60,11 @@ public class Map : MonoBehaviour
                 continue;
             }
             nodeCnt++;
+
             if (Managers.instance.gameManager.inBorderAlly(position))
-                Managers.instance.dataManager.handOverData.allyNodes.Add(position);
+                Managers.instance.dataManager.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Ally"));
             else
-                Managers.instance.dataManager.handOverData.enemyNodes.Add(position);
+                Managers.instance.dataManager.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Enemy"));
         }
     }
 
@@ -110,12 +104,9 @@ public class Map : MonoBehaviour
         SetPosition();
         DTri.Init(70, 70);
 
-        foreach (Vector2 point in Managers.instance.dataManager.handOverData.allyNodes)
+        foreach (LocalInfo info in Managers.instance.dataManager.handOverData.localInfos.Values)
         {
-            DTri.AddPoint(point);
-        }
-        foreach (Vector2 point in Managers.instance.dataManager.handOverData.enemyNodes)
-        {
+            Vector2 point = info.poisiton;
             DTri.AddPoint(point);
         }
         DTri.RemoveSuperTriangle();

@@ -46,8 +46,7 @@ public class Managers : MonoBehaviour
         if (success)
         {
             //day -> night
-            dataManager.handOverData.allyNodes.Add(dataManager.handOverData.openLocal);
-            dataManager.handOverData.enemyNodes.Remove(dataManager.handOverData.openLocal);
+            dataManager.handOverData.localInfos[dataManager.handOverData.openLocal].side = "Ally";
         }
         else
         {

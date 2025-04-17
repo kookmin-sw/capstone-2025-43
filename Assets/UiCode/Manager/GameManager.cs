@@ -45,26 +45,4 @@ public class GameManager : MonoBehaviour
     {
         return position.x < xBorderAlly && position.y < yBorderAlly;
     }
-
-    public void AllyToEnemy()
-    {
-        List<Line> roads = map.GetLines();
-        foreach (Line line in roads)
-        {
-            if(line.node0 != line.node1)
-                roads.Add(line);
-        }
-        int a = Random.Range(0, roads.Count);
-        if (roads[a].node0.tag == "Ally")
-        {
-            Managers.instance.dataManager.handOverData.allyNodes.Remove(roads[a].node0.GetComponent<Node>().pin);
-            Managers.instance.dataManager.handOverData.enemyNodes.Add(roads[a].node0.GetComponent<Node>().pin);
-        }
-        else
-        {
-            Managers.instance.dataManager.handOverData.enemyNodes.Remove(roads[a].node0.GetComponent<Node>().pin);
-            Managers.instance.dataManager.handOverData.allyNodes.Add(roads[a].node0.GetComponent<Node>().pin);
-        }
-    }
-
 }
