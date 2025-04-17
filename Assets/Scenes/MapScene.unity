@@ -832,6 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156660319}
   - component: {fileID: 156660320}
+  - component: {fileID: 156660321}
   m_Layer: 5
   m_Name: Local
   m_TagString: Untagged
@@ -878,6 +879,22 @@ MonoBehaviour:
   isOwned: 1
   listContent: {fileID: 1912609516}
   dataList: []
+--- !u!114 &156660321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156660318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e474bb6daa30149ad1e7771183f164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 58925857}
+  desc: {fileID: 2035766416}
+  creepList: {fileID: 1098162441}
+  boss: {fileID: 1770108393}
 --- !u!1 &181958915
 GameObject:
   m_ObjectHideFlags: 0
@@ -5710,9 +5727,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  allyNodes: []
-  enemyNodes: []
-  openLocal: {x: 0, y: 0}
+  openLocal: 0
 --- !u!4 &1191423056
 Transform:
   m_ObjectHideFlags: 0
@@ -8143,7 +8158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00029951372}
+  m_AnchoredPosition: {x: 0, y: 0.00007106772}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1912609518
