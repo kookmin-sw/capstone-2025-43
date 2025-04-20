@@ -4,65 +4,38 @@ using System.Collections;
 public class Managers : MonoBehaviour
 {
 
-    public static Managers instance;
-    public UiManager uiManager;
-    public GameManager gameManager;
-    public ResourceManager resourceManager;
-    public DataManager dataManager;
-    public PoolManager poolManager;
+    static Managers _instance;
+    public static Managers Instance { get { Init(); return _instance; } }
+
+    UiManager _ui = new UiManager();
+    GameManager _game = new GameManager();
+    ResourceManager _resource = new ResourceManager();
+    DataManager _data = new DataManager();
+    PoolManager _pool = new PoolManager();
+
+    public static UiManager Ui { get { return Instance._ui; } }
+    public static GameManager Game { get { return Instance._game; } }
+    public static ResourceManager Resource { get { return Instance._resource; } }
+    public static DataManager Data { get { return Instance._data; } }
+    public static PoolManager Pool { get { return Instance._pool; } }
     
-    
-    private void Start()
+    static void Init()
     {
-        if (GameObject.Find("%Managers") != null)
+        if (_instance == null)
         {
-            Destroy(this.gameObject);
-            return;
-        }
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this);
-            this.name = '%' + this.name;
-            instance = this;
+            GameObject mO = GameObject.Find("@Managers");
+            if(mO == null)
+            {
+                mO = new GameObject { name = "@Managers" };
+                mO.AddComponent<Managers>();
+                DontDestroyOnLoad(mO);
+            }
+            _instance = mO.GetComponent<Managers>();
         }
         Debug.Log("Start");
         //todo login
-        gameManager.GameStart();
-        uiManager.Init();
-        poolManager.SetHeroList();
+        Game.GameStart();
     }
 
-    public void StartBattle()
-    {
-        gameManager.map.gameObject.SetActive(false);
-        //todo start battle scene
-        SceneManager.LoadScene("BattleScene");
-    }
-
-    // From BattleScene
-    public void EndBattle(bool success)
-    {
-        SceneManager.LoadScene("MapScene");
-        if (success)
-        {
-            //day -> night
-            dataManager.handOverData.localInfos[dataManager.handOverData.openLocal].side = "Ally";
-        }
-        else
-        {
-            //day -> afternoon
-        }
-        StartCoroutine("WaitForSceneLoad");
-        //AllyToEnemy();
-    }
-    IEnumerator WaitForSceneLoad()
-    {
-        yield return new WaitForSeconds(1f); // 한 프레임 대기
-        Debug.Log("아마도 씬 로드 완료 후입니다!");
-        uiManager.Init();
-        poolManager.SetHeroList();
-        gameManager.ReloadGame();
-
-        // 씬 오브젝트 접근 가능
-    }
+    
 }

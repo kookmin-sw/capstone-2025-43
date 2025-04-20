@@ -54,8 +54,8 @@ public class BattleManager : MonoBehaviour
             InitializePlayer();
             player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
-            if (Managers.instance)
-                InitializePlayerHeroes(Managers.instance.dataManager.handOverData.unitPositions);
+            if (Managers.Instance)
+                InitializePlayerHeroes(Managers.Data.handOverData.unitPositions);
             else
                 InitializePlayerHeroes(testunitPositions);
             WaveStart(currentWaveCount);

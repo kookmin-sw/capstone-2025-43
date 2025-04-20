@@ -12,7 +12,7 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
         if (eventData == null)
             return;
 
-        if (active && !Managers.instance.uiManager.IsOnlyDefaultOpen())
+        if (active && !Managers.Ui.IsOnlyDefaultOpen())
             return;
             
         eventData.Use();
@@ -21,6 +21,6 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
 
     public void onClick()
     {
-        Managers.instance.uiManager.SetUiCondition(targetName, active);
+        Managers.Ui.SetUiCondition(targetName, active);
     }
 }

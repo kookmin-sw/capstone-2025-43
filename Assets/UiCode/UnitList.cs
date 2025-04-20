@@ -24,14 +24,14 @@ public class UnitList : MonoBehaviour
         Init();
 
         if (isOwned) 
-            dataList = Managers.instance.poolManager.ownHeroData;
+            dataList = Managers.Pool.ownHeroData;
         else 
-            dataList = Managers.instance.poolManager.onSaleHeroData;
+            dataList = Managers.Pool.onSaleHeroData;
 
         foreach (UnitData data in dataList)
         {
             // listidx ����
-            GameObject go = Managers.instance.resourceManager.Instantiate("ListIdx", listContent.transform);
+            GameObject go = Managers.Resource.Instantiate("ListIdx", listContent.transform);
             if (go == null)
             {
                 Debug.LogError("ListIdx 프리팹이 Instantiate되지 않았습니다!");

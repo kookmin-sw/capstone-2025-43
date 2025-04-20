@@ -26,7 +26,7 @@ public class PoolManager : MonoBehaviour
     {
         ownHeroData.Clear();
         onSaleHeroData.Clear();
-        UnitData[] dataList = Managers.instance.dataManager.GetUnitDataset("Ally");
+        UnitData[] dataList = Managers.Data.GetUnitDataset("Ally");
         foreach (UnitData data in dataList)
         {
             if (data.own)

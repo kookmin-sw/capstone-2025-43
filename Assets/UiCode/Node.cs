@@ -36,14 +36,14 @@ public class Node : MonoBehaviour
         int waveCount = Random.Range(1, 3);
         for (int i = 0; i < waveCount; i++)
         {
-            localInfo.battleWaves.Add(Managers.instance.poolManager.GetCreepPool());
+            localInfo.battleWaves.Add(Managers.Pool.GetCreepPool());
         }
     }
     private void OnMouseDown()
     {
-        Managers.instance.dataManager.handOverData.openLocal = nodeId;
+        Managers.Data.handOverData.openLocal = nodeId;
         // 다른 UI가 열려 있으면 클릭 무시
-        if (!Managers.instance.uiManager.IsOnlyDefaultOpen())
+        if (!Managers.Ui.IsOnlyDefaultOpen())
             return;
         this.GetComponent<UiEvent>().onClick();
     }
@@ -53,6 +53,6 @@ public class Node : MonoBehaviour
         if (collision == null)
             return;
         Debug.Log($"{collision.transform.name} data");
-        localInfo.localData = Managers.instance.dataManager.GetLocalData(collision.transform.name);
+        localInfo.localData = Managers.Data.GetLocalData(collision.transform.name);
     }
 }

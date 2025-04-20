@@ -28,10 +28,10 @@ public class Map : MonoBehaviour
     {
         nodes.Clear();
         int idx = 0;
-        foreach (var info  in Managers.instance.dataManager.handOverData.localInfos)
+        foreach (var info  in Managers.Data.handOverData.localInfos)
         {
             idx++;
-            GameObject tmpObject = Managers.instance.resourceManager.Instantiate("Node", locals.transform);
+            GameObject tmpObject = Managers.Resource.Instantiate("Node", locals.transform);
             tmpObject.GetComponent<Node>().Init(info.Value, info.Key);
             tmpObject.name = $"node {idx}";
             nodes.Add(info.Value.poisiton, tmpObject);
@@ -40,9 +40,9 @@ public class Map : MonoBehaviour
     private void CreateRoad()
     {
         int idx = 0;
-        foreach (Edge edge in Managers.instance.dataManager.handOverData.roads)
+        foreach (Edge edge in Managers.Data.handOverData.roads)
         {
-            GameObject road = Managers.instance.resourceManager.Instantiate("Road", roads.transform);
+            GameObject road = Managers.Resource.Instantiate("Road", roads.transform);
             road.GetComponent<Line>().Init(nodes[edge.v0], nodes[edge.v1]);
             road.name = $"Road{idx}";
             idx++;
@@ -61,10 +61,10 @@ public class Map : MonoBehaviour
             }
             nodeCnt++;
 
-            if (Managers.instance.gameManager.inBorderAlly(position))
-                Managers.instance.dataManager.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Ally"));
+            if (Managers.Game.inBorderAlly(position))
+                Managers.Data.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Ally"));
             else
-                Managers.instance.dataManager.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Enemy"));
+                Managers.Data.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Enemy"));
         }
     }
 
@@ -78,7 +78,7 @@ public class Map : MonoBehaviour
                 if (!edges.ContainsKey(edge) && !edges.ContainsKey(new Edge(edge.v1, edge.v0)))
                 {
                     edges.Add(edge, 0);
-                    Managers.instance.dataManager.handOverData.roads.Add(edge);
+                    Managers.Data.handOverData.roads.Add(edge);
                 }
             }
         }
@@ -104,7 +104,7 @@ public class Map : MonoBehaviour
         SetPosition();
         DTri.Init(70, 70);
 
-        foreach (LocalInfo info in Managers.instance.dataManager.handOverData.localInfos.Values)
+        foreach (LocalInfo info in Managers.Data.handOverData.localInfos.Values)
         {
             Vector2 point = info.poisiton;
             DTri.AddPoint(point);
@@ -139,7 +139,7 @@ public class Map : MonoBehaviour
 
     public void EnvCreate(string env)
     {
-        GameObject a = Managers.instance.resourceManager.Instantiate(env, this.transform);
+        GameObject a = Managers.Resource.Instantiate(env, this.transform);
         a.AddComponent<PolygonCollider2D>();
     }
 
