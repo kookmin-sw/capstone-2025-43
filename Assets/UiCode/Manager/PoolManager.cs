@@ -5,7 +5,7 @@ using static UnityEngine.Analytics.IAnalytic;
 using NUnit.Framework.Constraints;
 using System.Linq;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager
 {
     [Header("#Enemy Pool")]
     public const int wavesCount = 10;
@@ -13,8 +13,8 @@ public class PoolManager : MonoBehaviour
     public List<BattleWavePreset>[] waves = new List<BattleWavePreset>[wavesCount];
 
     [Header("#Hero Pool")]
-    public List<UnitData> ownHeroData;
-    public List<UnitData> onSaleHeroData;
+    public List<UnitData> ownHeroData = new List<UnitData>();
+    public List<UnitData> onSaleHeroData = new List<UnitData>();
 
 
     public List<BattleWavePreset> GetCreepPool()

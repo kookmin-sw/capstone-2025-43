@@ -13,4 +13,9 @@ public class HandOverData : MonoBehaviour
 
     [Header("# OpenLocal")]
     public int openLocal;
+
+    public void Init()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 }

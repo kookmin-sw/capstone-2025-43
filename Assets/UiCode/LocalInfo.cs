@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class LocalInfo : MonoBehaviour
+public class LocalInfo
 {
     [Header("# Data")]
     public List<List<BattleWavePreset>> battleWaves = new List<List<BattleWavePreset>>();

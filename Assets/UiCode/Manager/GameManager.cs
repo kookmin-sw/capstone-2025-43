@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
     public int time; // 0 : morning, 1 : afternoon, 2 : night
     public Map map;
@@ -21,12 +21,10 @@ public class GameManager : MonoBehaviour
     public bool isPause = false;
 
 
-    public void GameStart()
+    public void Init()
     {
+        map = GameObject.Find("Map").GetComponent<Map>();
         map.Init();
-        map.CreateMap();
-        Managers.Ui.Init();
-        Managers.Pool.SetHeroList();
     }
 
     public void StartBattle()
@@ -49,7 +47,7 @@ public class GameManager : MonoBehaviour
         {
             //day -> afternoon
         }
-        StartCoroutine("WaitForSceneLoad");
+        //Load Game
         //AllyToEnemy();
     }
     IEnumerator WaitForSceneLoad()

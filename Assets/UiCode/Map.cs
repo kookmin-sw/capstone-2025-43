@@ -1,12 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
-using NUnit.Framework.Constraints;
-using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
-using static Unity.Burst.Intrinsics.X86.Sse4_2;
 
 public class Map : MonoBehaviour
 {
