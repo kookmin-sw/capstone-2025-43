@@ -5,12 +5,10 @@ using Unity.VisualScripting;
 using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
 public class Node : MonoBehaviour
 {
-    public int nodeId;
     public LocalInfo localInfo;
     public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
-    public void Init(LocalInfo inputInfo , int id)
+    public void Init(LocalInfo inputInfo)
     {
-        nodeId = id;
         localInfo = inputInfo;
         //Set Position
         transform.position = localInfo.poisiton + offset;
@@ -41,7 +39,7 @@ public class Node : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Managers.Data.handOverData.openLocal = nodeId;
+        Managers.Data.handOverData.openLocal = localInfo.poisiton;
         // 다른 UI가 열려 있으면 클릭 무시
         if (!Managers.Ui.IsOnlyDefaultOpen())
             return;

@@ -1,9 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using static UnityEngine.Analytics.IAnalytic;
-using NUnit.Framework.Constraints;
-using System.Linq;
 
 public class PoolManager
 {
@@ -16,6 +12,11 @@ public class PoolManager
     public List<UnitData> ownHeroData = new List<UnitData>();
     public List<UnitData> onSaleHeroData = new List<UnitData>();
 
+
+    public void Init()
+    {
+        SetHeroList();
+    }
 
     public List<BattleWavePreset> GetCreepPool()
     {

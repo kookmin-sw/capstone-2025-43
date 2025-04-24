@@ -48,7 +48,7 @@ public class GameManager
             //day -> afternoon
         }
         //Load Game
-        //AllyToEnemy();
+        TakenAlly();
     }
     IEnumerator WaitForSceneLoad()
     {
@@ -65,7 +65,6 @@ public class GameManager
         map = GameObject.Find("Map").GetComponent<Map>();
         map.CreateMap();
     }
-
 
     public void GamePause()
     {
@@ -89,7 +88,15 @@ public class GameManager
     }
     public void TakenAlly()
     {
-        //handover data ¼öÁ¤
+        List<Line> attack = map.GetLines();
+        int t = Random.Range(0, attack.Count);
+        Line cur = attack[t];
+        LocalInfo a = Managers.Data.handOverData.localInfos[cur.p0];
+        LocalInfo b = Managers.Data.handOverData.localInfos[cur.p1];
+        if(a.side == "Ally")
+            a.side = "Enemy";
+        else
+            b.side = "Enemy";
     }
 
 }

@@ -8,11 +8,11 @@ public class HandOverData : MonoBehaviour
 
 
     [Header("# Node & Edge")]
-    public Dictionary<int, LocalInfo> localInfos = new Dictionary<int, LocalInfo>();
+    public Dictionary<Vector2, LocalInfo> localInfos = new Dictionary<Vector2, LocalInfo>();
     public List<Edge> roads = new List<Edge>();
 
     [Header("# OpenLocal")]
-    public int openLocal;
+    public Vector2 openLocal;
 
     public void Init()
     {

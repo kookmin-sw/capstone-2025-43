@@ -38,6 +38,7 @@ public class Managers : MonoBehaviour
             Ui.Init();
             Data.Init();
             Game.Init();
+            Pool.Init();
         }
     }
 
