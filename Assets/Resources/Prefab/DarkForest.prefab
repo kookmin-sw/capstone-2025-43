@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684497243699696826}
   - component: {fileID: 4991131352528768003}
-  - component: {fileID: 5617093241808034826}
+  - component: {fileID: 1214637433231611245}
   m_Layer: 0
   m_Name: DarkForest
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5617093241808034826
+--- !u!60 &1214637433231611245
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -8,6 +8,7 @@ public class LocalInfo
     public LocalData localData = null;
     public Vector3 poisiton;
     public string side;
+    public string env;
     public LocalInfo(Vector3 point , string tag)
     {
         this.poisiton = point;

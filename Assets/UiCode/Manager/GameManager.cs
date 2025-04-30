@@ -41,14 +41,16 @@ public class GameManager
         if (success)
         {
             //day -> night
+            time = 2;
             Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
         }
         else
         {
+            time = 1;
             //day -> afternoon
         }
         //Load Game
-        TakenAlly();
+        WaitForSceneLoad();
     }
     IEnumerator WaitForSceneLoad()
     {
@@ -84,7 +86,7 @@ public class GameManager
 
     public void Heal()
     {
-        // todo heal heros
+        //heal : poolmanager -> own hero
     }
     public void TakenAlly()
     {
@@ -98,5 +100,6 @@ public class GameManager
         else
             b.side = "Enemy";
     }
+
 
 }

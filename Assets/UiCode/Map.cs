@@ -1,22 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.iOS;
+using NUnit.Framework.Constraints;
+using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditor;
 
 public class Map : MonoBehaviour
 {
     const int nodeNum = 40;
-    public DelaunayTriangulation DTri;
-    public NodePosition nodePosition;
+    public DelaunayTriangulation DTri = new DelaunayTriangulation();
+    public NodePosition nodePosition = new NodePosition();
     public GameObject roads;
     public GameObject locals;
     public Base baseObject;
-
-    private void Awake()
-    {
-        DTri = GetComponent<DelaunayTriangulation>();
-        nodePosition = GetComponent<NodePosition>();
-    }
-
+    public List<GameObject> Envs = new List<GameObject>();
     private void CreateNode()
     {
         int idx = 0;
@@ -80,12 +77,13 @@ public class Map : MonoBehaviour
         Destroy(baseObject.gameObject);
         roads = new GameObject() { name = "Roads" };
         locals = new GameObject() { name = "Locals"};
-        CreateNode();
-        CreateRoad();
         EnvCreate("Desert");
         EnvCreate("NorthLand");
         EnvCreate("DarkForest");
         EnvCreate("Mount");
+        SetEnv();
+        CreateNode();
+        CreateRoad();
     }
 
     public void Init()
@@ -121,7 +119,7 @@ public class Map : MonoBehaviour
 
     public void ReSetRoads()
     {
-        GameObject[] objects = DTri.GetComponentsInChildren<GameObject>();
+        GameObject[] objects = roads.GetComponentsInChildren<GameObject>();
         foreach (GameObject obj in objects)
         {
             obj.GetComponent<Line>().SetColor();
@@ -132,6 +130,21 @@ public class Map : MonoBehaviour
     {
         GameObject a = Managers.Resource.Instantiate(env, this.transform);
         a.AddComponent<PolygonCollider2D>();
+        Envs.Add(a);
+    }
+
+    public void SetEnv()
+    {
+        foreach(var info in Managers.Data.handOverData.localInfos)
+        {
+            foreach(var env in Envs)
+            {
+                if (env.GetComponent<Base>().inmyBound(info.Key))
+                {
+                    info.Value.env = env.name;
+                }
+            }
+        }
     }
 
 }

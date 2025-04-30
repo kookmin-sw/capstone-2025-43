@@ -46,11 +46,12 @@ public class Node : MonoBehaviour
         this.GetComponent<UiEvent>().onClick();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision == null)
+        Debug.Log("환경과 충돌");
+        if (other == null)
             return;
-        Debug.Log($"{collision.transform.name} data");
-        localInfo.localData = Managers.Data.GetLocalData(collision.transform.name);
+        Debug.Log($"{other.transform.name} data");
+        localInfo.localData = Managers.Data.GetLocalData(other.transform.name);
     }
 }
