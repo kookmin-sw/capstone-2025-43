@@ -18,7 +18,11 @@ public class Managers : MonoBehaviour
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static DataManager Data { get { return Instance._data; } }
     public static PoolManager Pool { get { return Instance._pool; } }
-    
+
+    private void Start()
+    {
+        Init();
+    }
     static void Init()
     {
         if (_instance == null)
@@ -28,13 +32,14 @@ public class Managers : MonoBehaviour
             {
                 mO = new GameObject { name = "@Managers" };
                 mO.AddComponent<Managers>();
-                DontDestroyOnLoad(mO);
             }
+            DontDestroyOnLoad(mO);
             _instance = mO.GetComponent<Managers>();
+            Ui.Init();
+            Data.Init();
+            Game.Init();
+            Pool.Init();
         }
-        Debug.Log("Start");
-        //todo login
-        Game.GameStart();
     }
 
     

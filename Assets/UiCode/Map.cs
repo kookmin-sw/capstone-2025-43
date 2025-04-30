@@ -1,40 +1,28 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
+using UnityEngine.iOS;
 using NUnit.Framework.Constraints;
-using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
-using static Unity.Burst.Intrinsics.X86.Sse4_2;
+using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditor;
 
 public class Map : MonoBehaviour
 {
     const int nodeNum = 40;
-    public DelaunayTriangulation DTri;
-    public NodePosition nodePosition;
+    public DelaunayTriangulation DTri = new DelaunayTriangulation();
+    public NodePosition nodePosition = new NodePosition();
     public GameObject roads;
     public GameObject locals;
-    public Dictionary<Vector2, GameObject> nodes = new Dictionary<Vector2, GameObject>();
     public Base baseObject;
-
-    private void Awake()
-    {
-        DTri = GetComponent<DelaunayTriangulation>();
-        nodePosition = GetComponent<NodePosition>();
-    }
-
+    public List<GameObject> Envs = new List<GameObject>();
     private void CreateNode()
     {
-        nodes.Clear();
         int idx = 0;
         foreach (var info  in Managers.Data.handOverData.localInfos)
         {
             idx++;
             GameObject tmpObject = Managers.Resource.Instantiate("Node", locals.transform);
-            tmpObject.GetComponent<Node>().Init(info.Value, info.Key);
+            tmpObject.GetComponent<Node>().Init(info.Value);
             tmpObject.name = $"node {idx}";
-            nodes.Add(info.Value.poisiton, tmpObject);
         }
     }
     private void CreateRoad()
@@ -43,7 +31,7 @@ public class Map : MonoBehaviour
         foreach (Edge edge in Managers.Data.handOverData.roads)
         {
             GameObject road = Managers.Resource.Instantiate("Road", roads.transform);
-            road.GetComponent<Line>().Init(nodes[edge.v0], nodes[edge.v1]);
+            road.GetComponent<Line>().Init(edge.v0, edge.v1);
             road.name = $"Road{idx}";
             idx++;
         }
@@ -62,9 +50,9 @@ public class Map : MonoBehaviour
             nodeCnt++;
 
             if (Managers.Game.inBorderAlly(position))
-                Managers.Data.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Ally"));
+                Managers.Data.handOverData.localInfos.Add(position, new LocalInfo(position, "Ally"));
             else
-                Managers.Data.handOverData.localInfos.Add(nodeCnt, new LocalInfo(position, "Enemy"));
+                Managers.Data.handOverData.localInfos.Add(position, new LocalInfo(position, "Enemy"));
         }
     }
 
@@ -87,16 +75,15 @@ public class Map : MonoBehaviour
     public void CreateMap()
     {
         Destroy(baseObject.gameObject);
-        roads = new GameObject();
-        roads.name = "Roads";
-        locals = new GameObject();
-        locals.name = "Locals";
-        CreateNode();
-        CreateRoad();
+        roads = new GameObject() { name = "Roads" };
+        locals = new GameObject() { name = "Locals"};
         EnvCreate("Desert");
         EnvCreate("NorthLand");
         EnvCreate("DarkForest");
         EnvCreate("Mount");
+        SetEnv();
+        CreateNode();
+        CreateRoad();
     }
 
     public void Init()
@@ -111,18 +98,20 @@ public class Map : MonoBehaviour
         }
         DTri.RemoveSuperTriangle();
         SetEdge();
-
-        
+        CreateMap();
     }
 
     public List<Line> GetLines()
     {
         List<Line> attack = new List<Line>();
 
-        for (int i = 0; i < DTri.transform.childCount; i++)
+        for (int i = 0; i < roads.transform.childCount; i++)
         {
-            Line a = DTri.transform.GetChild(i).GetComponent<Line>();
-            if (a.node0.tag != a.node1.tag)
+            Line a = roads.transform.GetChild(i).GetComponent<Line>();
+            string tag0 = Managers.Data.handOverData.localInfos[a.p0].side;
+            string tag1 = Managers.Data.handOverData.localInfos[a.p1].side;
+
+            if (tag0 != tag1)
                 attack.Add(a);
         }
         return attack;
@@ -130,7 +119,7 @@ public class Map : MonoBehaviour
 
     public void ReSetRoads()
     {
-        GameObject[] objects = DTri.GetComponentsInChildren<GameObject>();
+        GameObject[] objects = roads.GetComponentsInChildren<GameObject>();
         foreach (GameObject obj in objects)
         {
             obj.GetComponent<Line>().SetColor();
@@ -141,6 +130,21 @@ public class Map : MonoBehaviour
     {
         GameObject a = Managers.Resource.Instantiate(env, this.transform);
         a.AddComponent<PolygonCollider2D>();
+        Envs.Add(a);
+    }
+
+    public void SetEnv()
+    {
+        foreach(var info in Managers.Data.handOverData.localInfos)
+        {
+            foreach(var env in Envs)
+            {
+                if (env.GetComponent<Base>().inmyBound(info.Key))
+                {
+                    info.Value.env = env.name;
+                }
+            }
+        }
     }
 
 }

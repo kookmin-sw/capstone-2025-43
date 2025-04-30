@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NodePosition : MonoBehaviour
+public class NodePosition
 {
     public const int size = 10;
     public bool[,] flag = new bool[size * 2 + 1, size * 2 + 1];

@@ -2,38 +2,45 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    public GameObject node0;
-    public GameObject node1;
-    public float lineWidth;
+    public Vector2 p0;
+    public Vector2 p1;
+    public float lineWidth = 0.3f;
 
     LineRenderer lineRenderer;
 
-    public void Init(GameObject node0, GameObject node1)
+    public void Init(Vector2 p0, Vector2 p1)
     {
-        this.node0 = node0;
-        this.node1 = node1;
+        this.p0 = p0;
+        this.p1 = p1;
+        SetLine();
+        SetColor();
+    }
+
+    public void SetLine()
+    {
         lineRenderer = GetComponent<LineRenderer>();
 
         lineRenderer.positionCount = 3;
         lineRenderer.startWidth = lineWidth;
-        lineRenderer.endWidth = lineWidth; 
+        lineRenderer.endWidth = lineWidth;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.SetPosition(0, node0.transform.position - node0.GetComponent<Node>().offset);
-        lineRenderer.SetPosition(1, node1.transform.position - node1.GetComponent<Node>().offset);
-        lineRenderer.SetPosition(2, node0.transform.position - node1.GetComponent<Node>().offset);
-        SetColor();
+        lineRenderer.SetPosition(0, p0);
+        lineRenderer.SetPosition(1, p1);
+        lineRenderer.SetPosition(2, p0);
     }
 
     public void SetColor()
     {
+        string tag0 = Managers.Data.handOverData.localInfos[p0].side;
+        string tag1 = Managers.Data.handOverData.localInfos[p1].side;
         Color color = Color.white;
-        if (node1.tag != node0.tag)
+        if (tag0 != tag1)
         {
             color = Color.red;
         }
-        else if (node1.tag == "Ally")
+        else if (tag1 == "Ally")
             color = Color.green;
-        else if (node1.tag == "Enemy")
+        else if (tag1 == "Enemy")
             color = Color.blue;
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;

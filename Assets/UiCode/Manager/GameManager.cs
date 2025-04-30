@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
     public int time; // 0 : morning, 1 : afternoon, 2 : night
     public Map map;
@@ -21,12 +21,10 @@ public class GameManager : MonoBehaviour
     public bool isPause = false;
 
 
-    public void GameStart()
+    public void Init()
     {
+        map = GameObject.Find("Map").GetComponent<Map>();
         map.Init();
-        map.CreateMap();
-        Managers.Ui.Init();
-        Managers.Pool.SetHeroList();
     }
 
     public void StartBattle()
@@ -43,14 +41,16 @@ public class GameManager : MonoBehaviour
         if (success)
         {
             //day -> night
+            time = 2;
             Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
         }
         else
         {
+            time = 1;
             //day -> afternoon
         }
-        StartCoroutine("WaitForSceneLoad");
-        //AllyToEnemy();
+        //Load Game
+        WaitForSceneLoad();
     }
     IEnumerator WaitForSceneLoad()
     {
@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
         map = GameObject.Find("Map").GetComponent<Map>();
         map.CreateMap();
     }
-
 
     public void GamePause()
     {
@@ -87,11 +86,20 @@ public class GameManager : MonoBehaviour
 
     public void Heal()
     {
-        // todo heal heros
+        //heal : poolmanager -> own hero
     }
     public void TakenAlly()
     {
-        //handover data ¼öÁ¤
+        List<Line> attack = map.GetLines();
+        int t = Random.Range(0, attack.Count);
+        Line cur = attack[t];
+        LocalInfo a = Managers.Data.handOverData.localInfos[cur.p0];
+        LocalInfo b = Managers.Data.handOverData.localInfos[cur.p1];
+        if(a.side == "Ally")
+            a.side = "Enemy";
+        else
+            b.side = "Enemy";
     }
+
 
 }
