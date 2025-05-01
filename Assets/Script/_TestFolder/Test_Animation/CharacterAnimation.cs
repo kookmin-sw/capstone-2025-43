@@ -33,6 +33,27 @@ public class CharacterAnimation : MonoBehaviour
     // Die
     public void PlayDying()
     {
-        animator.SetTrigger("Dying");
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dying"))
+        {
+            animator.ResetTrigger("Dying");
+            animator.SetTrigger("Dying");
+        }
     }
+    public void UpdateCharacterDying()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dying"))
+        {
+            if (animator)
+            {
+                if (!animator.IsInTransition(0))
+                {
+                    animator.ResetTrigger("Attack");
+                    animator.ResetTrigger("Skill");
+                    animator.ResetTrigger("Dying");
+                    animator.SetTrigger("Dying");
+                }
+            }
+        }
+    }
+
 }

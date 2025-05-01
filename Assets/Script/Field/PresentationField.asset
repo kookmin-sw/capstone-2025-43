@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d3b8d2b4f48d84094bb5258d23059e, type: 3}
-  m_Name: desert
+  m_Name: PresentationField
   m_EditorClassIdentifier: 
   fieldType: 4
   environmentPrefab: {fileID: 6409821936901960450, guid: a8b49b332bd156f49a3aa2b99fa5cb58, type: 3}
@@ -18,6 +18,6 @@ MonoBehaviour:
   environmentRotation: {x: 0, y: 0, z: 0, w: 1}
   environmentScale: {x: 2.0327, y: 1, z: 2.9322016}
   battleFieldPrefab: {fileID: 802175129831843423, guid: b9a5f0c7e85c7c04fa8748a7abb9ce13, type: 3}
-  battlePosition: {x: -62.1, y: 12, z: 17.9}
-  battleRotation: {x: -0, y: -0.5772088, z: -0, w: 0.8165966}
+  battlePosition: {x: 2, y: 11, z: -79}
+  battleRotation: {x: -0, y: -0.32864672, z: -0, w: 0.944453}
   battleScale: {x: 1, y: 1, z: 1}
