@@ -540,11 +540,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 0}
+  IconPath: Character/Screenshot/Wizard
   gridposition: 0
+  stat: {fileID: 0}
   anim: {fileID: 0}
   agent: {fileID: 0}
   tacticSystem: {fileID: 0}
+  collider_body: {fileID: 0}
+  rigidBody: {fileID: 0}
 --- !u!114 &-1096773483456734801
 MonoBehaviour:
   m_ObjectHideFlags: 0

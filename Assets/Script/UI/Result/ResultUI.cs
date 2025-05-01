@@ -65,6 +65,7 @@ public class ResultUI : MonoBehaviour
             {
                 characterSlots[count].SetActive(true);
                 Image CharacterIcon = characterSlots[count].transform.Find("CharacterIcon").GetComponent<Image>();
+                CharacterIcon.sprite = hero.LoadIcon();
                 TMP_Text displayNameUI = characterSlots[count].transform.Find("CharacterDisplayName").GetComponent<TMP_Text>();
                 displayNameUI.SetText(hero.DisplayName);
                 TMP_Text HpRemainUI = characterSlots[count].transform.Find("CharacterHPRemain").GetComponent<TMP_Text>();

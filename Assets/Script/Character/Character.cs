@@ -11,6 +11,12 @@ using System;
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
+    public string IconPath; // ex: "Character/Screenshot/Paladin"
+    public Sprite LoadIcon()
+    {
+        return Resources.Load<Sprite>(IconPath);
+    }
+
     [HideInInspector] public E_GridPosition gridposition = E_GridPosition.Empty;
 
     [HideInInspector] public CharacterStat stat;
