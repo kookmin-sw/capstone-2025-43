@@ -11,29 +11,122 @@ using System;
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
-    [HideInInspector]public CharacterStat stat;
     [HideInInspector] public E_GridPosition gridposition = E_GridPosition.Empty;
+
+    [HideInInspector] public CharacterStat stat;
     [HideInInspector] public CharacterAnimation anim;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public TacticSystem tacticSystem;
+    [HideInInspector] public CapsuleCollider collider_body;
+    [HideInInspector] public Rigidbody rigidBody;
+
     private void Awake()
     {
         stat = GetComponent<CharacterStat>();
         tacticSystem = GetComponent<TacticSystem>();
         anim = GetComponent<CharacterAnimation>();
         agent = GetComponent<NavMeshAgent>();
+        collider_body = GetComponent<CapsuleCollider>();
+        rigidBody = GetComponent<Rigidbody>();
     }
     private void Start()
     {
         CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
-        //agent.acceleration = float.MaxValue; 
-        //agent.autoBraking = false;             
+    }
 
+    private void Update()
+    {
+        if (Hp <= 0)
+        {
+            anim.UpdateCharacterDying();
+        }
+    }
+    private void OnDisable()
+    {
+        StopAllTrackedCoroutines();
     }
     private void OnDestroy()
     {
         CharacterManager.Instance.UnregisterCharacter(this);
     }
+    public bool IsEnemy(Character other)
+    {
+        return this.stat.isMonster != other.stat.isMonster && this.stat.team_id != other.stat.team_id;
+    }
+    public bool IsAlly(Character other)
+    {
+        return this.stat.team_id == other.stat.team_id;
+    }
+    public void AddHP(float amount)
+    {
+        stat.hp += amount;
+
+        if (stat.hp > stat.hp_max)
+        {
+            stat.hp = stat.hp_max;
+        }
+       if(stat.hp <= 0)
+        {
+            stat.hp = 0;
+            Die();
+        }
+    }
+    public void ApplyDamage(float amount)
+    {
+        stat.hp -= amount;
+
+        if (stat.hp > stat.hp_max)
+        {
+            stat.hp = stat.hp_max;
+        }
+        if (stat.hp <= 0)
+        {
+            stat.hp = 0;
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Hp = 0;
+        StopAllTrackedCoroutines();
+
+        if (tacticSystem)
+        {
+            tacticSystem.isActive = false;
+        }
+
+        if (collider_body)
+        {
+            collider_body.enabled = false;
+        }
+
+        if (agent)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
+
+        if (rigidBody)
+        {
+            rigidBody.isKinematic = true; 
+            rigidBody.useGravity = false;
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        BattleManager.Instance.OnCharacterDied(this);
+
+        StartCoroutine(DieSequence());
+    }
+    private IEnumerator DieSequence()
+    {
+        yield return new WaitForSeconds(2f);
+        if (agent)
+        {
+            gameObject.layer = LayerMask.NameToLayer("DeadBody");
+            agent.enabled = false;
+        }
+    }
+
     public async Task RotateToDirection(Vector3 direction, float rotateSpeed = 5f)
     {
         direction.y = 0;
@@ -48,7 +141,6 @@ public class Character : MonoBehaviour
 
         transform.rotation = targetRotation;
     }
-
     public void AddTacticComponent(Tactic tactic)
     {
         if (tactic == null || stat == null)
@@ -69,69 +161,33 @@ public class Character : MonoBehaviour
             stat.Actions.Add(tactic.actionType);
         }
     }
-    public bool IsEnemy(Character other)
+    
+    private List<Coroutine> activeCoroutines = new List<Coroutine>();
+    public Coroutine StartTrackedCoroutine(IEnumerator routine)
     {
-        return this.stat.isMonster != other.stat.isMonster && this.stat.team_id != other.stat.team_id;
-    }
-    public bool IsAlly(Character other)
-    {
-        return this.stat.team_id == other.stat.team_id;
-    }
+        Coroutine coroutine = null;
 
-    public void AddHP(float amount)
-    {
-        stat.hp += amount;
+        IEnumerator Wrapper()
+        {
+            yield return routine;
+            activeCoroutines.Remove(coroutine);
+        }
 
-        if (stat.hp > stat.hp_max)
-        {
-            stat.hp = stat.hp_max;
-        }
-       if(stat.hp <= 0)
-        {
-            stat.hp = 0;
-            Die();
-        }
+        coroutine = StartCoroutine(Wrapper());
+        activeCoroutines.Add(coroutine);
+        return coroutine;
     }
 
-    public void ApplyDamage(float amount)
+    public void StopAllTrackedCoroutines()
     {
-        stat.hp -= amount;
-
-        if (stat.hp > stat.hp_max)
+        foreach (var coroutine in activeCoroutines)
         {
-            stat.hp = stat.hp_max;
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
         }
-        if (stat.hp <= 0)
-        {
-            stat.hp = 0;
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        StopAllCoroutines();
-
-        Hp = 0;
-        if (anim)
-        {
-            anim.PlayDying();
-        }
-        StopAllCoroutines();
-        if (TryGetComponent(out TacticSystem tacticSystem))
-        {
-            tacticSystem.isActive = false;
-        }
-        if (TryGetComponent(out NavMeshAgent agent))
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-            agent.velocity = Vector3.zero;
-            agent.isStopped = true;       
-            agent.ResetPath();            
-            agent.velocity = Vector3.zero;
-        }
-        BattleManager.Instance.OnCharacterDied(this);
+        activeCoroutines.Clear();
     }
 
     #region ValueWrappers

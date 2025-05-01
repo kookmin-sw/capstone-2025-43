@@ -11,36 +11,24 @@ public class MeleeAttackAction : ActionType
     public override void Execute(Character user, List<Character> targets)
     {
         if (user == null || targets == null) return;
-
-        TacticSystem tacticSystem = user.GetComponent<TacticSystem>();
+        TacticSystem tacticSystem = user.tacticSystem;
         if (tacticSystem != null)
         {
             tacticSystem.stopCooldown = true;
         }
-
-        if (!user.TryGetComponent(out NavMeshAgent agent))
-        {
-            return;
-        }
-        agent.speed = user.stat.moveSpeed;
-        agent.isStopped = false;
-
         foreach (Character target in targets)
         {
-            user.StartCoroutine(MoveAndAction(user, target, agent, Attack));
+            user.StartTrackedCoroutine(MoveAndAction(user, target, user.agent, Attack));
         }
     }
 
     private void Attack(Character user, Character target)
     {
-        //Debug.Log($"{user.name} attack {target.name} as {user.stat.damage} damage!");
-
         if (user.TryGetComponent(out Animator animator))
         {
             animator.SetTrigger("Attack");
         }
         AudioManager.Instance.PlayEffect(SFXType.Attack); // SFX
-
         target.ApplyDamage(user.stat.damage);
     }
 }

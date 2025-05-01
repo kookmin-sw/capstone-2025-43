@@ -20,8 +20,6 @@ public class HealAction : ActionType
                 GameObject effect = EffectPoolManager.Instance.GetEffect("HealEffect", vfxPosition);
                 effect.GetComponent<PoolEffect>().SetStickGameObject(target.gameObject);
             }
-
-            //Debug.Log($"{user.stat.name} heals {target.stat.name} as {user.stat.damage}");
             target.AddHP(user.stat.damage);
         }
     }

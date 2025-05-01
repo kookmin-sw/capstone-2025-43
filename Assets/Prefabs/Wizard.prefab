@@ -516,8 +516,8 @@ MonoBehaviour:
   mp: 50
   damage_max: 70
   damage: 70
-  attackRange_Max: 10
-  attackRange: 10
+  attackRange_Max: 15
+  attackRange: 15
   moveSpeed_origin: 10
   moveSpeed: 10
   rotationSpeed_origin: 10

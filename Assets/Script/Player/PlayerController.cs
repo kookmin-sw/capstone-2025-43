@@ -147,7 +147,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     public Vector3 GetControlDirection()
     {
         return controlDirection;

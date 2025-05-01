@@ -22,7 +22,6 @@ public class LightningAttackAction : ActionType
             }
 
             float ApplyDamage = user.stat.damage + 10;
-            //Debug.Log($"{user.stat.name} heals {target.stat.name} as {ApplyDamage}");
             target.ApplyDamage(ApplyDamage);
         }
     }

@@ -23,6 +23,10 @@ public abstract class ActionType : ScriptableObject
 
         while (true)
         {
+            if (target.Hp <= 0)
+            {
+                break;
+            }
             agent.isStopped = false;
             agent.SetDestination(target.transform.position);
             anim.SetMoveState(true, user.MoveSpeed);    // animation
