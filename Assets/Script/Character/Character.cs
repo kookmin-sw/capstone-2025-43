@@ -31,7 +31,8 @@ public class Character : MonoBehaviour
     }
     private void Start()
     {
-        CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
+        if (CharacterManager.Instance)
+            CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
     }
 
     private void Update()
@@ -47,7 +48,8 @@ public class Character : MonoBehaviour
     }
     private void OnDestroy()
     {
-        CharacterManager.Instance.UnregisterCharacter(this);
+        if(CharacterManager.Instance)
+            CharacterManager.Instance.UnregisterCharacter(this);
     }
     public bool IsEnemy(Character other)
     {

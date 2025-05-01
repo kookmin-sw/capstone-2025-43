@@ -18,7 +18,10 @@ public class Tactic : ScriptableObject
 
     public bool Execute(Character self)
     {
-        if (self == null || targetType == null || conditionType == null ||actionType == null)
+        if (!CharacterManager.Instance)
+            return false;
+
+            if (self == null || targetType == null || conditionType == null ||actionType == null)
             return false;
 
         List<Character> targets = CharacterManager.Instance.GetCharacters(self, targetType, conditionType, actionType);
