@@ -49,15 +49,18 @@ public class BattleManager : MonoBehaviour
         // TESTING PURPOSE
         {
             //TODO:: Change To Map Handover Data
-            FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
+            if(FieldManager.Instance)
+                FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
             InitializeFlag(TestWaveList);
             InitializePlayer();
             player.transform.position = flags[0].transform.position;
             InitializeMonsterWave(TestWaveList);
-            if (Managers.Instance)
+            
+            if (Managers.GetInstance())
                 InitializePlayerHeroes(Managers.Data.handOverData.unitPositions);
             else
                 InitializePlayerHeroes(testunitPositions);
+
             WaveStart(currentWaveCount);
         }
     }

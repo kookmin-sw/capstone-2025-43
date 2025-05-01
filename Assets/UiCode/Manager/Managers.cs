@@ -7,6 +7,11 @@ public class Managers : MonoBehaviour
     static Managers _instance;
     public static Managers Instance { get { Init(); return _instance; } }
 
+    public static Managers GetInstance()
+    {
+        return _instance;
+    }
+
     UiManager _ui = new UiManager();
     GameManager _game = new GameManager();
     ResourceManager _resource = new ResourceManager();
