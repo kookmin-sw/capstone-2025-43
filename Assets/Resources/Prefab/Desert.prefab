@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6333513638056340969}
   - component: {fileID: 8647983750974294182}
   - component: {fileID: 8286357035106564481}
+  - component: {fileID: -7857372497732116347}
   m_Layer: 0
   m_Name: Desert
   m_TagString: Untagged
@@ -118,7 +119,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -408,3 +409,15 @@ PolygonCollider2D:
       - {x: 2.4374998, y: -7.3499994}
       - {x: 2.3999999, y: -6.9937496}
   m_UseDelaunayMesh: 0
+--- !u!114 &-7857372497732116347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514263938362196754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605978d2184b494fba91e681295e9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

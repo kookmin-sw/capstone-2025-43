@@ -33,9 +33,9 @@ public class ResultUI : MonoBehaviour
         sceneChangeButton.onClick.AddListener(() =>
         {
             StopAllCoroutines();
-            if (Managers.instance != null && Managers.instance.gameManager != null)
+            if (Managers.Instance != null && Managers.Game != null)
             {
-                Managers.instance.EndBattle(result);
+                Managers.Game.EndBattle(result);
             }
         });
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5067734086010321538}
   - component: {fileID: 4407593920814554787}
   - component: {fileID: 7767350608650995560}
+  - component: {fileID: -5018643133415395246}
   m_Layer: 0
   m_Name: NorthLand
   m_TagString: Untagged
@@ -632,3 +633,15 @@ PolygonCollider2D:
       - {x: 0.1125, y: 3.9937499}
       - {x: 0.1125, y: 4.0125}
   m_UseDelaunayMesh: 0
+--- !u!114 &-5018643133415395246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444088729626401772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605978d2184b494fba91e681295e9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

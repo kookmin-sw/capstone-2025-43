@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager
 {
     public GameObject Instantiate(string path, Transform parent = null)
     {

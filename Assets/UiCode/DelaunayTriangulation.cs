@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DelaunayTriangulation : MonoBehaviour
+public class DelaunayTriangulation
 {
     private int triangleNo = 0;
     public Triangle superTriangle = null;

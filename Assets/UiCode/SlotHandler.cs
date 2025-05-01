@@ -25,7 +25,7 @@ public class SlotHandler : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        Managers.instance.poolManager.SetHeroList(); // 리스트 갱신
+        Managers.Pool.SetHeroList(); // 리스트 갱신
     }
 
     public void StartBattleButton()
@@ -37,12 +37,12 @@ public class SlotHandler : MonoBehaviour
             {
                 UnitData unitdata = child.GetChild(0).GetComponent<ListIdx>().unitData;
                 if (unitdata != null)
-                    Managers.instance.dataManager.handOverData.unitPositions[idx] = unitdata.unitName;
+                    Managers.Data.handOverData.unitPositions[idx] = unitdata.unitName;
             }
             else
-                Managers.instance.dataManager.handOverData.unitPositions[idx] = null;
+                Managers.Data.handOverData.unitPositions[idx] = null;
         }
-        Managers.instance.StartBattle();
+        Managers.Game.StartBattle();
     }
 
     public void CloseLocalButton()
