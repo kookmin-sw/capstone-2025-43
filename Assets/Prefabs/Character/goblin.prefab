@@ -479,8 +479,8 @@ MonoBehaviour:
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 10
-  damage: 10
+  damage_max: 20
+  damage: 20
   attackRange_Max: 3
   attackRange: 3
   moveSpeed_origin: 10
@@ -505,11 +505,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 699249660105396594}
+  IconPath: 
   gridposition: 0
+  stat: {fileID: 699249660105396594}
   anim: {fileID: 0}
   agent: {fileID: 0}
   tacticSystem: {fileID: 0}
+  collider_body: {fileID: 0}
+  rigidBody: {fileID: 0}
 --- !u!195 &8983562577535952631
 NavMeshAgent:
   m_ObjectHideFlags: 0

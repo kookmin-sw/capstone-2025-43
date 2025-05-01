@@ -61,6 +61,8 @@ public class BattleManager : MonoBehaviour
             else
                 InitializePlayerHeroes(testunitPositions);
 
+            TacticUIManager.Instance.OpenCharacterInfoUI();
+
             WaveStart(currentWaveCount);
         }
     }

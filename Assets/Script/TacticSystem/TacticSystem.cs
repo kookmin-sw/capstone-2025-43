@@ -22,7 +22,7 @@ public class TacticSystem : MonoBehaviour
         }
     }
     private bool _isActive = true; [SerializeField]
-
+    public Tactic currentTactic; 
     public int TacticCapacity //you can get or set TacticCapacity in Boundary
     {
         get => character.tacticCapacity;
@@ -111,7 +111,8 @@ public class TacticSystem : MonoBehaviour
             if (tactic.enable && tactic.stopcoolDown == true)
             {
                 if (tactic.Execute(character))
-                { 
+                {
+                    currentTactic = tactic;
                     ApplyTacticCooldown(tactic);
                     return;
                 }

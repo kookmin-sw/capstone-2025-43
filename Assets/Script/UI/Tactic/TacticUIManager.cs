@@ -14,11 +14,17 @@ public class TacticUIManager : MonoBehaviour
     public GameObject tacticUI; // tacticSystem UI Panel
     public GameObject tacticinformationUI; // tacticSystem UI Panel
     public GameObject resultUI; //Result UI Panel
+    public GameObject characterInfoUI; //CharacterInfo UI Panel
     private Character currentCharacter;
     private void Awake()
     {
         Instance = this;
     }
+    public void OpenCharacterInfoUI()
+    {
+        characterInfoUI.GetComponent<CharacterInfoUI>().OpenUI();
+    }
+
     public void OpenTacticSystemUI(Character character)
     {
         tacticUI.GetComponent<TacticSystemUI>().OpenTacticUI(character);
