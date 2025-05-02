@@ -70,8 +70,10 @@ public class Character : MonoBehaviour
     {
         stat.hp += amount;
 
-        DisplayDamageText(amount, Color.green);
-        
+        Color displayColor = Color.green;
+        if (IsMonster)
+            displayColor = Color.green;
+        DisplayDamageText(amount, displayColor);
         if (stat.hp > stat.hp_max)
         {
             stat.hp = stat.hp_max;
@@ -87,7 +89,10 @@ public class Character : MonoBehaviour
     {
         stat.hp -= amount;
 
-        DisplayDamageText(amount, Color.red);
+        Color displayColor = Color.black;
+        if(IsMonster)
+            displayColor = Color.red;
+        DisplayDamageText(amount, displayColor);
 
         if (stat.hp > stat.hp_max)
         {
