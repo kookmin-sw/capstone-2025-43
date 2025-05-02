@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class PoolEffect : MonoBehaviour
 {
@@ -12,10 +13,16 @@ public class PoolEffect : MonoBehaviour
     public bool stickToGameObject = false;
     [HideInInspector] public GameObject stickGameObject;
 
+    private TextMesh textMesh;
+    public float textliveTime = 0.5f;
+    private float texttimer = 0f;
+
+
     void Awake()
     {
         visualEffect = GetComponent<VisualEffect>();
         particleSystem = GetComponent<ParticleSystem>();
+        textMesh = GetComponent<TextMesh>();
     }
 
     public void Initialize(string effectName, Transform parentBefore)
@@ -26,32 +33,51 @@ public class PoolEffect : MonoBehaviour
 
     void Update()
     {
-        bool isPlaying = false;
-
-        if (visualEffect != null)
+        if (textMesh == null)
         {
-            isPlaying |= visualEffect.aliveParticleCount > 0;
-        }
+            bool isPlaying = false;
 
-        if (particleSystem != null)
-        {
-            isPlaying |= particleSystem.IsAlive();
-        }
-
-        if (isPlaying)
-        {
-            hasPlayed = true;
-            if (stickToGameObject && stickGameObject)
+            if (visualEffect != null)
             {
-                transform.parent = stickGameObject.transform;
+                isPlaying |= visualEffect.aliveParticleCount > 0;
+            }
+
+            if (particleSystem != null)
+            {
+                isPlaying |= particleSystem.IsAlive();
+            }
+
+            if (isPlaying)
+            {
+                hasPlayed = true;
+                if (stickToGameObject && stickGameObject)
+                {
+                    transform.parent = stickGameObject.transform;
+                }
+            }
+            else if (hasPlayed)
+            {
+                transform.parent = parentBefore;
+                ReturnToPool();
+                hasPlayed = false;
             }
         }
-        else if (hasPlayed)
+        else
         {
-            transform.parent = parentBefore;
-            ReturnToPool();
-            hasPlayed = false;
+            if (stickToGameObject && stickGameObject)
+            {
+                transform.position = stickGameObject.transform.position;
+            }
+
+            texttimer += Time.deltaTime;
+            if (texttimer >= textliveTime)
+            {
+                transform.parent = parentBefore;
+                ReturnToPool();
+                texttimer = 0f;
+            }
         }
+
     }
 
     public void SetStickGameObject(GameObject go)

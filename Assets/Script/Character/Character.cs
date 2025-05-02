@@ -7,6 +7,7 @@ using System.Collections;
 using UnityEngine.AI;
 using System.Threading.Tasks;
 using System;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
@@ -69,6 +70,8 @@ public class Character : MonoBehaviour
     {
         stat.hp += amount;
 
+        DisplayDamageText(amount, Color.green);
+        
         if (stat.hp > stat.hp_max)
         {
             stat.hp = stat.hp_max;
@@ -79,9 +82,12 @@ public class Character : MonoBehaviour
             Die();
         }
     }
+
     public void ApplyDamage(float amount)
     {
         stat.hp -= amount;
+
+        DisplayDamageText(amount, Color.red);
 
         if (stat.hp > stat.hp_max)
         {
@@ -196,6 +202,17 @@ public class Character : MonoBehaviour
             }
         }
         activeCoroutines.Clear();
+    }
+    private void DisplayDamageText(float amount, Color color)
+    {
+        if (EffectPoolManager.Instance)
+        {
+            Vector3 scale = gameObject.transform.lossyScale;
+            float yOffset = 2.0f * scale.y;
+            Vector3 spawnPosition = gameObject.transform.position + new Vector3(0, yOffset, 0);
+            EffectPoolManager.Instance.GetTextEffect("FloatingText", spawnPosition, amount.ToString(), color);
+
+        }
     }
 
     #region ValueWrappers

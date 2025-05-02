@@ -99,6 +99,34 @@ public class EffectPoolManager : MonoBehaviour
         return effect;
     }
 
+    public GameObject GetTextEffect(string effectName, Vector3 position, string text, Color color)
+    {
+        if (!effectPools.ContainsKey(effectName))
+        {
+            Debug.LogWarning($"Effect {effectName} is not registered in the pool.");
+            return null;
+        }
+
+        GameObject effect;
+        if (effectPools[effectName].Count > 0)
+        {
+            effect = effectPools[effectName].Dequeue();
+        }
+        else
+        {
+            RegisterEffect(effectName, effectPrefabsDict[effectName], 5);
+            effect = effectPools[effectName].Dequeue();
+        }
+
+        effect.transform.position = position;
+        effect.SetActive(true);
+        TextMesh TM = effect.GetComponent<TextMesh>();
+        TM.text = text;
+        TM.color = color;
+
+        return effect;
+    }
+
     public void ReturnEffect(string effectName, GameObject effect)
     {
         if (effectPools.ContainsKey(effectName))
