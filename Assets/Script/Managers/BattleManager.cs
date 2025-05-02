@@ -21,6 +21,8 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance { get; private set; }
 
     [HideInInspector] public GameObject player;
+    private Vector3 playerYoffset = new Vector3(0, 2.5f, 0);
+
     [HideInInspector] public List<GameObject> flags = new();
 
     [HideInInspector] public List<Character> battleCharacter = new();
@@ -50,10 +52,10 @@ public class BattleManager : MonoBehaviour
         {
             //TODO:: Change To Map Handover Data
             if(FieldManager.Instance)
-                FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
+                FieldManager.Instance.InitializeRandomField(E_FieldType.Forest);
             InitializeFlag(TestWaveList);
             InitializePlayer();
-            player.transform.position = flags[0].transform.position;
+            player.transform.position = flags[0].transform.position + playerYoffset;
             InitializeMonsterWave(TestWaveList);
             
             if (Managers.GetInstance())
@@ -220,7 +222,7 @@ public class BattleManager : MonoBehaviour
         await Task.Delay((int)(delay * 1000));
 
         Vector3 start = player.transform.position;
-        Vector3 end = GridPositionUtil.GetGridPosition(E_GridPosition.Central, 3f, target);
+        Vector3 end = GridPositionUtil.GetGridPosition(E_GridPosition.Central, 3f, target) + playerYoffset;
 
         float distance = Vector3.Distance(start, end);
         float duration = distance / moveSpeed;

@@ -4507,7 +4507,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldSetDataList:
-  - {fileID: 11400000, guid: dff1c574aafae004c8e7297e764e6238, type: 2}
+  - {fileID: 11400000, guid: 43762e50b00dc9c449760ef0640ee0b3, type: 2}
+  - {fileID: 11400000, guid: 4c73973639a7b894ca0c61546333d663, type: 2}
   navMeshSurface: {fileID: 2102894093}
   TransParentMaterial: {fileID: 2100000, guid: a628db2db566097419bc86630c1db705, type: 2}
 --- !u!1 &2102894091

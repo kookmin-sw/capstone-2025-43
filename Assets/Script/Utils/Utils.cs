@@ -25,7 +25,6 @@ namespace MyProject.Utils
         Forest,
         Snow,
         Desert,
-        Castle,
         Max
     }
     public enum E_GridPosition
