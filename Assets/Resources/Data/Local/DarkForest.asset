@@ -15,3 +15,4 @@ MonoBehaviour:
   localname: DarkForest
   env: Forest
   desc: "\uC6B8\uCC3D\uD55C \uB098\uBB34\uB4E4\uC758 \uACE0\uD5A5"
+  image: {fileID: 21300000, guid: 2643c2dbeb747439faa2076951cc1fdc, type: 3}

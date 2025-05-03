@@ -1,9 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.iOS;
-using NUnit.Framework.Constraints;
-using Unity.VisualScripting.Dependencies.NCalc;
-using UnityEditor;
 
 public class Map : MonoBehaviour
 {
@@ -12,8 +8,8 @@ public class Map : MonoBehaviour
     public NodePosition nodePosition = new NodePosition();
     public GameObject roads;
     public GameObject locals;
-    public Base baseObject;
-    public List<GameObject> Envs = new List<GameObject>();
+    public Border baseObject;
+    public List<Border> Envs = new List<Border>();
     private void CreateNode()
     {
         int idx = 0;
@@ -128,9 +124,9 @@ public class Map : MonoBehaviour
 
     public void EnvCreate(string env)
     {
-        GameObject a = Managers.Resource.Instantiate(env, this.transform);
-        a.AddComponent<PolygonCollider2D>();
-        Envs.Add(a);
+        GameObject a = Managers.Resource.Instantiate("mapBase", this.transform);
+        a.GetComponent<Border>().Init(Managers.Data.GetLocalData(env));
+        Envs.Add(a.GetComponent<Border>());
     }
 
     public void SetEnv()
@@ -139,9 +135,9 @@ public class Map : MonoBehaviour
         {
             foreach(var env in Envs)
             {
-                if (env.GetComponent<Base>().inmyBound(info.Key))
+                if (env.inmyBound(info.Key))
                 {
-                    info.Value.env = env.name;
+                    info.Value.localData = env.localData;
                 }
             }
         }

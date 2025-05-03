@@ -15,3 +15,4 @@ MonoBehaviour:
   localname: NorthLand
   env: Snow
   desc: "\uBD81\uBD80\uC9C0\uC5ED"
+  image: {fileID: 21300000, guid: 271f2172519324c408d54800040e2f23, type: 3}
