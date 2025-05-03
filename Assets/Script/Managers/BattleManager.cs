@@ -24,7 +24,6 @@ public class BattleManager : MonoBehaviour
     private Vector3 playerYoffset = new Vector3(0, 2.5f, 0);
 
     [HideInInspector] public List<GameObject> flags = new();
-
     [HideInInspector] public List<Character> battleCharacter = new();
     [HideInInspector]public  List<Character> playerHeroes = new();
     private List<List<Character>> waveMonster = new();
@@ -52,7 +51,7 @@ public class BattleManager : MonoBehaviour
         {
             //TODO:: Change To Map Handover Data
             if(FieldManager.Instance)
-                FieldManager.Instance.InitializeRandomField(E_FieldType.Forest);
+                FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
             InitializeFlag(TestWaveList);
             InitializePlayer();
             player.transform.position = flags[0].transform.position + playerYoffset;
