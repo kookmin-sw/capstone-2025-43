@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d3b8d2b4f48d84094bb5258d23059e, type: 3}
+  m_Name: snow_FSD
+  m_EditorClassIdentifier: 
+  fieldType: 3
+  environmentPrefab: {fileID: 2976967949833035538, guid: b7cee942a3c9ff34cb6319765041a4c6, type: 3}
+  environmentPosition: {x: 0, y: 0, z: 0}
+  environmentRotation: {x: -0, y: -0, z: -0, w: 1}
+  environmentScale: {x: 1, y: 1, z: 1}
+  battleFieldPrefab: {fileID: 802175129831843423, guid: b9a5f0c7e85c7c04fa8748a7abb9ce13, type: 3}
+  battlePosition: {x: 0, y: -0.5, z: -70}
+  battleRotation: {x: 0, y: 0, z: 0, w: 1}
+  battleScale: {x: 1, y: 1, z: 1}
