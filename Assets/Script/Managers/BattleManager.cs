@@ -51,7 +51,7 @@ public class BattleManager : MonoBehaviour
         {
             //TODO:: Change To Map Handover Data
             if(FieldManager.Instance)
-                FieldManager.Instance.InitializeRandomField(E_FieldType.Forest);
+                FieldManager.Instance.InitializeRandomField(E_FieldType.Desert);
             InitializeFlag(TestWaveList);
             InitializePlayer();
             player.transform.position = flags[0].transform.position + playerYoffset;
