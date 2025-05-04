@@ -82,7 +82,11 @@ public class UiManager
                 break;
             case "Local":
                 localUi.SetActive(active);
-                if (active) localUi.GetComponent<UnitList>().SetList();
+                if (active)
+                {
+                    localUi.GetComponent<UnitList>().SetList();
+                    localUi.GetComponent<LocalInfoUi>().SetLocalUi();
+                }
                 break;
             case "Setting":
                 settingUi.SetActive(active);

@@ -19,7 +19,7 @@ public class GameManager
     
     public float GameTime;
     public bool isPause = false;
-
+    public bool loadingScene = true;
 
     public void Init()
     {
@@ -29,7 +29,6 @@ public class GameManager
 
     public void StartBattle()
     {
-        map.gameObject.SetActive(false);
         //todo start battle scene
         SceneManager.LoadScene("BattleScene");
     }
@@ -37,7 +36,7 @@ public class GameManager
     // From BattleScene
     public void EndBattle(bool success)
     {
-        SceneManager.LoadScene("MapScene");
+        Managers.Instance.LoadScene("MapScene");
         if (success)
         {
             //day -> night
@@ -50,16 +49,6 @@ public class GameManager
             //day -> afternoon
         }
         //Load Game
-        WaitForSceneLoad();
-    }
-    IEnumerator WaitForSceneLoad()
-    {
-        yield return new WaitForSeconds(1f); // 한 프레임 대기
-        Debug.Log("아마도 씬 로드 완료 후입니다!");
-        Managers.Ui.Init();
-        Managers.Pool.SetHeroList();
-        ReloadGame();
-        // 씬 오브젝트 접근 가능
     }
 
     public void ReloadGame()

@@ -125,19 +125,21 @@ public class Map : MonoBehaviour
     public void EnvCreate(string env)
     {
         GameObject a = Managers.Resource.Instantiate("mapBase", this.transform);
+        a.name = env;
         a.GetComponent<Border>().Init(Managers.Data.GetLocalData(env));
+        a.GetComponent<SpriteRenderer>().sortingLayerName = env;
         Envs.Add(a.GetComponent<Border>());
     }
 
     public void SetEnv()
     {
-        foreach(var info in Managers.Data.handOverData.localInfos)
+        foreach(Vector2 position in Managers.Data.handOverData.localInfos.Keys)
         {
             foreach(var env in Envs)
             {
-                if (env.inmyBound(info.Key))
+                if (env.inmyBound(position))
                 {
-                    info.Value.localData = env.localData;
+                    Managers.Data.handOverData.localInfos[position].localData = env.localData;
                 }
             }
         }

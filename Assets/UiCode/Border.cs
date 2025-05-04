@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class Border : MonoBehaviour
 {
@@ -11,9 +12,10 @@ public class Border : MonoBehaviour
     }
     public void Init(LocalData data)
     {
-        baseCollider = GetComponent<PolygonCollider2D>();
         localData = data;
         spriteRenderer.sprite = data.image;
+
+        baseCollider = transform.AddComponent<PolygonCollider2D>();
     }
     public bool inmyBound(Vector2 position)
     {

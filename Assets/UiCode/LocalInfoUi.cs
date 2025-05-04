@@ -9,13 +9,15 @@ public class LocalInfoUi : MonoBehaviour
     public Text desc;
     public Transform creepList;
     public Transform boss;
-
+    public LocalInfo info;
     public void SetLocalUi()
     {
         Vector2 local = Managers.Data.handOverData.openLocal;
-        LocalInfo info = Managers.Data.handOverData.localInfos[local];
+        info = Managers.Data.handOverData.localInfos[local];
 
         desc.text = info.localData.desc;
         image.sprite = info.localData.image;
+
+
     }
 }

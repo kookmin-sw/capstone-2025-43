@@ -45,6 +45,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Desert
+    uniqueID: 2735298105
+    locked: 0
+  - name: NorthLand
+    uniqueID: 410754771
+    locked: 0
+  - name: DarkForest
+    uniqueID: 4229793231
+    locked: 0
+  - name: Mount
+    uniqueID: 2229443529
+    locked: 0
+  - name: Line
+    uniqueID: 2241393921
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
