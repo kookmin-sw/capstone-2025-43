@@ -132,7 +132,8 @@ public class Character : MonoBehaviour
             rigidBody.useGravity = false;
             rigidBody.constraints = RigidbodyConstraints.FreezeAll;
         }
-        BattleManager.Instance.OnCharacterDied(this);
+        if(BattleManager.Instance)
+            BattleManager.Instance.OnCharacterDied(this);
 
         StartCoroutine(DieSequence());
     }

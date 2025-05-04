@@ -30,7 +30,8 @@ public abstract class ActionType : ScriptableObject
             agent.isStopped = false;
             agent.SetDestination(target.transform.position);
             anim.SetMoveState(true, user.MoveSpeed);    // animation
-            AudioManager.Instance.PlayEffect(SFXType.FootStep); //SFX
+            if(AudioManager.Instance)
+                AudioManager.Instance.PlayEffect(SFXType.FootStep); //SFX
 
             float distance = Vector3.Distance(user.transform.position, target.transform.position);
             if (distance <= user.stat.attackRange)
