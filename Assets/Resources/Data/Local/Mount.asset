@@ -15,3 +15,4 @@ MonoBehaviour:
   localname: Mount
   env: Mount
   desc: "\uB192\uC740 \uC0B0"
+  image: {fileID: 21300000, guid: 7264526e896d644f184cca0f20486d0d, type: 3}

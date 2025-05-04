@@ -37,9 +37,11 @@ public class Node : MonoBehaviour
             localInfo.battleWaves.Add(Managers.Pool.GetCreepPool());
         }
     }
+
     private void OnMouseDown()
     {
         Managers.Data.handOverData.openLocal = localInfo.poisiton;
+
         // 다른 UI가 열려 있으면 클릭 무시
         if (!Managers.Ui.IsOnlyDefaultOpen())
             return;

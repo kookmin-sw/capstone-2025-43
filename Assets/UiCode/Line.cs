@@ -27,6 +27,7 @@ public class Line : MonoBehaviour
         lineRenderer.SetPosition(0, p0);
         lineRenderer.SetPosition(1, p1);
         lineRenderer.SetPosition(2, p0);
+        lineRenderer.sortingLayerName = "Line";
     }
 
     public void SetColor()

@@ -23,7 +23,7 @@ public class Managers : MonoBehaviour
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static DataManager Data { get { return Instance._data; } }
     public static PoolManager Pool { get { return Instance._pool; } }
-
+    
     private void Start()
     {
         Init();
@@ -47,5 +47,18 @@ public class Managers : MonoBehaviour
         }
     }
 
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+        Invoke("ReLoad", 3f);
+        return;
+    }
+    void ReLoad()
+    {
+        Debug.Log("Reload");
+        Ui.Init();
+        Pool.Init();
+        Game.ReloadGame();
+    }
     
 }

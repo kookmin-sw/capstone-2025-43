@@ -9,16 +9,15 @@ public class LocalInfoUi : MonoBehaviour
     public Text desc;
     public Transform creepList;
     public Transform boss;
-
-    public void Init(LocalInfo info)
+    public LocalInfo info;
+    public void SetLocalUi()
     {
-        // image <- localinfo.image
+        Vector2 local = Managers.Data.handOverData.openLocal;
+        info = Managers.Data.handOverData.localInfos[local];
+
         desc.text = info.localData.desc;
-        //battle wave -> gameobject(prefab) . tag -> parent ∞·¡§ 
-    }
+        image.sprite = info.localData.image;
 
-    public void CreateList()
-    {
 
     }
 }

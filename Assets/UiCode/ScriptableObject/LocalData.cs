@@ -7,4 +7,5 @@ public class LocalData : ScriptableObject
     public string localname;
     public string env;
     public string desc;
+    public Sprite image;
 }
