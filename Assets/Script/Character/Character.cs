@@ -12,11 +12,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
-    public string IconPath; // ex: "Character/Screenshot/Paladin"
-    public Sprite LoadIcon()
-    {
-        return Resources.Load<Sprite>(IconPath);
-    }
+    public Transform rightHand;
+    public Transform torso;
 
     [HideInInspector] public E_GridPosition gridposition = E_GridPosition.Empty;
 
@@ -327,4 +324,10 @@ public class Character : MonoBehaviour
     public List<ConditionType> Conditions => stat.Conditions;
     public List<ActionType> Actions => stat.Actions;
     #endregion
+
+    public string IconPath; // ex: "Character/Screenshot/Paladin"
+    public Sprite LoadIcon()
+    {
+        return Resources.Load<Sprite>(IconPath);
+    }
 }
