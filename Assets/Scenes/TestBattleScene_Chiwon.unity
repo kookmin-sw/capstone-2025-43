@@ -1078,21 +1078,41 @@ PrefabInstance:
       value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: hp_max
       value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: damage_max
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: Actions.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: Targets.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: 'Actions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+    - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: Conditions.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: 'Targets.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
+    - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
+      propertyPath: 'Conditions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
     - target: {fileID: 1085263740916382987, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: torso
       value: 
@@ -1111,7 +1131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472479754285907775, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.96
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 3472479754285907775, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1119,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472479754285907775, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.5807896
+      value: -12.12
       objectReference: {fileID: 0}
     - target: {fileID: 3472479754285907775, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1552,11 +1572,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: hp
-      value: 50000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: hp_max
-      value: 50000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 699249660105396594, guid: 33dc24d241e35794da5d72cb2bdba4d8, type: 3}
       propertyPath: Actions.Array.size
@@ -1800,6 +1820,9 @@ MonoBehaviour:
     initialPoolSize: 5
   - effectName: LightningPlane
     prefab: {fileID: 2705533495200665743, guid: e84c40719cee66744925cce01bef28fc, type: 3}
+    initialPoolSize: 5
+  - effectName: FloatingText
+    prefab: {fileID: 3442022780733903948, guid: 9b088b0ee56137b418a7f319eb44cb68, type: 3}
     initialPoolSize: 5
   - effectName: FloatingText
     prefab: {fileID: 3442022780733903948, guid: 9b088b0ee56137b418a7f319eb44cb68, type: 3}
@@ -2618,6 +2641,18 @@ PrefabInstance:
       value: Paladin
       objectReference: {fileID: 0}
     - target: {fileID: 5061190713819197141, guid: c58e49f49ce1dbd4caab290af072fc3c, type: 3}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061190713819197141, guid: c58e49f49ce1dbd4caab290af072fc3c, type: 3}
+      propertyPath: hp_max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061190713819197141, guid: c58e49f49ce1dbd4caab290af072fc3c, type: 3}
+      propertyPath: GlobalCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061190713819197141, guid: c58e49f49ce1dbd4caab290af072fc3c, type: 3}
       propertyPath: tacticCapacity
       value: 6
       objectReference: {fileID: 0}
@@ -2645,6 +2680,10 @@ PrefabInstance:
       propertyPath: 'tactics.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 3fd43e813c543644e95d90bc38d247f1, type: 2}
+    - target: {fileID: 7400623304105245116, guid: c58e49f49ce1dbd4caab290af072fc3c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
     - target: {fileID: 9102167623458279373, guid: c58e49f49ce1dbd4caab290af072fc3c, type: 3}
       propertyPath: torso
       value: 

@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using MyProject.Utils; // SFX
+using MyProject.Utils;
+using Unity.VisualScripting; // SFX
 public abstract class ActionType : ScriptableObject
 {
     public string displayName = "DisplayName";
@@ -62,6 +63,50 @@ public abstract class ActionType : ScriptableObject
             tacticSystem.stopCooldown = false;
         }
     }
+    protected IEnumerator RotateAndAction(Character user,List<Character> targets,NavMeshAgent agent, Func<Character, List<Character>, IEnumerator> attackAction)
+    {
+        if (targets == null || targets.Count == 0 || targets[0] == null)
+            yield break;
+
+        Character target = targets[0];
+        TacticSystem tacticSystem = user.tacticSystem;
+        CharacterAnimation anim = user.anim;
+
+        while (true)
+        {
+            if (target.Hp <= 0)
+                break;
+
+            agent.isStopped = true;
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
+
+            Vector3 directionToTarget = (target.transform.position - user.transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+            user.transform.rotation = Quaternion.RotateTowards(user.transform.rotation, lookRotation, Time.deltaTime * 360f);
+
+            float angle = Vector3.Angle(user.transform.forward, directionToTarget);
+            anim.SetMoveState(false, 0f);
+
+            if (angle < 10f)
+            {
+                yield return user.StartTrackedCoroutine(attackAction(user, targets)); // ÇÙ½É º¯°æ
+                break;
+            }
+
+            yield return null;
+        }
+
+        if (tacticSystem)
+        {
+            agent.isStopped = false;
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
+
+            tacticSystem.stopCooldown = false;
+        }
+    }
+
     protected void LookAtTarget(Character user, Character target)
     {
         if (user == null || target == null) return;

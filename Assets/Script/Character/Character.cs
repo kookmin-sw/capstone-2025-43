@@ -213,10 +213,10 @@ public class Character : MonoBehaviour
             Vector3 scale = gameObject.transform.lossyScale;
             float yOffset = 2.0f * scale.y;
             Vector3 spawnPosition = gameObject.transform.position + new Vector3(0, yOffset, 0);
-            EffectPoolManager.Instance.GetTextEffect("FloatingText", spawnPosition, amount.ToString(), color);
-
+            EffectPoolManager.Instance.GetTextEffect("FloatingText", spawnPosition, amount.ToString("F0"), color);
         }
     }
+
 
     #region ValueWrappers
     public string DisplayName
