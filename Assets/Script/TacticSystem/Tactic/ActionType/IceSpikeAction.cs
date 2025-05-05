@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "TacticSystem/Action/IceSpike")]
 public class IceSpikeAction : ActionType
 {
-    public float damage = 100;
+    public float damage = 100; 
     public override void Execute(Character user, List<Character> targets)
     {
         // Apply Animation TODO :: Change Animation Trigger
