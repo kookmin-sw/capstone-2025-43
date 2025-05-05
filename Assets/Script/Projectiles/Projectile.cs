@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
 
     private bool initialized = false;
 
+
     void Update()
     {
         if (target == null)

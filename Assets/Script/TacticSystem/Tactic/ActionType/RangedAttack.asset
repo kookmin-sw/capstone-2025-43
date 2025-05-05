@@ -15,5 +15,5 @@ MonoBehaviour:
   displayName: RangedAttack
   actionCooldown: 0
   isSingleTarget: 1
-  arrowPrefab: {fileID: 2304110352672872331, guid: 1336d9a7f8bbbde4aab0423bdd89d8d2, type: 3}
+  arrowPrefab: {fileID: 2304110352672872331, guid: 5ae6d8792b5e46942a4e443a95dd6b05, type: 3}
   arrowSpeed: 20
