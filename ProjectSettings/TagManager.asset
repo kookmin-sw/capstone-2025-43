@@ -18,9 +18,9 @@ TagManager:
   - Character
   - Floor
   - DeadBody
-  - Ally
-  - Enemy
-  - Projectile
+  - VFX
+  - 
+  - 
   - 
   - 
   - 
