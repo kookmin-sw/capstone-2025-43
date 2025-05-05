@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb998de9cbb796c449c651e36e55f47c, type: 3}
-  m_Name: TestTactic
+  m_Name: EnemyAllDarkCircle
   m_EditorClassIdentifier: 
   enable: 1
   priority: 0
   targetType: {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
   conditionType: {fileID: 11400000, guid: 76e541c73a0022b44a5b415144b75322, type: 2}
-  actionType: {fileID: 11400000, guid: e1aa256cf24ed9240bf59c91e4ddb6d6, type: 2}
+  actionType: {fileID: 11400000, guid: 9291bb2c9dfb40e44ab09032afdd8d24, type: 2}
   editable: 1
   draggable: 1
   stopcoolDown: 0

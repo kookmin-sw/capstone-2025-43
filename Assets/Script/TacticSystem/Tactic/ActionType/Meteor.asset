@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d772c2aebd8fb14bb0ec98d29f05f82, type: 3}
-  m_Name: HealAction
+  m_Script: {fileID: 11500000, guid: 08175520764e87942943a536c311efc1, type: 3}
+  m_Name: Meteor
   m_EditorClassIdentifier: 
-  displayName: HealAction
+  displayName: Meteor
   actionCooldown: 10
   isSingleTarget: 0

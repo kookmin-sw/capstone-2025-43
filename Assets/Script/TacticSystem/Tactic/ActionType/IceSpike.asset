@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d772c2aebd8fb14bb0ec98d29f05f82, type: 3}
-  m_Name: HealAction
+  m_Script: {fileID: 11500000, guid: e5ffefa05c4a1ac478bb12eb4619f3ce, type: 3}
+  m_Name: IceSpike
   m_EditorClassIdentifier: 
-  displayName: HealAction
+  displayName: IceSpike
   actionCooldown: 10
   isSingleTarget: 0
+  damage: 120
