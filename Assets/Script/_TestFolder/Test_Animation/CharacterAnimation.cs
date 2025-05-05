@@ -19,14 +19,14 @@ public class CharacterAnimation : MonoBehaviour
     // Attack
     public void PlayAttack(int attackIndex)
     {
-        animator.SetInteger("Attack_index", attackIndex);
+        animator.SetInteger("Attack_Index", attackIndex);
         animator.SetTrigger("Attack");
     }
 
     // Skill
     public void PlaySkill(int skillIndex)
     {
-        animator.SetInteger("Skill_index", skillIndex);
+        animator.SetInteger("Skill_Index", skillIndex);
         animator.SetTrigger("Skill");
     }
 

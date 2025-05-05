@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class WanderAI : MonoBehaviour
 {
+    Character character;
     public float wanderRadius = 5f;  
     public float wanderInterval = 3f;
 
@@ -13,17 +14,22 @@ public class WanderAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         timer = wanderInterval;
+        character = GetComponent<Character>();
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= wanderInterval)
+        if(character.Hp > 0)
         {
-            Vector3 newDestination = GetRandomPointOnNavMesh(transform.position, wanderRadius);
-            agent.SetDestination(newDestination);
-            timer = 0f;
+            timer += Time.deltaTime;
+
+            if (timer >= wanderInterval)
+            {
+                Vector3 newDestination = GetRandomPointOnNavMesh(transform.position, wanderRadius);
+                agent.SetDestination(newDestination);
+                timer = 0f;
+            }
+
         }
     }
 
