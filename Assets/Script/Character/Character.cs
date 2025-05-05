@@ -12,11 +12,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(CharacterStat))]
 public class Character : MonoBehaviour
 {
-    public string IconPath; // ex: "Character/Screenshot/Paladin"
-    public Sprite LoadIcon()
-    {
-        return Resources.Load<Sprite>(IconPath);
-    }
+    public Transform rightHand;
+    public Transform torso;
 
     [HideInInspector] public E_GridPosition gridposition = E_GridPosition.Empty;
 
@@ -132,7 +129,8 @@ public class Character : MonoBehaviour
             rigidBody.useGravity = false;
             rigidBody.constraints = RigidbodyConstraints.FreezeAll;
         }
-        BattleManager.Instance.OnCharacterDied(this);
+        if(BattleManager.Instance)
+            BattleManager.Instance.OnCharacterDied(this);
 
         StartCoroutine(DieSequence());
     }
@@ -215,10 +213,10 @@ public class Character : MonoBehaviour
             Vector3 scale = gameObject.transform.lossyScale;
             float yOffset = 2.0f * scale.y;
             Vector3 spawnPosition = gameObject.transform.position + new Vector3(0, yOffset, 0);
-            EffectPoolManager.Instance.GetTextEffect("FloatingText", spawnPosition, amount.ToString(), color);
-
+            EffectPoolManager.Instance.GetTextEffect("FloatingText", spawnPosition, amount.ToString("F0"), color);
         }
     }
+
 
     #region ValueWrappers
     public string DisplayName
@@ -326,4 +324,10 @@ public class Character : MonoBehaviour
     public List<ConditionType> Conditions => stat.Conditions;
     public List<ActionType> Actions => stat.Actions;
     #endregion
+
+    public string IconPath; // ex: "Character/Screenshot/Paladin"
+    public Sprite LoadIcon()
+    {
+        return Resources.Load<Sprite>(IconPath);
+    }
 }

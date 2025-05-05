@@ -53,7 +53,7 @@ public class TacticSystem : MonoBehaviour
     {
         stopCooldown = false;
         if(character)
-            cooldownTimer = character.GlobalCooldown;
+            cooldownTimer += character.GlobalCooldown;
         foreach(Tactic tactic in tactics)
         {
             tactic.ApplyCoolDown();

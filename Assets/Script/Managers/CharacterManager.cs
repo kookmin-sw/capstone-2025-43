@@ -48,10 +48,17 @@ using System.Collections.Generic;
 
         //TargetType Filtering
         List<Character> targets;
-        if(BattleManager.Instance.battleCharacter.Count != 0) 
-            targets= targetType.Filter(BattleManager.Instance.battleCharacter, self);
+        if(BattleManager.Instance)
+        {
+            if (BattleManager.Instance.battleCharacter.Count != 0)
+                targets = targetType.Filter(BattleManager.Instance.battleCharacter, self);
+            else
+                targets = targetType.Filter(allCharacters, self);
+        }
         else
+        {
             targets = targetType.Filter(allCharacters, self);
+        }
 
         //Dead target Filtering
         DeadTargetFilter(targets);

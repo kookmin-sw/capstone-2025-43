@@ -28,7 +28,8 @@ public class MeleeAttackAction : ActionType
         {
             animator.SetTrigger("Attack");
         }
-        AudioManager.Instance.PlayEffect(SFXType.Attack); // SFX
+        if(AudioManager.Instance)
+            AudioManager.Instance.PlayEffect(SFXType.Attack); // SFX
         target.ApplyDamage(user.stat.damage);
     }
 }
