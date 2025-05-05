@@ -41,8 +41,6 @@ public class VFXCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("VFX Collider Event Triggered");
-
         Character otherCharacter = other.GetComponent<Character>();
         if (otherCharacter != null)
         {

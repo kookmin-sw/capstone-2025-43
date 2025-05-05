@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34554f974098f44fad664a92c5da98c, type: 3}
   m_Name: Farthest_Condition
   m_EditorClassIdentifier: 
-  displayName: DisplayName
+  displayName: Farthest

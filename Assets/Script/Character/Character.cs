@@ -339,7 +339,7 @@ public class Character : MonoBehaviour
     public List<ActionType> Actions => stat.Actions;
     #endregion
 
-    public string IconPath; // ex: "Character/Screenshot/Paladin"
+    public string IconPath = "Character/Screenshot/"; // ex: "Character/Screenshot/Paladin"
     public Sprite LoadIcon()
     {
         return Resources.Load<Sprite>(IconPath);
