@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public TacticSystem tacticSystem;
     [HideInInspector] public CapsuleCollider collider_body;
     [HideInInspector] public Rigidbody rigidBody;
+    public Transform firePoint;
 
     private void Awake()
     {

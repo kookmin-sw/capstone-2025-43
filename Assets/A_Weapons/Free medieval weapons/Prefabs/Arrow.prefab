@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 4534147065827568}
   - component: {fileID: -2246315299121197}
   - component: {fileID: -1322615183844754620}
+  - component: {fileID: -59947736305001817}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -289,3 +290,20 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-59947736305001817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959729250425484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8993bae02296de45920565cd31cdc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 100
+  rotateSpeed: 500
+  damage: 10
+  attacker: {fileID: 0}

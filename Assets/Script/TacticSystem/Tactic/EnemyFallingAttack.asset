@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb998de9cbb796c449c651e36e55f47c, type: 3}
-  m_Name: NearlestAttack
+  m_Name: EnemyFallingAttack
   m_EditorClassIdentifier: 
   enable: 1
   priority: 0
   targetType: {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
-  conditionType: {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
-  actionType: {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+  conditionType: {fileID: 11400000, guid: 76e541c73a0022b44a5b415144b75322, type: 2}
+  actionType: {fileID: 11400000, guid: f78a233718b67ee479b7cc7d74a50916, type: 2}
   editable: 1
   draggable: 1
-  stopcoolDown: 1
+  stopcoolDown: 0
   cooldownTimer: 0
