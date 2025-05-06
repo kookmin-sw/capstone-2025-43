@@ -15,6 +15,6 @@ MonoBehaviour:
   displayName: ChainArrow
   actionCooldown: 0
   isSingleTarget: 1
-  arrowPrefab: {fileID: 2304110352672872331, guid: 1336d9a7f8bbbde4aab0423bdd89d8d2, type: 3}
+  arrowPrefab: {fileID: 2304110352672872331, guid: 320790d1b2f55864e9796b3a21e77cc4, type: 3}
   arrowSpeed: 20
   maxHits: 2
