@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab70fe76d16be44eb2c9c67429db637, type: 3}
+  m_Name: 1Golem1Mage
+  m_EditorClassIdentifier: 
+  wave:
+  - RelativeLocation: {x: 0, y: 0.5, z: 9}
+    Rotation: {x: -0, y: -0.99996114, z: -0, w: 0.008813647}
+    Scale: {x: 1, y: 1, z: 1}
+    prefab: {fileID: 6630727660498321352, guid: 86154542a0080ed4b87972275e2b28c5, type: 3}
+  - RelativeLocation: {x: 2, y: 1, z: 14}
+    Rotation: {x: -0, y: -0.99996114, z: -0, w: 0.008813647}
+    Scale: {x: 1, y: 1, z: 1}
+    prefab: {fileID: 724673135944076627, guid: 985f26486b490f4499f380875bdf5fac, type: 3}

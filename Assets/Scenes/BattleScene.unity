@@ -844,8 +844,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684294967}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.32864675, z: -0, w: 0.94445294}
-  m_LocalPosition: {x: -18.48583, y: 11, z: -53.12857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: -37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1127,19 +1127,19 @@ MonoBehaviour:
   battleCharacter: []
   playerHeroes: []
   testunitPositions:
-  - Paladin
-  - Paladin
+  - BlackKnight
+  - Werewolf
   - 
-  - Wizard
+  - NagaWizard
   - 
-  - 
+  - HeroMage
   - 
   - 
   - 
   TestWaveList:
-  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
-  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
-  - {fileID: 11400000, guid: 968911d1d50f9eb4faf08b73dab720f7, type: 2}
+  - {fileID: 11400000, guid: d153f927f1f033847bb607de171e2b60, type: 2}
+  - {fileID: 11400000, guid: 73ac95984949d2546bd70137384c565e, type: 2}
+  - {fileID: 11400000, guid: 4a7fa1bd044ac8b4b875b216e0845465, type: 2}
 --- !u!1 &1145237769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7845863736866817294, guid: 961798caedd7c5f43b0f193983751320, type: 3}
@@ -1281,8 +1281,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210611134}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36084536, y: -0.3037769, z: 0.12559538, w: 0.8727749}
-  m_LocalPosition: {x: -13.469701, y: 19.061794, z: -59.46341}
+  m_LocalRotation: {x: 0.38207796, y: -0.00009175659, z: 0.000037936406, w: 0.9241301}
+  m_LocalPosition: {x: -0.00000042200702, y: 10.061796, z: -45.08033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

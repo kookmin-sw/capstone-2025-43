@@ -132,7 +132,7 @@ public class BattleManager : MonoBehaviour
             monsterCount--;
         else
             heroCount--;
-        Debug.Log(heroCount);
+
         if (monsterCount <= 0)
         {
             Debug.Log("Wave End: All Monsters Defeated");

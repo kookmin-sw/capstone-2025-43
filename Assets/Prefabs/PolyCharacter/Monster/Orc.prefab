@@ -373,8 +373,8 @@ MonoBehaviour:
   tacticCapacity: 3
   team_id: 2
   GlobalCooldown: 5
-  hp_max: 200
-  hp: 200
+  hp_max: 600
+  hp: 600
   mp_max: 50
   mp: 50
   damage_max: 10

@@ -2626,7 +2626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTactic: {fileID: 0}
-  tactics: []
+  tactics:
+  - {fileID: 11400000, guid: 44c232ef70a7b444385609511433043a, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &6570762272827015235

@@ -375,8 +375,8 @@ MonoBehaviour:
   team_id: 2
   GlobalCooldown: 5
   hp_max: 80
-  hp: 200
-  mp_max: 200
+  hp: 300
+  mp_max: 300
   mp: 50
   damage_max: 60
   damage: 60

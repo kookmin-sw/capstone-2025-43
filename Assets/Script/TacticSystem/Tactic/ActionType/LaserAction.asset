@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaserAction
   m_EditorClassIdentifier: 
   displayName: LaserAction
-  actionCooldown: 15
+  actionCooldown: 8
   isSingleTarget: 0
   laserPrefab: {fileID: 1962479828434100, guid: 0ebae7a6ef0b3f34e9f873336c18d419, type: 3}
   damage: 200

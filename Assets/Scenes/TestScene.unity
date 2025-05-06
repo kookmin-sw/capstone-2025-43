@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 166938754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.36, y: 1, z: -5.72}
+  m_LocalPosition: {x: -3.18, y: 1, z: -5.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -646,6 +646,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 90}
+--- !u!1001 &1755747846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235658450659557169, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329677341766001447, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
+      propertyPath: m_Name
+      value: NagaWizard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40718546a1bf0634e9a508b292a7951b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -654,3 +711,4 @@ SceneRoots:
   - {fileID: 213945906}
   - {fileID: 382286413}
   - {fileID: 1676194849}
+  - {fileID: 1755747846}
