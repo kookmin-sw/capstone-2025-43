@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NagaWizardAnimator
+  m_Controller: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: bd6b2a6dd2bded04ca88817dfe62963e, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 8e43ac93fabb46458f9cb6de5d2533ea, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 2e68e55c7ffd66143bacbd215f73c389, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: adfcca6cc17442a08cfd926fb4b9433f, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 2971f58493db5374c874df2e1ecb34d1, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: f70cd8814bca45ca968e93d4355c433e, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: d5a2cbb92a62fa745858f5c4d45ae7d4, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: f70cd8814bca45ca968e93d4355c433e, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: f0670b65475dfba488aeedbdb9c850e5, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 918e99338b5d47e5a656257a0ccf9155, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: f6c731406eba7144d8a45829ca2d37e0, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 19792156bae04dde83aca521a563824d, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: d440d8eea64e56442959d6931abf7179, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: b155cf01ca3446e08f652bf6066fc42b, type: 3}

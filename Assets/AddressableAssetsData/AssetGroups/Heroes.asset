@@ -15,6 +15,26 @@ MonoBehaviour:
   m_GroupName: Heroes
   m_GUID: da1f84d0aa468f54c96d4d7d637bf076
   m_SerializeEntries:
+  - m_GUID: 113c00c95acf61345a3e5e3e9c0d1694
+    m_Address: FishMan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e41d1e688a56c343803c9c6baa4ca2f
+    m_Address: HeroMage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37f23a0c2b6fe8844a971c98a4cf8e0c
+    m_Address: Werewolf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40718546a1bf0634e9a508b292a7951b
+    m_Address: NagaWizard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c58e49f49ce1dbd4caab290af072fc3c
     m_Address: Paladin
     m_ReadOnly: 0
@@ -22,6 +42,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5ebbd248d8cf7140929a0bac1972da7
     m_Address: Wizard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc430a3bc890ec647a51ea8daf1be120
+    m_Address: BlackKnight
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

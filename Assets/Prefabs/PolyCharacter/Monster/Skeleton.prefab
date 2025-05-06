@@ -759,6 +759,7 @@ MonoBehaviour:
   collider_body: {fileID: 0}
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
+  firePoint: {fileID: 9194440317159226304}
   IconPath: Character/Screenshot/Skeleton
 --- !u!1 &2940086289260056763
 GameObject:

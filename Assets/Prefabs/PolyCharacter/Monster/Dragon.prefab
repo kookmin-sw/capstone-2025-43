@@ -1164,6 +1164,7 @@ MonoBehaviour:
   collider_body: {fileID: 0}
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
+  firePoint: {fileID: 3664995863030645930}
   IconPath: Character/Screenshot/Dragon
 --- !u!1 &4854295153350425824
 GameObject:
