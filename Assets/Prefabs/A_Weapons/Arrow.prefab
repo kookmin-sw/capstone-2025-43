@@ -97,7 +97,10 @@ GameObject:
   - component: {fileID: 7803381459950331639}
   - component: {fileID: 3340784310023463534}
   - component: {fileID: 9156140765875044042}
-  - component: {fileID: -3367080607645678815}
+  - component: {fileID: 2443128470430703214}
+  - component: {fileID: 5572646036774881396}
+  - component: {fileID: 7524581549230483567}
+  - component: {fileID: -3526790261201647495}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -171,7 +174,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.051883906, y: 0.05005561, z: 0.77824867}
   m_Center: {x: -0.0011873494, y: 0.0014007117, z: 0.39646173}
---- !u!114 &-3367080607645678815
+--- !u!114 &2443128470430703214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,8 +187,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 10
+  speed: 100
   rotateSpeed: 500
+  damage: 10
+  attacker: {fileID: 0}
+--- !u!114 &5572646036774881396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304110352672872331}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce7000c7d173d44c9db6f4e451da096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 100
+  rotateSpeed: 500
+  damage: 10
+  attacker: {fileID: 0}
+  maxHits: 2
+--- !u!114 &7524581549230483567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304110352672872331}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adaa0522331800418dec8ffd1b747aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  fallSpeed: 30
+  damage: 10
+  attacker: {fileID: 0}
+--- !u!114 &-3526790261201647495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304110352672872331}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff54d645dd8312a468ccb4098e8603c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 80
+  damage: 10
+  attacker: {fileID: 0}
 --- !u!1 &6076408607973492255
 GameObject:
   m_ObjectHideFlags: 0

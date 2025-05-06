@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 3856604324535890326}
   - component: {fileID: 2391954423321122961}
   - component: {fileID: 7397437595614349774}
+  - component: {fileID: 8013683030437377176}
+  - component: {fileID: 8019281621609463789}
   m_Layer: 0
   m_Name: Monster_Test
   m_TagString: Untagged
@@ -140,7 +142,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightHand: {fileID: 0}
+  torso: {fileID: 0}
+  gridposition: 0
   stat: {fileID: 0}
+  anim: {fileID: 0}
+  agent: {fileID: 0}
+  tacticSystem: {fileID: 0}
+  collider_body: {fileID: 0}
+  rigidBody: {fileID: 0}
+  outliner: {fileID: 0}
+  firePoint: {fileID: 0}
+  IconPath: Character/Screenshot/
 --- !u!114 &2391954423321122961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,9 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb100ee5048091945ab47f3273a52ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTactic: {fileID: 0}
   tactics:
   - {fileID: 11400000, guid: d05f492ea47a30e47ae8bef55ae3ca82, type: 2}
-  StopcoolDown: 0
+  cooldownTimer: 0
+  stopCooldown: 0
 --- !u!114 &7397437595614349774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +196,44 @@ MonoBehaviour:
   damage: 10
   attackRange_Max: 3
   attackRange: 3
+  moveSpeed_origin: 10
   moveSpeed: 10
+  rotationSpeed_origin: 10
   rotationSpeed: 10
   Targets: []
   Conditions: []
   Actions: []
+--- !u!114 &8013683030437377176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750536305830167512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7e9edbbc78d0d3aa6831424c5fb1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8019281621609463789
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750536305830167512}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: f348e118b6b5c9948b9af8c8db9f4668, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0eaa79cb1fe4b97489e7d78f508566ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

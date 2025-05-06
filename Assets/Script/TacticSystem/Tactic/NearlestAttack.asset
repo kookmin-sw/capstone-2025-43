@@ -19,3 +19,5 @@ MonoBehaviour:
   actionType: {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
   editable: 1
   draggable: 1
+  stopcoolDown: 1
+  cooldownTimer: 0

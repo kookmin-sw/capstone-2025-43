@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe12a87b8756e6408717250b94fccfa, type: 3}
+  m_Name: StackedHitArrow
+  m_EditorClassIdentifier: 
+  displayName: StackedHitArrow
+  actionCooldown: 0
+  isSingleTarget: 1
+  arrowPrefab: {fileID: 2304110352672872331, guid: 5d790fd47c866694fb11d68830499e31, type: 3}
+  arrowSpeed: 80

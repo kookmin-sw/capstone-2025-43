@@ -10,7 +10,7 @@ public class IceSpikeAction : ActionType
         // Apply Animation TODO :: Change Animation Trigger
         if (user.TryGetComponent(out Animator animator))
         {
-            animator.SetTrigger("Attack");
+            user.anim.PlayAttack(2);
             //animtor.SetTrigger("Spell");
         }
         foreach (Character target in targets)
@@ -20,8 +20,11 @@ public class IceSpikeAction : ActionType
                 IceSpike(user, target);
             }
 
-            float ApplyDamage = user.stat.damage + damage;
-            target.ApplyDamage(ApplyDamage);
+            if(target != user)
+            {
+                float ApplyDamage = user.stat.damage + damage;
+                target.ApplyDamage(ApplyDamage);
+            }
         }
     }
 

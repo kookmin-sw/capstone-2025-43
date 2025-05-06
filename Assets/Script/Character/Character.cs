@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 using System;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(CharacterStat))]
+[RequireComponent(typeof(CharacterStat), typeof(CharacterAnimation), typeof(TacticSystem))]
+[RequireComponent(typeof(CapsuleCollider), typeof(Rigidbody), typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator), typeof(Outline))]
+
 public class Character : MonoBehaviour
 {
     public Transform rightHand;
@@ -23,6 +26,8 @@ public class Character : MonoBehaviour
     [HideInInspector] public TacticSystem tacticSystem;
     [HideInInspector] public CapsuleCollider collider_body;
     [HideInInspector] public Rigidbody rigidBody;
+    [HideInInspector] public Outline outliner;
+    public Transform firePoint;
 
     private void Awake()
     {
@@ -32,11 +37,21 @@ public class Character : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         collider_body = GetComponent<CapsuleCollider>();
         rigidBody = GetComponent<Rigidbody>();
+        outliner = GetComponent<Outline>();
     }
     private void Start()
     {
         if (CharacterManager.Instance)
             CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
+
+        if (IsMonster)
+        {
+            outliner.OutlineColor = Color.red;
+        }
+        else
+            outliner.OutlineColor = Color.blue;  
+
+       
     }
 
     private void Update()
@@ -325,7 +340,7 @@ public class Character : MonoBehaviour
     public List<ActionType> Actions => stat.Actions;
     #endregion
 
-    public string IconPath; // ex: "Character/Screenshot/Paladin"
+    public string IconPath = "Character/Screenshot/"; // ex: "Character/Screenshot/Paladin"
     public Sprite LoadIcon()
     {
         return Resources.Load<Sprite>(IconPath);

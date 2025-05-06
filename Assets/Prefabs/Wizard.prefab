@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4452211215849831959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.306, z: 0}
+  m_LocalPosition: {x: 0, y: 1.306, z: 0.509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -528,6 +528,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
   Actions:
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+  - {fileID: 11400000, guid: d19f3a9617296c941bcc83778ac0a5ab, type: 2}
 --- !u!114 &2703118989085804723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconPath: Character/Screenshot/Wizard
+  rightHand: {fileID: 0}
+  torso: {fileID: 0}
   gridposition: 0
   stat: {fileID: 0}
   anim: {fileID: 0}
@@ -548,6 +550,9 @@ MonoBehaviour:
   tacticSystem: {fileID: 0}
   collider_body: {fileID: 0}
   rigidBody: {fileID: 0}
+  outliner: {fileID: 0}
+  firePoint: {fileID: 4209860355454201340}
+  IconPath: Character/Screenshot/Wizard
 --- !u!114 &-1096773483456734801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,9 +565,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb100ee5048091945ab47f3273a52ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTactic: {fileID: 0}
   tactics:
-  - {fileID: 11400000, guid: 1326fd3264992e242a2818d9a80690f9, type: 2}
+  - {fileID: 11400000, guid: 5e404febcd7879545a6676e07bdc6551, type: 2}
   - {fileID: 11400000, guid: 178f20be81821884186f336fcb802d08, type: 2}
+  - {fileID: 11400000, guid: 4033d78bfce5ee04a8a79515c32924c2, type: 2}
+  - {fileID: 11400000, guid: 664991d4c28f3f845b735dd0d473446d, type: 2}
+  - {fileID: 11400000, guid: 5e404febcd7879545a6676e07bdc6551, type: 2}
+  - {fileID: 11400000, guid: c692f6ac1409cb94e82bf927807a7242, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!114 &3299910633864307282

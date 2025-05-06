@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DarkCircle
   m_EditorClassIdentifier: 
   displayName: DarkCircle
-  actionCooldown: 10
+  actionCooldown: 12
   isSingleTarget: 0
