@@ -69,7 +69,7 @@ public class ResultUI : MonoBehaviour
                 TMP_Text displayNameUI = characterSlots[count].transform.Find("CharacterDisplayName").GetComponent<TMP_Text>();
                 displayNameUI.SetText(hero.DisplayName);
                 TMP_Text HpRemainUI = characterSlots[count].transform.Find("CharacterHPRemain").GetComponent<TMP_Text>();
-                HpRemainUI.SetText(string.Format("Hp : {0} / {1}", hero.Hp, hero.HpMax));
+                HpRemainUI.SetText(string.Format("Hp : {0} / {1}", Mathf.CeilToInt(hero.Hp), Mathf.CeilToInt(hero.HpMax)));
                 ++count;
             }
         }
