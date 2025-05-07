@@ -31,8 +31,15 @@ public class BattleWavePreset : ScriptableObject
 
     public void CreateMonster(GameObject flag, int waveNumber)
     {
+        if(wave.Count == 0)
+            Debug.LogError($"[BattleWavePrest] There is No MonsterInform in WavePreset");
         foreach (MonsterInform monsterInform in wave)
         {
+            if (monsterInform.prefab == null)
+            {
+                Debug.LogError($"[BattleWavePrest] There is No PresetInform in MonsterInform ");
+                continue;
+            }
             GameObject monster = Instantiate(monsterInform.prefab, flag.transform);
             Transform monsterTransform = monster.transform;
 
