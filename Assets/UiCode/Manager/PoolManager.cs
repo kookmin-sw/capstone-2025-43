@@ -33,8 +33,6 @@ public class PoolManager
 
     public BattleWavePreset GetCreepPool()
     {
-        if(waves == null)
-            return null;
         return waves[Random.Range(0, waves.Length)];
     }
 

@@ -42,8 +42,8 @@ public class Managers : MonoBehaviour
             _instance = mO.GetComponent<Managers>();
             Ui.Init();
             Data.Init();
+            Pool.Init(); 
             Game.Init();
-            Pool.Init();
         }
     }
 

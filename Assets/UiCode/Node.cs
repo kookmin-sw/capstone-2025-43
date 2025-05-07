@@ -15,6 +15,7 @@ public class Node : MonoBehaviour
         transform.position = localInfo.poisiton + offset;
         //Set Tag
         SetTag(localInfo.side);
+        SetStages();
     }
 
     public void SetTag(string tag)
@@ -32,11 +33,13 @@ public class Node : MonoBehaviour
 
     public void SetStages()
     {
+        
         int waveCount = Random.Range(1, 3);
         for (int i = 0; i < waveCount; i++)
         {
             localInfo.battleWaves.Add(Managers.Pool.GetCreepPool());
         }
+        Debug.Log($"{name}'s battleWave Count : {localInfo.battleWaves.Count}");
     }
     private void OnMouseDown()
     {
