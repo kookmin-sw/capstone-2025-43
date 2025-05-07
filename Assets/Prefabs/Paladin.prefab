@@ -525,8 +525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d435e27fa63280240bb642188dcb2762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: Paladog
+  DisplayName: Paladin
   isMonster: 0
+  own: 0
   tacticCapacity: 3
   team_id: 1
   GlobalCooldown: 4
@@ -564,7 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconPath: Character/Screenshot/Paladin
+  rightHand: {fileID: 0}
+  torso: {fileID: 0}
   gridposition: 1
   stat: {fileID: 5061190713819197141}
   anim: {fileID: 0}
@@ -572,6 +574,9 @@ MonoBehaviour:
   tacticSystem: {fileID: 0}
   collider_body: {fileID: 0}
   rigidBody: {fileID: 0}
+  outliner: {fileID: 0}
+  firePoint: {fileID: 0}
+  IconPath: Character/Screenshot/Paladin
 --- !u!114 &5469236133755366054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb100ee5048091945ab47f3273a52ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTactic: {fileID: 0}
   tactics: []
   cooldownTimer: 0
   stopCooldown: 0
