@@ -49,18 +49,34 @@ public class BattleManager : MonoBehaviour
     {
         // TESTING PURPOSE
         {
-            //TODO:: Change To Map Handover Data
-            if(FieldManager.Instance)
-                FieldManager.Instance.InitializeRandomField(E_FieldType.Forest);
-            InitializeFlag(TestWaveList);
-            InitializePlayer();
-            player.transform.position = flags[0].transform.position + playerYoffset;
-            InitializeMonsterWave(TestWaveList);
-            
             if (Managers.GetInstance())
+            {
+                if (FieldManager.Instance)
+                    FieldManager.Instance.InitializeRandomField(Managers.Data.handOverData.GetOpenLocalEnv());
+                List<BattleWavePreset> WaveList = Managers.Data.handOverData.GetOpenLocalMonsterWave();
+                if (WaveList == null)
+                {
+                    WaveList = TestWaveList;
+                    Debug.LogError("[BattleManager]There is No BattleWavePresetList on MapNode");
+                    Debug.LogError("[BattleManager]Check MapNode!! TEST WAVE PRESET LOADED");
+                }
+                InitializeFlag(WaveList);
+                InitializePlayer();
+                player.transform.position = flags[0].transform.position + playerYoffset;
+                InitializeMonsterWave(WaveList);
                 InitializePlayerHeroes(Managers.Data.handOverData.unitPositions);
+
+            }
             else
+            {
+                if (FieldManager.Instance)
+                    FieldManager.Instance.InitializeRandomField(E_FieldType.Forest);
+                InitializeFlag(TestWaveList);
+                InitializePlayer();
+                player.transform.position = flags[0].transform.position + playerYoffset;
+                InitializeMonsterWave(TestWaveList);
                 InitializePlayerHeroes(testunitPositions);
+            }
 
             TacticUIManager.Instance.OpenCharacterInfoUI();
 

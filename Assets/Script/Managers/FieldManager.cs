@@ -29,7 +29,6 @@ public class FieldManager : MonoBehaviour
 
         Instance = this;
     }
-
     public void InitializeRandomField(E_FieldType type)
     {
         ClearField();
@@ -55,6 +54,29 @@ public class FieldManager : MonoBehaviour
 
         ApplyNavigation();
         ApplyFieldTransParency();
+    }
+    public void InitializeRandomField(string envName)
+    {
+        E_FieldType type = E_FieldType.Empty;
+        switch (envName)
+        {
+            case "Forest":
+                type = E_FieldType.Forest;
+                break;
+            case "Mount":
+                type = E_FieldType.Forest;
+                break;
+            case "Snow":
+                type = E_FieldType.Snow;
+                break;
+            case "Desert":
+                type = E_FieldType.Desert;
+                break;
+            default:
+                type = E_FieldType.Test;
+                break;
+        }
+        InitializeRandomField(type);
     }
 
 
