@@ -11,10 +11,10 @@ public class PoolManager
     [Header("#Enemy Pool")]
     public const int wavesCount = 10;
     public List<UnitData> bossData;
-    public List<BattleWavePreset>[] waves = new List<BattleWavePreset>[wavesCount];
+    public BattleWavePreset[] waves = null;
 
     [Header("#Hero Pool")]
-    string[] heros = { "Paladin", "Wizard" };
+    string[] heros = { "Paladin", "Wizard" ,"HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan"};
     public Dictionary<string, GameObject> heroPool = new Dictionary<string, GameObject>();
 
     public void Init()
@@ -22,11 +22,20 @@ public class PoolManager
         root = new GameObject() { name = "@Pool_Root" };
         Object.DontDestroyOnLoad(root);
         SetHeroList();
+        CreateBattleWave();
     }
 
-    public List<BattleWavePreset> GetCreepPool()
+    public void CreateBattleWave()
     {
-        return waves[Random.Range(0, 10)];
+        waves = Managers.Data.GetBattleWaveDataset("BattleWave");
+    }
+
+
+    public BattleWavePreset GetCreepPool()
+    {
+        if(waves == null)
+            return null;
+        return waves[Random.Range(0, waves.Length)];
     }
 
     public void SetHeroList()

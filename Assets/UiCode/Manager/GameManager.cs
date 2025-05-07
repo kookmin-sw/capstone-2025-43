@@ -49,7 +49,7 @@ public class GameManager
         //Load Game
     }
 
-    public void LoadMap()
+    public void ReloadGame()
     {
         map = GameObject.Find("Map").GetComponent<Map>();
         map.CreateMap();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class LocalInfo
 {
     [Header("# Data")]
-    public List<List<BattleWavePreset>> battleWaves = new List<List<BattleWavePreset>>();
+    public List<BattleWavePreset> battleWaves = new List<BattleWavePreset>();
     public LocalData localData = null;
     public Vector3 poisiton;
     public string side;
