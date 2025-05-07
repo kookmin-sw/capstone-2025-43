@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using NUnit.Framework.Constraints;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PoolManager
 {
@@ -12,8 +14,7 @@ public class PoolManager
     public List<BattleWavePreset>[] waves = new List<BattleWavePreset>[wavesCount];
 
     [Header("#Hero Pool")]
-    [SerializeField]
-    List<string> heros = new List<string>();
+    string[] heros = { "Paladin", "Wizard" };
     public Dictionary<string, GameObject> heroPool = new Dictionary<string, GameObject>();
 
     public void Init()
@@ -39,8 +40,22 @@ public class PoolManager
 
     public void Push(string name)
     {
+        Debug.Log(name);
         if (!heroPool.ContainsKey(name))
-            heroPool.Add(name, Managers.Resource.Instantiate(name));
+        {
+            AsyncOperationHandle handle = Addressables.LoadAssetAsync<GameObject>(name);
+            handle.WaitForCompletion();
+
+            if (handle.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError($"[Hero Init] Failed to load hero prefab: {name}");
+                return;
+            }
+            else
+            {
+                heroPool.Add(name, Object.Instantiate((GameObject)handle.Result));
+            }
+        }
         heroPool[name].transform.parent = root.transform;
         heroPool[name].SetActive(false);
     }

@@ -84,7 +84,7 @@ public class UiManager
                 localUi.SetActive(active);
                 if (active)
                 {
-                    //localUi.GetComponent<UnitList>().SetList();
+                    localUi.GetComponent<UnitList>().SetList();
                     localUi.GetComponent<LocalInfoUi>().SetLocalUi();
                 }
                 break;
@@ -93,7 +93,7 @@ public class UiManager
                 break;
             case "Shop":
                 shopUi.SetActive(active);
-                // if (active) shopUi.GetComponent<UnitList>().SetList();
+                if (active) shopUi.GetComponent<UnitList>().SetList();
                 break;
         }
     }
