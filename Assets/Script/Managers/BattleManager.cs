@@ -68,7 +68,7 @@ public class BattleManager : MonoBehaviour
                 InitializeFlag(WaveList);
                 InitializePlayer();
                 player.transform.position = flags[0].transform.position + playerYoffset;
-                InitializeMonsterWave(TestWaveList);
+                InitializeMonsterWave(WaveList);
                 InitializePlayerHeroes(Managers.Data.handOverData.unitPositions);
 
             }
