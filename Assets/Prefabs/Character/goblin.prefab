@@ -528,6 +528,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -4342953289968886760}
   m_SourcePrefab: {fileID: 100100000, guid: eceb04017af7c0348843553aa675ede7, type: 3}
+--- !u!4 &3319060873286575900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: eceb04017af7c0348843553aa675ede7, type: 3}
+  m_PrefabInstance: {fileID: 4015522624373201108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3472479754285907775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eceb04017af7c0348843553aa675ede7, type: 3}
@@ -589,8 +594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d435e27fa63280240bb642188dcb2762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: DisplayName
+  DisplayName: Goblin
   isMonster: 1
+  own: 0
   tacticCapacity: 3
   team_id: 2
   GlobalCooldown: 5
@@ -624,7 +630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconPath: 
+  rightHand: {fileID: 3319060873286575900}
+  torso: {fileID: 8649183888678480952}
   gridposition: 0
   stat: {fileID: 699249660105396594}
   anim: {fileID: 0}
@@ -632,6 +639,9 @@ MonoBehaviour:
   tacticSystem: {fileID: 0}
   collider_body: {fileID: 0}
   rigidBody: {fileID: 0}
+  outliner: {fileID: 0}
+  firePoint: {fileID: 3319060873286575900}
+  IconPath: Character/Screenshots/Paladin
 --- !u!195 &8983562577535952631
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -677,7 +687,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -696,7 +706,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -734,6 +744,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7e9edbbc78d0d3aa6831424c5fb1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8649183888678480952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: eceb04017af7c0348843553aa675ede7, type: 3}
+  m_PrefabInstance: {fileID: 4015522624373201108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6369844675194638080
 PrefabInstance:
   m_ObjectHideFlags: 0
