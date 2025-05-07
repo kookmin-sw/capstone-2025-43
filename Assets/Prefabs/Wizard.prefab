@@ -505,8 +505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d435e27fa63280240bb642188dcb2762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: wizard
+  DisplayName: Wizard
   isMonster: 0
+  own: 0
   tacticCapacity: 3
   team_id: 1
   GlobalCooldown: 2
