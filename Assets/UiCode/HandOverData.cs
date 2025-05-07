@@ -14,6 +14,15 @@ public class HandOverData : MonoBehaviour
     [Header("# OpenLocal")]
     public Vector2 openLocal;
 
+    public string GetOpenLocalEnv()
+    {
+        return localInfos[openLocal].localData.env;
+    }
+    public List<BattleWavePreset> GetOpenLocalMonsterWave()
+    {
+        return localInfos[openLocal].battleWaves[0];
+    }
+
     public void Init()
     {
         DontDestroyOnLoad(gameObject);

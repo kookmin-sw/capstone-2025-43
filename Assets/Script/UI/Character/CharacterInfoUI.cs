@@ -12,7 +12,7 @@ public class CharacterInfoUI : MonoBehaviour
     public Slider[] TacticCooldownSlider;
     public TMP_Text[] TacticText;
     private float lerpspeed_easeHealth = 0.02f;
-    private List<Character> heroes;
+    private List<Character> heroes = new List<Character>();
 
     public void OpenUI()
     {
