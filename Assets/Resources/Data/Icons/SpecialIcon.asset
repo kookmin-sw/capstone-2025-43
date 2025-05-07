@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe94f339a3353849a318d05a2b4df41, type: 3}
   m_Name: SpecialIcon
   m_EditorClassIdentifier: 
-  iconImg: {fileID: 0}
+  iconImg: {fileID: 21300000, guid: bc8bd115512a92144bd05caff07fdb07, type: 3}
   descImg: {fileID: 0}
   descText: "\uD2B9\uC218\uC801 \uCD9C\uD604 \uC9C0\uC5ED\uC785\uB2C8\uB2E4."

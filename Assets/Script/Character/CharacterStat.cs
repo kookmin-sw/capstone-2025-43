@@ -5,6 +5,7 @@ public class CharacterStat : MonoBehaviour
 {
     public string DisplayName = "DisplayName";
     public bool isMonster = false;
+    public bool own = false;
     public int tacticCapacity = 3;
     public int team_id = 1;
     public float GlobalCooldown = 5;

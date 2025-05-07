@@ -57,7 +57,7 @@ public class Managers : MonoBehaviour
     {
         Debug.Log("Reload");
         Ui.Init();
-        Pool.Init();
+       // Pool.Init();
         Game.ReloadGame();
     }
     

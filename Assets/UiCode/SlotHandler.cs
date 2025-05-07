@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SlotHandler : MonoBehaviour
@@ -35,9 +36,9 @@ public class SlotHandler : MonoBehaviour
             Transform child = dropContent.GetChild(idx);
             if(child.childCount > 0)
             {
-                UnitData unitdata = child.GetChild(0).GetComponent<ListIdx>().unitData;
-                if (unitdata != null)
-                    Managers.Data.handOverData.unitPositions[idx] = unitdata.unitName;
+                TMP_Text name = child.GetChild(0).GetComponent<ListIdx>().unitName;
+                if (name != null)
+                    Managers.Data.handOverData.unitPositions[idx] = name.text;
             }
             else
                 Managers.Data.handOverData.unitPositions[idx] = null;

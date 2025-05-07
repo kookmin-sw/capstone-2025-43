@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class ListIdx : MonoBehaviour
 {
-    public UnitData unitData;
+    public CharacterStat unitData;
     public Slider hpSlider;
     public Slider mpSlider;
     public Sprite unitImg;
     public TMP_Text unitName;
-    public void Init(UnitData data)
+    public void Init(CharacterStat data)
     {
         unitImg = transform.GetChild(0).gameObject.GetComponent<Sprite>();
         Slider[] sliders = transform.GetComponentsInChildren<Slider>();
@@ -18,10 +18,10 @@ public class ListIdx : MonoBehaviour
         hpSlider = sliders[0];
         mpSlider = sliders[1];
 
-        unitImg = data.unitImage;
-        unitName.text = this.name = data.unitName;
-        hpSlider.value = (float)data.curHp / data.maxHp;
-        mpSlider.value = (float)data.curMp / data.maxMp;
+        //unitImg = data.unitImage;
+        unitName.text = this.name = data.DisplayName;
+        hpSlider.value = (float)data.hp / data.hp_max;
+        mpSlider.value = (float)data.mp / data.mp_max;
     }
 
     public void SetParent(Transform parent)

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
+using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     public LocalInfo localInfo;
-    public Vector3 offset = new Vector3(0, 0.5f, -0.5f);
+    public Vector3 offset = new Vector3(0, 0, -0.5f);
     public void Init(LocalInfo inputInfo)
     {
         localInfo = inputInfo;
@@ -37,9 +38,9 @@ public class Node : MonoBehaviour
             localInfo.battleWaves.Add(Managers.Pool.GetCreepPool());
         }
     }
-
     private void OnMouseDown()
     {
+        Debug.Log("누름");
         Managers.Data.handOverData.openLocal = localInfo.poisiton;
 
         // 다른 UI가 열려 있으면 클릭 무시
@@ -47,7 +48,7 @@ public class Node : MonoBehaviour
             return;
         this.GetComponent<UiEvent>().onClick();
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("환경과 충돌");
@@ -55,5 +56,5 @@ public class Node : MonoBehaviour
             return;
         Debug.Log($"{other.transform.name} data");
         localInfo.localData = Managers.Data.GetLocalData(other.transform.name);
-    }
+    }*/
 }

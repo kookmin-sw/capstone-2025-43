@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe94f339a3353849a318d05a2b4df41, type: 3}
   m_Name: EnemyIcon
   m_EditorClassIdentifier: 
-  iconImg: {fileID: 0}
+  iconImg: {fileID: 21300000, guid: a8af1ce53c4c7524a86273d7adbdf178, type: 3}
   descImg: {fileID: 0}
   descText: "\uC801 \uC810\uB839\uC9C0\uC785\uB2C8\uB2E4."
