@@ -7,7 +7,6 @@ public class UnitList : MonoBehaviour
 {
     public bool isOwned;
     public GameObject listContent;
-    public List<UnitData> dataList;
 
     // 기존 리스트 정리 (중복 추가 방지)
     private void Init()
@@ -22,13 +21,7 @@ public class UnitList : MonoBehaviour
     public void SetList()
     {
         Init();
-
-        if (isOwned) 
-            dataList = Managers.Pool.ownHeroData;
-        else 
-            dataList = Managers.Pool.onSaleHeroData;
-
-        foreach (UnitData data in dataList)
+        foreach (GameObject hero in Managers.Pool.heroPool.Values)
         {
             // listidx ����
             GameObject go = Managers.Resource.Instantiate("ListIdx", listContent.transform);
@@ -36,7 +29,7 @@ public class UnitList : MonoBehaviour
             {
                 Debug.LogError("ListIdx 프리팹이 Instantiate되지 않았습니다!");
             }
-            go.gameObject.GetComponent<ListIdx>().Init(data);
+            go.gameObject.GetComponent<ListIdx>().Init(hero.GetComponent<CharacterStat>());
         }
         Debug.Log("SetList 실행됨: " + gameObject.name);
     }

@@ -43,7 +43,7 @@ public class Managers : MonoBehaviour
             Ui.Init();
             Data.Init();
             Game.Init();
-            Pool.Init();
+            //Pool.Init();
         }
     }
 
@@ -57,7 +57,7 @@ public class Managers : MonoBehaviour
     {
         Debug.Log("Reload");
         Ui.Init();
-        Pool.Init();
+       // Pool.Init();
         Game.ReloadGame();
     }
     
