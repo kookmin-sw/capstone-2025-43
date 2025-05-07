@@ -8,6 +8,7 @@ public class UiManager
     public GameObject localUi;
     public GameObject settingUi;
     public GameObject shopUi;
+    public GameObject statusUi;
 
     public GameObject localList;
 
@@ -17,17 +18,18 @@ public class UiManager
     {
         openUi.Clear();
         GameObject canvas = GameObject.Find("Canvas");
-        Debug.Log($"{canvas} is open");
         defaultUi = canvas.transform.GetChild(0).gameObject;
         localUi = canvas.transform.GetChild(1).gameObject;
         settingUi= canvas.transform.GetChild(2).gameObject;
         shopUi = canvas.transform.GetChild(3).gameObject;
+        statusUi = canvas.transform.GetChild(4).gameObject;
 
         openUi.Push("Default");
         defaultUi.SetActive(true);
         localUi.SetActive(false);
         settingUi.SetActive(false);
         shopUi.SetActive(false);
+        statusUi.SetActive(false);
     }
 
     public bool IsOnlyDefaultOpen()
@@ -91,6 +93,9 @@ public class UiManager
                 shopUi.SetActive(active);
                 if (active) shopUi.GetComponent<UnitList>().SetList();
                 break;
+            case "Status":
+                statusUi.SetActive(active);
+                break;
         }
     }
     private void SetDefaultUiRaycast(bool value)
@@ -99,7 +104,6 @@ public class UiManager
         if (cg != null)
         {
             cg.blocksRaycasts = value;
-            Debug.Log($"Default UI Raycast → {value}");
         }
     }
 

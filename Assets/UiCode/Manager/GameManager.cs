@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager
 {
-    public int time; // 0 : morning, 1 : afternoon, 2 : night
+    private int _time = 0; // 0: morning, 1: afternoon, 2: night
+    public int gold;
     public Map map;
     public LocalData data;
     
@@ -25,6 +26,8 @@ public class GameManager
     {
         map = GameObject.Find("Map").GetComponent<Map>();
         map.Init();
+        time = 0;
+        gold = 1000;
     }
 
     public void StartBattle()
@@ -40,24 +43,24 @@ public class GameManager
         SceneManager.LoadScene("MapScene");
         if (success)
         {
-            //day -> night
+            time = 2;
             Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
         }
         else
         {
-            //day -> afternoon
+            time = 1;
         }
         //Load Game
         TakenAlly();
     }
     IEnumerator WaitForSceneLoad()
     {
-        yield return new WaitForSeconds(1f); // ÇÑ ÇÁ·¹ÀÓ ´ë±â
-        Debug.Log("¾Æ¸¶µµ ¾À ·Îµå ¿Ï·á ÈÄÀÔ´Ï´Ù!");
+        yield return new WaitForSeconds(1f); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        Debug.Log("ï¿½Æ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îµï¿½ ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½!");
         Managers.Ui.Init();
         Managers.Pool.SetHeroList();
         ReloadGame();
-        // ¾À ¿ÀºêÁ§Æ® Á¢±Ù °¡´É
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     public void ReloadGame()
@@ -82,10 +85,61 @@ public class GameManager
         return position.x < xBorderAlly && position.y < yBorderAlly;
     }
 
-    public void Heal()
+
+    public int time
     {
-        // todo heal heros
+        get => _time;
+        set
+        {
+            if (_time != value)
+            {
+                _time = value;
+                OnTimeChanged();
+            }
+        }
     }
+
+    private void OnTimeChanged()
+    {
+        Debug.Log($"[GameManager] Time changed to: {_time}");
+
+        HealUnitsOnTimeChange();
+    }
+
+    private void HealUnitsOnTimeChange()
+    {
+        float healRatio = 0.2f; // ìµœëŒ€ HPì˜ 20% íšŒë³µ
+
+        foreach (UnitData unit in Managers.Pool.ownHeroData)
+        {
+            int healAmount = Mathf.CeilToInt(unit.maxHp * healRatio);
+            unit.curHp = Mathf.Min(unit.curHp + healAmount, unit.maxHp);
+
+            Debug.Log($"{unit.unitName} íšŒë³µ: +{healAmount} â†’ í˜„ìž¬ HP: {unit.curHp}/{unit.maxHp}");
+        }
+    }
+
+    public bool SpendGold(int amount)
+    {
+        if (gold >= amount)
+        {
+            gold -= amount;
+            //UpdateGoldUI();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        //UpdateGoldUI();
+    }
+
+
     public void TakenAlly()
     {
         List<Line> attack = map.GetLines();

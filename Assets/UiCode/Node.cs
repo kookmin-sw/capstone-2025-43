@@ -37,12 +37,66 @@ public class Node : MonoBehaviour
             localInfo.battleWaves.Add(Managers.Pool.GetCreepPool());
         }
     }
+    /*
+    private bool IsAdjacentToAlly()
+    {
+        Vector2 myPos = (Vector2)transform.position;
+        Debug.Log($"[Node] ë‚´ ìœ„ì¹˜: {myPos}");
+
+        foreach (var edge in Managers.Data.handOverData.roads)
+        {
+            Vector2 neighborPos = Vector2.zero;
+            bool isConnected = false;
+
+            if (ApproximatelyEqual(edge.v0, myPos))
+            {
+                neighborPos = edge.v1;
+                isConnected = true;
+            }
+            else if (ApproximatelyEqual(edge.v1, myPos))
+            {
+                neighborPos = edge.v0;
+                isConnected = true;
+            }
+
+            if (isConnected && Managers.Data.handOverData.localInfos.TryGetValue(neighborPos, out var neighborInfo))
+            {
+                Debug.Log($"[Edge] {edge.v0} <-> {edge.v1}");
+                if (neighborInfo.side == "Ally")
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool ApproximatelyEqual(Vector2 a, Vector2 b, float tolerance = 0.01f)
+    {
+        return Vector2.Distance(a, b) < tolerance;
+    }
+    */
+
+    
     private void OnMouseDown()
     {
-        Managers.Data.handOverData.openLocal = localInfo.poisiton;
-        // ´Ù¸¥ UI°¡ ¿­·Á ÀÖÀ¸¸é Å¬¸¯ ¹«½Ã
+        if (Managers.Game.time != 0)
+        {
+            Debug.Log("ë…¸ë“œëŠ” ì•„ì¹¨ì—ë§Œ ìƒí˜¸ìž‘ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
+            return;
+        }
+
+        if (CompareTag("Ally"))
+            return;
+        /*
+        if (CompareTag("Enemy") && !IsAdjacentToAlly())
+            return;
+        */
+            
+        // ï¿½Ù¸ï¿½ UIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (!Managers.Ui.IsOnlyDefaultOpen())
             return;
+
+        Managers.Data.handOverData.openLocal = localInfo.poisiton;
         this.GetComponent<UiEvent>().onClick();
     }
 

@@ -9,6 +9,7 @@ public class SlotHandler : MonoBehaviour
     public void PurchaseItem()
     {
         List<ListIdx> itemsToBuy = new List<ListIdx>();
+        int totalCost = 0;
 
         foreach (Transform child in dropContent)
         {
@@ -16,7 +17,21 @@ public class SlotHandler : MonoBehaviour
             if (unit != null && !unit.unitData.own)
             {
                 itemsToBuy.Add(unit);
+                totalCost += unit.unitData.price;
             }
+        }
+
+        if (itemsToBuy.Count == 0)
+        {
+            Debug.Log("구매할 유닛이 없습니다.");
+            return;
+        }
+
+        if (!Managers.Game.SpendGold(totalCost))
+        {
+            Debug.Log("골드가 부족하여 구매할 수 없습니다.");
+            // 필요하면 UI로 실패 메시지 띄우기
+            return;
         }
 
         foreach (ListIdx item in itemsToBuy)

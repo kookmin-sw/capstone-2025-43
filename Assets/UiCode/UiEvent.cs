@@ -19,7 +19,7 @@ public class UiEvent : MonoBehaviour, IPointerClickHandler
         onClick();
     }
 
-    public void onClick()
+    public virtual void onClick()
     {
         Managers.Ui.SetUiCondition(targetName, active);
     }
