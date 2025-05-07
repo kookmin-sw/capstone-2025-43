@@ -12,6 +12,7 @@ public class TacticSystemUI : MonoBehaviour
     [SerializeField] private GameObject[] TacticSlots; // TacticSlot Count is Always 6
     public Button closeButton;
     public Button saveButton;
+    public TMP_Text nameText;
 
     private Character currentCharacter;
 
@@ -30,7 +31,7 @@ public class TacticSystemUI : MonoBehaviour
         tacticUI.SetActive(true);
         currentCharacter = character;
         TacticSystem tacticSystem = currentCharacter.GetComponent<TacticSystem>();
-
+        nameText.SetText(currentCharacter.DisplayName);
         tacticSystem.SortTactics();
         int tacticCapacity = tacticSystem.TacticCapacity;
 
