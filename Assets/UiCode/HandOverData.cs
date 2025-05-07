@@ -20,7 +20,7 @@ public class HandOverData : MonoBehaviour
     }
     public List<BattleWavePreset> GetOpenLocalMonsterWave()
     {
-        return localInfos[openLocal].battleWaves[0];
+        return localInfos[openLocal].battleWaves;
     }
 
     public void Init()

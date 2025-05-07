@@ -26,7 +26,7 @@ public class BattleManager : MonoBehaviour
     [HideInInspector] public List<GameObject> flags = new();
     [HideInInspector] public List<Character> battleCharacter = new();
     [HideInInspector]public  List<Character> playerHeroes = new();
-    private List<List<Character>> waveMonster = new();
+    private List<List<Character>> waveMonster = new List<List<Character>>();
 
     private int monsterCount = 0;
     private int heroCount = 0;
@@ -60,10 +60,15 @@ public class BattleManager : MonoBehaviour
                     Debug.LogError("[BattleManager]There is No BattleWavePresetList on MapNode");
                     Debug.LogError("[BattleManager]Check MapNode!! TEST WAVE PRESET LOADED");
                 }
+                if(WaveList.Count <= 0)
+                {
+                    Debug.LogError("[BattleManager]There is No BattleWavePreset in WavePresetList");
+                }
+
                 InitializeFlag(WaveList);
                 InitializePlayer();
                 player.transform.position = flags[0].transform.position + playerYoffset;
-                InitializeMonsterWave(WaveList);
+                InitializeMonsterWave(TestWaveList);
                 InitializePlayerHeroes(Managers.Data.handOverData.unitPositions);
 
             }
@@ -162,6 +167,7 @@ public class BattleManager : MonoBehaviour
             //Show Defeat UI
             if (TacticUIManager.Instance != null)
             {
+                EnableCharacterAgent(playerHeroes, false);
                 TacticUIManager.Instance.OpenResultUI(false);
             }
 
@@ -183,6 +189,7 @@ public class BattleManager : MonoBehaviour
         {
             //Show Victory UI
             Debug.Log("Victory!!!");
+            EnableCharacterAgent(playerHeroes, false);
             TacticUIManager.Instance.OpenResultUI(true);
         }
         else
@@ -368,6 +375,9 @@ public class BattleManager : MonoBehaviour
 
     public void InitializeMonsterWave(List<BattleWavePreset> waves)
     {
+        Debug.LogWarning(waves.Count);
+        Debug.LogWarning(flags.Count);
+        Debug.Log(waveMonster.Count);
         waveMonster.Clear();
         for (int i = 0; i < waves.Count; i++)
         {
@@ -416,6 +426,7 @@ public class BattleManager : MonoBehaviour
             character.gridposition = gridPosition;
             character.transform.position = GridPositionUtil.GetGridPosition(gridPosition, 3f, flags[0].transform);
             character.gameObject.SetActive(false);
+            character.agent.enabled = true;
 
             playerHeroes.Add(character);
         }
@@ -472,6 +483,12 @@ public class BattleManager : MonoBehaviour
 
         waveMonster[waveNumber].Add(character);
     }
-
     #endregion
+    private void EnableCharacterAgent(List<Character> charactes, bool enable)
+    {
+        foreach (Character character in charactes)
+        {
+            character.agent.enabled = enable;
+        }
+    }
 }
