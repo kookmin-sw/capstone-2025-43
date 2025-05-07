@@ -10,9 +10,7 @@ using UnityEngine.SceneManagement;
 public class GameManager
 {
     public int time; // 0 : morning, 1 : afternoon, 2 : night
-    public Map map;
-    public LocalData data;
-    
+    public Map map;   
 
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
@@ -51,12 +49,11 @@ public class GameManager
         //Load Game
     }
 
-    public void ReloadGame()
+    public void LoadMap()
     {
         map = GameObject.Find("Map").GetComponent<Map>();
         map.CreateMap();
     }
-
     public void GamePause()
     {
         isPause = true;
