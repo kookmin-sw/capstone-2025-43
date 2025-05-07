@@ -60,6 +60,9 @@ TagManager:
   - name: Line
     uniqueID: 2241393921
     locked: 0
+  - name: Node
+    uniqueID: 1825304217
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

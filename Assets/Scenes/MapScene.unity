@@ -878,7 +878,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOwned: 1
   listContent: {fileID: 1912609516}
-  dataList: []
 --- !u!114 &156660321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7784,7 +7783,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOwned: 0
   listContent: {fileID: 213414841}
-  dataList: []
 --- !u!114 &1853949599
 MonoBehaviour:
   m_ObjectHideFlags: 0

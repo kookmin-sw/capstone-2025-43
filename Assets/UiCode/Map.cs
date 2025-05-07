@@ -16,7 +16,11 @@ public class Map : MonoBehaviour
         foreach (var info  in Managers.Data.handOverData.localInfos)
         {
             idx++;
-            GameObject tmpObject = Managers.Resource.Instantiate("Node", locals.transform);
+            GameObject tmpObject;
+            if (info.Value.side == "Ally")
+                tmpObject = Managers.Resource.Instantiate("Ally", locals.transform);
+            else
+                tmpObject = Managers.Resource.Instantiate("Enemy", locals.transform);
             tmpObject.GetComponent<Node>().Init(info.Value);
             tmpObject.name = $"node {idx}";
         }
