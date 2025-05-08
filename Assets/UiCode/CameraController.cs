@@ -48,6 +48,9 @@ public class CameraController : MonoBehaviour
 
     void HandleZoom()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         // 마우스 휠 줌 기능
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         Camera.main.fieldOfView -= scroll * zoomSpeed;
