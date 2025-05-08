@@ -37,7 +37,9 @@ public class TacticSystem : MonoBehaviour
         cooldownTimer = 3f;
         stopCooldown = false;
         InitializeTactic(character.tacticCapacity);
+
         //TODO :: LoadTactic 
+        ApplyTacticCooldown();
     }
 
     private void Update()
@@ -100,6 +102,13 @@ public class TacticSystem : MonoBehaviour
             {
                 tactic.ApplyCoolDown();
             }
+        }
+    }
+    private void ApplyTacticCooldown()
+    {
+        foreach (Tactic tactic in tactics)
+        {
+            tactic.ApplyCoolDown();
         }
     }
     private void ExecuteTactic()
