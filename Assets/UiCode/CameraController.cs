@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
     {
         //Camera.main.fieldOfView = 60f;
 
+        if (Drag.isDragging) return;
+
         // 카메라 이동 (화살표 키 / WASD)
         float moveX = Input.GetAxis("Horizontal") * panSpeed * Time.deltaTime;
         float moveY = Input.GetAxis("Vertical") * panSpeed * Time.deltaTime;

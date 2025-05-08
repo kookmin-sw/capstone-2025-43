@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Drag : MonoBehaviour , IDragHandler , IBeginDragHandler, IEndDragHandler
 {
-    // ¿ø·¡ À§Ä¡ , ºÎ¸ð Á¤º¸ , ÄË¹ö½º
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ , ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ , ï¿½Ë¹ï¿½ï¿½ï¿½
     private RectTransform tmpRectTrans;
     private RectTransform parentRectTrans;
     private Canvas rootCanvas;
+
+    public static bool isDragging = false;
 
 
     private void Start()
@@ -20,7 +22,8 @@ public class Drag : MonoBehaviour , IDragHandler , IBeginDragHandler, IEndDragHa
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // ui Ãæµ¹ ¹æÁö·Î ÄË¹ö½ºÀÇ ÀÚ½ÄÀ¸·Î ³ÖÀ½
+        // ui ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        isDragging = true;
         transform.SetParent(rootCanvas.transform);
         transform.GetComponent<Image>().raycastTarget = false;
     }
@@ -32,8 +35,9 @@ public class Drag : MonoBehaviour , IDragHandler , IBeginDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         transform.GetComponent<Image>().raycastTarget = true;
-        if (this.transform.parent == rootCanvas.transform) // dropÀÌ ¾ÈµÇ¾úÀ» °æ¿ì
+        if (this.transform.parent == rootCanvas.transform) // dropï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             returnToFrom();
     }
 
