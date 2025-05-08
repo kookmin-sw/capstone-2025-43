@@ -43,7 +43,7 @@ public class TacticUIManager : MonoBehaviour
     //TODO (Optional) :: Refactoring TacticUI's Structure to Function Extensibility 
     private IEnumerator DelayedResultUIOpen(bool isWin)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         resultUI.GetComponent<ResultUI>().OpenUI(isWin);
     }
 

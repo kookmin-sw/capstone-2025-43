@@ -34,6 +34,8 @@ public class GameManager
     // From BattleScene
     public void EndBattle(bool success)
     {
+        if (BattleManager.Instance)
+            BattleManager.Instance.EnablePlayerHeroAgent(false);
         Managers.Instance.LoadScene("MapScene");
         if (success)
         {

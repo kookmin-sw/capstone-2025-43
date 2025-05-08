@@ -10,6 +10,8 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.AddressableAssets;
 
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Timers;
+
 
 
 
@@ -167,7 +169,6 @@ public class BattleManager : MonoBehaviour
             //Show Defeat UI
             if (TacticUIManager.Instance != null)
             {
-                EnableCharacterAgent(playerHeroes, false);
                 TacticUIManager.Instance.OpenResultUI(false);
             }
 
@@ -189,7 +190,6 @@ public class BattleManager : MonoBehaviour
         {
             //Show Victory UI
             Debug.Log("Victory!!!");
-            EnableCharacterAgent(playerHeroes, false);
             TacticUIManager.Instance.OpenResultUI(true);
         }
         else
@@ -234,6 +234,7 @@ public class BattleManager : MonoBehaviour
         await Task.WhenAll(heroRotations.Append(playerRotation));
         WaveStart(currentWaveCount);
     }
+
     private async Task MovePlayer(Transform target, float delay, float moveSpeed = 8f)
     {
         if (player == null) return;
@@ -241,26 +242,41 @@ public class BattleManager : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.isPassive = true;
 
-        await Task.Delay((int)(delay * 1000));
+        float timer = 0f;
+
+        while (timer < delay)
+        {
+            if (Time.timeScale > 0)
+            {
+                timer += Time.deltaTime;
+            }
+            await Task.Yield();
+        }
 
         Vector3 start = player.transform.position;
         Vector3 end = GridPositionUtil.GetGridPosition(E_GridPosition.Central, 3f, target) + playerYoffset;
 
         float distance = Vector3.Distance(start, end);
         float duration = distance / moveSpeed;
-        float timeElapsed = 0f;
+        float elapsedTime = 0f;
 
         Quaternion targetRotation = Quaternion.LookRotation(playerController.GetControlDirection());
-        while (timeElapsed < duration)
-        {
-            timeElapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(timeElapsed / duration);
 
-            player.transform.position = Vector3.Lerp(start, end, t);
-            player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, t);
+        while (elapsedTime < duration)
+        {
+            if (Time.timeScale > 0)
+            {
+                elapsedTime += Time.deltaTime;
+
+                float t = Mathf.Clamp01(elapsedTime / duration);
+
+                player.transform.position = Vector3.Lerp(start, end, t);
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, t);
+            }
 
             await Task.Yield();
         }
+
         player.transform.position = end;
         player.transform.rotation = targetRotation;
 
@@ -375,9 +391,6 @@ public class BattleManager : MonoBehaviour
 
     public void InitializeMonsterWave(List<BattleWavePreset> waves)
     {
-        Debug.LogWarning(waves.Count);
-        Debug.LogWarning(flags.Count);
-        Debug.Log(waveMonster.Count);
         waveMonster.Clear();
         for (int i = 0; i < waves.Count; i++)
         {
@@ -484,9 +497,9 @@ public class BattleManager : MonoBehaviour
         waveMonster[waveNumber].Add(character);
     }
     #endregion
-    private void EnableCharacterAgent(List<Character> charactes, bool enable)
+    public void EnablePlayerHeroAgent(bool enable)
     {
-        foreach (Character character in charactes)
+        foreach (Character character in playerHeroes)
         {
             character.agent.enabled = enable;
         }

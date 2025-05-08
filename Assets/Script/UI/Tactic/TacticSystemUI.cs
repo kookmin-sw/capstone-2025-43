@@ -45,11 +45,11 @@ public class TacticSystemUI : MonoBehaviour
         {
             TacticSlots[i].SetActive(i < tacticCapacity);
             if (i < tacticCapacity)
-                InitializeRowUI(TacticSlots[i], i);
+                InitializeRowUI(TacticSlots[i], i, character);
         }
     }
 
-    private void InitializeRowUI(GameObject TacticSlot, int index)
+    private void InitializeRowUI(GameObject TacticSlot, int index, Character character)
     {
         Transform rowUI = TacticSlot.transform.Find("RowUI");
         Tactic currentTactic = tempTactics[index];
@@ -79,7 +79,10 @@ public class TacticSystemUI : MonoBehaviour
                                currentCharacter.Actions.IndexOf(currentTactic.actionType) + 1 : 0;
         enableToggle.isOn = currentTactic.enable;
 
-        SetRowUIInteractable(currentTactic.editable, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
+        if(character.IsMonster)
+            SetRowUIInteractable(false, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
+        else
+            SetRowUIInteractable(currentTactic.editable, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
 
         targetDropdown.onValueChanged.AddListener(delegate { UpdateTargetDropdown(currentTactic, targetDropdown); });
         conditionDropdown.onValueChanged.AddListener(delegate { UpdateConditionDropdown(currentTactic, conditionDropdown); });
