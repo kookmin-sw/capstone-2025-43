@@ -17,6 +17,7 @@ public class Drop : MonoBehaviour, IDropHandler
         if (this.transform.childCount < maxChild)
         {
             eventData.pointerDrag.transform.SetParent(this.transform);
+            eventData.pointerDrag.transform.position = this.transform.position;
         }
     }
 }

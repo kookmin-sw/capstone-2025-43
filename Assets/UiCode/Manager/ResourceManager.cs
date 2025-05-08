@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class ResourceManager
 {
+    public T Load<T>(string path) where T : Object
+    {
+        return Resources.Load<T>(path);
+    }
     public GameObject Instantiate(string path, Transform parent = null)
     {
-        GameObject prefab = Resources.Load<GameObject>($"Prefab/{path}");
+        GameObject prefab = Load<GameObject>($"Prefab/{path}");
         
         if (prefab == null)
         {
@@ -15,7 +19,6 @@ public class ResourceManager
 
         return Object.Instantiate(prefab, parent); //Object에 있는 Instantiate()호출
     }
-
     public void Destroy(GameObject go)
     {
         if (go == null)

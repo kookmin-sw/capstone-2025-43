@@ -87,5 +87,10 @@ public class GameManager
             b.side = "Enemy";
     }
 
+    public void SetSpecial()
+    {
+
+    }
+
 
 }

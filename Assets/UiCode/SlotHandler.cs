@@ -6,7 +6,7 @@ public class SlotHandler : MonoBehaviour
 {
 
     public Transform dropContent; // 드롭된 유닛들이 들어있는 ScrollView의 Content
-
+    public Transform Gold;
     public void PurchaseItem()
     {
         List<ListIdx> itemsToBuy = new List<ListIdx>();
