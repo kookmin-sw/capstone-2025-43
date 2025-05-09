@@ -80,9 +80,9 @@ public class TacticSystemUI : MonoBehaviour
         enableToggle.isOn = currentTactic.enable;
 
         if(character.IsMonster)
-            SetRowUIInteractable(false, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
+            SetRowUIInteractable(false, item, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
         else
-            SetRowUIInteractable(currentTactic.editable, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
+            SetRowUIInteractable(currentTactic.editable, item, targetDropdown, conditionDropdown, actionDropdown, enableToggle);
 
         targetDropdown.onValueChanged.AddListener(delegate { UpdateTargetDropdown(currentTactic, targetDropdown); });
         conditionDropdown.onValueChanged.AddListener(delegate { UpdateConditionDropdown(currentTactic, conditionDropdown); });
@@ -137,12 +137,13 @@ public class TacticSystemUI : MonoBehaviour
         Time.timeScale = 1f;
         tacticUI.SetActive(false);
     }
-    public void SetRowUIInteractable(bool value, TMP_Dropdown targetDropdown, TMP_Dropdown conditionDropdown, TMP_Dropdown actionDropdown, Toggle enableToggle)
+    public void SetRowUIInteractable(bool value, draggableTactic item,TMP_Dropdown targetDropdown, TMP_Dropdown conditionDropdown, TMP_Dropdown actionDropdown, Toggle enableToggle)
     {
         targetDropdown.interactable = value;
         conditionDropdown.interactable = value;
         actionDropdown.interactable = value;
         enableToggle.interactable = value;
+        item.draggable = value;
     }
     public Character GetCurrentCharacter()
     {

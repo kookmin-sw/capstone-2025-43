@@ -7,6 +7,7 @@ public class draggableTactic : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [HideInInspector] public Transform parentAfterDrag;
     private CanvasGroup canvasGroup;
     public Tactic tactic;
+    public bool draggable = true;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class draggableTactic : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (tactic.draggable)
+        if (draggable)
         {
             parentAfterDrag = transform.parent;
             transform.SetParent(transform.root);
@@ -30,7 +31,7 @@ public class draggableTactic : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (tactic.draggable)
+        if (draggable)
         {
             transform.position = Input.mousePosition;
         }
@@ -38,7 +39,7 @@ public class draggableTactic : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (tactic.draggable)
+        if (draggable)
         {
             transform.SetParent(parentAfterDrag);
             transform.position = parentAfterDrag.position;

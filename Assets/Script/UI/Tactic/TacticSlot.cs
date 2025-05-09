@@ -10,6 +10,7 @@ public class TacticSlot : MonoBehaviour, IDropHandler
 
         draggableTactic draggableItem = dropped.GetComponent<draggableTactic>();
         if (draggableItem == null) return;
+        if (draggableItem.draggable == false) return;
 
         Transform previousParent = draggableItem.parentAfterDrag; 
 
@@ -23,6 +24,10 @@ public class TacticSlot : MonoBehaviour, IDropHandler
         {
             GameObject currentItem = transform.GetChild(0).gameObject;
             draggableTactic currentDraggable = currentItem.GetComponent<draggableTactic>();
+            if ((currentDraggable.draggable == false))
+            {
+                return; 
+            }
 
             currentDraggable.transform.SetParent(previousParent);
             currentDraggable.transform.localPosition = Vector3.zero;
