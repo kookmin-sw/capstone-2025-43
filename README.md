@@ -46,9 +46,9 @@
 ### 5. 기타
 
 #### 기술스택
-<img src="https://img.shields.io/badge/c#-색상?style=for-the-badge&logo=c%2B&logoColor=white">
-<img src="https://cdn.sanity.io/images/fuvbjjlp/production/24a55dfbef02a7776fdf4416f0ab38a367ca1596-500x169.png">
-<img src="https://img.shields.io/badge/표시할이름-색상?style=for-the-badge&logo=기술스택아이콘&logoColor=white">
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/C_Sharp_Logo_2023.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg">
 
 
 ## Markdown을 사용하여 내용꾸미기
