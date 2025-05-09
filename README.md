@@ -25,25 +25,40 @@
 
 ## 내용에 아래와 같은 내용들을 추가하세요.
 
-### 1. 프로잭트 소개
+### 1. 🧩 프로젝트 소개
+**Tactic RPG**는 Unity 엔진을 기반으로 한 **전술 시스템(Tactic System)**을 활용한 영웅 수집형 RPG입니다.  
+플레이어는 맵에서 지역을 점령하고, 실시간 전술 조정을 통해 전략적인 전투를 수행합니다.  
+전투는 자동과 수동의 중간 지점에서 이루어지며, 전술 수정이 가능한 **세미 오토 전투 시스템**을 제공합니다.
 
-프로젝트
+- 맵은 그래프 구조로, 플레이어와 보스가 세력을 확장하며 경쟁합니다.
+- 전투는 Tactic(Target, Condition, Action) 기반으로 자동 실행되며, 플레이 중 실시간 수정이 가능합니다.
+- 승리 보상으로 **영웅을 직접 획득하거나 상점에서 구매**할 수 있어 과금 없이도 즐길 수 있는 구조입니다.
 
-### 2. 소개 영상
+### 2. 📄 Abstract (EN)
+
+**Tactic RPG** is a Unity-based collectible RPG featuring a customizable **Tactic System** for semi-automated strategic battles.  
+Players conquer regions on a graph-structured map while adapting real-time strategies during combat.
+
+- A unique tactic-based combat system (Target → Condition → Action) supports real-time edits.
+- Both players and AI bosses expand their territory, adding tension to the strategic map control.
+- Heroes can be earned through battle rewards or purchased using in-game currency — no mandatory gacha or paywalls.
+
+Enjoy deep tactics and fair hero collecting in one seamless experience.
+### 3. 소개 영상
 
 프로젝트 소개하는 영상을 추가하세요
 
-### 3. 팀 소개
+### 4. 팀 소개
 
 팀을 소개하세요.
 
 팀원정보 및 담당이나 사진 및 SNS를 이용하여 소개하세요.
 
-### 4. 사용법
+### 5. 사용법
 
 소스코드제출시 설치법이나 사용법을 작성하세요.
 
-### 5. 기타
+### 6. 기타
 
 #### 기술스택
 <img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white">
