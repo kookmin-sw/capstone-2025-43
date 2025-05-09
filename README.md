@@ -42,7 +42,15 @@
 
 ### 4. 사용법
 
-소스코드제출시 설치법이나 사용법을 작성하세요.
+#### 1. 다운로드 및 실행
+1. .zip 다운로드 후 압축 풀기
+2. 파일 내 .exe 파일 실행
+
+#### 2. 게임 플레이
+1. option에서 화면 해상도 조절
+2. gameStart 누르기
+3. enemy노드를 누르고 튜토리얼을 따라 플레이 하세요.
+
 
 ### 5. 기타
 
@@ -50,7 +58,6 @@
 <img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white">
 <img src="https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white">
 <img src="https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white">
-
 
 ## Markdown을 사용하여 내용꾸미기
 
