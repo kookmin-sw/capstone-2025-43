@@ -18,10 +18,8 @@
   - Theme Chooser에서 태마선택
   - 수정후 팀페이지 확인하여 점검.
 
-**팀페이지 주소** -> https://kookmin-sw.github.io/ '{{자신의 리파지토리 아이디}}'
-
-**예시)** 2023년 0조  https://kookmin-sw.github.io/capstone-2023-00/
-
+**팀페이지 주소**
+  https://kookmin-sw.github.io/capstone-2025-43
 
 ## 내용에 아래와 같은 내용들을 추가하세요.
 
@@ -50,13 +48,24 @@ Enjoy deep tactics and fair hero collecting in one seamless experience.
 
 ### 4. 팀 소개
 
-팀을 소개하세요.
-
-팀원정보 및 담당이나 사진 및 SNS를 이용하여 소개하세요.
+| 이름 | 소속 | 학번 | 역할 |
+| :---: | :---: | :---: | :---: |
+|[최치원](https://github.com/chiwon424)|소프트웨어학부|****1146|팀장, 전투파트장|
+|[유민석](https://github.com/YuMinSeok)|소프트웨어학부|****1629|맵파트장|
+|[김동휘](https://github.com/kimdong0925)|소프트웨어학부|****2965|전투파트원|
+|[강문정](https://github.com/kangmunjeong)|소프트웨어학부|****5205|맵파트원|
 
 ### 5. 사용법
 
-소스코드제출시 설치법이나 사용법을 작성하세요.
+#### 1. 다운로드 및 실행
+1. .zip 다운로드 후 압축 풀기
+2. 파일 내 .exe 파일 실행
+
+#### 2. 게임 플레이
+1. option에서 화면 해상도 조절
+2. gameStart 누르기
+3. enemy노드를 누르고 튜토리얼을 따라 플레이 하세요.
+
 
 ### 6. 기타
 
@@ -64,7 +73,6 @@ Enjoy deep tactics and fair hero collecting in one seamless experience.
 <img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white">
 <img src="https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white">
 <img src="https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white">
-
 
 ## Markdown을 사용하여 내용꾸미기
 
