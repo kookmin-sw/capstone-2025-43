@@ -46,9 +46,9 @@
 ### 5. 기타
 
 #### 기술스택
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/C_Sharp_Logo_2023.svg">
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg">
+<img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white">
+<img src="https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white">
+<img src="https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white">
 
 
 ## Markdown을 사용하여 내용꾸미기
