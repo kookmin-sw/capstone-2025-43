@@ -33,7 +33,7 @@ Players conquer regions on a graph-structured map while adapting real-time strat
 ### 🎥 소개 영상
 
 #### 중간발표
-[![Watch the video](https://img.youtube.com/vi/4IjjKHmbU40/hqdefault.jpg)](https://youtu.be/bWFyPdIiQQA)
+[![Watch the video](https://youtu.be/bWFyPdIiQQA)
 
 #### 시연영상
 [![Watch the video](https://img.youtube.com/vi/4IjjKHmbU40/hqdefault.jpg)](https://www.youtube.com/watch?v=4IjjKHmbU40)
