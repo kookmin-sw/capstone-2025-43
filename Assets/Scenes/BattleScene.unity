@@ -1889,6 +1889,9 @@ MonoBehaviour:
   - effectName: DarkCircle
     prefab: {fileID: 1550070467213342, guid: 2df48d8fc1dfabe4ab047db00b7b2059, type: 3}
     initialPoolSize: 5
+  - effectName: Teleport
+    prefab: {fileID: 1658448689254514, guid: 37269c5f8a2c5384f94be79ccdbf6df6, type: 3}
+    initialPoolSize: 5
 --- !u!1001 &1786169141
 PrefabInstance:
   m_ObjectHideFlags: 0
