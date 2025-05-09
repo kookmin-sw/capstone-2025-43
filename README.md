@@ -45,7 +45,10 @@
 
 ### 5. 기타
 
-추가적인 내용은 자유롭게 작성하세요.
+#### 기술스택
+<img src="https://img.shields.io/badge/c#-색상?style=for-the-badge&logo=c%2B&logoColor=white">
+<img src="https://cdn.sanity.io/images/fuvbjjlp/production/24a55dfbef02a7776fdf4416f0ab38a367ca1596-500x169.png">
+<img src="https://img.shields.io/badge/표시할이름-색상?style=for-the-badge&logo=기술스택아이콘&logoColor=white">
 
 
 ## Markdown을 사용하여 내용꾸미기
