@@ -24,7 +24,7 @@
 ## 내용에 아래와 같은 내용들을 추가하세요.
 
 ### 1. 🧩 프로젝트 소개
-**Tactic RPG**는 Unity 엔진을 기반으로 한 **전술 시스템(Tactic System)**을 활용한 영웅 수집형 RPG입니다.  
+**Tactic RPG**는 Unity 엔진을 기반으로 한 전술 시스템(Tactic System)을 활용한 영웅 수집형 RPG입니다.  
 플레이어는 맵에서 지역을 점령하고, 실시간 전술 조정을 통해 전략적인 전투를 수행합니다.  
 전투는 자동과 수동의 중간 지점에서 이루어지며, 전술 수정이 가능한 **세미 오토 전투 시스템**을 제공합니다.
 
@@ -42,9 +42,8 @@ Players conquer regions on a graph-structured map while adapting real-time strat
 - Heroes can be earned through battle rewards or purchased using in-game currency — no mandatory gacha or paywalls.
 
 Enjoy deep tactics and fair hero collecting in one seamless experience.
-### 3. 소개 영상
-
-프로젝트 소개하는 영상을 추가하세요
+### 3. 🎥 소개 영상
+[![Watch the video](https://img.youtube.com/vi/4IjjKHmbU40/hqdefault.jpg)](https://www.youtube.com/watch?v=4IjjKHmbU40)
 
 ### 4. 팀 소개
 
