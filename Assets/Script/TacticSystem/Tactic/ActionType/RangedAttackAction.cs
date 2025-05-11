@@ -33,7 +33,10 @@ public class RangedAttackAction : ActionType
             animator.SetTrigger("Attack");
         }
 
-        AudioManager.Instance.PlayEffect(SFXType.Attack);
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayEffect(SFXType.Attack);
+        }
 
         Transform firePoint = user.firePoint;
         if (firePoint == null) return;
@@ -44,13 +47,10 @@ public class RangedAttackAction : ActionType
 
         Projectile projectile = arrow.GetComponent<Projectile>();
         if (projectile != null)
-        {
-            projectile.target = target.transform;
-            projectile.speed = arrowSpeed;
-            projectile.damage = user.stat.damage;
-            projectile.attacker = user;
-        }
-
+            {
+            projectile.Initialize(target.torso, arrowSpeed, user.stat.damage, user);
+            }
+            
         Collider arrowCol = arrow.GetComponent<Collider>();
         Collider[] allColliders = Physics.OverlapSphere(arrow.transform.position, 5f);
         foreach (var col in allColliders)

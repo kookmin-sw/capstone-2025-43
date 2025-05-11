@@ -46,7 +46,7 @@ public class ChainArrowAction : ActionType
         ChainProjectile projectile = arrow.GetComponent<ChainProjectile>();
         if (projectile != null)
         {
-            projectile.target = target.transform;
+            projectile.target = target.torso;
             projectile.speed = arrowSpeed;
             projectile.damage = user.stat.damage;
             projectile.attacker = user;

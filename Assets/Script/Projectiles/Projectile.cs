@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Transform target;
-    public float speed = 20f;
-    public float rotateSpeed = 500f;
-    public float damage = 10f;
-    public Character attacker;
+    private Transform target;
+    private float speed;
+    private float rotateSpeed = 500f;
+    private float damage;
+    private Character attacker;
 
     private bool initialized = false;
 
+    public void Initialize(Transform target, float speed, float damage, Character attacker)
+    {
+        this.target = target;
+        this.speed = speed;
+        this.damage = damage;
+        this.attacker = attacker;
+    }
 
     void Update()
     {
@@ -35,10 +42,11 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Character character = other.GetComponent<Character>();
-        if (character != null && character.transform == target && attacker.IsEnemy(character))
+        if (character != null && attacker != null && character != attacker && attacker.IsEnemy(character))
         {
             character.ApplyDamage(damage);
             Destroy(gameObject);
+            
         }
     }
 }

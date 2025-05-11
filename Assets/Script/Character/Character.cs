@@ -147,6 +147,11 @@ public class Character : MonoBehaviour
         if(BattleManager.Instance)
             BattleManager.Instance.OnCharacterDied(this);
 
+        if (TryGetComponent(out ExplodeOnDeath explode))
+    {
+        explode.TriggerExplosion();
+    }
+
         StartCoroutine(DieSequence());
     }
     private IEnumerator DieSequence()
