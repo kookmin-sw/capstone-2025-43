@@ -206,8 +206,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: DisplayName
   isMonster: 0
+  own: 1
   tacticCapacity: 3
   team_id: 1
+  price: 100
   GlobalCooldown: 5
   hp_max: 100
   hp: 100
@@ -236,9 +238,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0afc422b7ba2554dbb874a198580467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 0}
+  rightHand: {fileID: 0}
+  torso: {fileID: 0}
   gridposition: 0
+  stat: {fileID: 0}
+  anim: {fileID: 0}
+  agent: {fileID: 0}
   tacticSystem: {fileID: 0}
+  collider_body: {fileID: 0}
+  rigidBody: {fileID: 0}
+  outliner: {fileID: 0}
+  firePoint: {fileID: 0}
+  IconPath: Character/Screenshot/
 --- !u!114 &3670823058585546652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb100ee5048091945ab47f3273a52ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTactic: {fileID: 0}
   tactics: []
   cooldownTimer: 0
   stopCooldown: 0
