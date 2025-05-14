@@ -2075,7 +2075,6 @@ GameObject:
   m_Component:
   - component: {fileID: 384523255}
   - component: {fileID: 384523256}
-  - component: {fileID: 384523257}
   m_Layer: 5
   m_Name: PositionGrid
   m_TagString: Untagged
@@ -2135,30 +2134,6 @@ MonoBehaviour:
   m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &384523257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384523254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b91671e8866941439c7922843fdb43d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonimage: {fileID: 0}
-  positionData:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  startButtonimage: {fileID: 0}
 --- !u!1 &395336726
 GameObject:
   m_ObjectHideFlags: 0
@@ -8201,7 +8176,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropContent: {fileID: 1231960675}
-  Gold: {fileID: 0}
+--- !u!114 &1853949600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853949594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b06446013ce5b48abf3594774369c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1628438550}
 --- !u!1 &1912609516
 GameObject:
   m_ObjectHideFlags: 0
