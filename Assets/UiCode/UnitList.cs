@@ -23,13 +23,17 @@ public class UnitList : MonoBehaviour
         Init();
         foreach (GameObject hero in Managers.Pool.heroPool.Values)
         {
-            // listidx ����
-            GameObject go = Managers.Resource.Instantiate("ListIdx", listContent.transform);
-            if (go == null)
+            CharacterStat cur = hero.GetComponent<CharacterStat>();
+            if (cur.own)
             {
-                Debug.LogError("ListIdx 프리팹이 Instantiate되지 않았습니다!");
+                // listidx ����
+                GameObject go = Managers.Resource.Instantiate("ListIdx", listContent.transform);
+                if (go == null)
+                {
+                    Debug.LogError("ListIdx 프리팹이 Instantiate되지 않았습니다!");
+                }
+                go.gameObject.GetComponent<ListIdx>().Init(cur);
             }
-            go.gameObject.GetComponent<ListIdx>().Init(hero.GetComponent<CharacterStat>());
         }
         Debug.Log("SetList 실행됨: " + gameObject.name);
     }

@@ -8,6 +8,7 @@ public class CharacterStat : MonoBehaviour
     public bool own = false;
     public int tacticCapacity = 3;
     public int team_id = 1;
+    public int price = 100;
     public float GlobalCooldown = 5;
     public float hp_max = 100;
     public float hp = 100;
