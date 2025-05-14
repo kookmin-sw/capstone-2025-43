@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 public class GameManager
 {
     public int time; // 0 : morning, 1 : afternoon, 2 : night
+    public int gold = 500;
+    public int maxHero = 4;
     public Map map;   
 
     public int xBorderAlly = 0;
@@ -41,7 +43,10 @@ public class GameManager
         {
             //day -> night
             time = 2;
+            // update Gold
             Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
+            TakenAlly();
+            Managers.Ui.updateInfo();
         }
         else
         {
@@ -87,11 +92,6 @@ public class GameManager
             a.side = "Enemy";
         else
             b.side = "Enemy";
-    }
-
-    public void SetSpecial()
-    {
-
     }
 
 

@@ -6,7 +6,7 @@ public class SlotHandler : MonoBehaviour
 {
 
     public Transform dropContent; // 드롭된 유닛들이 들어있는 ScrollView의 Content
-    public Transform Gold;
+
     public void PurchaseItem()
     {
         List<ListIdx> itemsToBuy = new List<ListIdx>();
@@ -31,6 +31,7 @@ public class SlotHandler : MonoBehaviour
 
     public void StartBattleButton()
     {
+        int heroCount = 0;
         for(int idx = 0; idx < dropContent.childCount; idx++)
         {
             Transform child = dropContent.GetChild(idx);
@@ -38,12 +39,23 @@ public class SlotHandler : MonoBehaviour
             {
                 TMP_Text name = child.GetChild(0).GetComponent<ListIdx>().unitName;
                 if (name != null)
+                {
+                    heroCount++;
                     Managers.Data.handOverData.unitPositions[idx] = name.text;
+                }
             }
             else
                 Managers.Data.handOverData.unitPositions[idx] = null;
         }
-        Managers.Game.StartBattle();
+        if (heroCount > 0 && heroCount <= 4)
+        {
+            Managers.Game.StartBattle();
+        }
+        else
+        {
+            // todo ui manager error message
+            Debug.Log("Error too many hero");
+        }
     }
 
     public void CloseLocalButton()

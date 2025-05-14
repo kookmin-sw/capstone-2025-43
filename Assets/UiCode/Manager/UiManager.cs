@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
 public class UiManager
 {
     public GameObject defaultUi;
@@ -9,7 +10,6 @@ public class UiManager
     public GameObject settingUi;
     public GameObject shopUi;
 
-    public GameObject localList;
 
     private Stack<string> openUi = new Stack<string>();
 
@@ -23,11 +23,13 @@ public class UiManager
         settingUi= canvas.transform.GetChild(2).gameObject;
         shopUi = canvas.transform.GetChild(3).gameObject;
 
-        openUi.Push("Default");
-        defaultUi.SetActive(true);
+        SetUiCondition("Default", true);
         localUi.SetActive(false);
         settingUi.SetActive(false);
         shopUi.SetActive(false);
+
+        shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
+        localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
     }
 
     public bool IsOnlyDefaultOpen()
@@ -40,20 +42,20 @@ public class UiManager
         if (condition) // UI 열기
         {
             if (openUi.Count > 0)
-        {
-            string top = openUi.Peek();
-            if (top != "Default")
             {
-                SetUiActive(top, false); // Default 제외하고만 비활성화
+                string top = openUi.Peek();
+                if (top != "Default")
+                {
+                    SetUiActive(top, false); // Default 제외하고만 비활성화
+                }
+                else
+                {
+                    SetDefaultUiRaycast(false); // Default는 비활성화 대신 Raycast만 막음
+                }
             }
-            else
-            {
-                SetDefaultUiRaycast(false); // Default는 비활성화 대신 Raycast만 막음
-            }
-        }
 
-        openUi.Push(name);
-        SetUiActive(name, true);
+            openUi.Push(name);
+            SetUiActive(name, true);
         }
         else // UI 닫기
         {
@@ -123,4 +125,26 @@ public class UiManager
     {
         return openUi.Count > 0 ? openUi.Peek() : "";
     }
+
+    public void updateText(string name , int num)
+    {
+        DropTextHandler handler = null;
+        switch (name)
+        {
+            case "Local":
+                handler = localUi.GetComponent<DropTextHandler>();
+                break;
+            case "Shop":
+                handler = shopUi.GetComponent<DropTextHandler>();
+                break;
+        }
+        handler.UpdateCur(num);
+        handler.UpdateText();
+    }
+
+    public void updateInfo()
+    {
+        shopUi.GetComponent<DropTextHandler>().SetMax(Managers.Game.gold);
+    }
+
 }

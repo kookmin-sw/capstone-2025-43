@@ -1293,9 +1293,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: FishMan
   isMonster: 0
-  own: 0
+  own: 1
   tacticCapacity: 3
   team_id: 1
+  price: 100
   GlobalCooldown: 5
   hp_max: 100
   hp: 100

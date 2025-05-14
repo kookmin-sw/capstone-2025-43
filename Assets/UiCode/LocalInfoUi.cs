@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +16,18 @@ public class LocalInfoUi : MonoBehaviour
 
         desc.text = info.localData.desc;
         image.sprite = info.localData.image;
-
-
+        setCreepList();
     }
+    public void setCreepList()
+    {
+        foreach(BattleWavePreset creep in info.battleWaves)
+        {
+            foreach(var t in creep.wave)
+            {
+                GameObject go = Managers.Resource.Instantiate("ListIdx", creepList);
+                go.GetComponent<ListIdx>().Init(t.prefab.GetComponent<CharacterStat>());
+            }
+        }
+    }
+
 }

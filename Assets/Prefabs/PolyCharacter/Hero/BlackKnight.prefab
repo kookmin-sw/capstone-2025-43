@@ -206,9 +206,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: BlackKnight
   isMonster: 0
-  own: 0
+  own: 1
   tacticCapacity: 3
   team_id: 1
+  price: 100
   GlobalCooldown: 5
   hp_max: 500
   hp: 500
