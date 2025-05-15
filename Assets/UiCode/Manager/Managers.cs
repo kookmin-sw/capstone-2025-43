@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Data.Common;
 public class Managers : MonoBehaviour
 {
 
@@ -40,25 +41,31 @@ public class Managers : MonoBehaviour
             }
             DontDestroyOnLoad(mO);
             _instance = mO.GetComponent<Managers>();
-            Ui.Init();
             Data.Init();
-            Pool.Init(); 
-            Game.Init();
+            Pool.Init();
         }
     }
 
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
-        Invoke("ReLoad", 3f);
+        StartCoroutine($"{name}Load");
         return;
     }
-    void ReLoad()
+
+    IEnumerator MapSceneLoad()
     {
-        Debug.Log("Reload");
+        yield return new WaitForSeconds(1f);
         Ui.Init();
-       // Pool.Init();
-        Game.ReloadGame();
+        Game.Init();
+        if(Game.isNew)
+            Game.NewGame();
+        else
+            Game.loadGame();
+        Game.isNew = false;
     }
-    
+    IEnumerator BattleSceneLoad()
+    {
+        yield return new WaitForSeconds(1f);
+    }
 }

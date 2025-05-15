@@ -19,11 +19,19 @@ public class GameManager
     
     public float GameTime;
     public bool isPause = false;
-    public bool loadingScene = true;
+    public bool isNew;
 
     public void Init()
     {
         map = GameObject.Find("Map").GetComponent<Map>();
+    }
+    public void StartGame()
+    {
+        Managers.Instance.LoadScene("MapScene");
+    }
+
+    public void NewGame()
+    {
         map.Init();
     }
 
@@ -31,6 +39,7 @@ public class GameManager
     {
         //todo start battle scene
         SceneManager.LoadScene("BattleScene");
+
     }
 
     // From BattleScene
@@ -43,7 +52,6 @@ public class GameManager
         {
             //day -> night
             time = 2;
-            // update Gold
             Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
             TakenAlly();
             Managers.Ui.updateInfo();
@@ -53,12 +61,12 @@ public class GameManager
             time = 1;
             //day -> afternoon
         }
-        //Load Game
+        map.CreateMap();
     }
 
-    public void ReloadGame()
+    public void loadGame()
     {
-        map = GameObject.Find("Map").GetComponent<Map>();
+        //update gold
         map.CreateMap();
     }
     public void GamePause()

@@ -13,6 +13,37 @@ public class UiManager
 
     private Stack<string> openUi = new Stack<string>();
 
+    public void LoginScene()
+    {
+        openUi.Clear();
+        GameObject canvas = GameObject.Find("Canvas");
+        Debug.Log($"{canvas} is open");
+        defaultUi = canvas.transform.GetChild(0).gameObject;
+    }
+
+    public void MapScene()
+    {
+        openUi.Clear();
+        GameObject canvas = GameObject.Find("Canvas");
+        Debug.Log($"{canvas} is open");
+        defaultUi = canvas.transform.GetChild(0).gameObject;
+        localUi = canvas.transform.GetChild(1).gameObject;
+        settingUi = canvas.transform.GetChild(2).gameObject;
+        shopUi = canvas.transform.GetChild(3).gameObject;
+
+        SetUiCondition("Default", true);
+        localUi.SetActive(false);
+        settingUi.SetActive(false);
+        shopUi.SetActive(false);
+
+        shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
+        localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
+    }
+
+
+
+
+
     public void Init()
     {
         openUi.Clear();
@@ -36,6 +67,7 @@ public class UiManager
     {   
         return openUi.Count == 1 && openUi.Peek() == "Default";
     }
+
     public void SetUiCondition(string name , bool condition)
     {
         Debug.Log($"{name}UI {condition}");
@@ -96,6 +128,10 @@ public class UiManager
             case "Shop":
                 shopUi.SetActive(active);
                 if (active) shopUi.GetComponent<UnitList>().SetList();
+                break;
+            case "Load":
+                break;
+            case "Option":
                 break;
         }
     }
