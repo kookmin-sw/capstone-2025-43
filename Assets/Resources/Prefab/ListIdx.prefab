@@ -1170,12 +1170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitData: {fileID: 0}
-  hpSlider: {fileID: 0}
-  mpSlider: {fileID: 0}
-  unitImg: {fileID: 0}
-  unitName: {fileID: 0}
-  hpText: {fileID: 0}
-  mpText: {fileID: 0}
+  hpSlider: {fileID: 1286860773116758101}
+  mpSlider: {fileID: 3863297893259540221}
+  unitImg: {fileID: 6603762265580763947}
+  unitName: {fileID: 8224605545304034719}
+  hpText: {fileID: 2312757090373397068}
+  mpText: {fileID: 6496056787721981824}
 --- !u!114 &4048016572256565944
 MonoBehaviour:
   m_ObjectHideFlags: 0
