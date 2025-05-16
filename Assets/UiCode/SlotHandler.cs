@@ -58,7 +58,7 @@ public class SlotHandler : MonoBehaviour
         }
     }
 
-    public void CloseLocalButton()
+    public void ClearPositionGrid()
     {
         for (int idx = 0; idx < dropContent.childCount; idx++)
         {
@@ -69,4 +69,13 @@ public class SlotHandler : MonoBehaviour
             }
         }
     }
+
+    public void ClearCreepList()
+    {
+        for (int idx = 0; idx < dropContent.childCount; idx++)
+        {
+            Destroy(dropContent.GetChild(idx).gameObject);
+        }
+    }
+
 }

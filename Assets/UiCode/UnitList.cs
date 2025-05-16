@@ -24,7 +24,7 @@ public class UnitList : MonoBehaviour
         foreach (GameObject hero in Managers.Pool.heroPool.Values)
         {
             CharacterStat cur = hero.GetComponent<CharacterStat>();
-            if (cur.own)
+            if (cur.own == isOwned)
             {
                 // listidx ����
                 GameObject go = Managers.Resource.Instantiate("ListIdx", listContent.transform);
