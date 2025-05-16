@@ -26,6 +26,7 @@ public class LocalInfoUi : MonoBehaviour
             {
                 GameObject go = Managers.Resource.Instantiate("ListIdx", creepList);
                 go.GetComponent<ListIdx>().Init(t.prefab.GetComponent<CharacterStat>());
+                go.GetComponent<Drag>().enabled = false;
             }
         }
     }
