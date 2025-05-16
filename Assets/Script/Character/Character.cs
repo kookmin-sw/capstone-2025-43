@@ -44,6 +44,7 @@ public class Character : MonoBehaviour
         if (CharacterManager.Instance)
             CharacterManager.Instance.RegisterCharacter(this, stat.isMonster);
 
+        outliner.OutlineWidth = 2;
         if (IsMonster)
         {
             outliner.OutlineColor = Color.red;

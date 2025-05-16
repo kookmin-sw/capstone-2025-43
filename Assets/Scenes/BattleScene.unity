@@ -330,9 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce10a6e0e3722bb46b4c96083c51e6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 2304110352672872331, guid: 1336d9a7f8bbbde4aab0423bdd89d8d2, type: 3}
-  firePoint: {fileID: 113846035}
-  arrowSpeed: 10
 --- !u!1 &228904720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1272976241583515447, guid: 961798caedd7c5f43b0f193983751320, type: 3}
@@ -1117,19 +1114,19 @@ MonoBehaviour:
   battleCharacter: []
   playerHeroes: []
   testunitPositions:
+  - 
+  - 
+  - 
+  - 
   - BlackKnight
-  - Werewolf
   - 
-  - NagaWizard
-  - 
-  - HeroMage
   - 
   - 
   - 
   TestWaveList:
+  - {fileID: 11400000, guid: 4a7fa1bd044ac8b4b875b216e0845465, type: 2}
   - {fileID: 11400000, guid: d153f927f1f033847bb607de171e2b60, type: 2}
   - {fileID: 11400000, guid: 73ac95984949d2546bd70137384c565e, type: 2}
-  - {fileID: 11400000, guid: 4a7fa1bd044ac8b4b875b216e0845465, type: 2}
 --- !u!1 &1145237769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7845863736866817294, guid: 961798caedd7c5f43b0f193983751320, type: 3}
