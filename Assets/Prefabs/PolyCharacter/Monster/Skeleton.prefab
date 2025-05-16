@@ -600,9 +600,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Skeleton
   isMonster: 1
+  own: 0
   tacticCapacity: 3
   team_id: 2
-  GlobalCooldown: 5
+  GlobalCooldown: 6
   hp_max: 300
   hp: 300
   mp_max: 50

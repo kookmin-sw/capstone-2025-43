@@ -77,7 +77,7 @@ public class BattleManager : MonoBehaviour
             else
             {
                 if (FieldManager.Instance)
-                    FieldManager.Instance.InitializeRandomField(E_FieldType.Forest);
+                    FieldManager.Instance.InitializeRandomField(E_FieldType.Snow);
                 InitializeFlag(TestWaveList);
                 InitializePlayer();
                 player.transform.position = flags[0].transform.position + playerYoffset;

@@ -61,6 +61,9 @@ public class TacticSystemUI : MonoBehaviour
         TMP_Dropdown conditionDropdown = rowUI.Find("Dropdown_Condition").GetComponent<TMP_Dropdown>();
         TMP_Dropdown actionDropdown = rowUI.Find("Dropdown_Action").GetComponent<TMP_Dropdown>();
         Toggle enableToggle = rowUI.Find("EnableToggle").GetComponent<Toggle>();
+        SetBold(targetDropdown);
+        SetBold(conditionDropdown);
+        SetBold(actionDropdown);
 
         targetDropdown.onValueChanged.RemoveAllListeners();
         conditionDropdown.onValueChanged.RemoveAllListeners();
@@ -148,6 +151,22 @@ public class TacticSystemUI : MonoBehaviour
     public Character GetCurrentCharacter()
     {
         return currentCharacter;
+    }
+    void SetBold(TMP_Dropdown dropdown)
+    {
+        if (dropdown.captionText != null)
+        {
+            dropdown.captionText.fontStyle = FontStyles.Bold;
+        }
+
+        foreach (TMP_Dropdown.OptionData option in dropdown.options)
+        {
+            TMP_Text optionText = dropdown.itemText;
+            if (optionText != null)
+            {
+                optionText.fontStyle = FontStyles.Bold;
+            }
+        }
     }
 
 }

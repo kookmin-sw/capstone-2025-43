@@ -34,7 +34,7 @@ public class TacticSystem : MonoBehaviour
     private void Start()
     {
         character = GetComponent<Character>();
-        cooldownTimer = 3f;
+        cooldownTimer = character.GlobalCooldown;
         stopCooldown = false;
         InitializeTactic(character.tacticCapacity);
 

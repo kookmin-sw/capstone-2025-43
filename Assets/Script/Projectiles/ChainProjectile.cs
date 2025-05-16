@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 public class ChainProjectile : MonoBehaviour
 {
     public Transform target;
@@ -9,64 +11,88 @@ public class ChainProjectile : MonoBehaviour
 
     public int maxHits = 2;
     private int currentHits = 0;
+    private List<Character> hitTargets = new List<Character>();
 
-    void Update()
+    private void Update()
     {
-        if (target == null)
+        if (target == null || !target.gameObject.activeSelf)
         {
             Destroy(gameObject);
             return;
         }
 
-        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 toTarget = target.position - transform.position;
+        if (toTarget == Vector3.zero) return;
+
+        Vector3 direction = toTarget.normalized;
+        if (float.IsNaN(direction.x) || float.IsNaN(direction.y) || float.IsNaN(direction.z))
+        {
+            Debug.LogWarning("[ChainProjectile] NaN direction detected.");
+            Destroy(gameObject);
+            return;
+        }
+
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Character character = other.GetComponent<Character>();
+        if (character == null) return;
+        if (attacker == null || character == attacker) return;
+        if (!attacker.IsEnemy(character)) return;
+        if (hitTargets.Contains(character)) return;
 
-        if (character != null && character.transform == target && attacker.IsEnemy(character))
+        character.ApplyDamage(damage);
+        hitTargets.Add(character);
+        currentHits++;
+
+        if (currentHits >= maxHits)
         {
-            character.ApplyDamage(damage);
-            currentHits++;
+            Destroy(gameObject);
+            return;
+        }
 
-            if (currentHits >= maxHits)
+        Transform next = FindNextEnemy(character);
+        if (next != null)
+        {
+            target = next;
+
+            Collider col = GetComponent<Collider>();
+            if (col != null)
             {
-                Destroy(gameObject);
-                return;
+                col.enabled = false;
+                col.enabled = true;
             }
 
-            Transform next = FindNextEnemy(character);
-            if (next != null)
-            {
-                target = next;
-                return;
-            }
-
+            transform.position += transform.forward * 0.3f;
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
 
-    Transform FindNextEnemy(Character justHit)
+    private Transform FindNextEnemy(Character justHit)
     {
         float minDist = Mathf.Infinity;
         Transform nextTarget = null;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 15f);
-
         foreach (var col in colliders)
         {
             Character c = col.GetComponent<Character>();
-            if (c == null || !attacker.IsEnemy(c) || c == justHit || c.Hp <= 0) continue;
+            if (c == null || c.Hp <= 0) continue;
+            if (attacker == null || !attacker.IsEnemy(c)) continue;
+            if (hitTargets.Contains(c)) continue;
 
             float dist = Vector3.Distance(transform.position, c.transform.position);
             if (dist < minDist)
             {
                 minDist = dist;
-                nextTarget = c.transform;
+                nextTarget = c.torso != null ? c.torso : c.transform;
             }
         }
 
