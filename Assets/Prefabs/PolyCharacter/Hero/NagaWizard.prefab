@@ -971,9 +971,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: NagaWizard
   isMonster: 0
-  own: 0
+  own: 1
   tacticCapacity: 5
   team_id: 1
+  price: 100
   GlobalCooldown: 5
   hp_max: 200
   hp: 200
