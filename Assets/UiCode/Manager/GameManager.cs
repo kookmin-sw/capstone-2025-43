@@ -12,8 +12,8 @@ public class GameManager
     public int time; // 0 : morning, 1 : afternoon, 2 : night
     public int gold = 500;
     public int maxHero = 4;
-    public Map map;   
-
+    public Map map;
+    public Day day;
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
     
@@ -23,6 +23,7 @@ public class GameManager
 
     public void Init()
     {
+        day = new Day();
         map = GameObject.Find("Map").GetComponent<Map>();
     }
     public void StartGame()
@@ -51,15 +52,14 @@ public class GameManager
         if (success)
         {
             //day -> night
-            time = 2;
-            Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
-            TakenAlly();
-            Managers.Ui.updateInfo();
+            day.setTime(2);
+            day.passDay();
         }
         else
         {
-            time = 1;
             //day -> afternoon
+            day.setTime(1);
+            day.passDay();
         }
         map.CreateMap();
     }
@@ -83,23 +83,6 @@ public class GameManager
     public bool inBorderAlly(Vector2 position)
     {
         return position.x < xBorderAlly && position.y < yBorderAlly;
-    }
-
-    public void Heal()
-    {
-        //heal : poolmanager -> own hero
-    }
-    public void TakenAlly()
-    {
-        List<Line> attack = map.GetLines();
-        int t = Random.Range(0, attack.Count);
-        Line cur = attack[t];
-        LocalInfo a = Managers.Data.handOverData.localInfos[cur.p0];
-        LocalInfo b = Managers.Data.handOverData.localInfos[cur.p1];
-        if(a.side == "Ally")
-            a.side = "Enemy";
-        else
-            b.side = "Enemy";
     }
 
 
