@@ -13,7 +13,7 @@ public class GameManager
     public int gold = 500;
     public int maxHero = 4;
     public Map map;
-    public Day day;
+    public Day day = new Day();
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
     
@@ -23,7 +23,6 @@ public class GameManager
 
     public void Init()
     {
-        day = new Day();
         map = GameObject.Find("Map").GetComponent<Map>();
     }
     public void StartGame()
@@ -48,7 +47,6 @@ public class GameManager
     {
         if (BattleManager.Instance)
             BattleManager.Instance.EnablePlayerHeroAgent(false);
-        Managers.Instance.LoadScene("MapScene");
         if (success)
         {
             //day -> night
@@ -61,7 +59,7 @@ public class GameManager
             day.setTime(1);
             day.passDay();
         }
-        map.CreateMap();
+        Managers.Instance.LoadScene("MapScene");
     }
 
     public void loadGame()

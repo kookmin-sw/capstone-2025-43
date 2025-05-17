@@ -10,7 +10,7 @@ public class Map : MonoBehaviour
     public NodePosition nodePosition = new NodePosition();
     public GameObject roads;
     public GameObject locals;
-    public Border baseObject;
+    public GameObject baseObject;
     public List<Border> Envs = new List<Border>();
     private void CreateNode()
     {
@@ -45,7 +45,7 @@ public class Map : MonoBehaviour
         while( nodeCnt < nodeNum) 
         {
             Vector2 position = nodePosition.CreateRandomSpot();
-            if (!baseObject.inmyBound(position) || position == null)
+            if (!baseObject.GetComponent<Border>().inmyBound(position) || position == null)
             {
                 continue;
             }
