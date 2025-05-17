@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.iOS;
+using Unity.Android.Types;
 
 public class Map : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class Map : MonoBehaviour
     public NodePosition nodePosition = new NodePosition();
     public GameObject roads;
     public GameObject locals;
-    public Border baseObject;
+    public GameObject baseObject;
     public List<Border> Envs = new List<Border>();
     private void CreateNode()
     {
@@ -43,7 +45,7 @@ public class Map : MonoBehaviour
         while( nodeCnt < nodeNum) 
         {
             Vector2 position = nodePosition.CreateRandomSpot();
-            if (!baseObject.inmyBound(position) || position == null)
+            if (!baseObject.GetComponent<Border>().inmyBound(position) || position == null)
             {
                 continue;
             }
@@ -101,18 +103,18 @@ public class Map : MonoBehaviour
         CreateMap();
     }
 
-    public List<Line> GetLines()
+    public List<Edge> GetLines()
     {
-        List<Line> attack = new List<Line>();
+        List<Edge> attack = new List<Edge>();
 
-        for (int i = 0; i < roads.transform.childCount; i++)
+        foreach(Edge edge in Managers.Data.handOverData.roads)
         {
-            Line a = roads.transform.GetChild(i).GetComponent<Line>();
-            string tag0 = Managers.Data.handOverData.localInfos[a.p0].side;
-            string tag1 = Managers.Data.handOverData.localInfos[a.p1].side;
+
+            string tag0 = Managers.Data.handOverData.localInfos[edge.v0].side;
+            string tag1 = Managers.Data.handOverData.localInfos[edge.v1].side;
 
             if (tag0 != tag1)
-                attack.Add(a);
+                attack.Add(edge);
         }
         return attack;
     }
