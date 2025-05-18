@@ -25,10 +25,10 @@ public class SlotHandler : MonoBehaviour
             CharacterStat stat = Managers.Pool.heroPool[item.unitData.name].GetComponent<CharacterStat>();
             stat.own = true;
             Managers.Game.gold -= stat.price;
+            Managers.Ui.updateInfo();
             Managers.Ui.updateText("Shop", -stat.price);
             Destroy(item.gameObject);
         }
-        Managers.Ui.updateInfo();
     }
 
     public void StartBattleButton()
