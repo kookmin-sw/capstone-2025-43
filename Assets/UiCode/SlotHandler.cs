@@ -22,11 +22,13 @@ public class SlotHandler : MonoBehaviour
 
         foreach (ListIdx item in itemsToBuy)
         {
-            item.unitData.own = true;
+            CharacterStat stat = Managers.Pool.heroPool[item.unitData.name].GetComponent<CharacterStat>();
+            stat.own = true;
+            Managers.Game.gold -= stat.price;
+            Managers.Ui.updateInfo();
+            Managers.Ui.updateText("Shop", -stat.price);
             Destroy(item.gameObject);
         }
-
-        Managers.Pool.SetHeroList(); // 리스트 갱신
     }
 
     public void StartBattleButton()
