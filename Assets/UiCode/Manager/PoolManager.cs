@@ -63,6 +63,7 @@ public class PoolManager
             }
         }
         heroPool[name].transform.parent = root.transform;
+        heroPool[name].transform.name = name;
         heroPool[name].SetActive(false);
     }
 
