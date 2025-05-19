@@ -33,7 +33,10 @@ public class Node : MonoBehaviour
 
     public void SetStages()
     {
-        
+        if(localInfo.battleWaves.Count > 0)
+        {
+            return;
+        }
         int waveCount = Random.Range(1, 3);
         for (int i = 0; i < waveCount; i++)
         {
