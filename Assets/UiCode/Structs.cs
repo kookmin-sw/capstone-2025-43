@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Security.Principal;
 using UnityEngine;
 
+[Serializable]
 public class Edge
 {
     public Vector2 v0;

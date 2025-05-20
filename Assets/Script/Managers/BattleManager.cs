@@ -54,8 +54,8 @@ public class BattleManager : MonoBehaviour
             if (Managers.GetInstance())
             {
                 if (FieldManager.Instance)
-                    FieldManager.Instance.InitializeRandomField(Managers.Data.handOverData.GetOpenLocalEnv());
-                List<BattleWavePreset> WaveList = Managers.Data.handOverData.GetOpenLocalMonsterWave();
+                    FieldManager.Instance.InitializeRandomField(Managers.Data.GetOpenLocalEnv());
+                List<BattleWavePreset> WaveList = Managers.Data.GetOpenLocalMonsterWave();
                 if (WaveList == null)
                 {
                     WaveList = TestWaveList;

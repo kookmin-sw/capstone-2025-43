@@ -41,7 +41,6 @@ public class Managers : MonoBehaviour
             }
             DontDestroyOnLoad(mO);
             _instance = mO.GetComponent<Managers>();
-            Data.Init();
             Pool.Init();
         }
     }

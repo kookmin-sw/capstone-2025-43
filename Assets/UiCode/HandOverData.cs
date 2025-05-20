@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandOverData : MonoBehaviour
+[Serializable]
+public class HandOverData
 {
     [Header("#Position")]
     public string[] unitPositions = new string[9];
@@ -13,18 +15,4 @@ public class HandOverData : MonoBehaviour
 
     [Header("# OpenLocal")]
     public Vector2 openLocal;
-
-    public string GetOpenLocalEnv()
-    {
-        return localInfos[openLocal].localData.env;
-    }
-    public List<BattleWavePreset> GetOpenLocalMonsterWave()
-    {
-        return localInfos[openLocal].battleWaves;
-    }
-
-    public void Init()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 }
