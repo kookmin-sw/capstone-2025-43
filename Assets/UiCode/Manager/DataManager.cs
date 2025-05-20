@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -22,5 +23,35 @@ public class DataManager
     public List<BattleWavePreset> GetOpenLocalMonsterWave()
     {
         return handOverData.localInfos[handOverData.openLocal].battleWaves;
+    }
+
+    public T Load<T>(string filename) where T : class
+    {
+        if (File.Exists(filename))
+        {
+            try
+            {
+                string json = File.ReadAllText(filename);
+                return JsonUtility.FromJson<T>(json);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"[Load Error] {e.Message}");
+            }
+        }
+        return null;
+    }
+
+    public void Save<T>(string filename, T data) where T : class
+    {
+        try
+        {
+            string json = JsonUtility.ToJson(data, true); // true = pretty print
+            File.WriteAllText(filename, json);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[Save Error] {e.Message}");
+        }
     }
 }

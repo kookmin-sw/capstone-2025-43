@@ -19,6 +19,7 @@ public class UiManager
         GameObject canvas = GameObject.Find("Canvas");
         Debug.Log($"{canvas} is open");
         defaultUi = canvas.transform.GetChild(0).gameObject;
+
     }
 
     public void MapScene()
