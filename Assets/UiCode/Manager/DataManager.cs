@@ -7,6 +7,31 @@ using UnityEngine;
 public class DataManager
 {
     public HandOverData handOverData = new HandOverData();
+    public Dictionary<Vector2, LocalInfo> localInfos = new Dictionary<Vector2, LocalInfo>();
+    public void SetDictionary()
+    {
+        if(handOverData == null)
+        {
+            Debug.Log("handoverdata");
+        }
+        if(handOverData.list_localinfos == null)
+        {
+            Debug.Log("sjdi?");
+        }
+        foreach (var vl in handOverData.list_localinfos)
+        {
+            localInfos[vl.localPosition] = vl.localInfo;
+        }
+    }
+
+    public void SetList()
+    {
+        handOverData.list_localinfos.Clear();
+        foreach (var vl in localInfos)
+        {
+            handOverData.list_localinfos.Add(new vector_localinfo { localPosition = vl.Key, localInfo = vl.Value });
+        }
+    }
 
     public BattleWavePreset[] GetBattleWaveDataset(string path)
     {
@@ -18,11 +43,11 @@ public class DataManager
     }
     public string GetOpenLocalEnv()
     {
-        return handOverData.localInfos[handOverData.openLocal].localData.env;
+        return localInfos[handOverData.openLocal].localData.env;
     }
     public List<BattleWavePreset> GetOpenLocalMonsterWave()
     {
-        return handOverData.localInfos[handOverData.openLocal].battleWaves;
+        return localInfos[handOverData.openLocal].battleWaves;
     }
 
     public T Load<T>(string filename) where T : class
@@ -38,6 +63,10 @@ public class DataManager
             {
                 Debug.LogError($"[Load Error] {e.Message}");
             }
+        }
+        else
+        {
+            Debug.LogWarning($"[Load] File not found: {filename}");
         }
         return null;
     }

@@ -36,7 +36,7 @@ public class Day
     void night()
     {
         Heal();
-        Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
+        Managers.Data.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
         TakenAlly();
     }
 
@@ -55,8 +55,8 @@ public class Day
         List<Edge> attack = Managers.Game.map.GetLines();
         int t = Random.Range(0, attack.Count);
         Edge cur = attack[t];
-        LocalInfo a = Managers.Data.handOverData.localInfos[cur.v0];
-        LocalInfo b = Managers.Data.handOverData.localInfos[cur.v1];
+        LocalInfo a = Managers.Data.localInfos[cur.v0];
+        LocalInfo b = Managers.Data.localInfos[cur.v1];
         if (a.side == "Ally")
             a.side = "Enemy";
         else

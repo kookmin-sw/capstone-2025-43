@@ -15,7 +15,7 @@ public class Map : MonoBehaviour
     private void CreateNode()
     {
         int idx = 0;
-        foreach (var info  in Managers.Data.handOverData.localInfos)
+        foreach (var info  in Managers.Data.localInfos)
         {
             idx++;
             GameObject tmpObject;
@@ -52,9 +52,9 @@ public class Map : MonoBehaviour
             nodeCnt++;
 
             if (Managers.Game.inBorderAlly(position))
-                Managers.Data.handOverData.localInfos.Add(position, new LocalInfo(position, "Ally"));
+                Managers.Data.localInfos.Add(position, new LocalInfo(position, "Ally"));
             else
-                Managers.Data.handOverData.localInfos.Add(position, new LocalInfo(position, "Enemy"));
+                Managers.Data.localInfos.Add(position, new LocalInfo(position, "Enemy"));
         }
     }
 
@@ -93,7 +93,7 @@ public class Map : MonoBehaviour
         SetPosition();
         DTri.Init(70, 70);
 
-        foreach (LocalInfo info in Managers.Data.handOverData.localInfos.Values)
+        foreach (LocalInfo info in Managers.Data.localInfos.Values)
         {
             Vector2 point = info.poisiton;
             DTri.AddPoint(point);
@@ -110,8 +110,8 @@ public class Map : MonoBehaviour
         foreach(Edge edge in Managers.Data.handOverData.roads)
         {
 
-            string tag0 = Managers.Data.handOverData.localInfos[edge.v0].side;
-            string tag1 = Managers.Data.handOverData.localInfos[edge.v1].side;
+            string tag0 = Managers.Data.localInfos[edge.v0].side;
+            string tag1 = Managers.Data.localInfos[edge.v1].side;
 
             if (tag0 != tag1)
                 attack.Add(edge);
@@ -139,13 +139,13 @@ public class Map : MonoBehaviour
 
     public void SetEnv()
     {
-        foreach(Vector2 position in Managers.Data.handOverData.localInfos.Keys)
+        foreach(Vector2 position in Managers.Data.localInfos.Keys)
         {
             foreach(var env in Envs)
             {
                 if (env.inmyBound(position))
                 {
-                    Managers.Data.handOverData.localInfos[position].localData = env.localData;
+                    Managers.Data.localInfos[position].localData = env.localData;
                 }
             }
         }

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LocalData", menuName = "Scriptable Objects/LocalData")]
+[System.Serializable]
 public class LocalData : ScriptableObject
 {
     [Header("# localData")]

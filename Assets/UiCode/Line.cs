@@ -32,8 +32,8 @@ public class Line : MonoBehaviour
 
     public void SetColor()
     {
-        string tag0 = Managers.Data.handOverData.localInfos[p0].side;
-        string tag1 = Managers.Data.handOverData.localInfos[p1].side;
+        string tag0 = Managers.Data.localInfos[p0].side;
+        string tag1 = Managers.Data.localInfos[p1].side;
         Color color = Color.white;
         if (tag0 != tag1)
         {

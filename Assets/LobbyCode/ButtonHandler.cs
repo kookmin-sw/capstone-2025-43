@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtonHandler : MonoBehaviour
 {
     public GameObject load;
+    public GameObject loadContent;
     public GameObject option;
     private string savePath => Application.persistentDataPath;
 
@@ -21,9 +22,9 @@ public class ButtonHandler : MonoBehaviour
         foreach (string file in files)
         {
             string fileName = Path.GetFileNameWithoutExtension(file);
-            GameObject slot = Managers.Resource.Instantiate("LoadButton", load.transform);
+            GameObject slot = Managers.Resource.Instantiate("LoadButton", loadContent.transform);
             slot.name = fileName;
-            slot.GetComponent<LoadButton>().Init(fileName);
+            slot.GetComponent<LoadButton>().Init(file, fileName);
         }
 
         load.SetActive(true);
@@ -34,6 +35,8 @@ public class ButtonHandler : MonoBehaviour
         string timestamp = DateTime.Now.ToString("yyyy-MM-dd-HHmm");
         string filename = $"{timestamp}.json";
         string path = Path.Combine(Application.persistentDataPath, filename);
+        Debug.Log($"Save path : {path}");
+        Managers.Data.SetList();
         Managers.Data.Save<HandOverData>(path, Managers.Data.handOverData);
     }
     public void closeUi(string name)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Principal;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class Edge
 {
     public Vector2 v0;
@@ -36,6 +36,7 @@ public class Edge
     }
 }
 
+[System.Serializable]
 public class Triangle
 {
     public Vector2 a;
@@ -143,6 +144,7 @@ public class Triangle
     }
 }
 
+[System.Serializable]
 public class Circle
 {
     public Vector2 center;
@@ -160,4 +162,11 @@ public class Circle
     {
         return radius >= Vector2.Distance(center, point);
     }
+}
+
+[System.Serializable]
+public class vector_localinfo
+{
+    public Vector2 localPosition;
+    public LocalInfo localInfo;
 }
