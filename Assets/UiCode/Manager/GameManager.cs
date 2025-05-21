@@ -50,7 +50,7 @@ public class GameManager
         if (success)
         {
             //day -> night
-            day.setTime(2);
+            day.setTime(0);
             day.passDay();
         }
         else
