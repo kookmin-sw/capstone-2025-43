@@ -60,6 +60,7 @@ public class GameManager
             day.passDay();
         }
         Managers.Instance.LoadScene("MapScene");
+        GameState();
     }
 
     public void loadGame()
@@ -83,5 +84,42 @@ public class GameManager
         return position.x < xBorderAlly && position.y < yBorderAlly;
     }
 
+    /// <summary>
+    /// game state
+    /// </summary>
+    /// <returns>
+    /// 0 : over 1: win  2: continue
+    /// </returns>
+    public void GameState()
+    {
+        int enemy = 0 , ally = 0;
+        foreach (var local in Managers.Data.localInfos.Values)
+        {
+            switch (local.side)
+            {
+                case "Enemy":
+                    enemy++;
+                    break;
+                case "Ally":
+                    ally++; 
+                    break;
+            }
+        }
+        if (ally == 0)
+            GameOver();
+        if (ally == enemy)
+        {
+            // win
+        }
+        return ;
+    }
 
+    public void GameOver()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
+    }
 }

@@ -1037,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   load: {fileID: 1033836035}
+  loadContent: {fileID: 61059011}
   option: {fileID: 0}
 --- !u!1 &997132894
 GameObject:
