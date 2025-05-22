@@ -22,11 +22,13 @@ public class SlotHandler : MonoBehaviour
 
         foreach (ListIdx item in itemsToBuy)
         {
-            item.unitData.own = true;
+            CharacterStat stat = Managers.Pool.heroPool[item.unitData.name].GetComponent<CharacterStat>();
+            stat.own = true;
+            Managers.Game.gold -= stat.price;
+            Managers.Ui.updateInfo();
+            Managers.Ui.updateText("Shop", -stat.price);
             Destroy(item.gameObject);
         }
-
-        Managers.Pool.SetHeroList(); // 리스트 갱신
     }
 
     public void StartBattleButton()
@@ -58,7 +60,7 @@ public class SlotHandler : MonoBehaviour
         }
     }
 
-    public void CloseLocalButton()
+    public void ClearPositionGrid()
     {
         for (int idx = 0; idx < dropContent.childCount; idx++)
         {
@@ -69,4 +71,13 @@ public class SlotHandler : MonoBehaviour
             }
         }
     }
+
+    public void ClearCreepList()
+    {
+        for (int idx = 0; idx < dropContent.childCount; idx++)
+        {
+            Destroy(dropContent.GetChild(idx).gameObject);
+        }
+    }
+
 }

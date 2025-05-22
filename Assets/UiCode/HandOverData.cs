@@ -1,30 +1,19 @@
+using System;
 using System.Collections.Generic;
+using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
 using UnityEngine;
 
-public class HandOverData : MonoBehaviour
+[System.Serializable]
+public class HandOverData
 {
     [Header("#Position")]
     public string[] unitPositions = new string[9];
 
 
     [Header("# Node & Edge")]
-    public Dictionary<Vector2, LocalInfo> localInfos = new Dictionary<Vector2, LocalInfo>();
+    public List<vector_localinfo> list_localinfos = new List<vector_localinfo>();
     public List<Edge> roads = new List<Edge>();
 
     [Header("# OpenLocal")]
     public Vector2 openLocal;
-
-    public string GetOpenLocalEnv()
-    {
-        return localInfos[openLocal].localData.env;
-    }
-    public List<BattleWavePreset> GetOpenLocalMonsterWave()
-    {
-        return localInfos[openLocal].battleWaves;
-    }
-
-    public void Init()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 }

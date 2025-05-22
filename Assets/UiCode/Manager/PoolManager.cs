@@ -14,7 +14,7 @@ public class PoolManager
     public BattleWavePreset[] waves = null;
 
     [Header("#Hero Pool")]
-    string[] heros = { "Paladin", "Wizard" ,"HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan"};
+    string[] heros = { "HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan"};
     public Dictionary<string, GameObject> heroPool = new Dictionary<string, GameObject>();
 
     public void Init()
@@ -29,7 +29,6 @@ public class PoolManager
     {
         waves = Managers.Data.GetBattleWaveDataset("BattleWave");
     }
-
 
     public BattleWavePreset GetCreepPool()
     {
@@ -64,8 +63,10 @@ public class PoolManager
             }
         }
         heroPool[name].transform.parent = root.transform;
+        heroPool[name].transform.name = name;
         heroPool[name].SetActive(false);
     }
+
     public GameObject Pop(Transform user, string name)
     {
         if (!heroPool.ContainsKey(name))

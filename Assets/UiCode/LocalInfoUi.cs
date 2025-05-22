@@ -12,7 +12,7 @@ public class LocalInfoUi : MonoBehaviour
     public void SetLocalUi()
     {
         Vector2 local = Managers.Data.handOverData.openLocal;
-        info = Managers.Data.handOverData.localInfos[local];
+        info = Managers.Data.localInfos[local];
 
         desc.text = info.localData.desc;
         image.sprite = info.localData.image;
@@ -26,6 +26,7 @@ public class LocalInfoUi : MonoBehaviour
             {
                 GameObject go = Managers.Resource.Instantiate("ListIdx", creepList);
                 go.GetComponent<ListIdx>().Init(t.prefab.GetComponent<CharacterStat>());
+                go.GetComponent<Drag>().enabled = false;
             }
         }
     }

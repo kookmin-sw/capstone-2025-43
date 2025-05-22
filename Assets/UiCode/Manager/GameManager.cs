@@ -12,8 +12,8 @@ public class GameManager
     public int time; // 0 : morning, 1 : afternoon, 2 : night
     public int gold = 500;
     public int maxHero = 4;
-    public Map map;   
-
+    public Map map;
+    public Day day = new Day();
     public int xBorderAlly = 0;
     public int yBorderAlly = 5;
     
@@ -47,21 +47,20 @@ public class GameManager
     {
         if (BattleManager.Instance)
             BattleManager.Instance.EnablePlayerHeroAgent(false);
-        Managers.Instance.LoadScene("MapScene");
         if (success)
         {
             //day -> night
-            time = 2;
-            Managers.Data.handOverData.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
-            TakenAlly();
-            Managers.Ui.updateInfo();
+            day.setTime(0);
+            day.passDay();
         }
         else
         {
-            time = 1;
             //day -> afternoon
+            day.setTime(1);
+            day.passDay();
         }
-        map.CreateMap();
+        Managers.Instance.LoadScene("MapScene");
+        GameState();
     }
 
     public void loadGame()
@@ -85,22 +84,42 @@ public class GameManager
         return position.x < xBorderAlly && position.y < yBorderAlly;
     }
 
-    public void Heal()
+    /// <summary>
+    /// game state
+    /// </summary>
+    /// <returns>
+    /// 0 : over 1: win  2: continue
+    /// </returns>
+    public void GameState()
     {
-        //heal : poolmanager -> own hero
-    }
-    public void TakenAlly()
-    {
-        List<Line> attack = map.GetLines();
-        int t = Random.Range(0, attack.Count);
-        Line cur = attack[t];
-        LocalInfo a = Managers.Data.handOverData.localInfos[cur.p0];
-        LocalInfo b = Managers.Data.handOverData.localInfos[cur.p1];
-        if(a.side == "Ally")
-            a.side = "Enemy";
-        else
-            b.side = "Enemy";
+        int enemy = 0 , ally = 0;
+        foreach (var local in Managers.Data.localInfos.Values)
+        {
+            switch (local.side)
+            {
+                case "Enemy":
+                    enemy++;
+                    break;
+                case "Ally":
+                    ally++; 
+                    break;
+            }
+        }
+        if (ally == 0)
+            GameOver();
+        if (ally == enemy)
+        {
+            // win
+        }
+        return ;
     }
 
-
+    public void GameOver()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "BattleSystem/BattleWavePreset")]
+[System.Serializable]
 public class BattleWavePreset : ScriptableObject
 {
     [System.Serializable]
