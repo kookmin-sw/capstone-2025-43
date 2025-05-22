@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 7694361432262061012}
   - component: {fileID: 6907791413782697670}
   - component: {fileID: 5617828693340338063}
+  - component: {fileID: 7587180127883587887}
   m_Layer: 5
   m_Name: More
   m_TagString: Untagged
@@ -758,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -774,6 +775,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7587180127883587887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424424349465598895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c69221069aa24986b8bf5d2425a2580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listIdx: {fileID: 660726769393630045}
 --- !u!1 &6445406186535213880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1190,7 @@ MonoBehaviour:
   unitName: {fileID: 8224605545304034719}
   hpText: {fileID: 2312757090373397068}
   mpText: {fileID: 6496056787721981824}
+  more: {fileID: 5617828693340338063}
 --- !u!114 &4048016572256565944
 MonoBehaviour:
   m_ObjectHideFlags: 0

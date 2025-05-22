@@ -9,6 +9,7 @@ public class UiManager
     public GameObject localUi;
     public GameObject settingUi;
     public GameObject shopUi;
+    public GameObject statusUi;
 
 
     private Stack<string> openUi = new Stack<string>();
@@ -31,11 +32,13 @@ public class UiManager
         localUi = canvas.transform.GetChild(1).gameObject;
         settingUi = canvas.transform.GetChild(2).gameObject;
         shopUi = canvas.transform.GetChild(3).gameObject;
+        statusUi = canvas.transform.GetChild(4).gameObject;
 
         SetUiCondition("Default", true);
         localUi.SetActive(false);
         settingUi.SetActive(false);
         shopUi.SetActive(false);
+        statusUi.SetActive(false);
 
         shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
         localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
@@ -54,11 +57,15 @@ public class UiManager
         localUi = canvas.transform.GetChild(1).gameObject;
         settingUi= canvas.transform.GetChild(2).gameObject;
         shopUi = canvas.transform.GetChild(3).gameObject;
+        statusUi = canvas.transform.GetChild(4).gameObject;
+
 
         SetUiCondition("Default", true);
         localUi.SetActive(false);
         settingUi.SetActive(false);
         shopUi.SetActive(false);
+        statusUi.SetActive(false);
+
 
         shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
         localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
@@ -129,6 +136,9 @@ public class UiManager
             case "Shop":
                 shopUi.SetActive(active);
                 if (active) shopUi.GetComponent<UnitList>().SetList();
+                break;
+            case "Status":
+                statusUi.SetActive(active);
                 break;
             case "Load":
                 break;

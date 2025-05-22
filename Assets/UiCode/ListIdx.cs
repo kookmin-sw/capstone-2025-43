@@ -11,6 +11,7 @@ public class ListIdx : MonoBehaviour
     public TMP_Text unitName;
     public TMP_Text hpText;
     public TMP_Text mpText;
+    public Image more;
 
     public void Init(CharacterStat data)
     {

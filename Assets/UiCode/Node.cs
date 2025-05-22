@@ -46,10 +46,13 @@ public class Node : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log("´©¸§");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½");
         Managers.Data.handOverData.openLocal = localInfo.poisiton;
 
-        // ´Ù¸¥ UI°¡ ¿­·Á ÀÖÀ¸¸é Å¬¸¯ ¹«½Ã
+        if (CompareTag("Ally"))
+            return;
+            
+        // ï¿½Ù¸ï¿½ UIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (!Managers.Ui.IsOnlyDefaultOpen())
             return;
         this.GetComponent<UiEvent>().onClick();
@@ -57,7 +60,7 @@ public class Node : MonoBehaviour
     /*
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("È¯°æ°ú Ãæµ¹");
+        Debug.Log("È¯ï¿½ï¿½ï¿½ ï¿½æµ¹");
         if (other == null)
             return;
         Debug.Log($"{other.transform.name} data");

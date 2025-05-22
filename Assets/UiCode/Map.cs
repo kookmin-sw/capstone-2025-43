@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.iOS;
-using Unity.Android.Types;
+// using Unity.Android.Types;
 
 public class Map : MonoBehaviour
 {
