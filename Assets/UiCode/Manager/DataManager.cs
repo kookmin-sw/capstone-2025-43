@@ -10,14 +10,6 @@ public class DataManager
     public Dictionary<Vector2, LocalInfo> localInfos = new Dictionary<Vector2, LocalInfo>();
     public void SetDictionary()
     {
-        if(handOverData == null)
-        {
-            Debug.Log("handoverdata");
-        }
-        if(handOverData.list_localinfos == null)
-        {
-            Debug.Log("sjdi?");
-        }
         foreach (var vl in handOverData.list_localinfos)
         {
             localInfos[vl.localPosition] = vl.localInfo;

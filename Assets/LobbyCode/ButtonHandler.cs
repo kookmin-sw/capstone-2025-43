@@ -17,6 +17,11 @@ public class ButtonHandler : MonoBehaviour
 
     public void loadGame()
     {
+        // clean
+        foreach (Transform child in loadContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         string[] files = Directory.GetFiles(savePath, "*.json");
         foreach (string file in files)
