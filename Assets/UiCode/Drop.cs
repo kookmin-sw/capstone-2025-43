@@ -1,3 +1,4 @@
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -5,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Drop : MonoBehaviour, IDropHandler
 {
     [SerializeField]
-    int maxChild = 1;
+    int maxChild = 1, slotId;
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("drop Сп");
@@ -24,7 +25,8 @@ public class Drop : MonoBehaviour, IDropHandler
             switch (cur.own)
             {
                 case true:
-                    Managers.Ui.updateText("Local", 1);
+                    if(Managers.Data.handOverData.unitPositions[slotId] == null)
+                        Managers.Ui.updateText("Local", 1);
                     break;
                 case false:
                     Managers.Ui.updateText("Shop", cur.price);
