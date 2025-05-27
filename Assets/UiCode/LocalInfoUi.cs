@@ -14,7 +14,7 @@ public class LocalInfoUi : MonoBehaviour
         foreach (Transform child in creepList)
             Destroy(child.gameObject);
     }
-public void SetLocalUi()
+    public void SetLocalUi()
     {
         Vector2 local = Managers.Data.handOverData.openLocal;
         info = Managers.Data.localInfos[local];
