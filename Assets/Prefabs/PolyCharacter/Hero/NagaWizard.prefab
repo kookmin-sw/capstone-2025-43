@@ -975,13 +975,13 @@ MonoBehaviour:
   tacticCapacity: 5
   team_id: 1
   price: 100
-  GlobalCooldown: 5
-  hp_max: 200
-  hp: 200
+  GlobalCooldown: 1
+  hp_max: 2000
+  hp: 2000
   mp_max: 50
   mp: 50
   damage_max: 40
-  damage: 40
+  damage: 1
   attackRange_Max: 10
   attackRange: 10
   moveSpeed_origin: 10
@@ -1000,6 +1000,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
   - {fileID: 11400000, guid: e1aa256cf24ed9240bf59c91e4ddb6d6, type: 2}
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+  - {fileID: 11400000, guid: 16284629fdabdd940b1f62b672656d76, type: 2}
+  - {fileID: 11400000, guid: f78a233718b67ee479b7cc7d74a50916, type: 2}
+  - {fileID: 11400000, guid: 4ff806e058ebd7642a2aa08946b2f590, type: 2}
 --- !u!114 &8510983974139955847
 MonoBehaviour:
   m_ObjectHideFlags: 0

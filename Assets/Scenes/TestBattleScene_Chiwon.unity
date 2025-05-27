@@ -960,6 +960,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7287039605452732174, guid: 68fb887f1ff33924db9145cbd9ded9eb, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287039605452732174, guid: 68fb887f1ff33924db9145cbd9ded9eb, type: 3}
+      propertyPath: damage_max
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7534723723287798151, guid: 68fb887f1ff33924db9145cbd9ded9eb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -986,6 +994,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1011258664}
     m_Modifications:
+    - target: {fileID: 500921507722934253, guid: 31ec2a7ff8ee3db49aa1431773958af4, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 500921507722934253, guid: 31ec2a7ff8ee3db49aa1431773958af4, type: 3}
+      propertyPath: damage_max
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2015748857609854616, guid: 31ec2a7ff8ee3db49aa1431773958af4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.86
@@ -2263,6 +2279,14 @@ PrefabInstance:
     - target: {fileID: 3803214563658999845, guid: dbc83c5b9004a10449eff0425ffda304, type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846832726866511781, guid: dbc83c5b9004a10449eff0425ffda304, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846832726866511781, guid: dbc83c5b9004a10449eff0425ffda304, type: 3}
+      propertyPath: damage_max
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8840977298343601583, guid: dbc83c5b9004a10449eff0425ffda304, type: 3}
       propertyPath: m_LocalPosition.x

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ExplodeOnDeath : MonoBehaviour
 {
     public float radius = 5f;
-    public float explosionDamage = 50f;
+    public float explosionDamage = 150f;
     public Character owner; 
     public GameObject bombIconPrefab;
     private GameObject bombIconInstance;
