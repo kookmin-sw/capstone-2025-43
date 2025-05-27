@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d435e27fa63280240bb642188dcb2762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: NamePlease
+  DisplayName: BishopKnight
   isMonster: 0
   own: 1
   tacticCapacity: 3
@@ -386,7 +386,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857581653210270574}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -424,7 +424,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 6548450058389784151}
-  IconPath: Character/Screenshot/
+  IconPath: Character/Screenshot/BishopKnight
 --- !u!114 &4283072096031270935
 MonoBehaviour:
   m_ObjectHideFlags: 0

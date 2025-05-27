@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33fe3fbeb6c814745ad7bf81b09f181b
+    m_Address: HeroLizardWarrior
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37f23a0c2b6fe8844a971c98a4cf8e0c
     m_Address: Werewolf
     m_ReadOnly: 0
@@ -32,6 +37,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40718546a1bf0634e9a508b292a7951b
     m_Address: NagaWizard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 555bab7e707ada640b55fcb1a2b5ada2
+    m_Address: HeroSkeleton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ca933d365bc5a44db784a417c2a561f
+    m_Address: HeroSpector
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97e6056dec2e1954a988f8e6d36221c7
+    m_Address: BishopKnight
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -47,6 +67,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc430a3bc890ec647a51ea8daf1be120
     m_Address: BlackKnight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d95f9aaf26948964795f8bc59cd973fa
+    m_Address: HeroFlyingDemon
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
