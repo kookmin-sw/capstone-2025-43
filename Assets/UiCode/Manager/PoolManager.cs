@@ -14,7 +14,7 @@ public class PoolManager
     public BattleWavePreset[] waves = null;
 
     [Header("#Hero Pool")]
-    string[] heros = { "HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan"};
+    string[] heros = { "HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan", "HeroFlyingDemon", "HeroLizardWarrior","BishopKnight","HeroSpector",  "HeroSkeleton"};
     public Dictionary<string, GameObject> heroPool = new Dictionary<string, GameObject>();
 
     public void Init()
