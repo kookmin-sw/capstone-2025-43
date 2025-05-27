@@ -1,40 +1,54 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
 public class SlotHandler : MonoBehaviour
 {
-
     public Transform dropContent; // 드롭된 유닛들이 들어있는 ScrollView의 Content
 
-    public void PurchaseItem()
+    public void Buy()
     {
-        List<ListIdx> itemsToBuy = new List<ListIdx>();
-
+        if (!Managers.Game.canChange("Shop"))
+            return;
         foreach (Transform child in dropContent)
         {
-            ListIdx unit = child.GetComponent<ListIdx>();
-            if (unit != null && !unit.unitData.own)
-            {
-                itemsToBuy.Add(unit);
-            }
+            ListIdx idx = child.GetComponent<ListIdx>();
+            CharacterStat stat = idx.unitData.GetComponent<CharacterStat>();
+            stat.own = true;
         }
 
-        foreach (ListIdx item in itemsToBuy)
+    }
+    public int cartPrice()
+    {
+        int price = 0;
+        foreach (Transform child in dropContent)
         {
-            CharacterStat stat = Managers.Pool.heroPool[item.unitData.name].GetComponent<CharacterStat>();
-            stat.own = true;
-            Managers.Game.gold -= stat.price;
-            Managers.Ui.updateInfo();
-            Managers.Ui.updateText("Shop", -stat.price);
-            Destroy(item.gameObject);
+            ListIdx idx  = child.GetComponent<ListIdx>();
+            CharacterStat stat = idx.unitData.GetComponent<CharacterStat>();
+            price += stat.price;
         }
+        return price;
     }
 
-    public void StartBattleButton()
+    public int selectHero()
     {
-        int heroCount = 0;
-        for(int idx = 0; idx < dropContent.childCount; idx++)
+        int cnt = 0;
+        foreach(Transform child in dropContent)
+        {
+            if(child.childCount > 0)
+            {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    public void StartBattle()
+    {
+        if (!Managers.Game.canChange("Local"))
+            return;
+        for (int idx = 0; idx < dropContent.childCount; idx++)
         {
             Transform child = dropContent.GetChild(idx);
             if(child.childCount > 0)
@@ -42,21 +56,11 @@ public class SlotHandler : MonoBehaviour
                 TMP_Text name = child.GetChild(0).GetComponent<ListIdx>().unitName;
                 if (name != null)
                 {
-                    heroCount++;
                     Managers.Data.handOverData.unitPositions[idx] = name.text;
                 }
             }
             else
                 Managers.Data.handOverData.unitPositions[idx] = null;
-        }
-        if (heroCount > 0 && heroCount <= 4)
-        {
-            Managers.Game.StartBattle();
-        }
-        else
-        {
-            // todo ui manager error message
-            Debug.Log("Error too many hero");
         }
     }
 
@@ -71,13 +75,10 @@ public class SlotHandler : MonoBehaviour
             }
         }
     }
-
-    public void ClearCreepList()
+    public void ClearCart()
     {
-        for (int idx = 0; idx < dropContent.childCount; idx++)
-        {
-            Destroy(dropContent.GetChild(idx).gameObject);
-        }
+        foreach (Transform child in dropContent)
+            Destroy(child.gameObject);
     }
 
 }

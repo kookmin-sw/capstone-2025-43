@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,6 +7,7 @@ using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 public class GameManager
 {
@@ -29,7 +31,20 @@ public class GameManager
     {
         Managers.Instance.LoadScene("MapScene");
     }
-
+    public bool canChange(string name)
+    {
+        DropTextHandler handler = null;
+        switch (name)
+        {
+            case "Local":
+                handler = Managers.Ui.localUi.GetComponent<DropTextHandler>();
+                break;
+            case "Shop":
+                handler = Managers.Ui.shopUi.GetComponent<DropTextHandler>();
+                break;
+        }
+        return handler.Able();
+    }
     public void NewGame()
     {
         map.Init();

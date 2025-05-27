@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Drop : MonoBehaviour, IDropHandler
 {
     [SerializeField]
-    int maxChild = 1, slotId;
+    int maxChild = 1;
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("drop Сп");
@@ -25,11 +25,10 @@ public class Drop : MonoBehaviour, IDropHandler
             switch (cur.own)
             {
                 case true:
-                    if(Managers.Data.handOverData.unitPositions[slotId] == null)
-                        Managers.Ui.updateText("Local", 1);
+                    Managers.Ui.updateText("Local");
                     break;
                 case false:
-                    Managers.Ui.updateText("Shop", cur.price);
+                    Managers.Ui.updateText("Shop");
                     break;
             }
         }
