@@ -4,7 +4,7 @@ using UnityEngine;
 public class SlotHandler : MonoBehaviour
 {
 
-    public Transform dropContent; // ?“œë¡??œ ?œ ?‹›?“¤?´ ?“¤?–´?žˆ?Š” ScrollView?˜ Content
+    public Transform dropContent;
 
     public void Buy()
     {
@@ -41,28 +41,15 @@ public class SlotHandler : MonoBehaviour
         {
             if(child.childCount > 0)
             {
-                itemsToBuy.Add(unit);
+                cnt++;
             }
         }
-
+        return cnt;
     }
-    public int cartPrice()
-    {
-        int price = 0;
-        foreach (Transform child in dropContent)
-        {
-            ListIdx idx  = child.GetComponent<ListIdx>();
-            CharacterStat stat = idx.unitData.GetComponent<CharacterStat>();
-            price += stat.price;
-        }
-        return price;
-    }
-
-    public int selectHero()
+    public void StartBattle()
     {
         Debug.Log($"Local : {Managers.Game.canChange("Local")}");
-        if (!Managers.Game.canChange("Local"))
-            return;
+        if (!Managers.Game.canChange("Local")) return;
         for (int idx = 0; idx < dropContent.childCount; idx++)
         {
             Transform child = dropContent.GetChild(idx);
