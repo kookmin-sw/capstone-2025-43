@@ -119,6 +119,10 @@ public class Node : MonoBehaviour
         // �ٸ� UI�� ���� ������ Ŭ�� ����
         if (!Managers.Ui.IsOnlyDefaultOpen())
             return;
+        
+        Camera.main.GetComponent<CameraController>().FocusOnNode(transform);
+
+        
         this.GetComponent<UiEvent>().onClick();
     }
     /*
