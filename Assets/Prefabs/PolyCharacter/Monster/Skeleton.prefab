@@ -603,9 +603,10 @@ MonoBehaviour:
   own: 0
   tacticCapacity: 3
   team_id: 2
+  price: 100
   GlobalCooldown: 6
-  hp_max: 300
-  hp: 300
+  hp_max: 400
+  hp: 400
   mp_max: 50
   mp: 50
   damage_max: 10
