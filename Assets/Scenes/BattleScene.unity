@@ -1124,7 +1124,7 @@ MonoBehaviour:
   - 
   - 
   TestWaveList:
-  - {fileID: 11400000, guid: 4a7fa1bd044ac8b4b875b216e0845465, type: 2}
+  - {fileID: 11400000, guid: afddc2851b1c3304aa0d67e4613079e2, type: 2}
   - {fileID: 11400000, guid: d153f927f1f033847bb607de171e2b60, type: 2}
   - {fileID: 11400000, guid: 73ac95984949d2546bd70137384c565e, type: 2}
 --- !u!1 &1145237769 stripped
