@@ -6,7 +6,7 @@ public class SlotHandler : MonoBehaviour
 
     public Transform dropContent; // ?ìúÎ°??êú ?ú†?ãõ?ì§?ù¥ ?ì§?ñ¥?ûà?äî ScrollView?ùò Content
 
-    public void PurchaseItem()
+    public void Buy()
     {
         Debug.Log($"shop : {Managers.Game.canChange("Shop")}");
         if (!Managers.Game.canChange("Shop")) return;
@@ -45,18 +45,20 @@ public class SlotHandler : MonoBehaviour
             }
         }
 
-        foreach (ListIdx item in itemsToBuy)
+    }
+    public int cartPrice()
+    {
+        int price = 0;
+        foreach (Transform child in dropContent)
         {
-            CharacterStat stat = Managers.Pool.heroPool[item.unitData.name].GetComponent<CharacterStat>();
-            stat.own = true;
-            Managers.Game.gold -= stat.price;
-            Managers.Ui.updateInfo();
-            Managers.Ui.updateText("Shop", -stat.price);
-            Destroy(item.gameObject);
+            ListIdx idx  = child.GetComponent<ListIdx>();
+            CharacterStat stat = idx.unitData.GetComponent<CharacterStat>();
+            price += stat.price;
         }
+        return price;
     }
 
-    public void StartBattleButton()
+    public int selectHero()
     {
         Debug.Log($"Local : {Managers.Game.canChange("Local")}");
         if (!Managers.Game.canChange("Local"))
@@ -69,7 +71,6 @@ public class SlotHandler : MonoBehaviour
                 TMP_Text name = child.GetChild(0).GetComponent<ListIdx>().unitName;
                 if (name != null)
                 {
-                    heroCount++;
                     Managers.Data.handOverData.unitPositions[idx] = name.text;
                 }
             }
@@ -90,13 +91,10 @@ public class SlotHandler : MonoBehaviour
             }
         }
     }
-
-    public void ClearCreepList()
+    public void ClearCart()
     {
-        for (int idx = 0; idx < dropContent.childCount; idx++)
-        {
-            Destroy(dropContent.GetChild(idx).gameObject);
-        }
+        foreach (Transform child in dropContent)
+            Destroy(child.gameObject);
     }
 
 }

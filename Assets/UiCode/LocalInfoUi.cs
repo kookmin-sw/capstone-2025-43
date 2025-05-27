@@ -9,7 +9,12 @@ public class LocalInfoUi : MonoBehaviour
     public Transform creepList;
     public Transform boss;
     public LocalInfo info;
-    public void SetLocalUi()
+    private void ClearCreepList()
+    {
+        foreach (Transform child in creepList)
+            Destroy(child.gameObject);
+    }
+public void SetLocalUi()
     {
         Vector2 local = Managers.Data.handOverData.openLocal;
         info = Managers.Data.localInfos[local];
@@ -20,6 +25,7 @@ public class LocalInfoUi : MonoBehaviour
     }
     public void setCreepList()
     {
+        ClearCreepList();
         foreach(BattleWavePreset creep in info.battleWaves)
         {
             foreach(var t in creep.wave)

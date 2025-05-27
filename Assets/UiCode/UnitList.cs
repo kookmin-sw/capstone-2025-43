@@ -9,24 +9,21 @@ public class UnitList : MonoBehaviour
     public GameObject listContent;
 
     // 기존 리스트 정리 (중복 추가 방지)
-    private void Init()
+    private void Clear()
     {
         foreach (Transform child in listContent.transform)
         {
             Destroy(child.gameObject);
         }
     }
-
-
     public void SetList()
     {
-        Init();
+        Clear();
         foreach (GameObject hero in Managers.Pool.heroPool.Values)
         {
             CharacterStat cur = hero.GetComponent<CharacterStat>();
             if (cur.own == isOwned)
             {
-                // listidx ����
                 GameObject go = Managers.Resource.Instantiate("ListIdx", listContent.transform);
                 if (go == null)
                 {

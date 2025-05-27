@@ -126,6 +126,7 @@ public class UiManager
                 localUi.SetActive(active);
                 if (active)
                 {
+                    localUi.GetComponent<DropTextHandler>().UpdateCur(0);
                     localUi.GetComponent<UnitList>().SetList();
                     localUi.GetComponent<LocalInfoUi>().SetLocalUi();
                 }
@@ -135,7 +136,11 @@ public class UiManager
                 break;
             case "Shop":
                 shopUi.SetActive(active);
-                if (active) shopUi.GetComponent<UnitList>().SetList();
+                if (active)
+                {
+                    shopUi.GetComponent<DropTextHandler>().UpdateCur(0);
+                    shopUi.GetComponent<UnitList>().SetList();
+                }
                 break;
             case "Status":
                 statusUi.SetActive(active);
@@ -173,13 +178,15 @@ public class UiManager
         return openUi.Count > 0 ? openUi.Peek() : "";
     }
 
-    public void updateText(string name , int num)
+    public void updateText(string name)
     {
-        DropTextHandler handler = null;
+        DropTextHandler textHandler = null;
+        int num = 0;
         switch (name)
         {
             case "Local":
-                handler = localUi.GetComponent<DropTextHandler>();
+                textHandler = localUi.GetComponent<DropTextHandler>();
+                num = localUi.GetComponent<SlotHandler>().selectHero();
                 break;
             case "Shop":
                 textHandler = shopUi.GetComponent<DropTextHandler>();
@@ -187,7 +194,6 @@ public class UiManager
                 textHandler.UpdateMax(Managers.Game.gold);
                 break;
         }
-        handler.UpdateCur(num);
-        handler.UpdateText();
+        textHandler.UpdateCur(num);
     }
 }

@@ -47,10 +47,10 @@ public class Drag : MonoBehaviour , IDragHandler , IBeginDragHandler, IEndDragHa
         switch (cur.own)
         {
             case true:
-                Managers.Ui.updateText("Local", -1);
+                Managers.Ui.updateText("Local");
                 break;
             case false:
-                Managers.Ui.updateText("Shop", -cur.price);
+                Managers.Ui.updateText("Shop");
                 break;
         }
         transform.SetParent(parentRectTrans);
