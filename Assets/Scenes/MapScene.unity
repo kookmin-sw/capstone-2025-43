@@ -1515,7 +1515,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1853949599}
         m_TargetAssemblyTypeName: SlotHandler, Assembly-CSharp
-        m_MethodName: PurchaseItem
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

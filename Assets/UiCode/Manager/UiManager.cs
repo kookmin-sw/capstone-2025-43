@@ -79,25 +79,25 @@ public class UiManager
     public void SetUiCondition(string name , bool condition)
     {
         Debug.Log($"{name}UI {condition}");
-        if (condition) // UI ì—´ê¸°
+        if (condition) // UI ?—´ê¸?
         {
             if (openUi.Count > 0)
             {
                 string top = openUi.Peek();
                 if (top != "Default")
                 {
-                    SetUiActive(top, false); // Default ì œì™¸í•˜ê³ ë§Œ ë¹„í™œì„±í™”
+                    SetUiActive(top, false); // Default ? œ?™¸?•˜ê³ ë§Œ ë¹„í™œ?„±?™”
                 }
                 else
                 {
-                    SetDefaultUiRaycast(false); // DefaultëŠ” ë¹„í™œì„±í™” ëŒ€ì‹  Raycastë§Œ ë§‰ìŒ
+                    SetDefaultUiRaycast(false); // Default?Š” ë¹„í™œ?„±?™” ????‹  Raycastë§? ë§‰ìŒ
                 }
             }
 
             openUi.Push(name);
             SetUiActive(name, true);
         }
-        else // UI ë‹«ê¸°
+        else // UI ?‹«ê¸?
         {
             if (openUi.Count > 0 && openUi.Peek() == name)
         {
@@ -110,7 +110,7 @@ public class UiManager
                 SetUiActive(previous, true);
 
                 if (previous == "Default")
-                    SetDefaultUiRaycast(true); // Defaultê°€ ë‹¤ì‹œ ìµœìƒë‹¨ì´ë©´ Raycast í™œì„±í™”
+                    SetDefaultUiRaycast(true); // Defaultê°? ?‹¤?‹œ ìµœìƒ?‹¨?´ë©? Raycast ?™œ?„±?™”
             }
         }
         }
@@ -152,7 +152,7 @@ public class UiManager
         if (cg != null)
         {
             cg.blocksRaycasts = value;
-            Debug.Log($"Default UI Raycast â†’ {value}");
+            Debug.Log($"Default UI Raycast ?†’ {value}");
         }
     }
 
@@ -163,7 +163,7 @@ public class UiManager
             SetUiActive(openUi.Pop(), false);
         }
 
-        // ê¸°ë³¸ UIë§Œ ë‹¤ì‹œ í™œì„±í™”
+        // ê¸°ë³¸ UIë§? ?‹¤?‹œ ?™œ?„±?™”
         defaultUi.SetActive(true);
         openUi.Push("Default");
     }
@@ -182,16 +182,12 @@ public class UiManager
                 handler = localUi.GetComponent<DropTextHandler>();
                 break;
             case "Shop":
-                handler = shopUi.GetComponent<DropTextHandler>();
+                textHandler = shopUi.GetComponent<DropTextHandler>();
+                num = shopUi.GetComponent<SlotHandler>().cartPrice();
+                textHandler.UpdateMax(Managers.Game.gold);
                 break;
         }
         handler.UpdateCur(num);
         handler.UpdateText();
     }
-
-    public void updateInfo()
-    {
-        shopUi.GetComponent<DropTextHandler>().SetMax(Managers.Game.gold);
-    }
-
 }
