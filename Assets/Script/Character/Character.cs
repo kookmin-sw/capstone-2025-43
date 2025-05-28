@@ -28,6 +28,8 @@ public class Character : MonoBehaviour
     [HideInInspector] public Rigidbody rigidBody;
     [HideInInspector] public Outline outliner;
     public Transform firePoint;
+    public bool hasOneTimeShield = false; // 한 번만 막는 쉴드
+
 
     private void Awake()
     {
@@ -60,7 +62,7 @@ public class Character : MonoBehaviour
         if (Hp <= 0)
         {
             anim.UpdateCharacterDying();
-        }
+        } 
     }
     private void OnDisable()
     {
@@ -97,9 +99,55 @@ public class Character : MonoBehaviour
             Die();
         }
     }
+    [HideInInspector]public GameObject OneTimeShieldeffect = null;
+    public void EnableOneTimeShield()
+    {
+        if (OneTimeShieldeffect)
+        {
+            return;
+        }
+
+        hasOneTimeShield = true;
+
+        Vector3 vfxPosition = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+        OneTimeShieldeffect = EffectPoolManager.Instance.GetEffect("MagicShield", vfxPosition);
+        OneTimeShieldeffect.GetComponent<PoolEffect>().SetStickGameObject(gameObject);
+
+        ParticleSystem[] allPS = OneTimeShieldeffect.GetComponentsInChildren<ParticleSystem>();
+        foreach (var ps in allPS)
+        {
+            var main = ps.main;
+            main.simulationSpeed = 1.0f;
+        }
+    }
+
+    public void DisableOneTimeShield()
+    {
+        if (hasOneTimeShield)
+        {
+            if (OneTimeShieldeffect)
+            {
+                ParticleSystem[] allPS = OneTimeShieldeffect.GetComponentsInChildren<ParticleSystem>();
+                foreach (var ps in allPS)
+                {
+                    var main = ps.main;
+                    main.simulationSpeed = 10.0f;
+                }
+            }
+
+            hasOneTimeShield = false;
+            OneTimeShieldeffect = null;
+        }
+    }
+
 
     public void ApplyDamage(float amount)
     {
+        if (hasOneTimeShield)
+        {
+            DisableOneTimeShield();
+            return;
+        }
         stat.hp -= amount;
 
         Color displayColor = Color.black;
@@ -120,6 +168,7 @@ public class Character : MonoBehaviour
 
     public void Die()
     {
+        DisableOneTimeShield();
         Hp = 0;
         StopAllTrackedCoroutines();
 

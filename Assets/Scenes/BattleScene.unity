@@ -801,7 +801,7 @@ MonoBehaviour:
   - 
   - 
   - NagaWizard
-  - 
+  - BlackKnight
   - 
   - 
   - 
@@ -1388,6 +1388,9 @@ MonoBehaviour:
     initialPoolSize: 5
   - effectName: Teleport
     prefab: {fileID: 1658448689254514, guid: 37269c5f8a2c5384f94be79ccdbf6df6, type: 3}
+    initialPoolSize: 5
+  - effectName: MagicShield
+    prefab: {fileID: 1598533638775410, guid: 35cb149e524b82c498f29473a8b467e2, type: 3}
     initialPoolSize: 5
 --- !u!1 &1789472830
 GameObject:

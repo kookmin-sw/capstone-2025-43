@@ -88,6 +88,18 @@ public class PoolEffect : MonoBehaviour
 
     public void ReturnToPool()
     {
+        if(effectName == "MagicShield")
+        {
+            if (stickGameObject != null)
+            {
+                Character character = stickGameObject.GetComponent<Character>();
+                if (character != null && character.hasOneTimeShield)
+                {
+                    character.OneTimeShieldeffect = null;
+                    character.hasOneTimeShield = false;               
+                }
+            }
+        }
         EffectPoolManager.Instance.ReturnEffect(effectName, gameObject);
     }
 }
