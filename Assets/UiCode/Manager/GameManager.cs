@@ -65,13 +65,13 @@ public class GameManager
         if (success)
         {
             //day -> night
-            day.setTime(0);
+            day.setDay(0, 9);
             day.passDay();
         }
         else
         {
             //day -> afternoon
-            day.setTime(1);
+            day.setDay(1, 1);
             day.passDay();
         }
         Managers.Instance.LoadScene("MapScene");

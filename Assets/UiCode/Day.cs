@@ -6,12 +6,14 @@ public class Day
 {
     /// <summary>
     /// day = 2 afternoon = 1 night = 0
+    /// take : num * 10 %
     /// </summary>
     int time;
-
-    public void setTime(int t)
+    int take    ;
+    public void setDay(int t,int p)
     {
         time = t;
+        take = p;
     }
 
     public void passDay()
@@ -35,21 +37,19 @@ public class Day
 
     void night()
     {
-        Heal();
+        //Heal();
         Managers.Data.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
-        TakenAlly();
+        if (Random.Range(0, 10) >= take)
+            TakenAlly();
     }
 
     void afternoon()
     {
-        Heal();
-        TakenAlly();
+        //Heal();
+        if (Random.Range(0, 10) >= take)
+            TakenAlly();
     }
 
-    void day()
-    {
-        // day
-    }
     void TakenAlly()
     {
         List<Edge> attack = Managers.Game.map.GetLines();
