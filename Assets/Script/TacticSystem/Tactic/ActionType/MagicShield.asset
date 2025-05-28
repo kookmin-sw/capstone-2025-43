@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MagicShield
   m_EditorClassIdentifier: 
   displayName: MagicSheild
-  actionCooldown: 10
+  actionCooldown: 24
+  amount: 0
   isSingleTarget: 0

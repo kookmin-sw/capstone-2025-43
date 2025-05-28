@@ -6,7 +6,6 @@ using UnityEngine;
 public class LaserAction : ActionType
 {
     public GameObject laserPrefab;
-    public float damage = 100f;
     public float laserDuration = 3f;
 
     public override void Execute(Character user, List<Character> targets)
@@ -90,7 +89,7 @@ public class LaserAction : ActionType
 
             if (target != null && target.Hp > 0)
             {
-                target.ApplyDamage(damage / 3f); // 3틱으로 나누어 데미지 적용
+                target.ApplyDamage(user.Damage + amount / 3f); // 3틱으로 나누어 데미지 적용
             }
 
             // 타겟이 죽었다면 반복문을 중지

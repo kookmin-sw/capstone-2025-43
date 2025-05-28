@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ChainArrow
   m_EditorClassIdentifier: 
   displayName: ChainArrow
-  actionCooldown: 0
+  actionCooldown: 8
+  amount: 0
   isSingleTarget: 1
   arrowPrefab: {fileID: 549415546107026855, guid: 7d51f745ffc20a74eb9aad04b70d6078, type: 3}
   arrowSpeed: 20

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ExplodeOnDeath
   m_EditorClassIdentifier: 
   displayName: ExplodeOnDeath
-  actionCooldown: 0
+  actionCooldown: 15
+  amount: 150
   isSingleTarget: 1
   radius: 5
-  damage: 50
   bombIconPrefab: {fileID: 4223411291527963825, guid: 62c330dd399e20c48a6d71c08250955d, type: 3}
   explosionEffectPrefab: {fileID: 8464950693656172981, guid: 83ad694f134ab954580473212156b35a, type: 3}

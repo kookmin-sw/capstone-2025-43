@@ -9,6 +9,7 @@ public abstract class ActionType : ScriptableObject
 {
     public string displayName = "DisplayName";
     public float actionCooldown = 0f;
+    public float amount = 0f;
     public override string ToString() => displayName;
 
     //Can Edit isSingleTarget in Editor but Not in Other class

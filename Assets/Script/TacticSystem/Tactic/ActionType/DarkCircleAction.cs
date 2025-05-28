@@ -5,6 +5,7 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "TacticSystem/Action/DarkCircle")]
 public class DarkCirlceAction : ActionType
 {
+    public float addGCDAmount = 2.5f;
     public override void Execute(Character user, List<Character> targets)
     {
         user.anim.PlayAttack(0);
@@ -16,9 +17,9 @@ public class DarkCirlceAction : ActionType
                 SummonDarkCircle(target);
             }
 
-            float ApplyDamage = user.stat.damage + 10;
+            float ApplyDamage = user.stat.damage + amount;
             target.ApplyDamage(ApplyDamage);
-            target.tacticSystem.cooldownTimer += 2.5f;
+            target.tacticSystem.cooldownTimer += addGCDAmount;
         }
     }
 

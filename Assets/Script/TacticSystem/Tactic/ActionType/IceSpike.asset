@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IceSpike
   m_EditorClassIdentifier: 
   displayName: IceSpike
-  actionCooldown: 10
-  isSingleTarget: 0
-  damage: 120
+  actionCooldown: 20
+  amount: 100
+  isSingleTarget: 1

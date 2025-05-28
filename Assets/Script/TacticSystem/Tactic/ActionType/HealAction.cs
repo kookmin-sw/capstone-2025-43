@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +21,7 @@ public class HealAction : ActionType
                 GameObject effect = EffectPoolManager.Instance.GetEffect("HealEffect", vfxPosition);
                 effect.GetComponent<PoolEffect>().SetStickGameObject(target.gameObject);
             }
-            target.AddHP(user.stat.damage);
+            target.AddHP(user.stat.damage + amount);
         }
     }
 }

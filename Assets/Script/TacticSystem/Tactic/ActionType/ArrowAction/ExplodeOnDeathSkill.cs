@@ -6,7 +6,6 @@ using MyProject.Utils;
 public class ExplodeOnDeathSkill : ActionType
 {
     public float radius = 10f;
-    public float damage = 50f;
     public GameObject bombIconPrefab;
     public GameObject explosionEffectPrefab;
 
@@ -26,7 +25,7 @@ public class ExplodeOnDeathSkill : ActionType
             {
                 ExplodeOnDeath eod = target.gameObject.AddComponent<ExplodeOnDeath>();
                 eod.radius = radius;
-                eod.explosionDamage = damage;
+                eod.explosionDamage = amount;
                 eod.owner = user;
                 eod.explosionEffectPrefab = this.explosionEffectPrefab;
                 eod.SetMark(bombIconPrefab);

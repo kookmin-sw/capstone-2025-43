@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Meteor
   m_EditorClassIdentifier: 
   displayName: Meteor
-  actionCooldown: 17
+  actionCooldown: 18
+  amount: 80
   isSingleTarget: 0
-  damage: 100

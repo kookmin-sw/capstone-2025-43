@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FallingArrow
   m_EditorClassIdentifier: 
   displayName: FallingArrow
-  actionCooldown: 0
+  actionCooldown: 14
+  amount: 0
   isSingleTarget: 1
   arrowPrefab: {fileID: 5225455176718880169, guid: 9f32aed59fc567040a735fd78d7c5252, type: 3}
   fallHeight: 10
