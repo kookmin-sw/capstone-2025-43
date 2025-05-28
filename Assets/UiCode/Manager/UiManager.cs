@@ -111,7 +111,8 @@ public class UiManager
             case "Status":
                 statusUi.SetActive(active);
                 break;
-            case "Load":
+            case "Rule":
+                ruleUi.SetActive(active);
                 break;
             case "Option":
                 break;
