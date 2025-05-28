@@ -10,43 +10,9 @@ public class UiManager
     public GameObject settingUi;
     public GameObject shopUi;
     public GameObject statusUi;
-
+    public GameObject ruleUi;
 
     private Stack<string> openUi = new Stack<string>();
-
-    public void LoginScene()
-    {
-        openUi.Clear();
-        GameObject canvas = GameObject.Find("Canvas");
-        Debug.Log($"{canvas} is open");
-        defaultUi = canvas.transform.GetChild(0).gameObject;
-
-    }
-
-    public void MapScene()
-    {
-        openUi.Clear();
-        GameObject canvas = GameObject.Find("Canvas");
-        Debug.Log($"{canvas} is open");
-        defaultUi = canvas.transform.GetChild(0).gameObject;
-        localUi = canvas.transform.GetChild(1).gameObject;
-        settingUi = canvas.transform.GetChild(2).gameObject;
-        shopUi = canvas.transform.GetChild(3).gameObject;
-        statusUi = canvas.transform.GetChild(4).gameObject;
-
-        SetUiCondition("Default", true);
-        localUi.SetActive(false);
-        settingUi.SetActive(false);
-        shopUi.SetActive(false);
-        statusUi.SetActive(false);
-
-        shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
-        localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
-    }
-
-
-
-
 
     public void Init()
     {
@@ -58,14 +24,14 @@ public class UiManager
         settingUi= canvas.transform.GetChild(2).gameObject;
         shopUi = canvas.transform.GetChild(3).gameObject;
         statusUi = canvas.transform.GetChild(4).gameObject;
-
+        ruleUi = canvas.transform.GetChild(5).gameObject;
 
         SetUiCondition("Default", true);
         localUi.SetActive(false);
         settingUi.SetActive(false);
         shopUi.SetActive(false);
         statusUi.SetActive(false);
-
+        ruleUi.SetActive(false);
 
         shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
         localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
@@ -145,7 +111,8 @@ public class UiManager
             case "Status":
                 statusUi.SetActive(active);
                 break;
-            case "Load":
+            case "Rule":
+                ruleUi.SetActive(active);
                 break;
             case "Option":
                 break;
