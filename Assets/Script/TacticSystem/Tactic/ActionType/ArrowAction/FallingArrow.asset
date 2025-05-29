@@ -16,6 +16,6 @@ MonoBehaviour:
   actionCooldown: 14
   amount: 0
   isSingleTarget: 1
-  arrowPrefab: {fileID: 5225455176718880169, guid: 9f32aed59fc567040a735fd78d7c5252, type: 3}
+  arrowPrefab: {fileID: 549415546107026855, guid: a84afb418cc6b0b4dbb37e5c26134c01, type: 3}
   fallHeight: 10
   fallSpeed: 30
