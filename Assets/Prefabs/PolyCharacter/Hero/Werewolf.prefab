@@ -2576,7 +2576,7 @@ MonoBehaviour:
   DisplayName: Werewolf
   isMonster: 0
   own: 1
-  tacticCapacity: 3
+  tacticCapacity: 4
   team_id: 1
   price: 100
   GlobalCooldown: 2
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   hp: 500
   mp_max: 50
   mp: 50
-  damage_max: 20
+  damage_max: 30
   damage: 30
   attackRange_Max: 4
   attackRange: 4
@@ -2602,8 +2602,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24752451b87e65f4dbbc0c03cff3f2eb, type: 2}
   Actions:
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
-  - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
-  - {fileID: 11400000, guid: f78a233718b67ee479b7cc7d74a50916, type: 2}
 --- !u!114 &4191474983955360262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2630,9 +2628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTactic: {fileID: 0}
   tactics:
-  - {fileID: 11400000, guid: 44c232ef70a7b444385609511433043a, type: 2}
   - {fileID: 11400000, guid: bf73f7b6abefc0a4185112d02754af92, type: 2}
-  - {fileID: 11400000, guid: 33fc605e31fa56744bea330ee15178a1, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &6570762272827015235

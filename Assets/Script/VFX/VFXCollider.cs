@@ -3,7 +3,7 @@ using UnityEngine;
 public class VFXCollider : MonoBehaviour
 {
     [Header("Settings")]
-    public float damage = 100f;
+    public float damage = 0f;
     public float delayTime = 0.0f;   // Collider 활성화까지 대기 시간
     public float activeTime = 1.0f;  // Collider가 활성화될 시간
     [HideInInspector] private Character caster;
@@ -45,7 +45,11 @@ public class VFXCollider : MonoBehaviour
         if (otherCharacter != null)
         {
             if(caster.IsMonster != otherCharacter.IsMonster)
+            {
                 otherCharacter.ApplyDamage(damage);
+                Debug.Log(caster.DisplayName + " Damages to " + otherCharacter.DisplayName + " " + damage);
+            }
+
         }
     }
     public void SetVFXOption(Character caster, float damage, float delayTime, float activeTime)
