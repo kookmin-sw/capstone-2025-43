@@ -1318,6 +1318,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24752451b87e65f4dbbc0c03cff3f2eb, type: 2}
   Actions:
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+  - {fileID: 11400000, guid: 16284629fdabdd940b1f62b672656d76, type: 2}
 --- !u!114 &8454193203048659877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,7 +1344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTactic: {fileID: 0}
-  tactics: []
+  tactics:
+  - {fileID: 11400000, guid: 664991d4c28f3f845b735dd0d473446d, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &9000122602817627768
