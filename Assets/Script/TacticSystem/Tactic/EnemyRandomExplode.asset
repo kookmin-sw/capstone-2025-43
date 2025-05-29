@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb998de9cbb796c449c651e36e55f47c, type: 3}
-  m_Name: NearlestChainAttack
+  m_Name: EnemyRandomExplode
   m_EditorClassIdentifier: 
   enable: 1
-  priority: 3
+  priority: 0
   targetType: {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
-  conditionType: {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
-  actionType: {fileID: 11400000, guid: 16284629fdabdd940b1f62b672656d76, type: 2}
+  conditionType: {fileID: 11400000, guid: 051aed2aabc529247a4da3e43d53ea48, type: 2}
+  actionType: {fileID: 11400000, guid: 1a5f006e88d45334e916e63c98587595, type: 2}
   editable: 1
   draggable: 1
-  stopcoolDown: 1
+  stopcoolDown: 0
   cooldownTimer: 0

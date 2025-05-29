@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe12a87b8756e6408717250b94fccfa, type: 3}
   m_Name: StackedHitArrow
   m_EditorClassIdentifier: 
-  displayName: StackedHitArrow
-  actionCooldown: 6
+  displayName: StackHit
+  actionCooldown: 0
   amount: 0
   isSingleTarget: 1
   arrowPrefab: {fileID: 549415546107026855, guid: 47ac96517da94c4409439b5b688a5f84, type: 3}

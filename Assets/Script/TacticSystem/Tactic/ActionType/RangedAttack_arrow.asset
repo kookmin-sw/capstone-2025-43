@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7eaa5aa69301c34eb1e53cc5067d771, type: 3}
-  m_Name: RangedAttack
+  m_Name: RangedAttack_arrow
   m_EditorClassIdentifier: 
   displayName: RangedAttack
   actionCooldown: 0
+  amount: 0
   isSingleTarget: 1
   arrowPrefab: {fileID: 2304110352672872331, guid: 5ae6d8792b5e46942a4e443a95dd6b05, type: 3}
   arrowSpeed: 20

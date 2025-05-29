@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Meteor
   actionCooldown: 18
-  amount: 80
+  amount: 60
   isSingleTarget: 0

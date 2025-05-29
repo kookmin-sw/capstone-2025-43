@@ -32,8 +32,8 @@ public abstract class ActionType : ScriptableObject
             agent.isStopped = false;
             agent.SetDestination(target.transform.position);
             anim.SetMoveState(true, user.MoveSpeed);    // animation
-            if(AudioManager.Instance)
-                AudioManager.Instance.PlayEffect(SFXType.FootStep); //SFX
+            if(Managers.Audio !=  null)
+                Managers.Audio.PlayEffect(SFXType.FootStep); //SFX
 
             float distance = Vector3.Distance(user.transform.position, target.transform.position);
             if (distance <= user.stat.attackRange)
@@ -91,7 +91,7 @@ public abstract class ActionType : ScriptableObject
 
             if (angle < 10f)
             {
-                yield return user.StartTrackedCoroutine(attackAction(user, targets)); // ÇÙ½É º¯°æ
+                yield return user.StartTrackedCoroutine(attackAction(user, targets)); // ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 break;
             }
 

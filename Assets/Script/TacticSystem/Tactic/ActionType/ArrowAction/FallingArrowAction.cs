@@ -34,7 +34,8 @@ public class FallingArrowAction : ActionType
             animator.SetTrigger("Attack");
         }
 
-        AudioManager.Instance.PlayEffect(SFXType.Attack);
+        if(Managers.Audio !=  null)
+            Managers.Audio.PlayEffect(SFXType.Attack); //SFX
 
         Vector3 spawnPosition = target.transform.position + Vector3.up * fallHeight;
         Quaternion rotation = Quaternion.LookRotation(Vector3.down);

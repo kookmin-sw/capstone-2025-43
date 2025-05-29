@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e7992e762db64547ab612751a1b8e34, type: 3}
-  m_Name: FallingArrow
+  m_Script: {fileID: 11500000, guid: d7eaa5aa69301c34eb1e53cc5067d771, type: 3}
+  m_Name: RangedAttack_Dagger
   m_EditorClassIdentifier: 
-  displayName: FallingArrow
-  actionCooldown: 14
+  displayName: RangedAttack
+  actionCooldown: 0
   amount: 0
-  isSingleTarget: 0
-  arrowPrefab: {fileID: 549415546107026855, guid: a84afb418cc6b0b4dbb37e5c26134c01, type: 3}
-  fallHeight: 10
-  fallSpeed: 30
+  isSingleTarget: 1
+  arrowPrefab: {fileID: 549415546107026855, guid: f123cc229839eb944b9bedae8157b35c, type: 3}
+  arrowSpeed: 20

@@ -1710,7 +1710,7 @@ MonoBehaviour:
   DisplayName: HeroSpector
   isMonster: 0
   own: 1
-  tacticCapacity: 3
+  tacticCapacity: 5
   team_id: 1
   price: 100
   GlobalCooldown: 3
@@ -1718,7 +1718,7 @@ MonoBehaviour:
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 20
+  damage_max: 30
   damage: 30
   attackRange_Max: 5
   attackRange: 5
@@ -1728,14 +1728,15 @@ MonoBehaviour:
   rotationSpeed: 10
   Targets:
   - {fileID: 11400000, guid: b6d7ec657796e964980f17dab3850970, type: 2}
-  - {fileID: 11400000, guid: 186c45f0ccd34254488fab9a74184039, type: 2}
   - {fileID: 11400000, guid: 349a7ad9f931b3042940a27ddd892ccf, type: 2}
   Conditions:
   - {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
-  - {fileID: 11400000, guid: f77c96ee715f2864e8ab4cc5205956ca, type: 2}
+  - {fileID: 11400000, guid: 051aed2aabc529247a4da3e43d53ea48, type: 2}
   Actions:
-  - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
+  - {fileID: 11400000, guid: c0897a9530c8df54fbef20d436787a32, type: 2}
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
+  - {fileID: 11400000, guid: 9291bb2c9dfb40e44ab09032afdd8d24, type: 2}
+  - {fileID: 11400000, guid: d2a54bdc2ccfcf94482186f086b12c34, type: 2}
 --- !u!114 &5897923233943612678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,8 +1763,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTactic: {fileID: 0}
   tactics:
-  - {fileID: 11400000, guid: 178f20be81821884186f336fcb802d08, type: 2}
-  - {fileID: 11400000, guid: 90866e56101eb1f4d92f23b41836872a, type: 2}
+  - {fileID: 11400000, guid: a48e78c66940428488fbeb50656d77d7, type: 2}
+  - {fileID: 11400000, guid: 54ca1758caa09bd489c9dd416c4a082d, type: 2}
+  - {fileID: 11400000, guid: 20d9a7f2513d73240b47996cfb41c0da, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &6187204498420844885

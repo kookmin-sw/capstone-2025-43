@@ -18,12 +18,14 @@ public class Managers : MonoBehaviour
     ResourceManager _resource = new ResourceManager();
     DataManager _data = new DataManager();
     PoolManager _pool = new PoolManager();
+    AudioManager _audio = new AudioManager();
 
     public static UiManager Ui { get { return Instance._ui; } }
     public static GameManager Game { get { return Instance._game; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static DataManager Data { get { return Instance._data; } }
     public static PoolManager Pool { get { return Instance._pool; } }
+    public static AudioManager Audio { get { return Instance._audio; } }
     
     private void Start()
     {
@@ -43,6 +45,13 @@ public class Managers : MonoBehaviour
             _instance = mO.GetComponent<Managers>();
             Pool.Init();
         }
+    }
+
+    public void InitAudio()
+    {
+        var audioGo = GameObject.Find("AudioManager");
+        var controller = audioGo.GetComponent<AudioManagerController>();
+        Audio.Init(controller.bgmSource, controller.sfxSource, controller.bgmClip, controller.sfxList);
     }
 
     public void LoadScene(string name)
