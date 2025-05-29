@@ -9,7 +9,7 @@ public class Day
     /// take : num * 10 %
     /// </summary>
     int time;
-    int take    ;
+    int take;
     public void setDay(int t,int p)
     {
         time = t;

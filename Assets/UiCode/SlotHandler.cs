@@ -16,6 +16,7 @@ public class SlotHandler : MonoBehaviour
             ListIdx idx = child.GetComponent<ListIdx>();
             CharacterStat stat = idx.unitData.GetComponent<CharacterStat>();
             stat.own = true;
+            Managers.Data.handOverData.ownHero.Add(stat.DisplayName);
             Managers.Game.gold -= stat.price;
         }
         Managers.Ui.shopUi.GetComponent<DropTextHandler>().UpdateCur(0);

@@ -21,6 +21,7 @@ public class GameManager
     }
     public void StartGame()
     {
+        Managers.Data.InitHeros();
         Managers.Instance.LoadScene("MapScene");
     }
     public bool canChange(string name)
@@ -46,7 +47,6 @@ public class GameManager
     {
         //todo start battle scene
         SceneManager.LoadScene("BattleScene");
-
     }
 
     // From BattleScene

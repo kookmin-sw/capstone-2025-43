@@ -8,6 +8,7 @@ public class DataManager
 {
     public HandOverData handOverData = new HandOverData();
     public Dictionary<Vector2, LocalInfo> localInfos = new Dictionary<Vector2, LocalInfo>();
+
     public void SetDictionary()
     {
         foreach (var vl in handOverData.list_localinfos)
@@ -22,6 +23,18 @@ public class DataManager
         foreach (var vl in localInfos)
         {
             handOverData.list_localinfos.Add(new vector_localinfo { localPosition = vl.Key, localInfo = vl.Value });
+        }
+    }
+
+    public void InitHeros()
+    {
+        foreach(var character in Managers.Pool.heroPool.Values)
+        {
+            character.GetComponent<CharacterStat>().own = false;
+        }
+        foreach(var character in handOverData.ownHero)
+        {
+            Managers.Pool.heroPool[character].GetComponent<CharacterStat>().own = true;
         }
     }
 

@@ -23,7 +23,6 @@ public class PoolManager
         SetHeroList();
         CreateBattleWave();
     }
-
     public void CreateBattleWave()
     {
         waves = Managers.Data.GetBattleWaveDataset();

@@ -15,6 +15,6 @@ public class HandOverData
     [Header("# OpenLocal")]
     public Vector2 openLocal;
 
-    /*[Header("# OwnHeroList")]
-    public List<string> ownHero = new List<string>() { "HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan" };*/
+    [Header("# OwnHeroList")]
+    public List<string> ownHero = new List<string>() { "HeroMage", "Werewolf", "NagaWizard", "BlackKnight", "FishMan" };
 }
