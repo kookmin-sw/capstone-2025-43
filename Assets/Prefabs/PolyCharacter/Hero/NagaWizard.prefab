@@ -982,7 +982,7 @@ MonoBehaviour:
   mp: 50
   damage_max: 20
   damage: 1
-  attackRange_Max: 10
+  attackRange_Max: 15
   attackRange: 10
   moveSpeed_origin: 10
   moveSpeed: 10

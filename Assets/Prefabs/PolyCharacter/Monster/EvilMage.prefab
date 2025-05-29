@@ -372,7 +372,7 @@ MonoBehaviour:
   DisplayName: EvilMage
   isMonster: 1
   own: 0
-  tacticCapacity: 3
+  tacticCapacity: 4
   team_id: 2
   price: 100
   GlobalCooldown: 5
@@ -382,7 +382,7 @@ MonoBehaviour:
   mp: 50
   damage_max: 30
   damage: 60
-  attackRange_Max: 10
+  attackRange_Max: 15
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -419,6 +419,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: 20d9a7f2513d73240b47996cfb41c0da, type: 2}
   - {fileID: 11400000, guid: ccdb0b42e892bf045a5aa111402dabdd, type: 2}
+  - {fileID: 11400000, guid: 648f63df9a0f75541bff1493aec9358f, type: 2}
   - {fileID: 11400000, guid: 90866e56101eb1f4d92f23b41836872a, type: 2}
   cooldownTimer: 0
   stopCooldown: 0

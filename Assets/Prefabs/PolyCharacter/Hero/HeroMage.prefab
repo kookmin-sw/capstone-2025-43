@@ -251,7 +251,7 @@ MonoBehaviour:
   mp: 50
   damage_max: 30
   damage: 30
-  attackRange_Max: 10
+  attackRange_Max: 15
   attackRange: 10
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -391,6 +391,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 5535628875651640875}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/HeroMage
 --- !u!114 &1849756462691948292
 MonoBehaviour:

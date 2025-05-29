@@ -270,7 +270,7 @@ MonoBehaviour:
   DisplayName: BishopKnight
   isMonster: 0
   own: 1
-  tacticCapacity: 3
+  tacticCapacity: 4
   team_id: 1
   price: 100
   GlobalCooldown: 4
@@ -280,7 +280,7 @@ MonoBehaviour:
   mp: 50
   damage_max: 20
   damage: 30
-  attackRange_Max: 10
+  attackRange_Max: 15
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -294,9 +294,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76e541c73a0022b44a5b415144b75322, type: 2}
   - {fileID: 11400000, guid: 75a828c250ffa9242aed0d45e263494c, type: 2}
   - {fileID: 11400000, guid: f77c96ee715f2864e8ab4cc5205956ca, type: 2}
+  - {fileID: 11400000, guid: 24752451b87e65f4dbbc0c03cff3f2eb, type: 2}
   Actions:
   - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
   - {fileID: 11400000, guid: d0bdf4a655494b041830aaa8dd8e2513, type: 2}
+  - {fileID: 11400000, guid: d2a54bdc2ccfcf94482186f086b12c34, type: 2}
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
 --- !u!114 &5511459318474856164
 MonoBehaviour:
