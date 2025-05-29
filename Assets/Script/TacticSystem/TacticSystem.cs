@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MyProject.Utils;
-using static UnityEditor.Experimental.GraphView.Port;
-using System.ComponentModel;
 
 [RequireComponent(typeof(Character))]
 public class TacticSystem : MonoBehaviour

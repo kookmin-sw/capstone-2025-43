@@ -1,8 +1,5 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
 public class UiManager
 {
     public GameObject defaultUi;

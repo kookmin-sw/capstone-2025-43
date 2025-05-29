@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 public class DropTextHandler : MonoBehaviour

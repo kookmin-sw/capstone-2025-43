@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEditor.EventSystems;
-using Unity.VisualScripting;
 
 public class Icon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {

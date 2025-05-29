@@ -1,14 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.EditorTools;
-using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms;
 
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager
 {
     public int time; // 0 : morning, 1 : afternoon, 2 : night

@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "TacticSystem/Action/Heal")]
 public class HealAction : ActionType

@@ -1,9 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
-using UnityEditor.AddressableAssets.Build.BuildPipelineTasks;
-using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
