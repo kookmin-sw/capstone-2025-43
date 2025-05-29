@@ -15,10 +15,7 @@ public class ResultUI : MonoBehaviour
     [SerializeField] private GameObject[] characterSlots; // TacticSlot Count is Always 4
     [SerializeField] private GameObject[] rewardSlot; // TacticSlot Count is Always 7
     private bool result = false;
-    private void Start()
-    {
-        AudioManager.Instance.StopBGM(); // Test Stop BGM
-    }
+
     public void OpenUI(bool isWinning)
     {
         panel.SetActive(true);

@@ -33,10 +33,8 @@ public class RangedAttackAction : ActionType
             animator.SetTrigger("Attack");
         }
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlayEffect(SFXType.Attack);
-        }
+        if(Managers.Audio !=  null)
+            Managers.Audio.PlayEffect(SFXType.Attack); //SFX
 
         Transform firePoint = user.firePoint;
         if (firePoint == null) return;

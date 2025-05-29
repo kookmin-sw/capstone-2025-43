@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 using MyProject.Utils;
-public class AudioManager : MonoBehaviour
+
+public class AudioManager
 {
-    public static AudioManager Instance;
+    AudioSource bgmSource;
+    AudioSource sfxSource;
 
-    public AudioSource bgmSource;
-    public AudioSource sfxSource;
+    AudioClip bgmClip;
 
-    public AudioClip bgmClip;     // BGM
+    public enum AudioChannel { BGM, SFX }
 
     [System.Serializable]
     public struct SFXData
@@ -17,30 +18,21 @@ public class AudioManager : MonoBehaviour
         public List<AudioClip> clip;
     }
 
-    public List<SFXData> sfxList;
-    private Dictionary<SFXType, List<AudioClip>> sfxDict;
+    Dictionary<SFXType, List<AudioClip>> sfxDict = new();
 
-        void Awake()
+    public void Init(AudioSource bgmSource, AudioSource sfxSource, AudioClip bgmClip, List<SFXData> sfxList)
     {
-        if (Instance == null)
-            Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        this.bgmSource = bgmSource;
+        this.sfxSource = sfxSource;
+        this.bgmClip = bgmClip;
 
-        DontDestroyOnLoad(gameObject);
-
-        sfxDict = new Dictionary<SFXType, List<AudioClip>>();
+        sfxDict.Clear();
         foreach (var sfx in sfxList)
         {
             sfxDict[sfx.type] = sfx.clip;
         }
     }
 
-
-    // Battle Scene Start
     public void PlayBGM()
     {
         if (!bgmSource.isPlaying)
@@ -51,14 +43,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Battle Scene End
     public void StopBGM()
     {
         if (bgmSource.isPlaying)
             bgmSource.Stop();
     }
 
-    // Effect
     public void PlayEffect(SFXType type)
     {
         if (sfxDict.TryGetValue(type, out var clipList) && clipList.Count > 0)
@@ -68,16 +58,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Effect sound not found: {type}");
+            Debug.LogWarning($"Effect sound not found: {type}");
         }
     }
-
-    // Test Start BGM
-        void Start()
-    {
-        AudioManager.Instance.PlayBGM();
-    }
 }
-
-// Effect Example
-// AudioManager.Instance.PlayEffect(SFXType.Attack);
