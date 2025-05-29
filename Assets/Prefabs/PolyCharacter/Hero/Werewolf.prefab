@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Werewolf
   isMonster: 0
-  own: 0
+  own: 1
   tacticCapacity: 3
   team_id: 1
   price: 100

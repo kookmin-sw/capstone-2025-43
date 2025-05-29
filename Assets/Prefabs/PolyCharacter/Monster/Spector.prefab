@@ -120,7 +120,7 @@ MonoBehaviour:
   hp: 200
   mp_max: 50
   mp: 50
-  damage_max: 10
+  damage_max: 15
   damage: 100
   attackRange_Max: 5
   attackRange: 5
