@@ -22,9 +22,16 @@ public class ChainProjectile : MonoBehaviour
         }
 
         Vector3 toTarget = target.position - transform.position;
-        if (toTarget == Vector3.zero) return;
+
+        if (toTarget.magnitude < 0.1f)
+        {
+            // 타겟 위치에 거의 도달한 경우
+            transform.position = target.position;
+            return;
+        }
 
         Vector3 direction = toTarget.normalized;
+
         if (float.IsNaN(direction.x) || float.IsNaN(direction.y) || float.IsNaN(direction.z))
         {
             Debug.LogWarning("[ChainProjectile] NaN direction detected.");
@@ -34,7 +41,7 @@ public class ChainProjectile : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,6 +94,7 @@ public class ChainProjectile : MonoBehaviour
             if (c == null || c.Hp <= 0) continue;
             if (attacker == null || !attacker.IsEnemy(c)) continue;
             if (hitTargets.Contains(c)) continue;
+            if (Vector3.Distance(transform.position, c.transform.position) < 0.1f) continue;
 
             float dist = Vector3.Distance(transform.position, c.transform.position);
             if (dist < minDist)
@@ -97,5 +105,11 @@ public class ChainProjectile : MonoBehaviour
         }
 
         return nextTarget;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 15f);
     }
 }
