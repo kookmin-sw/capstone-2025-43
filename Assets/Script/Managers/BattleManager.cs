@@ -34,11 +34,10 @@ public class BattleManager : MonoBehaviour
     private int heroCount = 0;
     private int currentWaveCount = 0;
 
-#if UNITY_EDITOR
-    //TODO:: Change To Map Handover Data
+    //TODO:: ForTest
     public string[] testunitPositions;
     public List<BattleWavePreset> TestWaveList;
-#endif
+
     private void Awake()
     {
         if (Instance == null)

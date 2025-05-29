@@ -1,6 +1,8 @@
 using UnityEngine;
 
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using MyProject.Utils;
 
 public class FieldSetDataCreator : MonoBehaviour
@@ -8,6 +10,7 @@ public class FieldSetDataCreator : MonoBehaviour
     [ContextMenu("CREATE FIELD SET DATA")]
     public void CreateFieldSetData()
     {
+#if UNITY_EDITOR
         FieldSetData newFieldSet = ScriptableObject.CreateInstance<FieldSetData>();
 
         Transform environment = transform.Find("Environment");
@@ -15,7 +18,7 @@ public class FieldSetDataCreator : MonoBehaviour
 
         if (environment == null || battleField == null)
         {
-            Debug.LogError("[FieldSetDataCreator] There is No 'Environment' or 'BattleField' in the  child");
+            Debug.LogError("[FieldSetDataCreator] There is No 'Environment' or 'BattleField' in the child");
             return;
         }
 
@@ -25,7 +28,7 @@ public class FieldSetDataCreator : MonoBehaviour
 
         if (environmentPrefab == null || battlePrefab == null)
         {
-            Debug.LogError("[FieldSetDataCreator] Cant Find Prefabs");
+            Debug.LogError("[FieldSetDataCreator] Can't Find Prefabs");
             return;
         }
 
@@ -41,7 +44,7 @@ public class FieldSetDataCreator : MonoBehaviour
         newFieldSet.battleScale = battleField.localScale;
 
         // Set FieldType Empty
-        newFieldSet.fieldType = E_FieldType.Empty; 
+        newFieldSet.fieldType = E_FieldType.Empty;
 
         // Save
         string path = $"Assets/Script/Field/New_FieldSet_{System.DateTime.Now:yyyyMMdd_HHmmss}.asset";
@@ -49,6 +52,7 @@ public class FieldSetDataCreator : MonoBehaviour
         AssetDatabase.SaveAssets();
         EditorUtility.FocusProjectWindow();
         Selection.activeObject = newFieldSet;
+#endif
     }
 
     GameObject GetPrefab(GameObject obj)
@@ -60,4 +64,3 @@ public class FieldSetDataCreator : MonoBehaviour
 #endif
     }
 }
-
