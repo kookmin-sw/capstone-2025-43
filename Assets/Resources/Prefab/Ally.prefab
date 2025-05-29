@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 524244177632307043}
   m_Layer: 0
   m_Name: Ally
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f70eeec198fcd4980af56a95262a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localInfo:
+    battleWaves: []
+    localData: {fileID: 0}
+    poisiton: {x: 0, y: 0, z: 0}
+    side: 
   offset: {x: 0, y: 0, z: -0.5}
 --- !u!114 &-3341161031001010539
 MonoBehaviour:

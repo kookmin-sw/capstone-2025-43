@@ -12,7 +12,6 @@ public class Drop : MonoBehaviour, IDropHandler
         Debug.Log("drop Сп");
         if (eventData.pointerDrag.GetComponent<Drag>() == null)
         {
-            eventData.pointerDrag.GetComponent<Drag>().returnToFrom();
             return;
         }
 

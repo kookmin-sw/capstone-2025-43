@@ -14,38 +14,7 @@ public class Node : MonoBehaviour
         localInfo = inputInfo;
         //Set Position
         transform.position = localInfo.poisiton + offset;
-        //Set Tag
-        SetTag(localInfo.side);
-        SetStages();
     }
-
-    public void SetTag(string tag)
-    {
-        transform.tag = tag;
-        switch (tag)
-        {
-            case "Ally":
-                break;
-            case "Enemy":
-                SetStages();
-                break;
-        }
-    }
-
-    public void SetStages()
-    {
-        if(localInfo.battleWaves.Count > 0)
-        {
-            return;
-        }
-        int waveCount = Random.Range(1, 3);
-        for (int i = 0; i < waveCount; i++)
-        {
-            localInfo.battleWaves.Add(Managers.Pool.GetCreepPool());
-        }
-        Debug.Log($"{name}'s battleWave Count : {localInfo.battleWaves.Count}");
-    }
-    
     private List<Node> GetConnectedNodes()
     {
         List<Node> connectedNodes = new List<Node>();
@@ -95,10 +64,7 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("����");
-        Managers.Data.handOverData.openLocal = localInfo.poisiton;
-
-        if (CompareTag("Ally"))
+        if (tag == "Ally")
             return;
 
         List<Node> connectedNodes = GetConnectedNodes();
@@ -112,26 +78,13 @@ public class Node : MonoBehaviour
                 break;
             }
         }
-
         if (!canAttack)
             return;
-
-        // �ٸ� UI�� ���� ������ Ŭ�� ����
         if (!Managers.Ui.IsOnlyDefaultOpen())
             return;
-        
-        Camera.main.GetComponent<CameraController>().FocusOnNode(transform);
 
-        
+        Camera.main.GetComponent<CameraController>().FocusOnNode(transform);
+        Managers.Data.handOverData.openLocal = localInfo.poisiton;
         this.GetComponent<UiEvent>().onClick();
     }
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("ȯ��� �浹");
-        if (other == null)
-            return;
-        Debug.Log($"{other.transform.name} data");
-        localInfo.localData = Managers.Data.GetLocalData(other.transform.name);
-    }*/
 }

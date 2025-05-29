@@ -58,9 +58,15 @@ public class Day
         LocalInfo a = Managers.Data.localInfos[cur.v0];
         LocalInfo b = Managers.Data.localInfos[cur.v1];
         if (a.side == "Ally")
+        {
             a.side = "Enemy";
+            a.SetStages();
+        }
         else
+        {
             b.side = "Enemy";
+            b.SetStages();
+        }
     }
 
     void Heal()

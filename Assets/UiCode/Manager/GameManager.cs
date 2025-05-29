@@ -65,6 +65,7 @@ public class GameManager
         if (success)
         {
             //day -> night
+            Managers.Data.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
             day.setDay(0, 9);
             day.passDay();
         }

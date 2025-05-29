@@ -148,6 +148,8 @@ public class Map : MonoBehaviour
                     Managers.Data.localInfos[position].localData = env.localData;
                 }
             }
+            if (Managers.Data.localInfos[position].localData == null)
+                Managers.Data.localInfos[position].localData = Envs[0].localData;
         }
     }
 
