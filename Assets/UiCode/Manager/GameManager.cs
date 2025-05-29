@@ -17,7 +17,6 @@ public class GameManager
 
     public void Init()
     {
-        gold = Managers.Data.handOverData.Gold;
         map = GameObject.Find("Map").GetComponent<Map>();
     }
     public void StartGame()
