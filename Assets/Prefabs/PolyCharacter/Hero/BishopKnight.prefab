@@ -328,6 +328,7 @@ MonoBehaviour:
   tactics:
   - {fileID: 11400000, guid: 178f20be81821884186f336fcb802d08, type: 2}
   - {fileID: 11400000, guid: c86911bbc118e4b41abe34a440782782, type: 2}
+  - {fileID: 11400000, guid: fab5e06784cdac145979b3e9b6b92cb9, type: 2}
   - {fileID: 11400000, guid: 90866e56101eb1f4d92f23b41836872a, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
