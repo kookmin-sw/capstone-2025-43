@@ -19,9 +19,9 @@ public class LocalInfoUi : MonoBehaviour
         Vector2 local = Managers.Data.handOverData.openLocal;
         info = Managers.Data.localInfos[local];
 
+        setCreepList();
         desc.text = info.localData.desc;
         image.sprite = info.localData.image;
-        setCreepList();
     }
     public void setCreepList()
     {

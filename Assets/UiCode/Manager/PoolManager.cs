@@ -27,7 +27,7 @@ public class PoolManager
 
     public void CreateBattleWave()
     {
-        waves = Managers.Data.GetBattleWaveDataset("BattleWave");
+        waves = Managers.Data.GetBattleWaveDataset();
     }
 
     public BattleWavePreset GetCreepPool()

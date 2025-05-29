@@ -46,6 +46,7 @@ public class SlotHandler : MonoBehaviour
         }
         return cnt;
     }
+
     public void StartBattle()
     {
         Debug.Log($"Local : {Managers.Game.canChange("Local")}");
@@ -78,6 +79,7 @@ public class SlotHandler : MonoBehaviour
             }
         }
     }
+
     public void ClearCart()
     {
         foreach (Transform child in dropContent)

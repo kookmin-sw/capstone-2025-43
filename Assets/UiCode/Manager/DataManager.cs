@@ -25,9 +25,9 @@ public class DataManager
         }
     }
 
-    public BattleWavePreset[] GetBattleWaveDataset(string path)
+    public BattleWavePreset[] GetBattleWaveDataset()
     {
-        return Resources.LoadAll<BattleWavePreset>($"Data/Unit/{path}");
+        return Resources.LoadAll<BattleWavePreset>($"Data/Unit/BattleWave");
     }
     public LocalData GetLocalData(string path)
     {

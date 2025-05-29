@@ -89,6 +89,7 @@ public class UiManager
                 defaultUi.SetActive(active);
                 break;
             case "Local":
+                
                 localUi.SetActive(active);
                 if (active)
                 {
