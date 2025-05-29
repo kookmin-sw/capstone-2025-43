@@ -16,6 +16,7 @@ public class LoadButton : MonoBehaviour
         Managers.Data.handOverData = Managers.Data.Load<HandOverData>(path);
         Managers.Data.SetDictionary();
         Managers.Game.isNew = false;
+        Managers.Game.gold = Managers.Data.handOverData.Gold;
         Managers.Game.StartGame();
     }
 }
