@@ -975,12 +975,12 @@ MonoBehaviour:
   tacticCapacity: 5
   team_id: 1
   price: 100
-  GlobalCooldown: 1
-  hp_max: 2000
+  GlobalCooldown: 3
+  hp_max: 400
   hp: 2000
   mp_max: 50
   mp: 50
-  damage_max: 40
+  damage_max: 20
   damage: 1
   attackRange_Max: 10
   attackRange: 10
@@ -1127,6 +1127,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 3108953176753936947}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/NagaWizard
 --- !u!114 &9043893007607345689
 MonoBehaviour:

@@ -1297,12 +1297,12 @@ MonoBehaviour:
   tacticCapacity: 3
   team_id: 1
   price: 100
-  GlobalCooldown: 5
-  hp_max: 100
+  GlobalCooldown: 3
+  hp_max: 300
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 25
+  damage_max: 5
   damage: 25
   attackRange_Max: 3
   attackRange: 3
@@ -1439,6 +1439,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 3437125769216234780}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/FishMan
 --- !u!114 &4290937404195417231
 MonoBehaviour:

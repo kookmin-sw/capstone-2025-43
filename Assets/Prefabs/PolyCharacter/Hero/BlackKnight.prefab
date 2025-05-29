@@ -210,12 +210,12 @@ MonoBehaviour:
   tacticCapacity: 3
   team_id: 1
   price: 100
-  GlobalCooldown: 5
-  hp_max: 500
+  GlobalCooldown: 4
+  hp_max: 700
   hp: 500
   mp_max: 50
   mp: 50
-  damage_max: 50
+  damage_max: 10
   damage: 50
   attackRange_Max: 5
   attackRange: 5
@@ -356,6 +356,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 6509163273119538649}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/BlackKnight
 --- !u!114 &4529420962363032056
 MonoBehaviour:

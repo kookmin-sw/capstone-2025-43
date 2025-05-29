@@ -40,6 +40,13 @@ public class Character : MonoBehaviour
         collider_body = GetComponent<CapsuleCollider>();
         rigidBody = GetComponent<Rigidbody>();
         outliner = GetComponent<Outline>();
+
+        stat.hp = HpMax;
+        stat.mp = MpMax;
+        stat.damage = DamageMax;
+        stat.attackRange= AttackRangeMax;
+        stat.moveSpeed = MoveSpeed_origin;
+        stat.rotationSpeed = RotationSpeed_origin;
     }
     private void Start()
     {

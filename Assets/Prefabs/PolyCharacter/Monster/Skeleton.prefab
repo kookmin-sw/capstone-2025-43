@@ -604,12 +604,12 @@ MonoBehaviour:
   tacticCapacity: 3
   team_id: 2
   price: 100
-  GlobalCooldown: 6
+  GlobalCooldown: 2.4
   hp_max: 400
   hp: 400
   mp_max: 50
   mp: 50
-  damage_max: 10
+  damage_max: 5
   damage: 10
   attackRange_Max: 3
   attackRange: 3
@@ -762,6 +762,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 9194440317159226304}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/Skeleton
 --- !u!1 &2940086289260056763
 GameObject:

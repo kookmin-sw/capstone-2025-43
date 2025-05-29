@@ -2019,11 +2019,11 @@ MonoBehaviour:
   team_id: 2
   price: 100
   GlobalCooldown: 4
-  hp_max: 400
+  hp_max: 600
   hp: 400
   mp_max: 50
   mp: 50
-  damage_max: 50
+  damage_max: 10
   damage: 50
   attackRange_Max: 5
   attackRange: 5
@@ -2159,6 +2159,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 7557968980475110809}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/LizardWarrior
 --- !u!114 &2110152898624461848
 MonoBehaviour:

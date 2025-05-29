@@ -371,16 +371,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: EvilMage
   isMonster: 1
+  own: 0
   tacticCapacity: 3
   team_id: 2
+  price: 100
   GlobalCooldown: 5
-  hp_max: 80
+  hp_max: 300
   hp: 300
   mp_max: 300
   mp: 50
-  damage_max: 60
+  damage_max: 15
   damage: 60
-  attackRange_Max: 5
+  attackRange_Max: 10
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -533,6 +535,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 5904279712814892805}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/EvilMage
 --- !u!1 &808003382474681486
 GameObject:

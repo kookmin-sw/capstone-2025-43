@@ -2584,7 +2584,7 @@ MonoBehaviour:
   hp: 500
   mp_max: 50
   mp: 50
-  damage_max: 30
+  damage_max: 10
   damage: 30
   attackRange_Max: 4
   attackRange: 4
@@ -2728,6 +2728,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 5088286198382449698}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/Werewolf
 --- !u!114 &448817456316762713
 MonoBehaviour:

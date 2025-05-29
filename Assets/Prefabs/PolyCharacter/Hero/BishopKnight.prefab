@@ -273,14 +273,14 @@ MonoBehaviour:
   tacticCapacity: 3
   team_id: 1
   price: 100
-  GlobalCooldown: 5
-  hp_max: 100
-  hp: 100
-  mp_max: 50
+  GlobalCooldown: 4
+  hp_max: 400
+  hp: 400
+  mp_max: 4
   mp: 50
-  damage_max: 30
+  damage_max: 20
   damage: 30
-  attackRange_Max: 5
+  attackRange_Max: 10
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -424,6 +424,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 6548450058389784151}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/BishopKnight
 --- !u!114 &4283072096031270935
 MonoBehaviour:

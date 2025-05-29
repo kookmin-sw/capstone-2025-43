@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: StackedHitArrow
   m_EditorClassIdentifier: 
   displayName: StackedHitArrow
-  actionCooldown: 0
+  actionCooldown: 6
+  amount: 0
   isSingleTarget: 1
   arrowPrefab: {fileID: 4318606248750396421, guid: 2d10a9e0a7a70e947950cb9f33622b8e, type: 3}
   arrowSpeed: 80

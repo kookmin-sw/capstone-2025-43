@@ -1004,16 +1004,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Dragon
   isMonster: 1
+  own: 0
   tacticCapacity: 3
   team_id: 2
-  GlobalCooldown: 5
-  hp_max: 1000
+  price: 100
+  GlobalCooldown: 4
+  hp_max: 800
   hp: 1000
   mp_max: 50
   mp: 50
   damage_max: 10
   damage: 10
-  attackRange_Max: 5
+  attackRange_Max: 10
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -1165,6 +1167,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 3664995863030645930}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/Dragon
 --- !u!1 &4854295153350425824
 GameObject:

@@ -370,14 +370,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Orc
   isMonster: 1
+  own: 0
   tacticCapacity: 3
   team_id: 2
-  GlobalCooldown: 5
-  hp_max: 600
+  price: 100
+  GlobalCooldown: 3
+  hp_max: 700
   hp: 600
   mp_max: 50
   mp: 50
-  damage_max: 10
+  damage_max: 5
   damage: 10
   attackRange_Max: 3
   attackRange: 3
@@ -530,6 +532,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 3322020016557407526}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/Orc
 --- !u!1 &1971115331119116009
 GameObject:

@@ -1500,14 +1500,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Golem
   isMonster: 1
+  own: 0
   tacticCapacity: 3
   team_id: 2
-  GlobalCooldown: 5
-  hp_max: 1000
+  price: 100
+  GlobalCooldown: 4
+  hp_max: 700
   hp: 1000
   mp_max: 50
   mp: 50
-  damage_max: 30
+  damage_max: 15
   damage: 30
   attackRange_Max: 5
   attackRange: 5
@@ -1643,6 +1645,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 7382991576016408220}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/Golem
 --- !u!114 &3709401692392634724
 MonoBehaviour:

@@ -1713,14 +1713,14 @@ MonoBehaviour:
   tacticCapacity: 3
   team_id: 1
   price: 100
-  GlobalCooldown: 5
-  hp_max: 100
+  GlobalCooldown: 3
+  hp_max: 300
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 30
+  damage_max: 5
   damage: 30
-  attackRange_Max: 5
+  attackRange_Max: 3
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -1860,6 +1860,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   outliner: {fileID: 0}
   firePoint: {fileID: 7987187377408536928}
+  hasOneTimeShield: 0
+  OneTimeShieldeffect: {fileID: 0}
   IconPath: Character/Screenshot/HeroSkeleton
 --- !u!114 &4115969796291011606
 MonoBehaviour:
