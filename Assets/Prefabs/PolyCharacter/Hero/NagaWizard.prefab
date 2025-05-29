@@ -999,10 +999,8 @@ MonoBehaviour:
   Actions:
   - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
   - {fileID: 11400000, guid: e1aa256cf24ed9240bf59c91e4ddb6d6, type: 2}
+  - {fileID: 11400000, guid: d0bdf4a655494b041830aaa8dd8e2513, type: 2}
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
-  - {fileID: 11400000, guid: 16284629fdabdd940b1f62b672656d76, type: 2}
-  - {fileID: 11400000, guid: f78a233718b67ee479b7cc7d74a50916, type: 2}
-  - {fileID: 11400000, guid: d2a54bdc2ccfcf94482186f086b12c34, type: 2}
 --- !u!114 &8510983974139955847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1028,8 @@ MonoBehaviour:
   currentTactic: {fileID: 0}
   tactics:
   - {fileID: 11400000, guid: 3fd43e813c543644e95d90bc38d247f1, type: 2}
+  - {fileID: 11400000, guid: c86911bbc118e4b41abe34a440782782, type: 2}
+  - {fileID: 11400000, guid: 4bbbeef641d7dda48b62408a64907dbe, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &7496367362289184338

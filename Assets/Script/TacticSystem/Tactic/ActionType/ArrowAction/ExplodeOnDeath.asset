@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4d176952d61f840b7221d1e03a6660, type: 3}
   m_Name: ExplodeOnDeath
   m_EditorClassIdentifier: 
-  displayName: ExplodeOnDeath
-  actionCooldown: 15
+  displayName: DeathExplode
+  actionCooldown: 20
   amount: 150
   isSingleTarget: 1
   radius: 5

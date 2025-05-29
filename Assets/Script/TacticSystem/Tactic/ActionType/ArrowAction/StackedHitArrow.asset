@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe12a87b8756e6408717250b94fccfa, type: 3}
   m_Name: StackedHitArrow
   m_EditorClassIdentifier: 
-  displayName: StackedHitArrow
+  displayName: StackHit
   actionCooldown: 0
   amount: 0
   isSingleTarget: 1
