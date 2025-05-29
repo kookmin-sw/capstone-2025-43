@@ -18,11 +18,11 @@ public class ListIdx : MonoBehaviour
         unitData = data;
         //unitImg = data.unitImage;
         unitName.text = this.name = data.DisplayName;
-        hpSlider.value = (float)data.hp / data.hp_max;
-        mpSlider.value = (float)data.mp / data.mp_max;
+        hpSlider.value = (float)data.hp_max / data.hp_max;
+        mpSlider.value = (float)data.mp_max / data.mp_max;
 
-        hpText.text = $"{data.hp} / {data.hp_max}";
-        mpText.text = $"{data.mp} / {data.mp_max}";
+        hpText.text = $"{data.hp_max} / {data.hp_max}";
+        mpText.text = $"{data.mp_max} / {data.mp_max}";
 
         unitImg.sprite = Managers.Resource.Load<Sprite>($"Character/ScreenShot/{unitName.text}");
     }

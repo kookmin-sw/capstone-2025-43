@@ -9,10 +9,7 @@ public class HealAction : ActionType
     public override void Execute(Character user, List<Character> targets)
     {
         // Apply Animation TODO :: Change Animation Trigger
-        if (user.TryGetComponent(out Animator animator))
-        {
-            animator.SetTrigger("Attack"); //animtor.SetTrigger("Spell");
-        }
+        user.anim.PlayAttack(1);
         foreach (Character target in targets)
         {
             if (EffectPoolManager.Instance != null)
