@@ -2603,6 +2603,10 @@ MonoBehaviour:
   Actions:
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
   - {fileID: 11400000, guid: 2386160f11498844ab0713258fdcd716, type: 2}
+  - {fileID: 11400000, guid: f78a233718b67ee479b7cc7d74a50916, type: 2}
+  - {fileID: 11400000, guid: d19f3a9617296c941bcc83778ac0a5ab, type: 2}
+  - {fileID: 11400000, guid: 4ff806e058ebd7642a2aa08946b2f590, type: 2}
+  - {fileID: 11400000, guid: 16284629fdabdd940b1f62b672656d76, type: 2}
 --- !u!114 &4191474983955360262
 MonoBehaviour:
   m_ObjectHideFlags: 0

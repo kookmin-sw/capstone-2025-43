@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: FallingArrow
   actionCooldown: 14
   amount: 0
-  isSingleTarget: 1
+  isSingleTarget: 0
   arrowPrefab: {fileID: 549415546107026855, guid: a84afb418cc6b0b4dbb37e5c26134c01, type: 3}
   fallHeight: 10
   fallSpeed: 30
