@@ -1718,7 +1718,7 @@ MonoBehaviour:
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 5
+  damage_max: 15
   damage: 30
   attackRange_Max: 3
   attackRange: 5
@@ -1734,7 +1734,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 051aed2aabc529247a4da3e43d53ea48, type: 2}
   Actions:
   - {fileID: 11400000, guid: 68a9e4a8d9bb0384a973d687f164f7a2, type: 2}
-  - {fileID: 11400000, guid: f78a233718b67ee479b7cc7d74a50916, type: 2}
 --- !u!114 &4501727245855295518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1760,8 +1759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTactic: {fileID: 0}
-  tactics:
-  - {fileID: 11400000, guid: 90866e56101eb1f4d92f23b41836872a, type: 2}
+  tactics: []
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &4937859592876825173

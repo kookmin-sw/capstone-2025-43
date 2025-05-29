@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: 1bat1mush1cactus
   m_EditorClassIdentifier: 
   wave:
-  - RelativeLocation: {x: 0.08, y: -0.49999976, z: 4.52}
+  - RelativeLocation: {x: 0.08, y: -0.49999976, z: 7.52}
     Rotation: {x: -0, y: -0.99999964, z: -0, w: 0.00090244063}
     Scale: {x: 1, y: 1, z: 1}
     prefab: {fileID: 8667286828207597136, guid: 68fb887f1ff33924db9145cbd9ded9eb, type: 3}
-  - RelativeLocation: {x: 3.1, y: -0.5, z: 3.4240355}
+  - RelativeLocation: {x: 3.1, y: -0.5, z: 6.424036}
     Rotation: {x: -0, y: -0.99996704, z: -0, w: 0.008122806}
     Scale: {x: 1, y: 1, z: 1}
     prefab: {fileID: 3803214563658999845, guid: dbc83c5b9004a10449eff0425ffda304, type: 3}
-  - RelativeLocation: {x: -2.86, y: -0.49999976, z: 4.27}
+  - RelativeLocation: {x: -2.86, y: -0.49999976, z: 7.27}
     Rotation: {x: -0, y: -0.99998206, z: -0, w: 0.0059944144}
     Scale: {x: 1, y: 1, z: 1}
     prefab: {fileID: 2337362459425489785, guid: 31ec2a7ff8ee3db49aa1431773958af4, type: 3}

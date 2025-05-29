@@ -1718,7 +1718,7 @@ MonoBehaviour:
   hp: 100
   mp_max: 50
   mp: 50
-  damage_max: 20
+  damage_max: 30
   damage: 30
   attackRange_Max: 5
   attackRange: 5
@@ -1766,7 +1766,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a48e78c66940428488fbeb50656d77d7, type: 2}
   - {fileID: 11400000, guid: 54ca1758caa09bd489c9dd416c4a082d, type: 2}
   - {fileID: 11400000, guid: 20d9a7f2513d73240b47996cfb41c0da, type: 2}
-  - {fileID: 11400000, guid: 90866e56101eb1f4d92f23b41836872a, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &6187204498420844885
