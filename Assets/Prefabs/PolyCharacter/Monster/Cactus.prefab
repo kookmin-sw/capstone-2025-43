@@ -771,7 +771,7 @@ MonoBehaviour:
   mp: 50
   damage_max: 10
   damage: 30
-  attackRange_Max: 4
+  attackRange_Max: 10
   attackRange: 5
   moveSpeed_origin: 10
   moveSpeed: 10
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTactic: {fileID: 0}
   tactics:
-  - {fileID: 11400000, guid: 90866e56101eb1f4d92f23b41836872a, type: 2}
+  - {fileID: 11400000, guid: ec5c9e4a7bfc9444d9411f5f95bd09ef, type: 2}
   cooldownTimer: 0
   stopCooldown: 0
 --- !u!136 &172260035103449826
