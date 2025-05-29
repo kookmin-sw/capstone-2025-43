@@ -119,7 +119,7 @@ public class GameManager
             GameOver();
         if (ally == enemy)
         {
-            // win
+            GameOver();
         }
         return ;
     }
