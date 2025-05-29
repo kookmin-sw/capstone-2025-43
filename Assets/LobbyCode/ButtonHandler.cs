@@ -42,6 +42,7 @@ public class ButtonHandler : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, filename);
         Debug.Log($"Save path : {path}");
         Managers.Data.SetList();
+        Managers.Data.handOverData.Gold = Managers.Game.gold;
         Managers.Data.Save<HandOverData>(path, Managers.Data.handOverData);
     }
     public void closeUi(string name)

@@ -30,6 +30,7 @@ public class UiManager
         statusUi.SetActive(false);
         ruleUi.SetActive(false);
 
+        defaultUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, -1);
         shopUi.GetComponent<DropTextHandler>().Init(Managers.Game.gold, 0);
         localUi.GetComponent<DropTextHandler>().Init(Managers.Game.maxHero, 1);
     }
@@ -156,6 +157,10 @@ public class UiManager
             case "Shop":
                 textHandler = shopUi.GetComponent<DropTextHandler>();
                 num = shopUi.GetComponent<SlotHandler>().cartPrice();
+                textHandler.UpdateMax(Managers.Game.gold);
+                break;
+            case "Default":
+                textHandler = defaultUi.GetComponent<DropTextHandler>();
                 textHandler.UpdateMax(Managers.Game.gold);
                 break;
         }

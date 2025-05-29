@@ -17,6 +17,7 @@ public class GameManager
 
     public void Init()
     {
+        gold = Managers.Data.handOverData.Gold;
         map = GameObject.Find("Map").GetComponent<Map>();
     }
     public void StartGame()
@@ -58,6 +59,7 @@ public class GameManager
         {
             //day -> night
             Managers.Data.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
+            gold += 100;
             day.setDay(0, 9);
             day.passDay();
         }
@@ -74,6 +76,7 @@ public class GameManager
     public void loadGame()
     {
         //update gold
+        Managers.Ui.updateText("Default");
         map.CreateMap();
     }
     public void GamePause()

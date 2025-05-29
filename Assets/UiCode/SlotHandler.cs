@@ -21,6 +21,7 @@ public class SlotHandler : MonoBehaviour
         }
         Managers.Ui.shopUi.GetComponent<DropTextHandler>().UpdateCur(0);
         Managers.Ui.shopUi.GetComponent<DropTextHandler>().UpdateMax(Managers.Game.gold);
+        Managers.Ui.defaultUi.GetComponent<DropTextHandler>().UpdateMax(Managers.Game.gold);
         ClearCart();
     }
     public int cartPrice()

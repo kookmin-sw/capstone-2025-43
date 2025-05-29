@@ -4,9 +4,10 @@ using UnityEngine;
 [System.Serializable]
 public class HandOverData
 {
+    public int Gold = 500;
+
     [Header("#Position")]
     public string[] unitPositions = new string[9];
-
 
     [Header("# Node & Edge")]
     public List<vector_localinfo> list_localinfos = new List<vector_localinfo>();
