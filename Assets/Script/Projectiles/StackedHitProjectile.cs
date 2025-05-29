@@ -47,7 +47,7 @@ public class StackedHitProjectile : MonoBehaviour
         float totalDamage = damage;
         if (hitCounts[character] >= 4)
         {
-            totalDamage += 100f;           
+            totalDamage += 30;           
             hitCounts[character] = 0;     
         }
 
