@@ -38,7 +38,6 @@ public class Day
     void night()
     {
         //Heal();
-        Managers.Data.localInfos[Managers.Data.handOverData.openLocal].side = "Ally";
         if (Random.Range(0, 10) >= take)
             TakenAlly();
     }
