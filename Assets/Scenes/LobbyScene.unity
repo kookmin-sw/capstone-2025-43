@@ -362,7 +362,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1425216028}
   sfxSource: {fileID: 2079050330}
-  bgmClip: {fileID: 8300000, guid: e699fc9b374645c4292d6b5d654f60a0, type: 3}
+  defaultBgmClip: {fileID: 8300000, guid: e699fc9b374645c4292d6b5d654f60a0, type: 3}
+  bgmRotationList:
+  - {fileID: 8300000, guid: e699fc9b374645c4292d6b5d654f60a0, type: 3}
+  - {fileID: 8300000, guid: 2669c5cb34a3f8044901de69b21316bb, type: 3}
+  - {fileID: 8300000, guid: 4faab05232b095e4f9c2b924d1e02388, type: 3}
+  - {fileID: 8300000, guid: 40d9bb531052f294683acea475a81ad0, type: 3}
+  - {fileID: 8300000, guid: 4db3346afb5b04f47992effc56e80ab7, type: 3}
+  - {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
+  - {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
+  - {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
   sfxList:
   - type: 0
     clip:
@@ -1793,7 +1802,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0

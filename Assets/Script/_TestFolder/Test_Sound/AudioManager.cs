@@ -61,4 +61,24 @@ public class AudioManager
             Debug.LogWarning($"Effect sound not found: {type}");
         }
     }
+    public void ChangeBGM(AudioClip newClip, bool autoPlay = true)
+{
+    if (newClip == null)
+    {
+        Debug.LogWarning("ChangeBGM: null clip");
+        return;
+    }
+
+    if (bgmSource.isPlaying)
+        bgmSource.Stop();
+
+    bgmClip = newClip;
+    bgmSource.clip = bgmClip;
+
+    if (autoPlay)
+    {
+        bgmSource.loop = true;
+        bgmSource.Play();
+    }
+}
 }

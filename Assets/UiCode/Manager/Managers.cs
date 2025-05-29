@@ -51,7 +51,7 @@ public class Managers : MonoBehaviour
     {
         var audioGo = GameObject.Find("AudioManager");
         var controller = audioGo.GetComponent<AudioManagerController>();
-        Audio.Init(controller.bgmSource, controller.sfxSource, controller.bgmClip, controller.sfxList);
+        Audio.Init(controller.bgmSource, controller.sfxSource, controller.defaultBgmClip, controller.sfxList);
     }
 
     public void LoadScene(string name)
